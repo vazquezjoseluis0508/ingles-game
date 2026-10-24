@@ -777,6 +777,7 @@ async function renderSummary() {
       </div>
       <div class="summary-actions">
         <button class="primary" onclick="startSession('${s.deckId}','${s.mode}')">🔁 Otra ronda</button>
+        <button class="ghost" onclick="renderUnitView('${s.deckId}')">← Atrás</button>
         <button class="ghost" onclick="renderHome()">🏠 Inicio</button>
       </div>
     </div>`;
