@@ -312,3 +312,16 @@ body {
 /* Escuchar: grupos por paper */
 .listen-group { margin-bottom: 18px; }
 .listen-group-title { font-weight: 700; font-size: 1rem; margin-bottom: 10px; color: var(--muted); }
+
+/* ============================================================
+   🎤 Modo Pronunciación
+   ============================================================ */
+.pron-target { background: var(--card); border-radius: 18px; padding: 26px 20px; text-align: center; box-shadow: var(--shadow); margin-bottom: 18px; }
+.pron-emoji { font-size: 2.4rem; }
+.pron-en { font-size: 1.7rem; font-weight: 800; margin: 10px 0; line-height: 1.3; }
+.pron-es { color: var(--muted); margin-top: 8px; }
+.pron-controls { margin-bottom: 14px; }
+.pron-heard { color: var(--muted); margin-bottom: 8px; font-size: .95rem; }
+.pron-words { font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; line-height: 1.6; }
+.pw-ok { color: var(--ok); }
+.pw-no { color: var(--no); text-decoration: underline; text-decoration-style: wavy; }

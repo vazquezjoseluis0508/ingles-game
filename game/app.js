@@ -254,6 +254,11 @@ function renderHome() {
         <div class="deck-name">Conversación</div>
         <div class="deck-desc">Diálogos tipo examen oral</div>
       </button>
+      <button class="deck-card" style="--c:#fd79a8" onclick="startPron('__ALL__')">
+        <div class="deck-emoji">🎤</div>
+        <div class="deck-name">Pronunciación</div>
+        <div class="deck-desc">Leé en voz alta y te corrijo (Chrome + http)</div>
+      </button>
     </div>
 
     ${voicePicker()}
@@ -1075,6 +1080,100 @@ function speakListenLine(i) {
 function pauseListen() { session.playing = false; try { speechSynthesis.cancel(); } catch (e) {} renderListen(); }
 function replayListen() { session.playing = true; speakListenLine(0); }
 function backFromListen() { if (session) session.playing = false; try { speechSynthesis.cancel(); } catch (e) {} viewConversations(); }
+
+// ============================================================
+//  🎤 Modo Pronunciación (reconocimiento de voz del navegador)
+// ============================================================
+function pronSupported() { return ("webkitSpeechRecognition" in window) || ("SpeechRecognition" in window); }
+function pronSecure() { return window.isSecureContext || location.protocol.startsWith("http"); }
+
+function startPron(deckId) {
+  let pool = (!deckId || deckId === "__ALL__") ? allCards() : deckById(deckId).cards.map((c) => ({ ...c, deckId }));
+  const multi = pool.filter((c) => c.en.trim().split(/\s+/).length >= 2);
+  pool = multi.length ? multi : pool;
+  session = { mode: "pron", deckId: deckId || "__ALL__", queue: shuffle(pool).slice(0, 8), index: 0, correct: 0, pool };
+  renderPron();
+}
+function renderPron() {
+  const s = session;
+  if (s.index >= s.queue.length) return pronSummary();
+  const card = s.queue[s.index];
+  const n = s.index + 1, total = s.queue.length;
+  const pct = Math.round((s.index / total) * 100);
+  const warn = (!pronSupported() || !pronSecure())
+    ? `<div class="fb fb-no" style="margin-bottom:12px">Para el micrófono, abrí el juego en <b>Chrome</b> y por <b>http</b> (no file://). Ej: <code>python3 -m http.server</code> y entrá a http://localhost:8000</div>`
+    : "";
+  app().innerHTML = `
+    <div class="play-top">
+      <button class="icon-btn" onclick="confirmExit()" title="Salir">\u2715</button>
+      <div class="play-bar"><div class="play-bar-fill" style="width:${pct}%"></div></div>
+      <div class="play-count">${n}/${total}</div>
+    </div>
+    ${warn}
+    <div class="pron-target">
+      <div class="pron-emoji">${card.emoji || "💬"}</div>
+      <div class="pron-en">${esc(card.en)}</div>
+      <button class="speak-btn" onclick="speak(${jsAttr(card.en)})" title="Escuchar">🔊</button>
+      <div class="pron-es">${esc(card.es)}</div>
+    </div>
+    <div class="pron-controls">
+      <button class="primary wide" id="micBtn" onclick="pronListen()">🎤 Tocá y leé la frase en voz alta</button>
+    </div>
+    <div id="pronResult" class="feedback"></div>`;
+}
+function resetMic() { const b = $("#micBtn"); if (b) { b.textContent = "🎤 Tocá y leé la frase en voz alta"; b.disabled = false; } }
+function pronListen() {
+  const res = $("#pronResult");
+  if (!pronSupported() || !pronSecure()) {
+    if (res) res.innerHTML = `<div class="fb fb-no">El reconocimiento de voz no está disponible acá. Usá Chrome y abrí por http.</div>`;
+    return;
+  }
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const rec = new SR();
+  rec.lang = "en-US"; rec.interimResults = false; rec.maxAlternatives = 1;
+  const btn = $("#micBtn"); if (btn) { btn.textContent = "🎙️ Escuchando... hablá ahora"; btn.disabled = true; }
+  rec.onresult = (e) => { pronScore(e.results[0][0].transcript || ""); };
+  rec.onerror = (e) => { if (res) res.innerHTML = `<div class="fb fb-no">No pude escuchar (${e.error}). Revisá el permiso del micrófono.</div>`; resetMic(); };
+  rec.onend = () => resetMic();
+  try { rec.start(); } catch (err) { if (res) res.innerHTML = `<div class="fb fb-no">No pude iniciar el micrófono.</div>`; resetMic(); }
+}
+function pronScore(said) {
+  const card = session.queue[session.index];
+  const target = normalize(card.en).split(" ").filter(Boolean);
+  const saidSet = new Set(normalize(said).split(" ").filter(Boolean));
+  let matched = 0;
+  const html = target.map((w) => { const ok = saidSet.has(w); if (ok) matched++; return `<span class="${ok ? "pw-ok" : "pw-no"}">${esc(w)}</span>`; }).join(" ");
+  const pct = target.length ? Math.round((matched / target.length) * 100) : 0;
+  const good = pct >= 70;
+  grade(card.id, good); if (good) session.correct++;
+  const res = $("#pronResult");
+  if (res) res.innerHTML = `
+    <div class="pron-heard">Te escuché: "<i>${esc(said)}</i>"</div>
+    <div class="pron-words">${html}</div>
+    <div class="fb ${good ? "fb-ok" : "fb-close"}">${good ? "✅" : "👍"} ${pct}% de las palabras ${good ? "· ¡muy bien!" : "· seguí practicando"}</div>
+    <div class="summary-actions">
+      <button class="ghost" onclick="pronListen()">🎤 Reintentar</button>
+      <button class="primary" onclick="pronNext()">Siguiente →</button>
+    </div>`;
+  if (good) burst();
+}
+function pronNext() { session.index++; renderPron(); }
+async function pronSummary() {
+  bumpStreak(); ensureToday(); state.dailyStats.sessions++;
+  const bonus = checkMissions(); await persist();
+  const s = session, pct = s.queue.length ? Math.round((s.correct / s.queue.length) * 100) : 0;
+  app().innerHTML = `
+    <div class="center-screen">
+      <div class="big-emoji">${pct >= 70 ? "🌟" : "🎤"}</div>
+      <h2>Pronunciación terminada</h2>
+      <div class="score">${s.correct}/${s.queue.length}</div>
+      ${bonus ? `<div class="pill pill-ok">🎁 +${bonus} XP por misiones</div>` : ""}
+      <div class="summary-actions">
+        <button class="primary" onclick="startPron('${s.deckId}')">🔁 Otra ronda</button>
+        <button class="ghost" onclick="renderHome()">🏠 Inicio</button>
+      </div>
+    </div>`;
+}
 
 (async function init() {
   await Store.tryRestoreFile();
