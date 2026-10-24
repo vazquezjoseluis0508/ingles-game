@@ -216,8 +216,8 @@ function renderHome() {
 
     ${renderExamCard()}
 
-    <h2 class="section-title">Tus clases (lo más reciente primero)</h2>
-    ${DATA.units.slice().reverse().map(renderUnit).join("")}
+    <h2 class="section-title">Tus clases (tocá una para entrar)</h2>
+    <div class="deck-grid">${DATA.units.slice().reverse().map(renderUnitCard).join("")}</div>
 
     <h2 class="section-title">O repasá todo</h2>
     <div class="deck-grid">
@@ -275,16 +275,36 @@ function setExamDate() {
   persist().then(renderHome);
 }
 
-function renderUnit(u) {
-  const { pct } = deckProgress(u.decks.flatMap((d) => d.cards));
+// Tarjeta de clase en el Home (clickeable -> entra a la unidad)
+function renderUnitCard(u) {
+  const cards = u.decks.flatMap((d) => d.cards);
+  const { pct } = deckProgress(cards);
+  const crowned = u.decks.filter((d) => deckMedal(d.cards) === "\u{1F947}").length;
   return `
-    <div class="unit">
-      <div class="unit-head">
-        <div class="unit-title">${u.emoji} ${u.name}</div>
-        <div class="unit-prog"><div class="unit-prog-fill" style="width:${pct}%"></div></div>
-      </div>
-      <div class="deck-grid">${u.decks.map(renderDeckCard).join("")}</div>
-    </div>`;
+    <button class="deck-card unit-card" style="--c:#6c5ce7" onclick="viewUnit('${u.id}')">
+      <div class="deck-emoji">${u.emoji}</div>
+      <div class="deck-name">${u.name}</div>
+      <div class="deck-desc">${u.decks.length} mazos${crowned ? ` \u00b7 ${crowned} \u{1F947}` : ""}</div>
+      <div class="deck-bar"><div class="deck-bar-fill" style="width:${pct}%"></div></div>
+      <div class="deck-meta">${pct}% avance</div>
+    </button>`;
+}
+
+function viewUnit(id) { renderUnitView(id); }
+
+function renderUnitView(id) {
+  const u = DATA.units.find((x) => x.id === id);
+  if (!u) return renderHome();
+  const { pct } = deckProgress(u.decks.flatMap((d) => d.cards));
+  app().innerHTML = `
+    <header class="topbar">
+      <button class="icon-btn" onclick="renderHome()" title="Volver">\u2190</button>
+      <div class="brand">${u.emoji} ${u.name}</div>
+      <div class="stats"><div class="stat">\u2b50 <b>${state.xp}</b></div></div>
+    </header>
+    <div class="unit-prog" style="margin-bottom:18px"><div class="unit-prog-fill" style="width:${pct}%"></div></div>
+    <div class="deck-grid">${u.decks.map(renderDeckCard).join("")}</div>
+    <footer class="home-footer"><button class="link-btn" onclick="renderHome()">\u2190 Volver al inicio</button></footer>`;
 }
 
 function storageBadge() {
