@@ -37,3 +37,16 @@ Los `id` deben ser **únicos** (si repetís un id, el progreso se mezcla).
 ## 🧠 Sistema de repaso (Leitner)
 Cada carta tiene una "caja" (1→5). Acierto = sube de caja y tarda más en volver; error = vuelve a la caja 1.
 Intervalos: caja 1 = hoy · 2 = 1 día · 3 = 3 días · 4 = 7 días · 5 = 16 días. Una carta se considera **dominada** desde la caja 4.
+
+## 📱 Instalar como app (PWA)
+El juego es una PWA: se puede **instalar** en el celu/PC y funciona **offline**.
+> ⚠️ Los service workers **no funcionan con `file://`**. Hay que servirlo por http.
+
+**Local (rápido):**
+```
+cd game
+python3 -m http.server 8000
+```
+Abrí **http://localhost:8000** y en el navegador vas a ver la opción de **Instalar app**.
+
+**En el celular:** lo más cómodo es **hostearlo gratis** (Netlify / Vercel / GitHub Pages) y abrir esa URL en el celu → "Agregar a pantalla de inicio".

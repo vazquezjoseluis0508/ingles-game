@@ -1,0 +1,14 @@
+{
+  "name": "Senior 5 — English Game",
+  "short_name": "English S5",
+  "description": "Juego para estudiar inglés Senior 5 (vocabulario, gramática y speaking).",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f1226",
+  "theme_color": "#6c5ce7",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

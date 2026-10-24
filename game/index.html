@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🎓 Senior 5 — English Game</title>
+  <meta name="theme-color" content="#6c5ce7" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon.svg" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -12,5 +15,11 @@
   <script src="conversations.js"></script>
   <script src="store.js"></script>
   <script src="app.js"></script>
+  <script>
+    // PWA: registra el service worker solo sobre http(s) (no funciona con file://).
+    if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+      window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+    }
+  </script>
 </body>
 </html>
