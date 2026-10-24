@@ -255,3 +255,23 @@ body {
 .arcade-stats .score { color: var(--gold); }
 .timer-bar { height: 10px; background: var(--card); border-radius: 999px; overflow: hidden; margin-bottom: 20px; }
 .timer-fill { height: 100%; background: linear-gradient(90deg, var(--ok), var(--gold), var(--no)); transition: width 1s linear; }
+
+/* ============================================================
+   A2: completar / armar frase / unir significados
+   ============================================================ */
+.gap-hint { color: var(--muted); font-size: .95rem; text-align: center; margin: -4px 0 4px; }
+
+/* word bank (armar frase) */
+.bank-answer { min-height: 54px; display: flex; flex-wrap: wrap; gap: 8px; padding: 10px; background: var(--card); border-radius: 14px; border: 2px dashed var(--card2); }
+.bank-pool { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { background: var(--card2); color: var(--text); border: none; border-radius: 10px; padding: 10px 14px; font-size: 1.05rem; cursor: pointer; transition: transform .1s, filter .1s; }
+.chip:hover { filter: brightness(1.2); transform: translateY(-2px); }
+.chip-chosen { background: var(--accent); }
+
+/* match (unir significados) */
+.match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.match-col { display: flex; flex-direction: column; gap: 10px; }
+.match-item { background: var(--card); color: var(--text); border: 2px solid var(--card2); border-radius: 12px; padding: 14px 12px; font-size: .98rem; cursor: pointer; text-align: center; transition: border-color .1s, transform .1s; }
+.match-item:hover:not(:disabled) { border-color: var(--accent); transform: translateY(-2px); }
+.match-sel { border-color: var(--accent) !important; background: rgba(108,92,231,.2) !important; }
+.match-done { opacity: .35; border-color: var(--ok) !important; cursor: default; }

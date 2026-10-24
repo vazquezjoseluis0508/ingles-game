@@ -231,6 +231,11 @@ function renderHome() {
         <div class="deck-name">Modo Arcade</div>
         <div class="deck-desc">Contrarreloj + combos. Récord: ${state.arcadeBest || 0} pts</div>
       </button>
+      <button class="deck-card" style="--c:#0984e3" onclick="startSession('__ALL__','match')">
+        <div class="deck-emoji">🔗</div>
+        <div class="deck-name">Unir significados</div>
+        <div class="deck-desc">Conectá frases con su traducción</div>
+      </button>
     </div>
 
     ${voicePicker()}
@@ -354,6 +359,8 @@ function startSession(deckId, mode) {
     queue = shuffle(pool).slice(0, 15);
   } else if (mode === "boss") {
     queue = shuffle(pool).slice(0, 12);
+  } else if (mode === "match") {
+    queue = shuffle(pool).slice(0, 12); // 3 rondas de 4
   } else { // practice
     queue = shuffle(pool).slice(0, SESSION_SIZE);
   }
@@ -428,6 +435,7 @@ function renderCard() {
   const s = session;
   clearTimer();
   if (s.index >= s.queue.length) return renderSummary();
+  if (s.mode === "match") return renderMatch();
 
   const card = s.queue[s.index];
   const n = s.index + 1, total = s.queue.length;
@@ -437,11 +445,9 @@ function renderCard() {
 
   if (s.mode === "learn") { app().innerHTML = header + renderLearn(card); return; }
 
-  // Arcade = solo opción múltiple (reflejos). Boss = más escribir. Resto 45%.
-  const typingRatio = s.mode === "boss" ? 0.6 : s.mode === "arcade" ? 0 : 0.45;
-  const useTyping = Math.random() < typingRatio;
-  app().innerHTML = header + (useTyping ? renderTyping(card) : renderMultipleChoice(card));
-  if (useTyping) setTimeout(() => { const i = $("#typeInput"); if (i) i.focus(); }, 50);
+  const type = pickQuestionType(card, s.mode);
+  app().innerHTML = header + renderQuestion(type, card);
+  if (type === "typing" || type === "gap") setTimeout(() => { const i = $("#typeInput"); if (i) i.focus(); }, 50);
   if (s.mode === "arcade") startTimer();
 }
 
@@ -702,6 +708,121 @@ async function importProgress() {
 // ============================================================
 //  Arranque
 // ============================================================
+// ============================================================
+//  A2: tipos de ejercicio (completar / armar / unir)
+// ============================================================
+function pickQuestionType(card, mode) {
+  if (mode === "arcade") return "mc";
+  const words = card.en.trim().split(/\s+/).length;
+  const cand = ["mc", "typing"];
+  if (words >= 2) cand.push("gap");
+  if (words >= 2 && words <= 9) cand.push("bank");
+  if (mode === "boss") {
+    const hard = cand.filter((t) => t !== "mc");
+    return hard[Math.floor(Math.random() * hard.length)] || "mc";
+  }
+  return cand[Math.floor(Math.random() * cand.length)];
+}
+function renderQuestion(type, card) {
+  if (type === "typing") return renderTyping(card);
+  if (type === "gap") return renderGapFill(card);
+  if (type === "bank") return renderWordBank(card);
+  return renderMultipleChoice(card);
+}
+
+// ---- Completar la palabra que falta ----
+function pickBlankIndex(words) {
+  let idx = 0, best = -1;
+  words.forEach((w, i) => { const c = w.replace(/[^A-Za-z']/g, ""); if (c.length > best) { best = c.length; idx = i; } });
+  return idx;
+}
+function renderGapFill(card) {
+  const words = card.en.split(/\s+/);
+  const idx = pickBlankIndex(words);
+  session._answer = words[idx].replace(/[^A-Za-z']/g, "");
+  const shown = words.map((w, i) => (i === idx ? w.replace(/[A-Za-z']+/, "_____") : w)).join(" ");
+  return `
+    <div class="quiz">
+      <div class="quiz-prompt-label">Completá la palabra que falta ✏️</div>
+      <div class="quiz-prompt"><span class="quiz-emoji">${card.emoji || "💬"}</span><span>${esc(shown)}</span></div>
+      <div class="gap-hint">💬 ${esc(card.es)}</div>
+      <input id="typeInput" class="type-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="palabra..." onkeydown="if(event.key==='Enter')checkTyping()" />
+      <div class="type-actions"><button class="ghost small" onclick="skipTyping()">No sé 🤷</button><button class="primary" onclick="checkTyping()">Comprobar</button></div>
+      <div id="feedback" class="feedback"></div>
+    </div>`;
+}
+
+// ---- Armar la frase (word bank) ----
+function renderWordBank(card) {
+  session._answer = card.en;
+  const toks = card.en.split(/\s+/);
+  session._bank = { pool: shuffle(toks).map((w) => ({ w, used: false })), chosen: [] };
+  const poolHtml = session._bank.pool.map((t, i) => `<button class="chip" onclick="bankPick(${i})">${esc(t.w)}</button>`).join("");
+  return `
+    <div class="quiz">
+      <div class="quiz-prompt-label">Armá la frase en inglés 🧩</div>
+      <div class="quiz-prompt"><span class="quiz-emoji">${card.emoji || "💬"}</span><span>${esc(card.es)}</span></div>
+      <div id="bankAnswer" class="bank-answer"></div>
+      <div id="bankPool" class="bank-pool">${poolHtml}</div>
+      <div class="type-actions"><button class="ghost small" onclick="skipBank()">No sé 🤷</button><button class="primary" onclick="checkBank()">Comprobar</button></div>
+      <div id="feedback" class="feedback"></div>
+    </div>`;
+}
+function bankPick(i) { const b = session._bank; if (b.pool[i].used) return; b.pool[i].used = true; b.chosen.push(i); updateBank(); }
+function bankUndo(k) { const b = session._bank; const i = b.chosen[k]; b.pool[i].used = false; b.chosen.splice(k, 1); updateBank(); }
+function updateBank() {
+  const b = session._bank;
+  const pool = $("#bankPool"), ans = $("#bankAnswer");
+  if (pool) pool.innerHTML = b.pool.map((t, i) => (t.used ? "" : `<button class="chip" onclick="bankPick(${i})">${esc(t.w)}</button>`)).join("");
+  if (ans) ans.innerHTML = b.chosen.map((i, k) => `<button class="chip chip-chosen" onclick="bankUndo(${k})">${esc(b.pool[i].w)}</button>`).join("");
+}
+function checkBank() {
+  const card = session.queue[session.index];
+  const b = session._bank;
+  const assembled = b.chosen.map((i) => b.pool[i].w).join(" ");
+  afterAnswer(normalize(assembled) === normalize(session._answer), card);
+}
+function skipBank() { afterAnswer(false, session.queue[session.index]); }
+
+// ---- Unir significados (match) ----
+function renderMatch() {
+  const s = session;
+  const batch = s.queue.slice(s.index, s.index + 4);
+  s._match = { batch, left: shuffle(batch.slice()), right: shuffle(batch.slice()), selL: null, done: [] };
+  const total = Math.ceil(s.queue.length / 4), cur = Math.floor(s.index / 4) + 1;
+  const pct = Math.round((s.index / s.queue.length) * 100);
+  app().innerHTML = `
+    <div class="play-top">
+      <button class="icon-btn" onclick="confirmExit()" title="Salir">✕</button>
+      <div class="play-bar"><div class="play-bar-fill" style="width:${pct}%"></div></div>
+      <div class="play-count">Ronda ${cur}/${total}</div>
+    </div>
+    <div class="quiz-prompt-label" style="text-align:center;margin-bottom:12px">Uní cada frase con su significado 🔗</div>
+    <div class="match-grid"><div id="matchLeft" class="match-col"></div><div id="matchRight" class="match-col"></div></div>
+    <div id="feedback" class="feedback"></div>`;
+  updateMatch();
+}
+function updateMatch() {
+  const m = session._match;
+  const L = $("#matchLeft"), R = $("#matchRight");
+  if (L) L.innerHTML = m.left.map((c, i) => `<button class="match-item ${m.done.includes(c.id) ? "match-done" : ""} ${m.selL === i ? "match-sel" : ""}" ${m.done.includes(c.id) ? "disabled" : ""} onclick="matchLeft(${i})">${esc(c.en)}</button>`).join("");
+  if (R) R.innerHTML = m.right.map((c, j) => `<button class="match-item ${m.done.includes(c.id) ? "match-done" : ""}" ${m.done.includes(c.id) ? "disabled" : ""} onclick="matchRight(${j})">${esc(c.es)}</button>`).join("");
+}
+function matchLeft(i) { session._match.selL = i; updateMatch(); }
+function matchRight(j) {
+  const m = session._match;
+  if (m.selL === null) return;
+  const l = m.left[m.selL], r = m.right[j];
+  if (l.id === r.id) {
+    m.done.push(l.id); grade(l.id, true); session.correct++; m.selL = null; updateMatch(); burst();
+    if (m.done.length === m.batch.length) {
+      const fb = $("#feedback");
+      if (fb) fb.innerHTML = `<div class="fb fb-ok">✅ ¡Ronda completa!</div><button class="primary wide" onclick="nextMatchRound()">Continuar →</button>`;
+    }
+  } else { m.selL = null; updateMatch(); }
+}
+function nextMatchRound() { session.index += session._match.batch.length; renderCard(); }
+
 (async function init() {
   await Store.tryRestoreFile();
   state = await Store.load();
