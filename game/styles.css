@@ -308,3 +308,7 @@ body {
 /* match: par incorrecto */
 .match-item.match-wrong { border-color: var(--no) !important; background: rgba(231,76,107,.22) !important; animation: shake .3s; }
 @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-4px)} 75%{transform:translateX(4px)} }
+
+/* Escuchar: grupos por paper */
+.listen-group { margin-bottom: 18px; }
+.listen-group-title { font-weight: 700; font-size: 1rem; margin-bottom: 10px; color: var(--muted); }

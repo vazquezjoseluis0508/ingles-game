@@ -899,12 +899,20 @@ function viewConversations() {
     </div>
 
     <h2 class="section-title">Escuchar una conversación 🎧</h2>
-    <div class="deck-grid">
-      ${(window.LISTENINGS || []).map((d) => `<button class="deck-card" style="--c:${levelColor(d.level)}" onclick="startListening('${d.id}')">
-        <div class="deck-emoji">${d.emoji}</div>
-        <div class="deck-name">${esc(d.title)} ${levelBadge(d.level)}</div>
-        <div class="deck-desc">${d.lines.length} líneas · ${levelLabel(d.level)}</div></button>`).join("")}
-    </div>
+    <p class="muted" style="margin-bottom:12px">Cada paper tiene 3 niveles. La difícil es una charla fluida y real.</p>
+    ${(window.PAPERS || []).map((p) => `
+      <div class="listen-group">
+        <div class="listen-group-title">${p.emoji} ${esc(p.title)}</div>
+        <div class="deck-grid">
+          ${["easy", "medium", "hard"].map((lv) => {
+            const d = (window.LISTENINGS || []).find((x) => x.paper === p.id && x.level === lv);
+            return d ? `<button class="deck-card" style="--c:${levelColor(lv)}" onclick="startListening('${d.id}')">
+              <div class="deck-emoji">${levelBadge(lv)}</div>
+              <div class="deck-name">${levelLabel(lv)}</div>
+              <div class="deck-desc">${d.lines.length} líneas</div></button>` : "";
+          }).join("")}
+        </div>
+      </div>`).join("")}
     <footer class="home-footer"><button class="link-btn" onclick="renderHome()">\u2190 Inicio</button></footer>`;
 }
 function startConversation(id) {
