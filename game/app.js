@@ -236,6 +236,11 @@ function renderHome() {
         <div class="deck-name">Unir significados</div>
         <div class="deck-desc">Conectá frases con su traducción</div>
       </button>
+      <button class="deck-card" style="--c:#e84393" onclick="viewConversations()">
+        <div class="deck-emoji">💬</div>
+        <div class="deck-name">Conversación</div>
+        <div class="deck-desc">Diálogos tipo examen oral</div>
+      </button>
     </div>
 
     ${voicePicker()}
@@ -822,6 +827,95 @@ function matchRight(j) {
   } else { m.selL = null; updateMatch(); }
 }
 function nextMatchRound() { session.index += session._match.batch.length; renderCard(); }
+
+// ============================================================
+//  A3: modo conversación (diálogos guiados)
+// ============================================================
+function viewConversations() {
+  const list = window.CONVERSATIONS || [];
+  app().innerHTML = `
+    <header class="topbar">
+      <button class="icon-btn" onclick="renderHome()" title="Volver">\u2190</button>
+      <div class="brand">💬 Conversación</div>
+      <div class="stats"><div class="stat">\u2b50 <b>${state.xp}</b></div></div>
+    </header>
+    <p class="muted" style="margin-bottom:14px">Diálogos guiados tipo examen oral. Elegí la mejor respuesta en cada turno.</p>
+    <div class="deck-grid">
+      ${list.map((c) => `<button class="deck-card" style="--c:#00b894" onclick="startConversation('${c.id}')">
+        <div class="deck-emoji">${c.emoji}</div>
+        <div class="deck-name">${esc(c.title)}</div>
+        <div class="deck-desc">${esc(c.topic)}</div></button>`).join("")}
+    </div>
+    <footer class="home-footer"><button class="link-btn" onclick="renderHome()">\u2190 Inicio</button></footer>`;
+}
+function startConversation(id) {
+  const convo = (window.CONVERSATIONS || []).find((c) => c.id === id);
+  if (!convo) return viewConversations();
+  session = { mode: "convo", convo, step: 0, transcript: [], good: 0, total: 0 };
+  renderConvo();
+}
+function convoBubble(t) {
+  return `<div class="bubble ${t.who}">${t.who === "teacher" ? "👩‍🏫" : "🧑"} ${esc(t.text)}${t.who === "teacher" && t.es ? `<div class="bubble-es">${esc(t.es)}</div>` : ""}</div>`;
+}
+function renderConvo() {
+  const s = session, convo = s.convo;
+  while (s.step < convo.steps.length && convo.steps[s.step].type === "teacher") {
+    const t = convo.steps[s.step];
+    s.transcript.push({ who: "teacher", text: t.en, es: t.es });
+    s.step++;
+  }
+  if (s.step >= convo.steps.length) return convoSummary();
+  const step = convo.steps[s.step];
+  const pct = Math.round((s.step / convo.steps.length) * 100);
+  app().innerHTML = `
+    <div class="play-top">
+      <button class="icon-btn" onclick="confirmExit()" title="Salir">\u2715</button>
+      <div class="play-bar"><div class="play-bar-fill" style="width:${pct}%"></div></div>
+      <div class="play-count">${convo.emoji}</div>
+    </div>
+    <div class="convo-scroll">${s.transcript.map(convoBubble).join("")}</div>
+    <div class="convo-choices">${step.options.map((o, i) => `<button class="option" onclick="convoChoose(${i})">${esc(o.en)}</button>`).join("")}</div>
+    <div id="feedback" class="feedback"></div>`;
+  const lastT = [...s.transcript].reverse().find((t) => t.who === "teacher");
+  if (lastT) speak(lastT.text);
+}
+function convoChoose(i) {
+  const s = session, step = s.convo.steps[s.step], opt = step.options[i];
+  s.total++;
+  if (opt.good) { s.good++; addXp(10); } else { addXp(2); }
+  s.transcript.push({ who: "you", text: opt.en });
+  document.querySelectorAll(".convo-choices .option").forEach((b, k) => {
+    b.disabled = true;
+    if (step.options[k].good) b.classList.add("opt-correct");
+    else if (k === i) b.classList.add("opt-wrong");
+  });
+  const best = step.options.find((o) => o.good) || {};
+  const fb = $("#feedback");
+  fb.innerHTML = (opt.good
+    ? `<div class="fb fb-ok">✅ ¡Buena respuesta!</div>`
+    : `<div class="fb fb-no">${opt.note ? esc(opt.note) : "Hay una opción mejor."}<br><span class="fb-note">👉 ${esc(best.en || "")}</span></div>`)
+    + `<button class="primary wide" onclick="convoAfter()">Seguir →</button>`;
+  speak(opt.good ? opt.en : (best.en || opt.en));
+  if (opt.good) burst();
+}
+function convoAfter() { session.step++; renderConvo(); }
+async function convoSummary() {
+  bumpStreak(); ensureToday(); state.dailyStats.sessions++;
+  const bonus = checkMissions(); await persist();
+  const s = session, pct = s.total ? Math.round((s.good / s.total) * 100) : 100;
+  app().innerHTML = `
+    <div class="center-screen">
+      <div class="big-emoji">${pct >= 70 ? "🌟" : "💬"}</div>
+      <h2>Conversación completada</h2>
+      <div class="score">${s.good}/${s.total} buenas</div>
+      ${bonus ? `<div class="pill pill-ok">🎁 +${bonus} XP por misiones</div>` : ""}
+      <div class="summary-actions">
+        <button class="primary" onclick="startConversation('${s.convo.id}')">🔁 De nuevo</button>
+        <button class="ghost" onclick="viewConversations()">💬 Otras</button>
+        <button class="ghost" onclick="renderHome()">🏠 Inicio</button>
+      </div>
+    </div>`;
+}
 
 (async function init() {
   await Store.tryRestoreFile();

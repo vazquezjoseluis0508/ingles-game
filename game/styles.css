@@ -275,3 +275,14 @@ body {
 .match-item:hover:not(:disabled) { border-color: var(--accent); transform: translateY(-2px); }
 .match-sel { border-color: var(--accent) !important; background: rgba(108,92,231,.2) !important; }
 .match-done { opacity: .35; border-color: var(--ok) !important; cursor: default; }
+
+/* ============================================================
+   A3: modo conversación (diálogos)
+   ============================================================ */
+.convo-scroll { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+.bubble { max-width: 85%; padding: 12px 14px; border-radius: 16px; font-size: 1rem; line-height: 1.4; }
+.bubble.teacher { align-self: flex-start; background: var(--card); border-bottom-left-radius: 4px; }
+.bubble.you { align-self: flex-end; background: var(--accent); color: #fff; border-bottom-right-radius: 4px; }
+.bubble-es { color: var(--muted); font-size: .82rem; margin-top: 4px; }
+.bubble.you .bubble-es { color: rgba(255,255,255,.8); }
+.convo-choices { display: grid; gap: 10px; }
