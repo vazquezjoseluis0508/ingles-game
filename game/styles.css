@@ -304,3 +304,7 @@ body {
 .listen-es { color: var(--muted); font-size: .82rem; margin-top: 4px; }
 .listen-controls { display: flex; gap: 10px; justify-content: center; position: sticky; bottom: 10px; }
 .listen-controls .primary, .listen-controls .ghost { flex: 1; max-width: 240px; }
+
+/* match: par incorrecto */
+.match-item.match-wrong { border-color: var(--no) !important; background: rgba(231,76,107,.22) !important; animation: shake .3s; }
+@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-4px)} 75%{transform:translateX(4px)} }

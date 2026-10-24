@@ -853,13 +853,14 @@ function renderMatch() {
 function updateMatch() {
   const m = session._match;
   const L = $("#matchLeft"), R = $("#matchRight");
-  if (L) L.innerHTML = m.left.map((c, i) => `<button class="match-item ${m.done.includes(c.id) ? "match-done" : ""} ${m.selL === i ? "match-sel" : ""}" ${m.done.includes(c.id) ? "disabled" : ""} onclick="matchLeft(${i})">${esc(c.en)}</button>`).join("");
-  if (R) R.innerHTML = m.right.map((c, j) => `<button class="match-item ${m.done.includes(c.id) ? "match-done" : ""}" ${m.done.includes(c.id) ? "disabled" : ""} onclick="matchRight(${j})">${esc(c.es)}</button>`).join("");
+  const wl = m.wrong ? m.wrong.l : -1, wr = m.wrong ? m.wrong.r : -1;
+  if (L) L.innerHTML = m.left.map((c, i) => `<button class="match-item ${m.done.includes(c.id) ? "match-done" : ""} ${m.selL === i ? "match-sel" : ""} ${i === wl ? "match-wrong" : ""}" ${m.done.includes(c.id) ? "disabled" : ""} onclick="matchLeft(${i})">${esc(c.en)}</button>`).join("");
+  if (R) R.innerHTML = m.right.map((c, j) => `<button class="match-item ${m.done.includes(c.id) ? "match-done" : ""} ${j === wr ? "match-wrong" : ""}" ${m.done.includes(c.id) ? "disabled" : ""} onclick="matchRight(${j})">${esc(c.es)}</button>`).join("");
 }
-function matchLeft(i) { session._match.selL = i; updateMatch(); }
+function matchLeft(i) { if (session._match.wrong) return; session._match.selL = i; updateMatch(); }
 function matchRight(j) {
   const m = session._match;
-  if (m.selL === null) return;
+  if (m.selL === null || m.wrong) return;
   const l = m.left[m.selL], r = m.right[j];
   if (l.id === r.id) {
     m.done.push(l.id); grade(l.id, true); session.correct++; m.selL = null; updateMatch(); burst();
@@ -867,7 +868,14 @@ function matchRight(j) {
       const fb = $("#feedback");
       if (fb) fb.innerHTML = `<div class="fb fb-ok">✅ ¡Ronda completa!</div><button class="primary wide" onclick="nextMatchRound()">Continuar →</button>`;
     }
-  } else { m.selL = null; updateMatch(); }
+  } else {
+    grade(l.id, false);
+    m.wrong = { l: m.selL, r: j };
+    updateMatch();
+    const fb = $("#feedback");
+    if (fb) fb.innerHTML = `<div class="fb fb-no">❌ No es ese par. Probá de nuevo.</div>`;
+    setTimeout(() => { m.wrong = null; m.selL = null; if (fb) fb.innerHTML = ""; updateMatch(); }, 800);
+  }
 }
 function nextMatchRound() { session.index += session._match.batch.length; renderCard(); }
 
