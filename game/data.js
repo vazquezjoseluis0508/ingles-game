@@ -352,5 +352,223 @@ window.GAME_DATA = {
         }
       ]
     }
+  ],
+  quizzes: [
+    {
+      id: "quiz-passive-voice",
+      name: "Quiz: Passive Voice",
+      emoji: "🔄",
+      description: "Practica voz pasiva en diferentes tiempos",
+      difficulty: "medium",
+      questions: [
+        {
+          id: "pv-q1",
+          type: "gap-fill",
+          prompt: "Complete la oración: 'The door _______ locked.'",
+          options: ["is", "was", "be", "are"],
+          correct: "is",
+          explanation: "Present simple passive con 'is' (singular). The door = sujeto singular.",
+          points: 10
+        },
+        {
+          id: "pv-q2",
+          type: "multiple-choice",
+          prompt: "Traduce: 'Me robaron el teléfono.'",
+          options: ["My phone is stolen.", "My phone has been stolen.", "My phone is being stolen.", "My phone was stolen."],
+          correct: "My phone has been stolen.",
+          explanation: "Present perfect passive (acción reciente sin especificar cuándo). 'has been stolen' = me lo robaron (recientemente).",
+          points: 10
+        },
+        {
+          id: "pv-q3",
+          type: "typing",
+          prompt: "Completa: 'La casa fue pintada el año pasado.' → 'The house _______ painted last year.'",
+          correct: "was",
+          variations: ["was"],
+          explanation: "Past simple passive con 'was' (singular). The house = sujeto singular.",
+          points: 10
+        },
+        {
+          id: "pv-q4",
+          type: "multiple-choice",
+          prompt: "¿Cuál es la forma correcta en futuro pasivo?",
+          options: ["The project will built.", "The project will be built.", "The project is going to built.", "The project has been built."],
+          correct: "The project will be built.",
+          explanation: "Future simple passive: will be + past participle.",
+          points: 10
+        },
+        {
+          id: "pv-q5",
+          type: "gap-fill",
+          prompt: "Complete: 'Me están pintando la casa.' → 'My house _______ being painted.'",
+          options: ["is", "are", "was", "be"],
+          correct: "is",
+          explanation: "Present continuous passive: is/are + being + pp. 'My house' = singular → 'is'.",
+          points: 10
+        }
+      ]
+    },
+    {
+      id: "quiz-causative",
+      name: "Quiz: Causative Have",
+      emoji: "✂️",
+      description: "Have + objeto + past participle",
+      difficulty: "medium",
+      questions: [
+        {
+          id: "ch-q1",
+          type: "multiple-choice",
+          prompt: "Traduce: 'Me corté el pelo.'",
+          options: ["I cut my hair.", "I had my hair cut.", "I have cut my hair.", "I'm cutting my hair."],
+          correct: "I had my hair cut.",
+          explanation: "Causative: alguien más lo hace. 'have + object + pp' = otro lo hace por vos.",
+          points: 10
+        },
+        {
+          id: "ch-q2",
+          type: "typing",
+          prompt: "Completa: 'Nos sacaron una foto.' → 'We _______ our photo taken.'",
+          correct: "had",
+          variations: ["had"],
+          explanation: "Causative have (pasado): had + object + pp.",
+          points: 10
+        },
+        {
+          id: "ch-q3",
+          type: "gap-fill",
+          prompt: "Complete: 'Le robaron el iPhone.' → 'She _______ her iPhone stolen.'",
+          options: ["has had", "had", "have", "is having"],
+          correct: "had",
+          explanation: "Causative (pasado simple): had + object + pp.",
+          points: 10
+        },
+        {
+          id: "ch-q4",
+          type: "multiple-choice",
+          prompt: "¿Qué expresa 'I had my house burgled'?",
+          options: ["Yo mismo entré a robar.", "Algo malo que me sucedió (no especifico quién).", "Yo robé la casa.", "La casa está siendo robada."],
+          correct: "Algo malo que me sucedió (no especifico quién).",
+          explanation: "Causative con significado de 'algo malo': algo te pasó sin asumir responsabilidad de quién.",
+          points: 10
+        },
+        {
+          id: "ch-q5",
+          type: "typing",
+          prompt: "Completa: 'Deberías hacerte revisar la vista.' → 'You should _______ your eyes tested.'",
+          correct: "have",
+          variations: ["have"],
+          explanation: "Causative con should: should + have + object + pp.",
+          points: 10
+        }
+      ]
+    },
+    {
+      id: "quiz-reporting-verbs",
+      name: "Quiz: Reporting Verbs",
+      emoji: "🗨️",
+      description: "Say, tell, report, claim...",
+      difficulty: "hard",
+      questions: [
+        {
+          id: "rv-q1",
+          type: "multiple-choice",
+          prompt: "Elige la opción correcta:",
+          options: ["He said me that he's late.", "He told me that he's late.", "He said that he's late to me.", "He told me he is late."],
+          correct: "He told me that he's late.",
+          explanation: "'Tell' lleva objeto indirecto (me). 'Say' no. Ambas opciones son válidas como estructura, pero 'told me' es la más natural.",
+          points: 10
+        },
+        {
+          id: "rv-q2",
+          type: "typing",
+          prompt: "Completa: 'Ella insistió en que había un error.' → 'She _______ that there was a mistake.'",
+          correct: "insisted",
+          variations: ["insisted"],
+          explanation: "'Insist' (insistir) + that + oración. Verb of reporting.",
+          points: 10
+        },
+        {
+          id: "rv-q3",
+          type: "gap-fill",
+          prompt: "Complete: 'Él negó haber robado nada.' → 'He _______ stealing anything.'",
+          options: ["told denying", "said denying", "denied", "refused"],
+          correct: "denied",
+          explanation: "'Deny' + gerundio (not doing something) es diferente de 'refuse' (refuse to do something).",
+          points: 10
+        },
+        {
+          id: "rv-q4",
+          type: "multiple-choice",
+          prompt: "¿Cuál es la diferencia entre 'say' y 'tell'?",
+          options: ["'Say' + objeto; 'tell' sin objeto.", "'Tell' + objeto; 'say' sin objeto directo.", "No hay diferencia.", "'Say' es pasado; 'tell' es presente."],
+          correct: "'Tell' + objeto; 'say' sin objeto directo.",
+          explanation: "'Tell me, tell him' (tell + OI). 'Say that...' (say sin OI directo en la construcción básica).",
+          points: 10
+        },
+        {
+          id: "rv-q5",
+          type: "typing",
+          prompt: "Completa: 'Ella afirmó que vio el accidente.' → 'She _______ that she saw the accident.'",
+          correct: "claimed",
+          variations: ["claimed"],
+          explanation: "'Claim' (afirmar, pretender) + that + oración.",
+          points: 10
+        }
+      ]
+    },
+    {
+      id: "quiz-modal-deduction",
+      name: "Quiz: Past Modals (Deduction)",
+      emoji: "🔮",
+      description: "Must have, might have, can't have para deducción en el pasado",
+      difficulty: "hard",
+      questions: [
+        {
+          id: "pm-q1",
+          type: "multiple-choice",
+          prompt: "'He didn't answer the phone. He ____ sleeping.' Completa con la deducción más lógica:",
+          options: ["must have been", "might have been", "can't have been", "should have been"],
+          correct: "must have been",
+          explanation: "'Must have been' = deduzco que estaba durmiendo (casi seguro). Lo más probable.",
+          points: 10
+        },
+        {
+          id: "pm-q2",
+          type: "typing",
+          prompt: "Traduce: 'No podría haber robado el banco, estaba en casa.' → 'He _______ robbed the bank; he was home.'",
+          correct: "can't have",
+          variations: ["can't have", "couldn't have"],
+          explanation: "'Can't have' = imposible que haya pasado.",
+          points: 10
+        },
+        {
+          id: "pm-q3",
+          type: "gap-fill",
+          prompt: "Complete: 'Tal vez lo viera, no estoy seguro.' → 'He _______ seen it. I'm not sure.'",
+          options: ["might have", "must have", "could have", "should have"],
+          correct: "might have",
+          explanation: "'Might have' (podría haber) = no estoy seguro. Posibilidad débil.",
+          points: 10
+        },
+        {
+          id: "pm-q4",
+          type: "multiple-choice",
+          prompt: "¿Cuál expresa la deducción más fuerte (casi certeza)?",
+          options: ["She might have left.", "She could have left.", "She must have left.", "She should have left."],
+          correct: "She must have left.",
+          explanation: "'Must have' = casi certeza. 'Might/could have' = posibilidad débil. 'Should have' = arrepentimiento.",
+          points: 10
+        },
+        {
+          id: "pm-q5",
+          type: "typing",
+          prompt: "Completa: 'Probablemente llegó tarde por el tráfico.' → 'He _______ late because of traffic.'",
+          correct: "must have been",
+          variations: ["must have been"],
+          explanation: "'Must have been' + adjective/noun para deducción en pasado.",
+          points: 10
+        }
+      ]
+    }
   ]
 };

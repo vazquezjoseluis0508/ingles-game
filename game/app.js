@@ -41,6 +41,82 @@ function deckProgress(cards) {
 
 async function persist() { await Store.save(state); }
 
+// ============================================================
+//  QUIZ Mode (T3-T9)
+// ============================================================
+const allQuizzes = () => DATA.quizzes || [];
+const quizById = (id) => allQuizzes().find((q) => q.id === id);
+const quizState = (id) => (state.quizzes && state.quizzes[id]) || { completed: 0, totalAttempts: 0, bestScore: 0 };
+const QUIZ_POINTS_PER_Q = 10;
+
+function difficultyEmoji(d) {
+  if (d === "easy") return "🟢"; if (d === "medium") return "🟡"; if (d === "hard") return "🔴"; return "❓";
+}
+
+function quizzesProgress() {
+  const quizzes = allQuizzes();
+  if (!quizzes.length) return { pct: 0, completed: 0, total: 0 };
+  let completed = 0;
+  for (const q of quizzes) { if (quizState(q.id).completed > 0) completed++; }
+  return { pct: Math.round((completed / quizzes.length) * 100), completed, total: quizzes.length };
+}
+
+function startQuiz(quizId) {
+  const quiz = quizById(quizId);
+  if (!quiz) { alert("Quiz no encontrado"); renderHome(); return; }
+  session = { type: "quiz", quizId, questions: quiz.questions, index: 0, answers: [], score: 0, startTime: Date.now() };
+  renderQuizStart();
+}
+
+function renderQuizStart() {
+  const quiz = quizById(session.quizId);
+  const totalPoints = session.questions.length * QUIZ_POINTS_PER_Q;
+  app().innerHTML = `<div class="center-screen"><div class="big-emoji">${quiz.emoji}</div><h2>${esc(quiz.name)}</h2><p class="muted">${esc(quiz.description)}</p><div class="deck-meta" style="margin:1rem 0">Dificultad: ${difficultyEmoji(quiz.difficulty)}</div><div class="deck-meta">Preguntas: ${session.questions.length} × ${QUIZ_POINTS_PER_Q} pts = ${totalPoints} pts</div><div style="margin-top:2rem"><button class="primary" onclick="nextQuizQuestion()">🚀 Empezar</button><button class="ghost" onclick="renderQuizzes()">← Volver</button></div></div>`;
+}
+
+function renderQuizQuestion() {
+  const s = session, q = s.questions[s.index], n = s.index + 1, total = s.questions.length, pct = Math.round((s.index / total) * 100);
+  if (s.index >= s.questions.length) return renderQuizSummary();
+  let content = (q.type === "gap-fill" || q.type === "multiple-choice") ? `<div class="quiz-card"><div class="quiz-prompt">${esc(q.prompt)}</div><div class="quiz-options">${q.options.map((opt) => `<button class="quiz-option" onclick="verifyQuizAnswer(${jsAttr(opt)})">${esc(opt)}</button>`).join("")}</div></div>` : `<div class="quiz-card"><div class="quiz-prompt">${esc(q.prompt)}</div><div class="quiz-typing"><input id="quizInput" type="text" class="typing-input" placeholder="Escribe aquí..." /><button class="primary" onclick="verifyQuizAnswer(document.getElementById('quizInput').value)">Verificar</button></div></div>`;
+  app().innerHTML = `<div class="play-top"><button class="icon-btn" onclick="goBackDeck()" title="Atrás">←</button><div class="play-bar"><div class="play-bar-fill" style="width:${pct}%"></div></div><div class="play-count">${n}/${total}</div></div><div class="play-screen quiz-screen">${content}</div>`;
+  if (q.type === "typing") setTimeout(() => { const el = document.getElementById("quizInput"); if (el) el.focus(); }, 100);
+}
+
+function verifyQuizAnswer(answer) {
+  const q = session.questions[session.index], userAnswer = String(answer).trim().toLowerCase(), correct = String(q.correct).trim().toLowerCase(), isCorrect = userAnswer === correct;
+  session.answers.push({ questionId: q.id, answer, isCorrect });
+  if (isCorrect) session.score += (q.points || QUIZ_POINTS_PER_Q);
+  const feedbackClass = isCorrect ? "quiz-feedback-correct" : "quiz-feedback-wrong", feedbackEmoji = isCorrect ? "✅" : "❌";
+  app().innerHTML += `<div class="${feedbackClass}"><div class="feedback-emoji">${feedbackEmoji}</div><div class="feedback-text">${isCorrect ? "¡Correcto!" : "Incorrecto"}</div><div class="feedback-explanation">${esc(q.explanation)}</div>${!isCorrect ? `<div class="feedback-correct">Respuesta correcta: <strong>${esc(q.correct)}</strong></div>` : ""}<button class="primary" onclick="nextQuizQuestion()">Siguiente →</button></div>`;
+}
+
+function nextQuizQuestion() { session.index++; renderQuizQuestion(); }
+
+async function renderQuizSummary() {
+  const s = session, quiz = quizById(s.quizId), totalPoints = s.questions.length * QUIZ_POINTS_PER_Q, pct = Math.round((s.score / totalPoints) * 100), correct = s.answers.filter(a => a.isCorrect).length, duration = Math.round((Date.now() - s.startTime) / 1000);
+  if (!state.quizzes) state.quizzes = {};
+  if (!state.quizzes[s.quizId]) state.quizzes[s.quizId] = { completed: 0, totalAttempts: 0, bestScore: 0 };
+  state.quizzes[s.quizId].completed = 1;
+  state.quizzes[s.quizId].totalAttempts++;
+  state.quizzes[s.quizId].bestScore = Math.max(state.quizzes[s.quizId].bestScore, s.score);
+  const xpBonus = Math.round((s.score / totalPoints) * 50);
+  addXp(xpBonus);
+  await persist();
+  const pass = pct >= 70;
+  app().innerHTML = `<div class="center-screen"><div class="big-emoji">${pass ? "🏆" : "📚"}</div><h2>${esc(quiz.name)}</h2><div class="score">${s.score}/${totalPoints} pts (${pct}%)</div><div class="${pass ? "pill pill-ok" : "muted"}">${pass ? "¡Excelente! 🎉" : "Seguí practicando 💪"}</div><div class="summary-stats"><div>✅ ${correct}/${s.questions.length}</div><div>⏱️ ${duration}s</div><div>⭐ +${xpBonus} XP</div></div><div class="summary-actions"><button class="primary" onclick="startQuiz('${s.quizId}')">🔁 Reintentar</button><button class="ghost" onclick="renderQuizzes()">📝 Otros quizzes</button></div></div>`;
+}
+
+function renderQuizzes() {
+  const quizzes = allQuizzes(), { pct, completed, total } = quizzesProgress(), quizCards = quizzes.map((q) => { const qs = quizState(q.id), badge = qs.completed > 0 ? "✅" : "🔒", bestScore = qs.bestScore > 0 ? `<div class="muted">Mejor: ${qs.bestScore}/${q.questions.length * QUIZ_POINTS_PER_Q}</div>` : ""; return `<div class="deck-card" style="--c:#7f39fb"><div class="deck-emoji">${q.emoji}</div><div class="deck-name">${esc(q.name)} ${badge}</div><div class="deck-desc">${esc(q.description)}</div><div class="deck-meta">Dificultad: ${difficultyEmoji(q.difficulty)} · ${q.questions.length} preguntas</div>${bestScore}<div class="deck-actions"><button onclick="startQuiz('${q.id}')">📝 Hacer Quiz</button></div></div>`; }).join("");
+  app().innerHTML = `<header class="home-header"><button class="icon-btn" onclick="renderHome()">←</button><h1>📝 Quizzes</h1></header><section class="missions"><div class="missions-title">📊 Progreso</div><div class="mission"><div class="mission-check">${completed > 0 ? "✅" : "⏳"}</div><div class="mission-body"><div class="mission-text">Quizzes completados: ${completed}/${total}</div><div class="mission-bar"><div class="mission-bar-fill" style="width:${pct}%"></div></div></div><div class="mission-prog">${pct}%</div></div></section><div class="deck-grid">${quizCards}</div><footer class="home-footer"><button class="link-btn" onclick="renderHome()">← Volver al inicio</button></footer>`;
+}
+
+function homeQuizzesSection() {
+  const { pct, completed, total } = quizzesProgress();
+  if (!total) return "";
+  return `<section class="missions" style="margin-top:1.5rem"><div class="missions-title">📝 Quizzes</div><div class="mission" style="cursor:pointer" onclick="renderQuizzes()"><div class="mission-check">${completed > 0 ? "✅" : "🔒"}</div><div class="mission-body"><div class="mission-text">Quizzes completados: ${completed}/${total}</div><div class="mission-bar"><div class="mission-bar-fill" style="width:${pct}%"></div></div></div><div class="mission-prog">${pct}%</div></div><div style="text-align:center;margin-top:0.5rem"><button class="primary" onclick="renderQuizzes()" style="width:100%">📝 Ver Quizzes</button></div></section>`;
+}
+
 // ---------- XP y meta diaria ----------
 function addXp(n) {
   state.xp += n;
@@ -431,6 +507,7 @@ function playHeader(n, total, pct) {
   if (s.mode === "arcade") {
     return `
     <div class="play-top">
+      <button class="icon-btn" onclick="goBackDeck()" title="Atrás">←</button>
       <button class="icon-btn" onclick="confirmExit()" title="Salir">✕</button>
       <div class="arcade-stats"><span class="combo">🔥 x${s.combo || 0}</span><span class="score">⭐ ${s.score || 0}</span></div>
       <div class="play-count">${n}/${total}</div>
@@ -439,6 +516,7 @@ function playHeader(n, total, pct) {
   }
   return `
     <div class="play-top">
+      <button class="icon-btn" onclick="goBackDeck()" title="Atrás">←</button>
       <button class="icon-btn" onclick="confirmExit()" title="Salir">✕</button>
       <div class="play-bar"><div class="play-bar-fill" style="width:${pct}%"></div></div>
       ${heartsHtml()}
@@ -740,6 +818,17 @@ async function renderSpecialSummary(s, bonus) {
         <button class="ghost" onclick="renderHome()">🏠 Inicio</button>
       </div>
     </div>`;
+}
+
+function goBackDeck() {
+  clearTimer();
+  if (session && session.type === "quiz") {
+    persist().then(() => renderQuizzes());
+  } else if (session && session.deckId) {
+    persist().then(() => renderUnitView(session.deckId));
+  } else {
+    renderHome();
+  }
 }
 
 function confirmExit() {
