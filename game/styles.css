@@ -286,3 +286,7 @@ body {
 .bubble-es { color: var(--muted); font-size: .82rem; margin-top: 4px; }
 .bubble.you .bubble-es { color: rgba(255,255,255,.8); }
 .convo-choices { display: grid; gap: 10px; }
+
+/* comparación tolerante */
+.fb-close { background: rgba(255,209,102,.16); color: var(--gold); }
+.type-input.type-close { border-color: var(--gold); background: rgba(255,209,102,.14); }

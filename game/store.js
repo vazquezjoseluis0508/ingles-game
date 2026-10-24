@@ -49,6 +49,7 @@ const Store = (() => {
       examDate: null,                  // fecha del examen de speaking (AAAA-MM-DD)
       voiceURI: null,                  // voz TTS elegida
       arcadeBest: 0,                   // mejor puntaje en modo arcade
+      strictMode: false,               // comparación al pie de la letra
       dailyStats: { date: null, correct: 0, sessions: 0, claimed: [] }, // misiones diarias
       cards: {}                        // id -> { box:1..5, due:ISO, seen, correct, wrong }
     };

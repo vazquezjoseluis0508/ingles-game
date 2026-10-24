@@ -246,6 +246,7 @@ function renderHome() {
     ${voicePicker()}
 
     <footer class="home-footer">
+      <button class="link-btn" onclick="toggleStrict()">🎯 Modo riguroso: ${state.strictMode ? "ON" : "OFF"}</button>
       <button class="link-btn" onclick="exportProgress()">⬇️ Exportar progreso</button>
       <button class="link-btn" onclick="importProgress()">⬆️ Importar progreso</button>
       ${Store.supportsFS() && !Store.isFileConnected() ? `<button class="link-btn" onclick="connectProgressFile()">🔗 Guardar en archivo (progress.json)</button>` : ""}
@@ -529,8 +530,31 @@ function answerMC(btn, chosen) {
 }
 
 // ---------- modo Practicar: escribir ----------
-const normalize = (s) => String(s).toLowerCase().trim()
-  .replace(/[.,!?;:]/g, "").replace(/[’'`]/g, "'").replace(/\s+/g, " ");
+const normalize = (s) => String(s).toLowerCase()
+  .replace(/[.,!?;:]/g, "").replace(/[’'`]/g, "'").replace(/\s+/g, " ").trim();
+
+// Distancia de edición (Levenshtein) para detectar typos menores.
+function levenshtein(a, b) {
+  const m = a.length, n = b.length;
+  if (!m) return n; if (!n) return m;
+  const d = Array.from({ length: m + 1 }, (_, i) => [i, ...Array(n).fill(0)]);
+  for (let j = 0; j <= n; j++) d[0][j] = j;
+  for (let i = 1; i <= m; i++) for (let j = 1; j <= n; j++) {
+    const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+    d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + cost);
+  }
+  return d[m][n];
+}
+// "ok" exacto | "close" error menor (no cambia el sentido) | "wrong".
+function compareAnswer(user, answer) {
+  const u = normalize(user), a = normalize(answer);
+  if (u === a) return { status: "ok" };
+  if (state.strictMode) return { status: "wrong" };
+  const strip = (x) => x.split(" ").filter((w) => !["a", "an", "the"].includes(w)).join(" ");
+  if (strip(a) !== "" && strip(u) === strip(a)) return { status: "close" };
+  if (levenshtein(u, a) <= Math.max(2, Math.round(a.length * 0.12))) return { status: "close" };
+  return { status: "wrong" };
+}
 
 function renderTyping(card) {
   // Siempre ES -> escribir en inglés (es lo que querés automatizar).
@@ -556,10 +580,10 @@ function checkTyping() {
   const input = $("#typeInput");
   if (!input || input.disabled) return;
   const card = session.queue[session.index];
-  const correct = normalize(input.value) === normalize(session._answer);
+  const cmp = compareAnswer(input.value, session._answer);
   input.disabled = true;
-  input.classList.add(correct ? "type-ok" : "type-no");
-  afterAnswer(correct, card);
+  input.classList.add(cmp.status === "wrong" ? "type-no" : cmp.status === "close" ? "type-close" : "type-ok");
+  afterAnswer(cmp.status !== "wrong", card, cmp.status === "close");
 }
 function skipTyping() {
   const card = session.queue[session.index];
@@ -569,7 +593,7 @@ function skipTyping() {
 }
 
 // ---------- resultado común a MC y typing ----------
-function afterAnswer(correct, card) {
+function afterAnswer(correct, card, close) {
   clearTimer();
   grade(card.id, correct);
   if (correct) session.correct++;
@@ -584,9 +608,13 @@ function afterAnswer(correct, card) {
 
   const showNote = card.note && session.mode !== "boss"; // el jefe final va sin pistas
   const fb = $("#feedback");
-  fb.innerHTML = correct
-    ? `<div class="fb fb-ok">✅ ¡Muy bien!</div>`
-    : `<div class="fb fb-no">❌ Correcto: <b>${esc(session._answer)}</b>${showNote ? `<br><span class="fb-note">💡 ${esc(card.note)}</span>` : ""}</div>`;
+  if (correct && close) {
+    fb.innerHTML = `<div class="fb fb-close">👍 ¡Casi perfecto! Lo correcto: <b>${esc(session._answer)}</b></div>`;
+  } else if (correct) {
+    fb.innerHTML = `<div class="fb fb-ok">✅ ¡Muy bien!</div>`;
+  } else {
+    fb.innerHTML = `<div class="fb fb-no">❌ Correcto: <b>${esc(session._answer)}</b>${showNote ? `<br><span class="fb-note">💡 ${esc(card.note)}</span>` : ""}</div>`;
+  }
 
   if (session.hearts === 0) {
     fb.innerHTML += `<button class="primary wide" onclick="gameOver()">Continuar →</button>`;
@@ -705,6 +733,7 @@ async function connectProgressFile() {
   catch (e) { if (e.name !== "AbortError") alert("No se pudo conectar el archivo: " + e.message); }
 }
 function exportProgress() { Store.exportFile(state); }
+function toggleStrict() { state.strictMode = !state.strictMode; persist().then(renderHome); }
 async function importProgress() {
   try { state = await Store.importFile(); await persist(); renderHome(); alert("Progreso importado ✅"); }
   catch (e) { if (e.message !== "no-file") alert("No se pudo importar: " + e.message); }
@@ -785,7 +814,8 @@ function checkBank() {
   const card = session.queue[session.index];
   const b = session._bank;
   const assembled = b.chosen.map((i) => b.pool[i].w).join(" ");
-  afterAnswer(normalize(assembled) === normalize(session._answer), card);
+  const cmp = compareAnswer(assembled, session._answer);
+  afterAnswer(cmp.status !== "wrong", card, cmp.status === "close");
 }
 function skipBank() { afterAnswer(false, session.queue[session.index]); }
 
