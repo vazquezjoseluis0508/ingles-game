@@ -1,0 +1,9 @@
+# Tooling cache
+.atl/
+
+# User progress (personal, device-specific)
+game/progress.json
+progress.json
+
+# OS
+.DS_Store
