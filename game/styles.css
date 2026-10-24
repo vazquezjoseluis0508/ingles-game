@@ -1,0 +1,257 @@
+/* ============================================================
+   Senior 5 — English Game · estilos
+   Diseño con foco en memoria visual: color, emojis, tarjetas.
+   ============================================================ */
+:root {
+  --bg: #0f1226;
+  --bg2: #171a33;
+  --card: #1e2242;
+  --card2: #262a4e;
+  --text: #eef0ff;
+  --muted: #9aa0c7;
+  --accent: #6c5ce7;
+  --ok: #00b894;
+  --no: #e74c6b;
+  --gold: #ffd166;
+  --radius: 18px;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  background: radial-gradient(1200px 800px at 20% -10%, #24275a 0%, var(--bg) 55%);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 24px 16px 60px;
+}
+#app { max-width: 760px; margin: 0 auto; }
+
+/* ---------- topbar ---------- */
+.topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.brand { font-size: 1.5rem; font-weight: 800; }
+.brand span { font-weight: 500; color: var(--muted); font-size: 1rem; }
+.stats { display: flex; gap: 10px; }
+.stat { background: var(--card); padding: 8px 14px; border-radius: 999px; font-size: 1.05rem; box-shadow: var(--shadow); }
+
+/* ---------- pills / resumen ---------- */
+.progress-summary { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; }
+.pill { background: var(--card); color: var(--muted); padding: 8px 14px; border-radius: 999px; font-size: .9rem; }
+.pill-alert { color: var(--gold); }
+.pill-ok { color: var(--ok); }
+
+.section-title { font-size: 1.1rem; margin: 22px 0 12px; color: var(--muted); font-weight: 600; }
+
+/* ---------- deck grid ---------- */
+.deck-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+.deck-card {
+  background: var(--card); border: none; color: var(--text); text-align: left;
+  border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);
+  border-top: 4px solid var(--c, var(--accent)); cursor: pointer; transition: transform .12s ease;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.deck-card:hover { transform: translateY(-3px); }
+.deck-card-expand { cursor: default; }
+.deck-emoji { font-size: 2rem; }
+.deck-name { font-size: 1.15rem; font-weight: 700; }
+.deck-desc { color: var(--muted); font-size: .85rem; min-height: 34px; }
+.deck-bar { height: 8px; background: var(--card2); border-radius: 999px; overflow: hidden; margin-top: 6px; }
+.deck-bar-fill { height: 100%; background: var(--c, var(--accent)); transition: width .4s ease; }
+.deck-meta { font-size: .78rem; color: var(--muted); }
+.deck-actions { display: flex; gap: 8px; margin-top: 10px; }
+.deck-actions button {
+  flex: 1; background: var(--c, var(--accent)); color: #fff; border: none; border-radius: 12px;
+  padding: 10px; font-weight: 700; cursor: pointer; font-size: .9rem; transition: filter .12s;
+}
+.deck-actions button:hover { filter: brightness(1.12); }
+
+/* ---------- footer ---------- */
+.home-footer { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+.link-btn { background: none; border: 1px solid var(--card2); color: var(--muted); padding: 8px 14px; border-radius: 999px; cursor: pointer; font-size: .85rem; }
+.link-btn:hover { color: var(--text); border-color: var(--accent); }
+
+/* ---------- play top bar ---------- */
+.play-top { display: flex; align-items: center; gap: 12px; margin-bottom: 26px; }
+.icon-btn { background: var(--card); border: none; color: var(--muted); width: 38px; height: 38px; border-radius: 12px; font-size: 1.1rem; cursor: pointer; }
+.play-bar { flex: 1; height: 12px; background: var(--card); border-radius: 999px; overflow: hidden; }
+.play-bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--ok)); transition: width .3s ease; }
+.play-count { color: var(--muted); font-size: .9rem; min-width: 42px; text-align: right; }
+
+/* ---------- flashcard ---------- */
+.flash-wrap { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.flashcard { width: 100%; max-width: 520px; height: 320px; perspective: 1200px; cursor: pointer; }
+.flashcard .flash-face {
+  position: absolute; inset: 0; backface-visibility: hidden; border-radius: 22px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  padding: 28px; text-align: center; box-shadow: var(--shadow); transition: transform .5s;
+}
+.flashcard { position: relative; }
+.flash-front { background: linear-gradient(160deg, #2a2f5e, var(--card)); }
+.flash-back { background: linear-gradient(160deg, #1f4d44, #173a33); transform: rotateY(180deg); }
+.flashcard.flipped .flash-front { transform: rotateY(180deg); }
+.flashcard.flipped .flash-back { transform: rotateY(360deg); }
+.flash-emoji { font-size: 3rem; }
+.flash-en { font-size: 1.6rem; font-weight: 800; line-height: 1.3; }
+.flash-hint { color: var(--muted); font-size: .8rem; }
+.flash-es { font-size: 1.7rem; font-weight: 800; color: #b8f3e4; }
+.flash-note { color: #d7ddff; font-size: .95rem; background: rgba(255,255,255,.08); padding: 10px 14px; border-radius: 12px; line-height: 1.4; }
+.flash-tag { font-size: .75rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+
+/* ---------- quiz ---------- */
+.quiz { display: flex; flex-direction: column; gap: 18px; }
+.quiz-prompt-label { color: var(--muted); font-size: .9rem; }
+.quiz-prompt { background: var(--card); border-radius: 18px; padding: 28px; font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 14px; box-shadow: var(--shadow); }
+.quiz-emoji { font-size: 2rem; }
+.options { display: grid; gap: 12px; }
+.option { background: var(--card); border: 2px solid var(--card2); color: var(--text); padding: 16px 18px; border-radius: 14px; font-size: 1.05rem; text-align: left; cursor: pointer; transition: transform .1s, border-color .1s; }
+.option:hover:not(:disabled) { border-color: var(--accent); transform: translateY(-2px); }
+.option:disabled { cursor: default; opacity: .9; }
+.opt-correct { border-color: var(--ok) !important; background: rgba(0,184,148,.18) !important; }
+.opt-wrong { border-color: var(--no) !important; background: rgba(231,76,107,.18) !important; }
+
+.feedback { display: flex; flex-direction: column; gap: 14px; }
+.fb { padding: 14px 16px; border-radius: 12px; font-size: 1.05rem; }
+.fb-ok { background: rgba(0,184,148,.15); color: #7df0d3; }
+.fb-no { background: rgba(231,76,107,.15); color: #ffb3c4; line-height: 1.5; }
+.fb-note { color: #d7ddff; font-size: .9rem; }
+
+/* ---------- botones ---------- */
+.primary { background: var(--accent); color: #fff; border: none; padding: 14px 22px; border-radius: 14px; font-size: 1.05rem; font-weight: 700; cursor: pointer; transition: filter .12s; }
+.primary:hover { filter: brightness(1.12); }
+.primary.wide { width: 100%; max-width: 520px; }
+.ghost { background: var(--card); color: var(--text); border: none; padding: 14px 22px; border-radius: 14px; font-size: 1.05rem; font-weight: 700; cursor: pointer; }
+
+/* ---------- pantallas centrales ---------- */
+.center-screen { text-align: center; padding: 50px 16px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.big-emoji { font-size: 4.5rem; }
+.score { font-size: 2rem; font-weight: 800; color: var(--gold); }
+.summary-stats { display: flex; gap: 24px; color: var(--muted); font-size: 1.1rem; }
+.summary-actions { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; justify-content: center; }
+.muted { color: var(--muted); }
+
+/* ---------- animación de acierto ---------- */
+.spark { position: fixed; top: 40%; font-size: 1.6rem; pointer-events: none; animation: rise 1.1s ease-out forwards; z-index: 50; }
+@keyframes rise { 0% { opacity: 1; transform: translateY(0) scale(.6); } 100% { opacity: 0; transform: translateY(-160px) scale(1.3); } }
+
+@media (max-width: 520px) {
+  .quiz-prompt { font-size: 1.25rem; padding: 20px; }
+  .flash-en, .flash-es { font-size: 1.35rem; }
+}
+
+/* ============================================================
+   Fase 1: meta diaria, corazones, audio, escribir
+   ============================================================ */
+
+/* ---------- tarjeta de meta diaria (anillo) ---------- */
+.goal-card { display: flex; align-items: center; gap: 16px; background: var(--card); border-radius: var(--radius); padding: 16px 18px; margin-bottom: 18px; box-shadow: var(--shadow); }
+.goal-ring {
+  --p: 0; width: 64px; height: 64px; border-radius: 50%; flex-shrink: 0;
+  background: conic-gradient(var(--ok) calc(var(--p) * 1%), var(--card2) 0);
+  display: grid; place-items: center;
+}
+.goal-ring-inner { width: 48px; height: 48px; border-radius: 50%; background: var(--card); display: grid; place-items: center; font-size: .8rem; font-weight: 800; color: var(--ok); }
+.goal-title { font-weight: 700; font-size: 1.05rem; }
+.goal-sub { color: var(--muted); font-size: .88rem; }
+
+/* ---------- corazones ---------- */
+.hearts { font-size: 1rem; letter-spacing: 1px; white-space: nowrap; }
+
+/* ---------- botón de audio ---------- */
+.speak-btn { background: var(--card2); border: none; color: var(--text); width: 42px; height: 42px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; transition: transform .1s, filter .1s; }
+.speak-btn:hover { filter: brightness(1.3); transform: scale(1.08); }
+.speak-btn.inline { width: 36px; height: 36px; font-size: 1rem; margin-left: auto; }
+
+/* ---------- input de escribir ---------- */
+.type-input {
+  width: 100%; background: var(--card); border: 2px solid var(--card2); color: var(--text);
+  padding: 16px 18px; border-radius: 14px; font-size: 1.2rem; outline: none; transition: border-color .12s;
+}
+.type-input:focus { border-color: var(--accent); }
+.type-input.type-ok { border-color: var(--ok); background: rgba(0,184,148,.15); }
+.type-input.type-no { border-color: var(--no); background: rgba(231,76,107,.15); }
+.type-actions { display: flex; gap: 10px; justify-content: flex-end; }
+.ghost.small, .primary.small { padding: 10px 16px; font-size: .95rem; }
+
+/* ============================================================
+   Fase 2: evento examen + unidades por clase
+   ============================================================ */
+
+/* ---------- tarjeta del evento examen ---------- */
+.exam-card {
+  background: linear-gradient(135deg, #e056fd, #7d5fff);
+  border-radius: var(--radius); padding: 18px 20px; margin-bottom: 22px;
+  box-shadow: var(--shadow); color: #fff;
+}
+.exam-title { font-size: 1.25rem; font-weight: 800; }
+.exam-sub { opacity: .95; margin-top: 4px; font-size: .95rem; }
+.exam-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; align-items: center; }
+.exam-actions button {
+  background: rgba(255,255,255,.2); color: #fff; border: 1px solid rgba(255,255,255,.35);
+  padding: 9px 14px; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: .9rem;
+}
+.exam-actions button:hover { background: rgba(255,255,255,.3); }
+.exam-actions .link-btn { background: none; border: none; text-decoration: underline; opacity: .9; }
+
+/* ---------- unidades (clases) ---------- */
+.unit { margin-bottom: 26px; }
+.unit-head { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+.unit-title { font-size: 1.15rem; font-weight: 800; white-space: nowrap; }
+.unit-prog { flex: 1; height: 8px; background: var(--card); border-radius: 999px; overflow: hidden; }
+.unit-prog-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--ok)); transition: width .4s ease; }
+
+/* ============================================================
+   Responsive — mobile-first ergonómico
+   ============================================================ */
+@media (max-width: 600px) {
+  body { padding: 14px 10px 48px; }
+  .topbar { flex-wrap: wrap; gap: 8px; }
+  .brand { font-size: 1.25rem; }
+  .brand span { display: block; font-size: .85rem; }
+  .deck-grid { grid-template-columns: 1fr; gap: 12px; }
+  .goal-card { padding: 14px; }
+  .goal-ring { width: 56px; height: 56px; }
+  .goal-ring-inner { width: 42px; height: 42px; }
+  .exam-actions button { flex: 1 1 auto; }
+  .unit-title { font-size: 1.05rem; white-space: normal; }
+  .quiz-prompt { font-size: 1.2rem; padding: 18px; }
+  .flashcard { height: 280px; }
+  .flash-en, .flash-es { font-size: 1.3rem; }
+  /* botones y targets táctiles cómodos */
+  .option { padding: 18px 16px; font-size: 1.05rem; }
+  .primary, .ghost { padding: 16px 20px; width: 100%; }
+  .type-actions { flex-direction: column-reverse; }
+  .type-actions .ghost, .type-actions .primary { width: 100%; }
+  .summary-actions { flex-direction: column; width: 100%; }
+  .summary-actions button { width: 100%; }
+  .home-footer { flex-direction: column; align-items: stretch; }
+}
+/* En pantallas grandes, limitar el alto de la grilla para que respire */
+@media (min-width: 900px) {
+  .deck-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+}
+
+/* ============================================================
+   Misiones diarias + selector de voz + medallas
+   ============================================================ */
+.missions { background: var(--card); border-radius: var(--radius); padding: 16px 18px; margin-bottom: 18px; box-shadow: var(--shadow); }
+.missions-title { font-weight: 800; font-size: 1.05rem; margin-bottom: 12px; }
+.mission { display: flex; align-items: center; gap: 12px; padding: 8px 0; }
+.mission-check { font-size: 1.2rem; }
+.mission-body { flex: 1; }
+.mission-text { font-size: .92rem; margin-bottom: 5px; }
+.mission-xp { color: var(--gold); font-weight: 700; font-size: .82rem; }
+.mission-bar { height: 7px; background: var(--card2); border-radius: 999px; overflow: hidden; }
+.mission-bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--ok)); transition: width .4s ease; }
+.mission-prog { font-size: .8rem; color: var(--muted); min-width: 42px; text-align: right; }
+.mission-done .mission-text { color: var(--ok); }
+
+.voice-picker { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; color: var(--muted); font-size: .85rem; margin: 24px 0 8px; }
+.voice-picker select { background: var(--card); color: var(--text); border: 1px solid var(--card2); border-radius: 10px; padding: 8px 10px; font-size: .85rem; max-width: 260px; }
+
+/* ============================================================
+   Tanda 2: modo arcade (timer, combo, score)
+   ============================================================ */
+.arcade-stats { flex: 1; display: flex; gap: 14px; justify-content: center; font-weight: 800; }
+.arcade-stats .combo { color: #fd79a8; }
+.arcade-stats .score { color: var(--gold); }
+.timer-bar { height: 10px; background: var(--card); border-radius: 999px; overflow: hidden; margin-bottom: 20px; }
+.timer-fill { height: 100%; background: linear-gradient(90deg, var(--ok), var(--gold), var(--no)); transition: width 1s linear; }
