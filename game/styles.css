@@ -290,3 +290,17 @@ body {
 /* comparación tolerante */
 .fb-close { background: rgba(255,209,102,.16); color: var(--gold); }
 .type-input.type-close { border-color: var(--gold); background: rgba(255,209,102,.14); }
+
+/* ============================================================
+   Escuchar una conversación (listening)
+   ============================================================ */
+.listen-scroll { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+.listen-line { max-width: 88%; padding: 12px 14px; border-radius: 16px; background: var(--card); cursor: pointer; border: 2px solid transparent; transition: border-color .12s, transform .1s; }
+.listen-line:hover { transform: translateY(-1px); }
+.listen-line.left { align-self: flex-start; border-bottom-left-radius: 4px; }
+.listen-line.right { align-self: flex-end; background: var(--card2); border-bottom-right-radius: 4px; }
+.listen-current { border-color: var(--accent) !important; box-shadow: 0 0 0 3px rgba(108,92,231,.25); }
+.listen-sp { font-size: .78rem; color: var(--muted); margin-bottom: 4px; font-weight: 700; }
+.listen-es { color: var(--muted); font-size: .82rem; margin-top: 4px; }
+.listen-controls { display: flex; gap: 10px; justify-content: center; position: sticky; bottom: 10px; }
+.listen-controls .primary, .listen-controls .ghost { flex: 1; max-width: 240px; }

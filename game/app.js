@@ -152,16 +152,29 @@ const Voice = {
 };
 if ("speechSynthesis" in window) { speechSynthesis.onvoiceschanged = () => Voice.load(); Voice.load(); }
 
-function speak(text) {
+function speak(text, voice) {
   try {
     if (!("speechSynthesis" in window)) return;
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
-    const v = Voice.best();
+    const v = voice || Voice.best();
     if (v) { u.voice = v; u.lang = v.lang; } else { u.lang = "en-US"; }
     u.rate = 0.95; u.pitch = 1.0;
     speechSynthesis.speak(u);
   } catch { /* sin audio, no pasa nada */ }
+}
+// Elige hasta n voces inglesas distintas, prefiriendo las de Google.
+function pickSpeakerVoices(n) {
+  if (!Voice.list.length) Voice.load();
+  const en = Voice.list;
+  const google = en.filter((v) => /google/i.test(v.name));
+  const pool = google.length ? google : en;
+  const chosen = [];
+  for (const v of pool) { if (chosen.length >= n) break; if (!chosen.some((c) => c.voiceURI === v.voiceURI)) chosen.push(v); }
+  // completar con cualquier voz inglesa distinta si faltan
+  for (const v of en) { if (chosen.length >= n) break; if (!chosen.some((c) => c.voiceURI === v.voiceURI)) chosen.push(v); }
+  if (!chosen.length) { const b = Voice.best(); if (b) chosen.push(b); }
+  return chosen;
 }
 function setVoice(uri) { state.voiceURI = uri || null; persist(); speak("Hello! This is your English tutor."); }
 function voicePicker() {
@@ -876,12 +889,20 @@ function viewConversations() {
         <div class="deck-name">${esc(c.title)}</div>
         <div class="deck-desc">${esc(c.topic)}</div></button>`).join("")}
     </div>
+
+    <h2 class="section-title">Escuchar una conversación 🎧</h2>
+    <div class="deck-grid">
+      ${(window.LISTENINGS || []).map((d) => `<button class="deck-card" style="--c:${levelColor(d.level)}" onclick="startListening('${d.id}')">
+        <div class="deck-emoji">${d.emoji}</div>
+        <div class="deck-name">${esc(d.title)} ${levelBadge(d.level)}</div>
+        <div class="deck-desc">${d.lines.length} líneas · ${levelLabel(d.level)}</div></button>`).join("")}
+    </div>
     <footer class="home-footer"><button class="link-btn" onclick="renderHome()">\u2190 Inicio</button></footer>`;
 }
 function startConversation(id) {
   const convo = (window.CONVERSATIONS || []).find((c) => c.id === id);
   if (!convo) return viewConversations();
-  session = { mode: "convo", convo, step: 0, transcript: [], good: 0, total: 0 };
+  session = { mode: "convo", convo, step: 0, transcript: [], good: 0, total: 0, voices: pickSpeakerVoices(2) };
   renderConvo();
 }
 function convoBubble(t) {
@@ -891,11 +912,15 @@ function renderConvo() {
   const s = session, convo = s.convo;
   while (s.step < convo.steps.length && convo.steps[s.step].type === "teacher") {
     const t = convo.steps[s.step];
-    s.transcript.push({ who: "teacher", text: t.en, es: t.es });
+    const variants = (t.alts && t.alts.length) ? [t.en, ...t.alts] : [t.en];
+    const text = variants[Math.floor(Math.random() * variants.length)];
+    s.transcript.push({ who: "teacher", text, es: t.es });
     s.step++;
   }
   if (s.step >= convo.steps.length) return convoSummary();
   const step = convo.steps[s.step];
+  const opts = shuffle(step.options);
+  s._opts = opts;
   const pct = Math.round((s.step / convo.steps.length) * 100);
   app().innerHTML = `
     <div class="play-top">
@@ -904,28 +929,28 @@ function renderConvo() {
       <div class="play-count">${convo.emoji}</div>
     </div>
     <div class="convo-scroll">${s.transcript.map(convoBubble).join("")}</div>
-    <div class="convo-choices">${step.options.map((o, i) => `<button class="option" onclick="convoChoose(${i})">${esc(o.en)}</button>`).join("")}</div>
+    <div class="convo-choices">${opts.map((o, i) => `<button class="option" onclick="convoChoose(${i})">${esc(o.en)}</button>`).join("")}</div>
     <div id="feedback" class="feedback"></div>`;
   const lastT = [...s.transcript].reverse().find((t) => t.who === "teacher");
-  if (lastT) speak(lastT.text);
+  if (lastT) speak(lastT.text, s.voices && s.voices[0]);
 }
 function convoChoose(i) {
-  const s = session, step = s.convo.steps[s.step], opt = step.options[i];
+  const s = session, opts = s._opts, opt = opts[i];
   s.total++;
   if (opt.good) { s.good++; addXp(10); } else { addXp(2); }
   s.transcript.push({ who: "you", text: opt.en });
   document.querySelectorAll(".convo-choices .option").forEach((b, k) => {
     b.disabled = true;
-    if (step.options[k].good) b.classList.add("opt-correct");
+    if (opts[k].good) b.classList.add("opt-correct");
     else if (k === i) b.classList.add("opt-wrong");
   });
-  const best = step.options.find((o) => o.good) || {};
+  const best = opts.find((o) => o.good) || {};
   const fb = $("#feedback");
   fb.innerHTML = (opt.good
     ? `<div class="fb fb-ok">✅ ¡Buena respuesta!</div>`
     : `<div class="fb fb-no">${opt.note ? esc(opt.note) : "Hay una opción mejor."}<br><span class="fb-note">👉 ${esc(best.en || "")}</span></div>`)
     + `<button class="primary wide" onclick="convoAfter()">Seguir →</button>`;
-  speak(opt.good ? opt.en : (best.en || opt.en));
+  speak(opt.good ? opt.en : (best.en || opt.en), s.voices && s.voices[1]);
   if (opt.good) burst();
 }
 function convoAfter() { session.step++; renderConvo(); }
@@ -946,6 +971,63 @@ async function convoSummary() {
       </div>
     </div>`;
 }
+
+// ============================================================
+//  Escuchar una conversación completa (voces alternadas)
+// ============================================================
+function levelColor(l) { return l === "easy" ? "#00b894" : l === "medium" ? "#fdcb6e" : "#e74c6b"; }
+function levelLabel(l) { return l === "easy" ? "Fácil · corta" : l === "medium" ? "Media" : "Difícil · larga"; }
+function levelBadge(l) { return l === "easy" ? "🟢" : l === "medium" ? "🟡" : "🔴"; }
+
+function startListening(id) {
+  const d = (window.LISTENINGS || []).find((x) => x.id === id);
+  if (!d) return viewConversations();
+  session = { mode: "listen", d, voices: pickSpeakerVoices(Math.min(3, (d.speakers || []).length) || 2), i: -1, playing: false };
+  renderListen();
+}
+function renderListen() {
+  const s = session, d = s.d;
+  const lines = d.lines.map((ln, idx) => `
+    <div class="listen-line ${ln.sp % 2 ? "right" : "left"} ${idx === s.i ? "listen-current" : ""}" onclick="playFrom(${idx})">
+      <div class="listen-sp">${ln.sp % 2 ? "🧑" : "👩"} ${esc((d.speakers || [])[ln.sp] || "")}</div>
+      <div>${esc(ln.en)}</div>
+      <div class="listen-es">${esc(ln.es)}</div>
+    </div>`).join("");
+  app().innerHTML = `
+    <header class="topbar">
+      <button class="icon-btn" onclick="backFromListen()" title="Volver">\u2190</button>
+      <div class="brand">${d.emoji} ${esc(d.title)}</div>
+      <div class="stats"><div class="stat">${levelBadge(d.level)}</div></div>
+    </header>
+    <p class="muted" style="margin-bottom:12px">Tocá "Escuchar todo" para oír la conversación, o tocá una línea para empezar desde ahí.</p>
+    <div class="listen-scroll">${lines}</div>
+    <div class="listen-controls">
+      ${s.playing
+        ? `<button class="primary" onclick="pauseListen()">\u23f8\ufe0f Pausar</button>`
+        : `<button class="primary" onclick="playListen()">\u25b6\ufe0f Escuchar todo</button>`}
+      <button class="ghost" onclick="replayListen()">\ud83d\udd01 Desde el inicio</button>
+    </div>`;
+}
+function playListen() { session.playing = true; speakListenLine(session.i < 0 ? 0 : session.i); }
+function playFrom(i) { session.playing = true; speakListenLine(i); }
+function speakListenLine(i) {
+  const s = session, d = s.d;
+  if (!s.playing || i >= d.lines.length) { s.playing = false; s.i = -1; renderListen(); return; }
+  s.i = i; renderListen();
+  const ln = d.lines[i];
+  const v = s.voices[ln.sp % Math.max(1, s.voices.length)];
+  try {
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(ln.en);
+    if (v) { u.voice = v; u.lang = v.lang; } else { u.lang = "en-US"; }
+    u.rate = 0.95;
+    u.onend = () => { if (session && session.mode === "listen" && session.playing) speakListenLine(i + 1); };
+    speechSynthesis.speak(u);
+  } catch (e) { /* sin audio */ }
+}
+function pauseListen() { session.playing = false; try { speechSynthesis.cancel(); } catch (e) {} renderListen(); }
+function replayListen() { session.playing = true; speakListenLine(0); }
+function backFromListen() { if (session) session.playing = false; try { speechSynthesis.cancel(); } catch (e) {} viewConversations(); }
 
 (async function init() {
   await Store.tryRestoreFile();
