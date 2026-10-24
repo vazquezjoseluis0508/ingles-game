@@ -883,19 +883,19 @@ function nextMatchRound() { session.index += session._match.batch.length; render
 //  A3: modo conversación (diálogos guiados)
 // ============================================================
 function viewConversations() {
-  const list = window.CONVERSATIONS || [];
+  const papers = window.PAPERS || [];
   app().innerHTML = `
     <header class="topbar">
       <button class="icon-btn" onclick="renderHome()" title="Volver">\u2190</button>
       <div class="brand">💬 Conversación</div>
       <div class="stats"><div class="stat">\u2b50 <b>${state.xp}</b></div></div>
     </header>
-    <p class="muted" style="margin-bottom:14px">Diálogos guiados tipo examen oral. Elegí la mejor respuesta en cada turno.</p>
+    <p class="muted" style="margin-bottom:14px">Elegí un paper: te muestro la pregunta y las 5 opciones. Vos elegís la que quieras y charlamos sobre esa (como en el examen).</p>
     <div class="deck-grid">
-      ${list.map((c) => `<button class="deck-card" style="--c:#00b894" onclick="startConversation('${c.id}')">
-        <div class="deck-emoji">${c.emoji}</div>
-        <div class="deck-name">${esc(c.title)}</div>
-        <div class="deck-desc">${esc(c.topic)}</div></button>`).join("")}
+      ${papers.map((p) => `<button class="deck-card" style="--c:#6c5ce7" onclick="renderPaper('${p.id}')">
+        <div class="deck-emoji">${p.emoji}</div>
+        <div class="deck-name">${esc(p.title)}</div>
+        <div class="deck-desc">${esc(p.question)}</div></button>`).join("")}
     </div>
 
     <h2 class="section-title">Escuchar una conversación 🎧</h2>
@@ -911,6 +911,37 @@ function startConversation(id) {
   const convo = (window.CONVERSATIONS || []).find((c) => c.id === id);
   if (!convo) return viewConversations();
   session = { mode: "convo", convo, step: 0, transcript: [], good: 0, total: 0, voices: pickSpeakerVoices(2) };
+  renderConvo();
+}
+
+// Muestra la pregunta central del paper y sus 5 opciones (elegís cualquiera).
+function renderPaper(id) {
+  const p = (window.PAPERS || []).find((x) => x.id === id);
+  if (!p) return viewConversations();
+  app().innerHTML = `
+    <header class="topbar">
+      <button class="icon-btn" onclick="viewConversations()" title="Volver">←</button>
+      <div class="brand">${p.emoji} ${esc(p.title)}</div>
+      <div class="stats"><div class="stat">⭐ <b>${state.xp}</b></div></div>
+    </header>
+    <div class="quiz-prompt" style="margin-bottom:8px"><span class="quiz-emoji">❓</span><span>${esc(p.question)}</span></div>
+    ${p.questionEs ? `<div class="gap-hint" style="margin-bottom:14px">${esc(p.questionEs)}</div>` : ""}
+    <p class="muted" style="margin-bottom:12px">Elegí la opción que quieras y charlamos sobre esa:</p>
+    <div class="deck-grid">
+      ${p.options.map((o) => `<button class="deck-card" style="--c:#00b894" onclick="startOption('${p.id}','${o.id}')">
+        <div class="deck-emoji">${o.emoji || p.emoji}</div>
+        <div class="deck-name">${esc(o.label)}</div></button>`).join("")}
+    </div>
+    <footer class="home-footer"><button class="link-btn" onclick="viewConversations()">← Volver a los papers</button></footer>`;
+}
+
+function startOption(paperId, optionId) {
+  const p = (window.PAPERS || []).find((x) => x.id === paperId);
+  const o = p && (p.options || []).find((x) => x.id === optionId);
+  if (!o) return viewConversations();
+  session = { mode: "convo", paperId, optionId,
+    convo: { id: paperId + ":" + optionId, emoji: o.emoji || p.emoji, steps: o.steps || [] },
+    step: 0, transcript: [], good: 0, total: 0, voices: pickSpeakerVoices(2) };
   renderConvo();
 }
 function convoBubble(t) {
@@ -973,8 +1004,8 @@ async function convoSummary() {
       <div class="score">${s.good}/${s.total} buenas</div>
       ${bonus ? `<div class="pill pill-ok">🎁 +${bonus} XP por misiones</div>` : ""}
       <div class="summary-actions">
-        <button class="primary" onclick="startConversation('${s.convo.id}')">🔁 De nuevo</button>
-        <button class="ghost" onclick="viewConversations()">💬 Otras</button>
+        <button class="primary" onclick="startOption('${s.paperId}','${s.optionId}')">🔁 De nuevo</button>
+        <button class="ghost" onclick="renderPaper('${s.paperId}')">⬅️ Otra opción</button>
         <button class="ghost" onclick="renderHome()">🏠 Inicio</button>
       </div>
     </div>`;
