@@ -259,12 +259,23 @@ function renderHome() {
         <div class="deck-name">Pronunciación</div>
         <div class="deck-desc">Leé en voz alta y te corrijo (Chrome + http)</div>
       </button>
+      <button class="deck-card" style="--c:#a29bfe" onclick="startMemory('__ALL__')">
+        <div class="deck-emoji">🧠</div>
+        <div class="deck-name">Memoria</div>
+        <div class="deck-desc">Encontrá los pares (palabras y frases)</div>
+      </button>
+      <button class="deck-card" style="--c:#e17055" onclick="startSession('__SAVED__','learn')">
+        <div class="deck-emoji">🔖</div>
+        <div class="deck-name">Mis difíciles</div>
+        <div class="deck-desc">Tu tarjetero: ${(state.saved || []).length} guardadas</div>
+      </button>
     </div>
 
     ${voicePicker()}
 
     <footer class="home-footer">
       <button class="link-btn" onclick="toggleStrict()">🎯 Modo riguroso: ${state.strictMode ? "ON" : "OFF"}</button>
+      <button class="link-btn" onclick="resetProgress()">🗑️ Reiniciar progreso</button>
       <button class="link-btn" onclick="exportProgress()">⬇️ Exportar progreso</button>
       <button class="link-btn" onclick="importProgress()">⬆️ Importar progreso</button>
       ${Store.supportsFS() && !Store.isFileConnected() ? `<button class="link-btn" onclick="connectProgressFile()">🔗 Guardar en archivo (progress.json)</button>` : ""}
@@ -370,7 +381,9 @@ function startSession(deckId, mode) {
   let pool;
   if (deckId === "__ALL__" || deckId === "__ARCADE__") pool = allCards();
   else if (deckId === "__SPEAKING__") pool = SPEAKING_DECKS.flatMap((id) => { const d = deckById(id); return d ? d.cards.map((c) => ({ ...c, deckId: id })) : []; });
+  else if (deckId === "__SAVED__") pool = allCards().filter((c) => (state.saved || []).includes(c.id));
   else pool = deckById(deckId).cards.map((c) => ({ ...c, deckId }));
+  if (deckId === "__SAVED__" && pool.length === 0) { alert("Todavía no guardaste ninguna. Tocá 🔖 Guardar en las cartas que te cuesten."); return; }
   let queue;
 
   if (mode === "review") {
@@ -484,6 +497,7 @@ function renderLearn(card) {
           <div class="flash-emoji">${card.emoji || "💬"}</div>
           <div class="flash-en">${esc(card.en)}</div>
           <button class="speak-btn" onclick="event.stopPropagation(); speak(${jsAttr(card.en)})" title="Escuchar">🔊</button>
+          <button class="save-btn" onclick="event.stopPropagation(); toggleSavedUI('${card.id}', this)">${isSaved(card.id) ? "🔖 Guardada" : "🔖 Guardar"}</button>
           <div class="flash-hint">tocá para ver el significado</div>
         </div>
         <div class="flash-face flash-back">
@@ -634,6 +648,7 @@ function afterAnswer(correct, card, close) {
     fb.innerHTML = `<div class="fb fb-no">❌ Correcto: <b>${esc(session._answer)}</b>${showNote ? `<br><span class="fb-note">💡 ${esc(card.note)}</span>` : ""}</div>`;
   }
 
+  fb.innerHTML += `<button class="link-btn save-inline" onclick="toggleSavedUI('${card.id}', this)">${isSaved(card.id) ? "🔖 Guardada" : "🔖 Guardar esta"}</button>`;
   if (session.hearts === 0) {
     fb.innerHTML += `<button class="primary wide" onclick="gameOver()">Continuar →</button>`;
   } else {
@@ -1170,6 +1185,92 @@ async function pronSummary() {
       ${bonus ? `<div class="pill pill-ok">🎁 +${bonus} XP por misiones</div>` : ""}
       <div class="summary-actions">
         <button class="primary" onclick="startPron('${s.deckId}')">🔁 Otra ronda</button>
+        <button class="ghost" onclick="renderHome()">🏠 Inicio</button>
+      </div>
+    </div>`;
+}
+
+// ============================================================
+//  Tarjetero (guardar palabras/frases) + reset
+// ============================================================
+function isSaved(id) { return !!(state.saved && state.saved.includes(id)); }
+function toggleSaved(id) {
+  if (!state.saved) state.saved = [];
+  const i = state.saved.indexOf(id);
+  if (i >= 0) state.saved.splice(i, 1); else state.saved.push(id);
+  persist();
+}
+function toggleSavedUI(id, el) {
+  toggleSaved(id);
+  if (el) el.innerHTML = isSaved(id) ? "🔖 Guardada" : (el.classList.contains("save-inline") ? "🔖 Guardar esta" : "🔖 Guardar");
+}
+async function resetProgress() {
+  if (!confirm("¿Reiniciar TODO tu progreso? Borra XP, racha, medallas y guardadas. No se puede deshacer.")) return;
+  state = Store.defaultState();
+  await persist();
+  renderHome();
+}
+
+// ============================================================
+//  🧠 Modo Memoria (encontrar pares EN ↔ ES)
+// ============================================================
+function startMemory(deckId) {
+  let pool = (!deckId || deckId === "__ALL__") ? allCards() : deckById(deckId).cards.map((c) => ({ ...c, deckId }));
+  const picks = shuffle(pool).slice(0, 6);
+  const tiles = shuffle(picks.flatMap((c) => [{ id: c.id, side: "en", text: c.en }, { id: c.id, side: "es", text: c.es }]));
+  session = { mode: "memory", deckId: deckId || "__ALL__", tiles, flipped: [], matched: [], moves: 0, lock: false };
+  renderMemory();
+}
+function renderMemory() {
+  const s = session;
+  const pairs = s.tiles.length / 2;
+  const grid = s.tiles.map((t, i) => {
+    const open = s.flipped.includes(i) || s.matched.includes(t.id);
+    const done = s.matched.includes(t.id);
+    return `<button class="mem-tile ${open ? "mem-open" : ""} ${done ? "mem-matched" : ""}" ${done ? "disabled" : ""} onclick="memFlip(${i})">${open ? esc(t.text) : "?"}</button>`;
+  }).join("");
+  app().innerHTML = `
+    <div class="play-top">
+      <button class="icon-btn" onclick="confirmExit()" title="Salir">\u2715</button>
+      <div class="play-bar"><div class="play-bar-fill" style="width:${Math.round((s.matched.length / pairs) * 100)}%"></div></div>
+      <div class="play-count">Movs: ${s.moves}</div>
+    </div>
+    <p class="quiz-prompt-label" style="text-align:center;margin-bottom:12px">Encontrá los pares (inglés \u2194 español) 🧠</p>
+    <div class="mem-grid">${grid}</div>`;
+}
+function memFlip(i) {
+  const s = session;
+  if (s.lock) return;
+  const t = s.tiles[i];
+  if (s.matched.includes(t.id) || s.flipped.includes(i)) return;
+  s.flipped.push(i);
+  renderMemory();
+  if (s.flipped.length === 2) {
+    s.moves++;
+    const [a, b] = s.flipped;
+    const ta = s.tiles[a], tb = s.tiles[b];
+    if (ta.id === tb.id && ta.side !== tb.side) {
+      s.matched.push(ta.id); grade(ta.id, true); s.flipped = [];
+      renderMemory(); burst();
+      if (s.matched.length === s.tiles.length / 2) memSummary();
+    } else {
+      s.lock = true; renderMemory();
+      setTimeout(() => { s.flipped = []; s.lock = false; renderMemory(); }, 900);
+    }
+  }
+}
+async function memSummary() {
+  bumpStreak(); ensureToday(); state.dailyStats.sessions++;
+  const bonus = checkMissions(); await persist();
+  const s = session, pairs = s.tiles.length / 2;
+  app().innerHTML = `
+    <div class="center-screen">
+      <div class="big-emoji">🧠</div>
+      <h2>¡Memoria completa!</h2>
+      <div class="score">${pairs} pares · ${s.moves} movimientos</div>
+      ${bonus ? `<div class="pill pill-ok">🎁 +${bonus} XP por misiones</div>` : ""}
+      <div class="summary-actions">
+        <button class="primary" onclick="startMemory('${s.deckId}')">🔁 Otra</button>
         <button class="ghost" onclick="renderHome()">🏠 Inicio</button>
       </div>
     </div>`;
