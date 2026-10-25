@@ -314,9 +314,7 @@ window.GAME_DATA = {
             { id: "rs01", en: "They robbed the bank.", es: "Robaron el banco.", note: "rob + lugar. ✔️", emoji: "🏦", tag: "rob" },
             { id: "rs02", en: "Someone robbed him.", es: "Alguien lo robó (a él).", note: "rob + persona. ✔️", emoji: "🧍", tag: "rob" },
             { id: "rs03", en: "They stole my phone.", es: "Me robaron el teléfono.", note: "steal + objeto. ✔️", emoji: "📱", tag: "steal" },
-            { id: "rs04", en: "Someone stole the money.", es: "Alguien robó la plata.", note: "steal + objeto. ✔️", emoji: "💰", tag: "steal" },
-            { id: "rs05", en: "❌ They stole the bank.", es: "(incorrecto) con steal no va el lugar", note: "Con un lugar se usa rob, no steal.", emoji: "🚫", tag: "Error" },
-            { id: "rs06", en: "❌ They robbed my phone.", es: "(incorrecto) con rob no va el objeto", note: "Con un objeto se usa steal, no rob.", emoji: "🚫", tag: "Error" }
+            { id: "rs04", en: "Someone stole the money.", es: "Alguien robó la plata.", note: "steal + objeto. ✔️", emoji: "💰", tag: "steal" }
           ]
         },
         {
@@ -1221,19 +1219,19 @@ window.GAME_DATA = {
         {
           id: "rob-vs-steal-q4",
           type: "typing",
-          prompt: "Completa la oración: 'Someone ____' (el resto de: 'Someone stole the money.')",
+          prompt: "Completa la oración: \"Someone ____.\" (Alguien robó el dinero.)",
           options: [],
-          correct: "stole the money.",
-          explanation: "Respuesta completa: 'Someone stole the money.'",
+          correct: "stole the money",
+          explanation: "Respuesta: 'Someone stole the money.' Contexto: steal + objeto. ✔️",
           points: 10
         },
         {
           id: "rob-vs-steal-q5",
           type: "multiple-choice",
-          prompt: "¿Cuándo se usa '❌ They stole the bank.'?",
-          options: ["Con un lugar se usa rob, no steal.", "Nunca se usa", "Solo en pasado", "Solo en futuro"],
-          correct: "Con un lugar se usa rob, no steal.",
-          explanation: "Con un lugar se usa rob, no steal.",
+          prompt: "¿Cuál es el complemento correcto de 'They robbed ____'?",
+          options: ["the bank.", "my phone.", "the money.", "his wallet."],
+          correct: "the bank.",
+          explanation: "rob se usa con lugares o personas. 'They robbed the bank' es correcto. ✔️",
           points: 10
         }
       ]

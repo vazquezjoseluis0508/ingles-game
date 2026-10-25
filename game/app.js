@@ -101,7 +101,12 @@ function renderQuizQuestion() {
 }
 
 function verifyQuizAnswer(answer) {
-  const q = session.questions[session.index], userAnswer = String(answer).trim().toLowerCase(), correct = String(q.correct).trim().toLowerCase(), isCorrect = userAnswer === correct;
+  const q = session.questions[session.index];
+  // Normalizar: minúsculas, trim, y remover puntuación final
+  const normalize = (str) => String(str).trim().toLowerCase().replace(/[.!?,;:]*$/, '');
+  const userAnswer = normalize(answer);
+  const correct = normalize(q.correct);
+  const isCorrect = userAnswer === correct;
   session.answers.push({ questionId: q.id, answer, isCorrect });
   if (isCorrect) session.score += (q.points || QUIZ_POINTS_PER_Q);
   const feedbackClass = isCorrect ? "quiz-feedback-correct" : "quiz-feedback-wrong", feedbackEmoji = isCorrect ? "✅" : "❌";
