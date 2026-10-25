@@ -65,5 +65,7 @@ ask-on-risk. Mostly data (JSON); authored code is a small test + SW bump.
   - GREEN: `node --test "game/tests/*.test.cjs"` -> 26 pass, 0 fail. `build-content.cjs --check` in sync.
   - Totals: 176 -> 350 cards, 87 -> 301 thematic quiz questions; smallest deck 13 cards, smallest quiz 12 questions.
 
+- Review (RDD on): range `fb102fc..fa353ee` assessed medium (12,109 lines, mostly JSON). Consent granted; START refused with `lens_context_budget_exceeded` (no authority created). Code and data are interleaved in the same commits, so no smaller code-only candidate exists. Covered instead by the deterministic checks above (validator, sync, coverage and quality tests) and a parent spot check of 11 sampled questions (all correct; every option-based question has 4 distinct options).
+
 ## Next step
 User review in the browser (hard refresh to pick up the v5 cache). Push / PR are user decisions.
