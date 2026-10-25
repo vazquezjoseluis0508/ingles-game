@@ -47,6 +47,7 @@ async function persist() { await Store.save(state); }
 const allQuizzes = () => DATA.quizzes || [];  // Solo 19 quizzes tematicos (excluye final-exam)
 const finalExam = () => DATA.finalExam || null;  // Quiz final integral, separado
 const quizById = (id) => allQuizzes().find((q) => q.id === id);
+const getQuiz = (quizId) => quizId === "final-exam" ? finalExam() : quizById(quizId);
 const quizState = (id) => (state.quizzes && state.quizzes[id]) || { completed: 0, totalAttempts: 0, bestScore: 0, passed: false, attempts: [] };
 const QUIZ_POINTS_PER_Q = 10;
 
@@ -85,7 +86,8 @@ function startQuiz(quizId) {
 }
 
 function renderQuizStart() {
-  const quiz = quizById(session.quizId);
+  const quiz = getQuiz(session.quizId);
+  if (!quiz) { alert("Quiz no encontrado"); renderHome(); return; }
   const totalPoints = session.questions.length * QUIZ_POINTS_PER_Q;
   app().innerHTML = `<div class="center-screen"><div class="big-emoji">${quiz.emoji}</div><h2>${esc(quiz.name)}</h2><p class="muted">${esc(quiz.description)}</p><div class="deck-meta" style="margin:1rem 0">Dificultad: ${difficultyEmoji(quiz.difficulty)}</div><div class="deck-meta">Preguntas: ${session.questions.length} × ${QUIZ_POINTS_PER_Q} pts = ${totalPoints} pts</div><div style="margin-top:2rem"><button class="primary" onclick="nextQuizQuestion()">🚀 Empezar</button><button class="ghost" onclick="renderQuizzes()">← Volver</button></div></div>`;
 }
@@ -109,49 +111,56 @@ function verifyQuizAnswer(answer) {
 function nextQuizQuestion() { session.index++; renderQuizQuestion(); }
 
 async function renderQuizSummary() {
-  const s = session, quiz = quizById(s.quizId), totalPoints = s.questions.length * QUIZ_POINTS_PER_Q, pct = Math.round((s.score / totalPoints) * 100), correct = s.answers.filter(a => a.isCorrect).length, duration = Math.round((Date.now() - s.startTime) / 1000);
-  if (!state.quizzes) state.quizzes = {};
-  if (!state.quizzes[s.quizId]) state.quizzes[s.quizId] = { completed: 0, totalAttempts: 0, bestScore: 0, passed: false, attempts: [] };
-  
-  // T5: Tracking detallado + aprobación 80%
-  const passed = pct >= 80;  // S2: 80% para aprobar
-  const isFinalExam = session.quizId === "final-exam";
+  const s = session, totalPoints = s.questions.length * QUIZ_POINTS_PER_Q, pct = Math.round((s.score / totalPoints) * 100), correct = s.answers.filter(a => a.isCorrect).length, duration = Math.round((Date.now() - s.startTime) / 1000);
+  const quiz = getQuiz(s.quizId);
+  const isFinalExam = s.quizId === "final-exam";
+  const passed = pct >= 80;
   
   if (isFinalExam) {
-    // Guardar resultado en state.finalExam separado
-    const exam = finalExam();
+    // Guardar SOLO en state.finalExam, nunca en state.quizzes
     if (!state.finalExam) state.finalExam = {};
-    state.finalExam.score = session.score;
+    state.finalExam.score = s.score;
     state.finalExam.pct = pct;
-    state.finalExam.bestScore = Math.max(state.finalExam.bestScore || 0, session.score);
+    state.finalExam.bestScore = Math.max(state.finalExam.bestScore || 0, s.score);
     state.finalExam.totalAttempts = (state.finalExam.totalAttempts || 0) + 1;
     if (!state.finalExam.attempts) state.finalExam.attempts = [];
-    state.finalExam.attempts.push({ timestamp: new Date().toISOString(), score: session.score, pct, passed });
-  }
-  state.quizzes[s.quizId].completed = passed ? 1 : 0;
-  state.quizzes[s.quizId].totalAttempts++;
-  state.quizzes[s.quizId].bestScore = Math.max(state.quizzes[s.quizId].bestScore, s.score);
-  if (!isFinalExam) {
+    state.finalExam.attempts.push({ timestamp: new Date().toISOString(), score: s.score, pct, passed });
+  } else {
+    // Quiz tematico: guardar en state.quizzes
+    if (!state.quizzes) state.quizzes = {};
+    if (!state.quizzes[s.quizId]) state.quizzes[s.quizId] = { completed: 0, totalAttempts: 0, bestScore: 0, passed: false, attempts: [] };
+    
     const wasAlreadyPassed = state.quizzes[s.quizId].passed;
-    state.quizzes[s.quizId].passed = (passed || wasAlreadyPassed);
-    state.quizzes[s.quizId].completed = (passed || wasAlreadyPassed) ? 1 : 0;
-  }
-  
-  // Registrar intento
-  if (!state.quizzes[s.quizId].attempts) state.quizzes[s.quizId].attempts = [];
-  state.quizzes[s.quizId].attempts.push({ timestamp: new Date().toISOString(), score: s.score, pct, passed });
-  
-  // T3: Si aprobó, marcar tema como reforzado
-  if (passed && quiz.deckId) {
-    if (!state.themesReinforced) state.themesReinforced = {};
-    state.themesReinforced[quiz.deckId] = true;
+    state.quizzes[s.quizId].totalAttempts++;
+    state.quizzes[s.quizId].bestScore = Math.max(state.quizzes[s.quizId].bestScore, s.score);
+    
+    // NO sobrescribir aprobacion anterior
+    if (passed || wasAlreadyPassed) {
+      state.quizzes[s.quizId].completed = 1;
+      state.quizzes[s.quizId].passed = true;
+    } else {
+      state.quizzes[s.quizId].completed = 0;
+      state.quizzes[s.quizId].passed = false;
+    }
+    
+    if (!state.quizzes[s.quizId].attempts) state.quizzes[s.quizId].attempts = [];
+    state.quizzes[s.quizId].attempts.push({ timestamp: new Date().toISOString(), score: s.score, pct, passed });
+    
+    // T3: Marcar como reforzado si aprueba con 80%+
+    if (passed && quiz.deckId) {
+      if (!state.themesReinforced) state.themesReinforced = {};
+      state.themesReinforced[quiz.deckId] = true;
+    }
   }
   
   const xpBonus = Math.round((s.score / totalPoints) * 50);
   addXp(xpBonus);
   await persist();
-  app().innerHTML = `<div class="center-screen"><div class="big-emoji">${passed ? "🏆" : "📚"}</div><h2>${esc(quiz.name)}</h2><div class="score">${s.score}/${totalPoints} pts (${pct}%)</div><div class="${passed ? "pill pill-ok" : "muted"}">${passed ? "¡Aprobado! 🎉" : `${80 - pct} pts para aprobar 💪`}</div><div class="summary-stats"><div>✅ ${correct}/${s.questions.length}</div><div>⏱️ ${duration}s</div><div>⭐ +${xpBonus} XP</div><div>Intento: ${state.quizzes[s.quizId].totalAttempts}</div></div><div class="summary-actions"><button class="primary" onclick="startQuiz('${s.quizId}')">🔁 Reintentar</button><button class="ghost" onclick="renderQuizzes()">📝 Otros quizzes</button></div></div>`;
+  
+  const showStatus = passed ? "¡Aprobado! 🎉" : isFinalExam ? "Intenta de nuevo" : `${80 - pct} pts para aprobar 💪`;
+  app().innerHTML = `<div class="center-screen"><div class="big-emoji">${passed ? "🏆" : "📚"}</div><h2>${esc(quiz.name)}</h2><div class="score">${s.score}/${totalPoints} pts (${pct}%)</div><div class="${passed ? "pill pill-ok" : "muted"}">${showStatus}</div><div class="summary-stats"><div>✅ ${correct}/${s.questions.length}</div><div>⏱️ ${duration}s</div><div>⭐ +${xpBonus} XP</div>${!isFinalExam ? `<div>Intento: ${state.quizzes[s.quizId].totalAttempts}</div>` : ""}</div><div class="summary-actions"><button class="primary" onclick="startQuiz('${s.quizId}')">🔁 Reintentar</button><button class="ghost" onclick="renderQuizzes()">📝 ${isFinalExam ? "Volver" : "Otros quizzes"}</button></div></div>`;
 }
+
 
 function renderQuizzes() {
   const quizzes = allQuizzes(), { pct, completed, total, passed } = quizzesProgress(), quizCards = quizzes.map((q) => { const qs = quizState(q.id), badge = qs.passed ? "✅ Aprobado" : qs.completed > 0 ? "✅ Intentado" : "🔒", bestScore = qs.bestScore > 0 ? `<div class="muted">Mejor: ${qs.bestScore}/${q.questions.length * QUIZ_POINTS_PER_Q} (${Math.round(qs.bestScore / (q.questions.length * QUIZ_POINTS_PER_Q) * 100)}%)</div>` : ""; return `<div class="deck-card" style="--c:#7f39fb"><div class="deck-emoji">${q.emoji}</div><div class="deck-name">${esc(q.name)}</div><div class="deck-desc">${esc(q.description)}</div><div class="deck-meta">Dificultad: ${difficultyEmoji(q.difficulty)} · ${q.questions.length} preguntas · ${badge}</div>${bestScore}<div class="deck-actions"><button onclick="startQuiz('${q.id}')">📝 ${qs.passed ? "Revisar" : "Hacer Quiz"}</button></div></div>`; }).join("");
