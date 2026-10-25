@@ -333,6 +333,7 @@ function renderHome() {
   const total = allCards().length;
   const prog = deckProgress(allCards());
   const due = dueCards(allCards()).length;
+  const quizProg = quizzesProgress();
   const goalPct = Math.min(100, Math.round((todayXp() / state.goal) * 100));
 
   app().innerHTML = `
@@ -357,7 +358,7 @@ function renderHome() {
     <section class="progress-summary">
       <div class="pill">📚 ${prog.mastered}/${total} dominadas · ${prog.pct}%</div>
       <div class="pill ${due ? "pill-alert" : ""}">⏰ ${due} para repasar</div>
-      <div class="pill" style="background:#7f39fb20;color:#7f39fb">📝 ${quizProg.passed}/${quizProg.total} temas</div>
+      <div class="pill" style="background:#7f39fb20;color:#7f39fb">📝 ${quizProg.passed}/${quizProg.total} temas aprobados</div>
       ${storageBadge()}
     </section>
 
