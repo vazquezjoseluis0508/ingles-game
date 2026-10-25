@@ -2,6 +2,8 @@
 // Builds game/data.js from the source of truth in game/content/.
 //
 //   node game/tools/build-content.cjs          validate + write game/data.js
+//   node game/tools/build-content.cjs --check  validate + fail if game/data.js is
+//                                              out of sync (writes nothing)
 //
 // Node built-ins only (no npm dependencies).
 'use strict';
@@ -74,14 +76,162 @@ function buildDataJs(data) {
   return `${HEADER}\nwindow.GAME_DATA = ${JSON.stringify(data, null, 2)};\n`;
 }
 
+// ------------------------------------------------------------
+//  Validation
+// ------------------------------------------------------------
+const QUESTION_TYPES = ['gap-fill', 'multiple-choice', 'typing'];
+const OPTION_TYPES = ['gap-fill', 'multiple-choice'];
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+const isObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
+const isText = (v) => typeof v === 'string' && v.trim() !== '';
+const join = (base, key) => (typeof key === 'number' ? `${base}[${key}]` : base ? `${base}.${key}` : key);
+
+// Returns an array of error strings: "<file>: <field path> <problem>".
+// Collects every error instead of stopping at the first one.
+function validate(content) {
+  const errors = [];
+  const ids = new Map(); // id -> "file: path" where first seen (ids are unique across all kinds)
+  const decks = new Set();
+  const deckRefs = []; // checked after all decks are known
+  const quizIds = new Set();
+
+  const ctx = (file) => {
+    const err = (p, msg) => errors.push(`${file}: ${p} ${msg}`);
+    const requireText = (obj, base, keys) => {
+      for (const k of keys) if (!isText(obj[k])) err(join(base, k), 'is required');
+    };
+    const requireArray = (obj, base, key) => {
+      const v = obj[key];
+      if (!Array.isArray(v) || v.length === 0) { err(join(base, key), 'is required (non-empty array)'); return []; }
+      return v;
+    };
+    const claimId = (obj, base) => {
+      if (!isText(obj.id)) return; // reported by requireText
+      const here = `${file}: ${join(base, 'id')}`;
+      if (ids.has(obj.id)) err(join(base, 'id'), `"${obj.id}" is duplicated (first used in ${ids.get(obj.id)})`);
+      else ids.set(obj.id, here);
+    };
+    const checkQuestion = (q, base, { deckIdRequired }) => {
+      if (!isObject(q)) return err(base, 'must be an object');
+      requireText(q, base, ['id', 'type', 'prompt', 'correct', 'explanation']);
+      claimId(q, base);
+      if (!(typeof q.points === 'number' && q.points > 0)) err(join(base, 'points'), 'must be a positive number');
+      if (isText(q.type) && !QUESTION_TYPES.includes(q.type)) err(join(base, 'type'), `"${q.type}" must be one of ${QUESTION_TYPES.join(', ')}`);
+      if (q.options !== undefined && !(Array.isArray(q.options) && q.options.every(isText))) err(join(base, 'options'), 'must be an array of non-empty strings');
+      if (OPTION_TYPES.includes(q.type)) {
+        if (!Array.isArray(q.options) || q.options.length < 2) err(join(base, 'options'), `is required (at least 2) for type "${q.type}"`);
+        else if (isText(q.correct) && !q.options.includes(q.correct)) err(join(base, 'correct'), `"${q.correct}" is not one of options`);
+      }
+      if (q.variations !== undefined && !(Array.isArray(q.variations) && q.variations.every(isText))) err(join(base, 'variations'), 'must be an array of non-empty strings');
+      if (q.deckId !== undefined || deckIdRequired) {
+        if (!isText(q.deckId)) err(join(base, 'deckId'), 'is required');
+        else deckRefs.push({ err, path: join(base, 'deckId'), deckId: q.deckId });
+      }
+    };
+    const checkQuiz = (quiz, base, { isFinal }) => {
+      if (!isObject(quiz)) return err(base || 'quiz', 'must be an object');
+      requireText(quiz, base, ['id', 'name', 'emoji', 'description', 'difficulty']);
+      claimId(quiz, base);
+      if (isText(quiz.id)) quizIds.add(quiz.id);
+      if (!isFinal) {
+        if (!isText(quiz.deckId)) err(join(base, 'deckId'), 'is required');
+        else deckRefs.push({ err, path: join(base, 'deckId'), deckId: quiz.deckId });
+      }
+      requireArray(quiz, base, 'questions').forEach((q, i) => checkQuestion(q, join(join(base, 'questions'), i), { deckIdRequired: isFinal }));
+    };
+    return { err, requireText, requireArray, claimId, checkQuiz };
+  };
+
+  // meta.json
+  {
+    const { file, data } = content.meta;
+    const c = ctx(file);
+    if (!isObject(data)) c.err('(root)', 'must be an object');
+    else {
+      if (typeof data.version !== 'number') c.err('version', 'must be a number');
+      if (!isObject(data.exam) || !isText(data.exam.name)) c.err('exam.name', 'is required');
+      if (data.quizOrder !== undefined && !(Array.isArray(data.quizOrder) && data.quizOrder.every(isText))) c.err('quizOrder', 'must be an array of quiz ids');
+    }
+  }
+
+  // Units
+  const unitIds = new Set();
+  for (const u of sortedUnits(content.units)) {
+    const c = ctx(u.file);
+    const data = u.data;
+    if (!isObject(data)) { c.err('(root)', 'must be an object'); continue; }
+    c.requireText(data, '', ['id', 'name', 'date', 'emoji']);
+    c.claimId(data, '');
+    if (isText(data.id)) {
+      unitIds.add(data.id);
+      if (data.id !== u.dir) c.err('id', `"${data.id}" must match its folder name "${u.dir}"`);
+    }
+    if (isText(data.date) && !DATE_RE.test(data.date)) c.err('date', `"${data.date}" must be YYYY-MM-DD`);
+    c.requireArray(data, '', 'decks').forEach((deck, di) => {
+      const base = join('decks', di);
+      if (!isObject(deck)) return c.err(base, 'must be an object');
+      c.requireText(deck, base, ['id', 'name', 'emoji', 'color', 'description']);
+      c.claimId(deck, base);
+      if (isText(deck.id)) decks.add(deck.id);
+      c.requireArray(deck, base, 'cards').forEach((card, ci) => {
+        const cb = join(join(base, 'cards'), ci);
+        if (!isObject(card)) return c.err(cb, 'must be an object');
+        c.requireText(card, cb, ['id', 'en', 'es', 'note', 'emoji', 'tag']);
+        c.claimId(card, cb);
+      });
+    });
+    if (data.quizzes !== undefined) {
+      if (!Array.isArray(data.quizzes)) c.err('quizzes', 'must be an array');
+      else data.quizzes.forEach((quiz, qi) => c.checkQuiz(quiz, join('quizzes', qi), { isFinal: false }));
+    }
+  }
+
+  // final-exam.json
+  ctx(content.finalExam.file).checkQuiz(content.finalExam.data, '', { isFinal: true });
+
+  // Cross references
+  for (const ref of deckRefs) if (!decks.has(ref.deckId)) ref.err(ref.path, `references unknown deck "${ref.deckId}"`);
+  const order = isObject(content.meta.data) && Array.isArray(content.meta.data.quizOrder) ? content.meta.data.quizOrder : [];
+  order.forEach((id, i) => { if (!quizIds.has(id)) errors.push(`${content.meta.file}: quizOrder[${i}] references unknown quiz "${id}"`); });
+
+  return errors;
+}
+
+// ------------------------------------------------------------
+//  CLI
+// ------------------------------------------------------------
 function main(argv) {
-  const content = loadContent();
+  const check = argv.includes('--check');
+  let content;
+  try {
+    content = module.exports.loadContent();
+  } catch (err) {
+    console.error(err.message);
+    return 1;
+  }
+  const errors = validate(content);
+  if (errors.length) {
+    console.error(`Content has ${errors.length} error(s):`);
+    for (const e of errors) console.error(`  ${e}`);
+    return 1;
+  }
   const out = buildDataJs(buildData(content));
+  const rel = path.relative(process.cwd(), DATA_JS);
+  if (check) {
+    const current = fs.existsSync(DATA_JS) ? fs.readFileSync(DATA_JS, 'utf8').replace(/\r\n/g, '\n') : '';
+    if (current !== out) {
+      console.error(`${rel} is out of sync with game/content/. Run: node game/tools/build-content.cjs`);
+      return 1;
+    }
+    console.log(`Content valid; ${rel} is in sync.`);
+    return 0;
+  }
   fs.writeFileSync(DATA_JS, out, 'utf8');
-  console.log(`Wrote ${path.relative(process.cwd(), DATA_JS)} (${content.units.length} units).`);
+  console.log(`Content valid; wrote ${rel} (${content.units.length} units).`);
   return 0;
 }
 
-module.exports = { loadContent, buildData, buildDataJs, CONTENT_DIR, DATA_JS };
+module.exports = { loadContent, validate, buildData, buildDataJs, main, CONTENT_DIR, DATA_JS };
 
 if (require.main === module) process.exitCode = main(process.argv.slice(2));
