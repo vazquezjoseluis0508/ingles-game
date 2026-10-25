@@ -22,9 +22,9 @@
 | ID | Description | Route | Status | Commit |
 |----|-------------|-------|--------|--------|
 | T0 | Save dossier source + RED test: every thematic quiz ≥ 12 questions incl. typing, every deck ≥ 10 cards | delegated (fork writer) | done | d566e78 |
-| T1 | Clase 1 decks (passive, causative, impersonal passive, identity theft, Way Up to Heaven) + theory | delegated | done | (this commit) |
-| T2 | Clase 2 (reporting verbs) + Clase 3 (headlines, media people, media adjectives, connectors) + theory | delegated | done | (this commit) |
-| T3 | Clase 4 decks (speaking phrases, speaking papers, past modals, should have, would rather, crime vocab, criminals & verbs, rob vs steal, Lamb to the Slaughter) + theory; SW bump | delegated | pending | |
+| T1 | Clase 1 decks (passive, causative, impersonal passive, identity theft, Way Up to Heaven) + theory | delegated | done | 0260359 |
+| T2 | Clase 2 (reporting verbs) + Clase 3 (headlines, media people, media adjectives, connectors) + theory | delegated | done | 6206e76 |
+| T3 | Clase 4 decks (speaking phrases, speaking papers, past modals, should have, would rather, crime vocab, criminals & verbs, rob vs steal, Lamb to the Slaughter) + theory; SW bump | delegated | done | (this commit) |
 
 ## Acceptance criteria
 - `node game/tools/build-content.cjs` passes; `--check` in sync.
@@ -58,5 +58,12 @@ ask-on-risk. Mostly data (JSON); authored code is a small test + SW bump.
   - quality.test caught 3 typing prompts exposing the answer (rv-q7, headlines-q6, headlines-q10): rv-q7 prompt reworded, the two headline items turned into gap-fill.
   - Checks: build valid + `--check` in sync; tests -> 25 pass, 1 fail (coverage, expected until T3).
 
+- T3 (clase4): speaking-phrases +5 / +9 (30 cards, 14 Q), speaking-papers +11 / +20 (23, 25), past-modals +10 / +7 and +7 (18 cards; quiz-past-modals 12, quiz-modal-deduction 12), should-have +10 / +11 (17, 16), would-rather +9 / +10 (15, 15), crime-vocab +10 / +11 (27, 14), criminals-verbs +11 / +10 (19, 15), rob-vs-steal +10 / +11 (14, 15), story-lamb-to-the-slaughter +10 / +9 (17, 13). Theory block added to clase4. SW cache -> `s5-game-v5-content` (sw.js + README-servidor.md).
+  - Course notes checked (speaking/paper1-getting-lost.md, speaking/useful-phrases.md, vocabulary/sleep.md, vocabulary/feelings.md, vocabulary/crime-and-punishment.md). Dropped as out of course: all of dossier 4.1 narrative-tense grammar (Paper 1 in class is the second conditional; only "get lost" kept, plus 3 second-conditional items written from the class notes); dossier 3.4 phrases not in the class phrase bank (as far as I'm concerned, I agree up to a point, what a nightmare, sorry to interrupt, go ahead, to sum up); strong adjectives devastated / bewildered / desperate and the "absolutely + strong adjective" MC (only thrilled and scared stiff are in the notes); "fast asleep" (gap 4, example 9).
+  - Dropped as ambiguous or wrong: would-rather MC4 ("be" is also valid subjunctive) and example 7 (would rather + past perfect, not seen); criminals MC1 (burglar vs robber for a bank vault); Lamb gaps 3 and 4 (dinner/meal, betrayal); criminals gap 3/4 and rob gap 3 rewritten as gap-fill so the prompt doesn't give the verb.
+  - Speaking-phrases questions written from the class phrase bank (9). Past-modals split across its two quizzes so both reach 12.
+  - GREEN: `node --test "game/tests/*.test.cjs"` -> 26 pass, 0 fail. `build-content.cjs --check` in sync.
+  - Totals: 176 -> 350 cards, 87 -> 301 thematic quiz questions; smallest deck 13 cards, smallest quiz 12 questions.
+
 ## Next step
-T3.
+User review in the browser (hard refresh to pick up the v5 cache). Push / PR are user decisions.

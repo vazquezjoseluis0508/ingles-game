@@ -1500,6 +1500,9 @@ window.GAME_DATA = {
       "name": "Clase 4 — 21/10",
       "date": "2025-10-21",
       "emoji": "🎤",
+      "theory": {
+        "summary": "**Frases de Speaking**\nIntervenciones cortas: opinión → razón → ejemplo → pregunta al compañero.\nDesacuerdo con educación: I see your point, but… / That's a good point, but I disagree. Ganar tiempo: Let me think for a second. / Let me see…\n\n**Speaking Papers**\nPaper 1 (Getting Lost): second conditional → If I got lost in…, I would… (nunca I will feel).\nPaper 2 (Feelings): -ed = cómo se siente la persona (I was tired); -ing = lo que lo provoca (The flight was tiring). Thrilled = muy contento; scared stiff = muerto de miedo.\nPaper 3 (Sleep): insomnia, light sleeper, sleep like a log, snore, nap, oversleep, set an alarm, keep someone awake, jet lag.\nused to + verbo = hábito pasado (I used to snore). be used to + -ing = estar acostumbrado. get used to + -ing = acostumbrarse.\n\n**Past Modals (Deduction)**\nmodal + have + participio para deducir sobre el pasado.\nmust have = casi seguro que sí · might / could / may have = posible · can't / couldn't have = casi imposible.\n\n**Should Have / Ought to Have**\nCríticas y arrepentimientos: algo que hubiera estado bien hacer y no se hizo (should have studied), o que se hizo y estuvo mal (shouldn't have shouted).\nought to have = should have, un poco más formal.\n\n**Would Rather**\nMismo sujeto: would rather + verbo base → I'd rather stay home. Negativo: I'd rather not go.\nOtro sujeto: would rather + persona + past simple → I'd rather you didn't smoke here.\n\n**Crime, Criminals & Verbs**\nDelito → delincuente → verbo: burglary → burglar → burgle · mugging → mugger → mug · robbery → robber → rob · theft → thief → steal.\nProceso judicial: commit → investigate → arrest → charge → court → verdict → guilty / acquitted → sentence.\n\n**Rob vs Steal**\nrob + persona / lugar (They robbed the bank. He was robbed of his watch.) · steal + objeto (They stole my phone. My watch was stolen.).\n\n**Lamb to the Slaughter (Roald Dahl)**\nMary Maloney mata a su marido con una pata de cordero congelada, arma una coartada (alibi) en el almacén y después les sirve el cordero a los policías: se comen el arma del crimen (ironía dramática)."
+      },
       "decks": [
         {
           "id": "speaking-phrases",
@@ -1707,6 +1710,46 @@ window.GAME_DATA = {
               "note": "Desacuerdo suave / duda.",
               "emoji": "🧐",
               "tag": "Desacuerdo"
+            },
+            {
+              "id": "sp26",
+              "en": "I totally agree.",
+              "es": "Estoy totalmente de acuerdo.",
+              "note": "Acuerdo fuerte.",
+              "emoji": "💯",
+              "tag": "Acuerdo"
+            },
+            {
+              "id": "sp27",
+              "en": "I understand, but...",
+              "es": "Entiendo, pero...",
+              "note": "Reconocer antes de no estar de acuerdo.",
+              "emoji": "🤔",
+              "tag": "Desacuerdo"
+            },
+            {
+              "id": "sp28",
+              "en": "Would you feel the same?",
+              "es": "¿Te sentirías igual?",
+              "note": "Pregunta para el compañero (Paper 2).",
+              "emoji": "🫵",
+              "tag": "Interactuar"
+            },
+            {
+              "id": "sp29",
+              "en": "Why do you think that?",
+              "es": "¿Por qué pensás eso?",
+              "note": "Pregunta de seguimiento.",
+              "emoji": "❓",
+              "tag": "Interactuar"
+            },
+            {
+              "id": "sp30",
+              "en": "I guess...",
+              "es": "Supongo que...",
+              "note": "Ganar tiempo sin trabarte.",
+              "emoji": "🤷",
+              "tag": "Ganar tiempo"
             }
           ]
         },
@@ -1780,6 +1823,86 @@ window.GAME_DATA = {
               "note": "might have + pp. Deducción posible (foto del accidente).",
               "emoji": "🤕",
               "tag": "Posible"
+            },
+            {
+              "id": "pm09",
+              "en": "The thieves must have known the password; there was no sign of forced entry.",
+              "es": "Los ladrones debían saber la contraseña; no había señales de que hubieran forzado la entrada.",
+              "note": "must have + pp: casi seguro, por la evidencia.",
+              "emoji": "🔐",
+              "tag": "Casi seguro"
+            },
+            {
+              "id": "pm10",
+              "en": "She can't have left her passport at home; I saw her with it.",
+              "es": "No puede haber dejado el pasaporte en casa; la vi con él.",
+              "note": "can't have + pp: casi imposible.",
+              "emoji": "🛂",
+              "tag": "Casi imposible"
+            },
+            {
+              "id": "pm11",
+              "en": "The pilot might have miscalculated the fuel.",
+              "es": "Puede que el piloto haya calculado mal el combustible.",
+              "note": "might have + pp: posible.",
+              "emoji": "⛽",
+              "tag": "Posible"
+            },
+            {
+              "id": "pm12",
+              "en": "They could have taken a wrong turn, that's why they are late.",
+              "es": "Puede que hayan doblado mal; por eso llegan tarde.",
+              "note": "could have + pp: posible.",
+              "emoji": "↪️",
+              "tag": "Posible"
+            },
+            {
+              "id": "pm13",
+              "en": "The keepers must have been swept away by a giant wave.",
+              "es": "A los fareros los debe haber arrastrado una ola gigante.",
+              "note": "must have been + pp: deducción en pasiva.",
+              "emoji": "🌊",
+              "tag": "Casi seguro"
+            },
+            {
+              "id": "pm14",
+              "en": "He can't have written that article himself.",
+              "es": "No puede haber escrito ese artículo él solo.",
+              "note": "can't have + pp.",
+              "emoji": "📝",
+              "tag": "Casi imposible"
+            },
+            {
+              "id": "pm15",
+              "en": "The company might have suffered a cyberattack.",
+              "es": "Puede que la empresa haya sufrido un ciberataque.",
+              "note": "might have + pp.",
+              "emoji": "💻",
+              "tag": "Posible"
+            },
+            {
+              "id": "pm16",
+              "en": "You must have dropped your wallet while you were running.",
+              "es": "Se te debe haber caído la billetera mientras corrías.",
+              "note": "must have + pp.",
+              "emoji": "👛",
+              "tag": "Casi seguro"
+            },
+            {
+              "id": "pm17",
+              "en": "She can't have received my message, or she would have replied.",
+              "es": "No puede haber recibido mi mensaje; si no, habría contestado.",
+              "note": "can't have + pp.",
+              "emoji": "📩",
+              "tag": "Casi imposible"
+            },
+            {
+              "id": "pm18",
+              "en": "The road is wet. It must have rained last night.",
+              "es": "La calle está mojada. Debe haber llovido anoche.",
+              "note": "must have + pp: deducción por evidencia.",
+              "emoji": "🌧️",
+              "tag": "Casi seguro"
             }
           ]
         },
@@ -1845,6 +1968,86 @@ window.GAME_DATA = {
               "note": "Arrepentimiento típico. should have + pp.",
               "emoji": "📚",
               "tag": "Should have"
+            },
+            {
+              "id": "sh08",
+              "en": "You should have checked the oil before such a long journey.",
+              "es": "Tendrías que haber revisado el aceite antes de un viaje tan largo.",
+              "note": "should have + pp: crítica por algo que no se hizo.",
+              "emoji": "🛢️",
+              "tag": "Should have"
+            },
+            {
+              "id": "sh09",
+              "en": "I shouldn't have eaten that street food.",
+              "es": "No tendría que haber comido esa comida callejera.",
+              "note": "shouldn't have + pp: arrepentimiento por algo que se hizo.",
+              "emoji": "🌭",
+              "tag": "Shouldn't have"
+            },
+            {
+              "id": "sh10",
+              "en": "The airline ought to have informed the passengers earlier.",
+              "es": "La aerolínea tendría que haber avisado antes a los pasajeros.",
+              "note": "ought to have + pp = should have (más formal).",
+              "emoji": "📢",
+              "tag": "Ought to have"
+            },
+            {
+              "id": "sh11",
+              "en": "He shouldn't have lied on his CV.",
+              "es": "No tendría que haber mentido en su CV.",
+              "note": "shouldn't have + pp: crítica.",
+              "emoji": "📄",
+              "tag": "Shouldn't have"
+            },
+            {
+              "id": "sh12",
+              "en": "We should have taken out travel insurance.",
+              "es": "Tendríamos que haber sacado un seguro de viaje.",
+              "note": "should have + pp: arrepentimiento.",
+              "emoji": "🧳",
+              "tag": "Should have"
+            },
+            {
+              "id": "sh13",
+              "en": "You ought to have listened to the safety demonstration.",
+              "es": "Tendrías que haber escuchado la demostración de seguridad.",
+              "note": "ought to have + pp.",
+              "emoji": "🦺",
+              "tag": "Ought to have"
+            },
+            {
+              "id": "sh14",
+              "en": "They shouldn't have left their luggage unattended.",
+              "es": "No tendrían que haber dejado el equipaje sin vigilancia.",
+              "note": "shouldn't have + pp.",
+              "emoji": "🛄",
+              "tag": "Shouldn't have"
+            },
+            {
+              "id": "sh15",
+              "en": "I should have accepted the job offer in Paris.",
+              "es": "Tendría que haber aceptado la oferta de trabajo en París.",
+              "note": "should have + pp: oportunidad perdida.",
+              "emoji": "🗼",
+              "tag": "Should have"
+            },
+            {
+              "id": "sh16",
+              "en": "The government should have invested more in green energy.",
+              "es": "El gobierno tendría que haber invertido más en energía verde.",
+              "note": "should have + pp: crítica.",
+              "emoji": "🌱",
+              "tag": "Should have"
+            },
+            {
+              "id": "sh17",
+              "en": "She shouldn't have spoken so rudely to the assistant.",
+              "es": "No tendría que haberle hablado tan mal al empleado.",
+              "note": "shouldn't have + pp.",
+              "emoji": "😠",
+              "tag": "Shouldn't have"
             }
           ]
         },
@@ -1902,6 +2105,78 @@ window.GAME_DATA = {
               "note": "Pregunta con would rather + base verb.",
               "emoji": "❓",
               "tag": "Pregunta"
+            },
+            {
+              "id": "wr07",
+              "en": "I would rather study online than travel to the campus every day.",
+              "es": "Prefiero estudiar online antes que viajar al campus todos los días.",
+              "note": "would rather + verbo base + than + verbo base.",
+              "emoji": "💻",
+              "tag": "Mismo sujeto"
+            },
+            {
+              "id": "wr08",
+              "en": "She'd rather not talk about her personal life in the interview.",
+              "es": "Prefiere no hablar de su vida personal en la entrevista.",
+              "note": "would rather not + verbo base.",
+              "emoji": "🤐",
+              "tag": "Mismo sujeto"
+            },
+            {
+              "id": "wr09",
+              "en": "The manager would rather we finished the report this week.",
+              "es": "El gerente preferiría que termináramos el informe esta semana.",
+              "note": "Otro sujeto: would rather + persona + past simple.",
+              "emoji": "📊",
+              "tag": "Otro sujeto"
+            },
+            {
+              "id": "wr10",
+              "en": "I'd rather you didn't interrupt me while I'm presenting.",
+              "es": "Prefiero que no me interrumpas mientras presento.",
+              "note": "Otro sujeto, negativo: you didn't + verbo.",
+              "emoji": "🙊",
+              "tag": "Otro sujeto"
+            },
+            {
+              "id": "wr11",
+              "en": "Would you rather fly direct to London or stop in Dublin?",
+              "es": "¿Preferís volar directo a Londres o hacer escala en Dublín?",
+              "note": "Pregunta: Would you rather…?",
+              "emoji": "✈️",
+              "tag": "Pregunta"
+            },
+            {
+              "id": "wr12",
+              "en": "He'd rather stay in a quiet hotel than in the city centre.",
+              "es": "Prefiere quedarse en un hotel tranquilo antes que en el centro.",
+              "note": "would rather + verbo base.",
+              "emoji": "🏨",
+              "tag": "Mismo sujeto"
+            },
+            {
+              "id": "wr13",
+              "en": "We would rather buy second-hand clothes.",
+              "es": "Preferimos comprar ropa de segunda mano.",
+              "note": "would rather + verbo base.",
+              "emoji": "👕",
+              "tag": "Mismo sujeto"
+            },
+            {
+              "id": "wr14",
+              "en": "She'd rather he took the train than drove alone at night.",
+              "es": "Preferiría que él tomara el tren antes que manejar solo de noche.",
+              "note": "Otro sujeto: he took (past simple).",
+              "emoji": "🚆",
+              "tag": "Otro sujeto"
+            },
+            {
+              "id": "wr15",
+              "en": "I'd rather not comment on that story right now.",
+              "es": "Prefiero no opinar sobre esa noticia ahora.",
+              "note": "would rather not + verbo base.",
+              "emoji": "🗞️",
+              "tag": "Mismo sujeto"
             }
           ]
         },
@@ -2047,6 +2322,86 @@ window.GAME_DATA = {
               "note": "The wall was damaged by vandalism.",
               "emoji": "🎨",
               "tag": "Crime"
+            },
+            {
+              "id": "cr18",
+              "en": "He was charged with blackmail after demanding money to keep a video secret.",
+              "es": "Lo acusaron de chantaje por pedir plata para no difundir un video.",
+              "note": "blackmail = chantaje.",
+              "emoji": "📹",
+              "tag": "Crime"
+            },
+            {
+              "id": "cr19",
+              "en": "The company was investigated for bribery.",
+              "es": "Investigaron a la empresa por soborno.",
+              "note": "bribery = soborno, coima.",
+              "emoji": "💵",
+              "tag": "Crime"
+            },
+            {
+              "id": "cr20",
+              "en": "The museum suffered a burglary overnight.",
+              "es": "Al museo le robaron durante la noche (entraron a robar).",
+              "note": "burglary = entrar a un edificio a robar.",
+              "emoji": "🖼️",
+              "tag": "Crime"
+            },
+            {
+              "id": "cr21",
+              "en": "Hackers got into the government database.",
+              "es": "Unos hackers entraron a la base de datos del gobierno.",
+              "note": "hacking = acceso ilegal a sistemas.",
+              "emoji": "💻",
+              "tag": "Crime"
+            },
+            {
+              "id": "cr22",
+              "en": "The hijacking of the plane ended safely.",
+              "es": "El secuestro del avión terminó sin heridos.",
+              "note": "hijacking = secuestro de un avión o vehículo.",
+              "emoji": "✈️",
+              "tag": "Crime"
+            },
+            {
+              "id": "cr23",
+              "en": "Smuggling protected animals across borders is a serious offence.",
+              "es": "El contrabando de animales protegidos entre países es un delito grave.",
+              "note": "smuggling = contrabando.",
+              "emoji": "🦜",
+              "tag": "Crime"
+            },
+            {
+              "id": "cr24",
+              "en": "The victim was targeted in a street mugging near the station.",
+              "es": "La víctima sufrió un robo violento en la calle cerca de la estación.",
+              "note": "mugging = robo violento en la calle.",
+              "emoji": "👜",
+              "tag": "Crime"
+            },
+            {
+              "id": "cr25",
+              "en": "He was arrested for stalking his former colleague.",
+              "es": "Lo arrestaron por acosar a una ex compañera de trabajo.",
+              "note": "stalking = acoso, seguir obsesivamente.",
+              "emoji": "👀",
+              "tag": "Crime"
+            },
+            {
+              "id": "cr26",
+              "en": "Vandalism costs the council thousands every year.",
+              "es": "El vandalismo le cuesta miles al municipio todos los años.",
+              "note": "vandalism = daño intencional.",
+              "emoji": "🚏",
+              "tag": "Crime"
+            },
+            {
+              "id": "cr27",
+              "en": "The detective investigated a case of credit card fraud.",
+              "es": "El detective investigó un caso de fraude con tarjetas de crédito.",
+              "note": "fraud = fraude, estafa.",
+              "emoji": "💳",
+              "tag": "Crime"
             }
           ]
         },
@@ -2120,6 +2475,94 @@ window.GAME_DATA = {
               "note": "A smuggler smuggles goods.",
               "emoji": "📦",
               "tag": "Criminal + verb"
+            },
+            {
+              "id": "cm09",
+              "en": "mugger → to mug",
+              "es": "asaltante → asaltar en la calle",
+              "note": "mugging (delito) → mugger (persona) → mug (verbo).",
+              "emoji": "🥷",
+              "tag": "Criminal + verb"
+            },
+            {
+              "id": "cm10",
+              "en": "blackmailer → to blackmail",
+              "es": "chantajista → chantajear",
+              "note": "blackmail es delito y verbo a la vez.",
+              "emoji": "✉️",
+              "tag": "Criminal + verb"
+            },
+            {
+              "id": "cm11",
+              "en": "The burglar burgled three houses before being caught.",
+              "es": "El ladrón robó tres casas antes de que lo atraparan.",
+              "note": "burglar → burgle.",
+              "emoji": "🏠",
+              "tag": "Criminal + verb"
+            },
+            {
+              "id": "cm12",
+              "en": "A hacker managed to hack into the network.",
+              "es": "Un hacker logró entrar a la red.",
+              "note": "hacker → hack into.",
+              "emoji": "💻",
+              "tag": "Criminal + verb"
+            },
+            {
+              "id": "cm13",
+              "en": "The police arrested the suspect and charged him with robbery.",
+              "es": "La policía arrestó al sospechoso y lo acusó de robo.",
+              "note": "arrest → charge with.",
+              "emoji": "🚓",
+              "tag": "Proceso judicial"
+            },
+            {
+              "id": "cm14",
+              "en": "The jury delivered a verdict of guilty.",
+              "es": "El jurado dio un veredicto de culpable.",
+              "note": "jury → verdict → guilty.",
+              "emoji": "⚖️",
+              "tag": "Proceso judicial"
+            },
+            {
+              "id": "cm15",
+              "en": "The judge sentenced the murderer to life in prison.",
+              "es": "El juez condenó al asesino a cadena perpetua.",
+              "note": "sentence = condenar.",
+              "emoji": "👨‍⚖️",
+              "tag": "Proceso judicial"
+            },
+            {
+              "id": "cm16",
+              "en": "Due to a lack of evidence, the accused was acquitted.",
+              "es": "Por falta de pruebas, absolvieron al acusado.",
+              "note": "acquit = absolver.",
+              "emoji": "🕊️",
+              "tag": "Proceso judicial"
+            },
+            {
+              "id": "cm17",
+              "en": "Investigators spent months investigating the fraud case.",
+              "es": "Los investigadores pasaron meses investigando el caso de fraude.",
+              "note": "investigate a crime.",
+              "emoji": "🔍",
+              "tag": "Proceso judicial"
+            },
+            {
+              "id": "cm18",
+              "en": "The witness gave evidence in court against the blackmailer.",
+              "es": "El testigo declaró en el tribunal contra el chantajista.",
+              "note": "witness = testigo; court = tribunal.",
+              "emoji": "🧑‍⚖️",
+              "tag": "Proceso judicial"
+            },
+            {
+              "id": "cm19",
+              "en": "He committed a crime when he was young, but he was never caught.",
+              "es": "Cometió un delito de joven, pero nunca lo atraparon.",
+              "note": "commit a crime → catch.",
+              "emoji": "🕶️",
+              "tag": "Proceso judicial"
             }
           ]
         },
@@ -2160,6 +2603,86 @@ window.GAME_DATA = {
               "es": "Alguien robó la plata.",
               "note": "steal + objeto. ✔️",
               "emoji": "💰",
+              "tag": "steal"
+            },
+            {
+              "id": "rs05",
+              "en": "Someone stole my phone while I was waiting for the bus.",
+              "es": "Alguien me robó el teléfono mientras esperaba el colectivo.",
+              "note": "steal + objeto.",
+              "emoji": "📱",
+              "tag": "steal"
+            },
+            {
+              "id": "rs06",
+              "en": "The bank was robbed by three masked men.",
+              "es": "Tres hombres enmascarados robaron el banco.",
+              "note": "rob + lugar (en pasiva: the bank was robbed).",
+              "emoji": "🏦",
+              "tag": "rob"
+            },
+            {
+              "id": "rs07",
+              "en": "He was robbed of his wallet and passport.",
+              "es": "Le robaron la billetera y el pasaporte.",
+              "note": "be robbed of + objeto (la víctima es el sujeto).",
+              "emoji": "🛂",
+              "tag": "rob"
+            },
+            {
+              "id": "rs08",
+              "en": "Thousands of dollars were stolen from the office safe.",
+              "es": "Robaron miles de dólares de la caja fuerte de la oficina.",
+              "note": "steal + objeto (en pasiva: money was stolen).",
+              "emoji": "💰",
+              "tag": "steal"
+            },
+            {
+              "id": "rs09",
+              "en": "They tried to rob the jewellery shop, but the alarm went off.",
+              "es": "Intentaron robar la joyería, pero sonó la alarma.",
+              "note": "rob + lugar.",
+              "emoji": "💍",
+              "tag": "rob"
+            },
+            {
+              "id": "rs10",
+              "en": "A famous painting was stolen from the gallery.",
+              "es": "Robaron un cuadro famoso de la galería.",
+              "note": "steal + objeto + from + lugar.",
+              "emoji": "🖼️",
+              "tag": "steal"
+            },
+            {
+              "id": "rs11",
+              "en": "An old lady was robbed in broad daylight.",
+              "es": "Le robaron a una señora mayor a plena luz del día.",
+              "note": "rob + persona.",
+              "emoji": "👵",
+              "tag": "rob"
+            },
+            {
+              "id": "rs12",
+              "en": "Thieves managed to steal a luxury car without keys.",
+              "es": "Unos ladrones lograron robar un auto de lujo sin llaves.",
+              "note": "steal + objeto.",
+              "emoji": "🚗",
+              "tag": "steal"
+            },
+            {
+              "id": "rs13",
+              "en": "The tourists were robbed while they were taking photos.",
+              "es": "A los turistas les robaron mientras sacaban fotos.",
+              "note": "rob + persona (en pasiva).",
+              "emoji": "📷",
+              "tag": "rob"
+            },
+            {
+              "id": "rs14",
+              "en": "Someone stole my car from the car park overnight.",
+              "es": "Alguien me robó el auto del estacionamiento durante la noche.",
+              "note": "steal + objeto + from + lugar.",
+              "emoji": "🅿️",
               "tag": "steal"
             }
           ]
@@ -2225,6 +2748,86 @@ window.GAME_DATA = {
               "es": "desplomarse en el piso",
               "note": "Patrick cae al suelo tras el golpe.",
               "emoji": "💥",
+              "tag": "Story"
+            },
+            {
+              "id": "lamb08",
+              "en": "Mary Maloney was waiting patiently for her husband to come home.",
+              "es": "Mary Maloney esperaba con paciencia a que su marido volviera a casa.",
+              "note": "Así empieza el cuento: la esposa tranquila y dedicada.",
+              "emoji": "🕯️",
+              "tag": "Story"
+            },
+            {
+              "id": "lamb09",
+              "en": "Patrick's cold announcement shattered Mary's quiet life.",
+              "es": "El anuncio frío de Patrick destrozó la vida tranquila de Mary.",
+              "note": "shatter = destrozar.",
+              "emoji": "💔",
+              "tag": "Story"
+            },
+            {
+              "id": "lamb10",
+              "en": "She hit him on the head with the frozen leg of lamb.",
+              "es": "Le pegó en la cabeza con la pata de cordero congelada.",
+              "note": "hit someone on the head.",
+              "emoji": "🍖",
+              "tag": "Story"
+            },
+            {
+              "id": "lamb11",
+              "en": "She established an alibi at the grocer's.",
+              "es": "Se armó una coartada en el almacén.",
+              "note": "alibi = coartada.",
+              "emoji": "🛒",
+              "tag": "Story"
+            },
+            {
+              "id": "lamb12",
+              "en": "The detectives searched the house for the murder weapon.",
+              "es": "Los detectives buscaron el arma del crimen en la casa.",
+              "note": "murder weapon = arma del crimen.",
+              "emoji": "🔎",
+              "tag": "Story"
+            },
+            {
+              "id": "lamb13",
+              "en": "The police officers ate the leg of lamb in the kitchen.",
+              "es": "Los policías se comieron la pata de cordero en la cocina.",
+              "note": "Ironía dramática: se comen la prueba.",
+              "emoji": "🍽️",
+              "tag": "Story"
+            },
+            {
+              "id": "lamb14",
+              "en": "One officer said the weapon was probably right under their noses.",
+              "es": "Un policía dijo que el arma seguramente estaba delante de sus narices.",
+              "note": "right under our noses = delante de nuestras narices.",
+              "emoji": "👃",
+              "tag": "Story"
+            },
+            {
+              "id": "lamb15",
+              "en": "Mary giggled in the next room.",
+              "es": "Mary se rió por lo bajo en la habitación de al lado.",
+              "note": "giggle = reírse por lo bajo.",
+              "emoji": "🤭",
+              "tag": "Story"
+            },
+            {
+              "id": "lamb16",
+              "en": "The story is a classic example of dramatic irony.",
+              "es": "El cuento es un ejemplo clásico de ironía dramática.",
+              "note": "dramatic irony: el lector sabe algo que los personajes no.",
+              "emoji": "🎭",
+              "tag": "Story"
+            },
+            {
+              "id": "lamb17",
+              "en": "The story explores betrayal and deception.",
+              "es": "El cuento trata la traición y el engaño.",
+              "note": "betrayal = traición; deception = engaño.",
+              "emoji": "🗡️",
               "tag": "Story"
             }
           ]
@@ -2330,6 +2933,94 @@ window.GAME_DATA = {
               "es": "Si mis vecinos hacen mucho ruido, me cuesta quedarme dormido.",
               "note": "Paper 3: 'neighbours' (vecinos) ≠ 'neighbourhood' (barrio).",
               "emoji": "🔊",
+              "tag": "Paper 3"
+            },
+            {
+              "id": "pf13",
+              "en": "I was absolutely thrilled when I got the job offer.",
+              "es": "Estaba feliz de la vida cuando me ofrecieron el trabajo.",
+              "note": "thrilled = muy contento (-ed: cómo se siente la persona).",
+              "emoji": "🤩",
+              "tag": "Paper 2"
+            },
+            {
+              "id": "pf14",
+              "en": "It is disappointing when a holiday is not as good as you expected.",
+              "es": "Es decepcionante cuando unas vacaciones no son tan buenas como esperabas.",
+              "note": "-ing: lo que provoca el sentimiento.",
+              "emoji": "😞",
+              "tag": "Paper 2"
+            },
+            {
+              "id": "pf15",
+              "en": "I used to sleep like a log, but now I wake up with any noise.",
+              "es": "Antes dormía como un tronco, pero ahora me despierto con cualquier ruido.",
+              "note": "used to + verbo: hábito pasado.",
+              "emoji": "🪵",
+              "tag": "Paper 3"
+            },
+            {
+              "id": "pf16",
+              "en": "It took me weeks to get used to sleeping in a noisy city.",
+              "es": "Me llevó semanas acostumbrarme a dormir en una ciudad ruidosa.",
+              "note": "get used to + -ing: acostumbrarse.",
+              "emoji": "🏙️",
+              "tag": "Paper 3"
+            },
+            {
+              "id": "pf17",
+              "en": "He suffers from insomnia and often stays awake until early morning.",
+              "es": "Sufre de insomnio y suele quedarse despierto hasta la madrugada.",
+              "note": "insomnia = insomnio.",
+              "emoji": "🌙",
+              "tag": "Paper 3"
+            },
+            {
+              "id": "pf18",
+              "en": "My roommate snores so loudly that I wear earplugs.",
+              "es": "Mi compañero de cuarto ronca tan fuerte que uso tapones.",
+              "note": "snore = roncar.",
+              "emoji": "😪",
+              "tag": "Paper 3"
+            },
+            {
+              "id": "pf19",
+              "en": "I overslept this morning because my alarm didn't go off.",
+              "es": "Hoy me quedé dormido porque no sonó la alarma.",
+              "note": "oversleep → overslept.",
+              "emoji": "⏰",
+              "tag": "Paper 3"
+            },
+            {
+              "id": "pf20",
+              "en": "Flying across time zones causes terrible jet lag.",
+              "es": "Volar entre husos horarios provoca un jet lag terrible.",
+              "note": "jet lag = desfase horario.",
+              "emoji": "🛫",
+              "tag": "Paper 3"
+            },
+            {
+              "id": "pf21",
+              "en": "She is a light sleeper and wakes up when the door opens.",
+              "es": "Tiene el sueño liviano y se despierta cuando se abre la puerta.",
+              "note": "light sleeper = persona de sueño liviano.",
+              "emoji": "🚪",
+              "tag": "Paper 3"
+            },
+            {
+              "id": "pf22",
+              "en": "A short afternoon nap can give you energy.",
+              "es": "Una siesta corta a la tarde te puede dar energía.",
+              "note": "nap = siesta corta.",
+              "emoji": "🛋️",
+              "tag": "Paper 3"
+            },
+            {
+              "id": "pf23",
+              "en": "Are you used to getting up at five in the morning?",
+              "es": "¿Estás acostumbrado a levantarte a las cinco de la mañana?",
+              "note": "be used to + -ing: estar acostumbrado.",
+              "emoji": "🌅",
               "tag": "Paper 3"
             }
           ]
@@ -2852,6 +3543,104 @@ window.GAME_DATA = {
             "must have been"
           ],
           "explanation": "must have been + adjetivo expresa una deducción de casi certeza sobre el pasado.",
+          "points": 10
+        },
+        {
+          "id": "pm-q6",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'The safe was opened without any damage. The burglar ____ known the code.'",
+          "options": [
+            "can't have",
+            "must have",
+            "might to have",
+            "should have"
+          ],
+          "correct": "must have",
+          "explanation": "La evidencia indica que sabía el código.",
+          "points": 10
+        },
+        {
+          "id": "pm-q7",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'She ____ forgotten about the meeting; she wrote it in her diary yesterday.'",
+          "options": [
+            "can't have",
+            "must have",
+            "might have",
+            "ought to have"
+          ],
+          "correct": "can't have",
+          "explanation": "Lo anotó: es casi imposible que se haya olvidado.",
+          "points": 10
+        },
+        {
+          "id": "pm-q8",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'I can't find my keys. I ____ left them in the car, but I'm not sure.'",
+          "options": [
+            "must have",
+            "can't have",
+            "might have",
+            "should have"
+          ],
+          "correct": "might have",
+          "explanation": "I'm not sure → posibilidad: might have.",
+          "points": 10
+        },
+        {
+          "id": "pm-q9",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'They ____ arrived already; their flight took off twenty minutes ago!'",
+          "options": [
+            "must have",
+            "can't have",
+            "might have",
+            "could have"
+          ],
+          "correct": "can't have",
+          "explanation": "Es imposible por el tiempo transcurrido.",
+          "points": 10
+        },
+        {
+          "id": "pm-q10",
+          "type": "multiple-choice",
+          "prompt": "¿Qué estructura expresa imposibilidad en el pasado?",
+          "options": [
+            "must have + past participle",
+            "can't have + past participle",
+            "might have + past participle",
+            "should have + past participle"
+          ],
+          "correct": "can't have + past participle",
+          "explanation": "can't have = casi imposible.",
+          "points": 10
+        },
+        {
+          "id": "pm-q11",
+          "type": "gap-fill",
+          "prompt": "Completa: 'The road is wet. It ____ rained last night.'",
+          "options": [
+            "must have",
+            "can't have",
+            "should have",
+            "would have"
+          ],
+          "correct": "must have",
+          "explanation": "La calle mojada es la evidencia: must have.",
+          "points": 10
+        },
+        {
+          "id": "pm-q12",
+          "type": "typing",
+          "prompt": "Traduce: 'Ella no puede haber dicho eso.'",
+          "options": [],
+          "correct": "She can't have said that",
+          "explanation": "can't have + said.",
+          "variations": [
+            "She can't have said that",
+            "She cannot have said that",
+            "She couldn't have said that"
+          ],
           "points": 10
         }
       ]
@@ -4615,6 +5404,126 @@ window.GAME_DATA = {
           "correct": "Para introducir un ejemplo personal.",
           "explanation": "For example introduce un ejemplo; in my experience lo vincula con una experiencia propia.",
           "points": 10
+        },
+        {
+          "id": "speaking-phrases-q6",
+          "type": "multiple-choice",
+          "prompt": "¿Qué frase sirve para mostrar desacuerdo con educación?",
+          "options": [
+            "I see your point, but...",
+            "You are completely wrong!",
+            "What a ridiculous thing to say!",
+            "Stop talking!"
+          ],
+          "correct": "I see your point, but...",
+          "explanation": "Primero reconocés el punto del otro y después das tu opinión.",
+          "points": 10
+        },
+        {
+          "id": "speaking-phrases-q7",
+          "type": "multiple-choice",
+          "prompt": "¿Qué frase te da tiempo para pensar cuando la pregunta es difícil?",
+          "options": [
+            "Let me think for a second.",
+            "I agree with you.",
+            "What about you?",
+            "That's true."
+          ],
+          "correct": "Let me think for a second.",
+          "explanation": "Ganar tiempo evita quedarte en blanco.",
+          "points": 10
+        },
+        {
+          "id": "speaking-phrases-q8",
+          "type": "gap-fill",
+          "prompt": "Completa: 'That's a ____ point, but I disagree.'",
+          "options": [
+            "good",
+            "well",
+            "big",
+            "true"
+          ],
+          "correct": "good",
+          "explanation": "Lleva artículo y adjetivo: That's a good point.",
+          "points": 10
+        },
+        {
+          "id": "speaking-phrases-q9",
+          "type": "gap-fill",
+          "prompt": "Completa: 'I'd ____ to talk about this topic.'",
+          "options": [
+            "like",
+            "liked",
+            "likes",
+            "liking"
+          ],
+          "correct": "like",
+          "explanation": "I'd like = me gustaría (no I like).",
+          "points": 10
+        },
+        {
+          "id": "speaking-phrases-q10",
+          "type": "typing",
+          "prompt": "Completa con depender: 'I think it ____ on the situation.'",
+          "options": [],
+          "correct": "depends",
+          "explanation": "It depends on… (con s y con on).",
+          "variations": [
+            "depends"
+          ],
+          "points": 10
+        },
+        {
+          "id": "speaking-phrases-q11",
+          "type": "multiple-choice",
+          "prompt": "¿Qué frase usás para estar de acuerdo?",
+          "options": [
+            "That's true.",
+            "I'm not sure about that.",
+            "Let me see...",
+            "On the other hand..."
+          ],
+          "correct": "That's true.",
+          "explanation": "That's true = Es verdad.",
+          "points": 10
+        },
+        {
+          "id": "speaking-phrases-q12",
+          "type": "typing",
+          "prompt": "Traduce la pregunta para tu compañero: '¿Harías lo mismo?'",
+          "options": [],
+          "correct": "Would you do the same",
+          "explanation": "Would you do the same? invita al compañero a opinar.",
+          "variations": [
+            "Would you do the same"
+          ],
+          "points": 10
+        },
+        {
+          "id": "speaking-phrases-q13",
+          "type": "typing",
+          "prompt": "Traduce: '¿Y vos?' (empieza con What).",
+          "options": [],
+          "correct": "What about you",
+          "explanation": "What about you? / How about you?",
+          "variations": [
+            "What about you"
+          ],
+          "points": 10
+        },
+        {
+          "id": "speaking-phrases-q14",
+          "type": "multiple-choice",
+          "prompt": "Completa: 'The main reason ____ that it's cheaper.'",
+          "options": [
+            "is",
+            "are",
+            "be",
+            "being"
+          ],
+          "correct": "is",
+          "explanation": "The main reason is that… para explicar.",
+          "points": 10
         }
       ]
     },
@@ -4692,6 +5601,98 @@ window.GAME_DATA = {
           ],
           "correct": "Es posible que no lo haya leído.",
           "explanation": "might not have + participio expresa posibilidad negativa en el pasado, no certeza.",
+          "points": 10
+        },
+        {
+          "id": "past-modals-q6",
+          "type": "typing",
+          "prompt": "Completa con modal + have: 'The ground is completely dry. It ____ rained last night.'",
+          "options": [],
+          "correct": "can't have",
+          "explanation": "Imposible por la evidencia (el suelo está seco): can't have.",
+          "variations": [
+            "can't have",
+            "couldn't have",
+            "cannot have"
+          ],
+          "points": 10
+        },
+        {
+          "id": "past-modals-q7",
+          "type": "typing",
+          "prompt": "Completa con modal + have: 'Look at his car! He ____ had an accident on his way home.'",
+          "options": [],
+          "correct": "must have",
+          "explanation": "Casi seguro por la evidencia: must have.",
+          "variations": [
+            "must have"
+          ],
+          "points": 10
+        },
+        {
+          "id": "past-modals-q8",
+          "type": "typing",
+          "prompt": "Completa con modal + have: 'She ____ missed the train, but I'm not entirely sure.'",
+          "options": [],
+          "correct": "might have",
+          "explanation": "Posibilidad, no hay seguridad: might / may / could have.",
+          "variations": [
+            "might have",
+            "may have",
+            "could have"
+          ],
+          "points": 10
+        },
+        {
+          "id": "past-modals-q9",
+          "type": "typing",
+          "prompt": "Completa con modal + have: 'You ____ seen Marcos in London yesterday; he's on holiday in Japan!'",
+          "options": [],
+          "correct": "can't have",
+          "explanation": "Imposible: estaba en Japón.",
+          "variations": [
+            "can't have",
+            "couldn't have",
+            "cannot have"
+          ],
+          "points": 10
+        },
+        {
+          "id": "past-modals-q10",
+          "type": "typing",
+          "prompt": "Completa con modal + have: 'The plane landed two hours late. The crew ____ had problems with the weather.'",
+          "options": [],
+          "correct": "must have",
+          "explanation": "Deducción lógica por la demora: must have.",
+          "variations": [
+            "must have"
+          ],
+          "points": 10
+        },
+        {
+          "id": "past-modals-q11",
+          "type": "typing",
+          "prompt": "Traduce: 'Él debe haber olvidado su contraseña.'",
+          "options": [],
+          "correct": "He must have forgotten his password",
+          "explanation": "must have + forgotten (participio de forget).",
+          "variations": [
+            "He must have forgotten his password"
+          ],
+          "points": 10
+        },
+        {
+          "id": "past-modals-q12",
+          "type": "typing",
+          "prompt": "Traduce con might: 'Quizás perdieron el vuelo.'",
+          "options": [],
+          "correct": "They might have missed the flight",
+          "explanation": "might have + pp: posibilidad en el pasado.",
+          "variations": [
+            "They might have missed the flight",
+            "They may have missed the flight",
+            "They could have missed the flight"
+          ],
           "points": 10
         }
       ]
@@ -4771,6 +5772,154 @@ window.GAME_DATA = {
           "correct": "Una crítica a su falta de cuidado en el pasado.",
           "explanation": "En este contexto, should have + participio critica algo que no se hizo.",
           "points": 10
+        },
+        {
+          "id": "should-have-q6",
+          "type": "typing",
+          "prompt": "Reescribe con should (drive): 'It was a mistake for you to drive so fast in the fog.' → 'You ____ so fast in the fog.'",
+          "options": [],
+          "correct": "shouldn't have driven",
+          "explanation": "Crítica por algo que se hizo: shouldn't have + pp.",
+          "variations": [
+            "shouldn't have driven",
+            "should not have driven"
+          ],
+          "points": 10
+        },
+        {
+          "id": "should-have-q7",
+          "type": "typing",
+          "prompt": "Reescribe con should (buy): 'I regret not buying those tickets.' → 'I ____ those tickets when they were cheaper.'",
+          "options": [],
+          "correct": "should have bought",
+          "explanation": "Arrepentimiento por algo que no se hizo: should have + pp.",
+          "variations": [
+            "should have bought"
+          ],
+          "points": 10
+        },
+        {
+          "id": "should-have-q8",
+          "type": "typing",
+          "prompt": "Reescribe con ought (warn): 'It was wrong of the company not to warn users.' → 'The company ____ users about the breach.'",
+          "options": [],
+          "correct": "ought to have warned",
+          "explanation": "ought to have + pp.",
+          "variations": [
+            "ought to have warned",
+            "should have warned"
+          ],
+          "points": 10
+        },
+        {
+          "id": "should-have-q9",
+          "type": "typing",
+          "prompt": "Reescribe con should (tell): 'I regret telling him my password.' → 'I ____ him my password.'",
+          "options": [],
+          "correct": "shouldn't have told",
+          "explanation": "shouldn't have + pp.",
+          "variations": [
+            "shouldn't have told",
+            "should not have told"
+          ],
+          "points": 10
+        },
+        {
+          "id": "should-have-q10",
+          "type": "typing",
+          "prompt": "Reescribe con should (attend): 'It was a pity you didn't attend the conference.' → 'You ____ the conference.'",
+          "options": [],
+          "correct": "should have attended",
+          "explanation": "should have + pp: oportunidad perdida.",
+          "variations": [
+            "should have attended",
+            "ought to have attended"
+          ],
+          "points": 10
+        },
+        {
+          "id": "should-have-q11",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'I have a terrible stomach ache. I ____ eaten that third slice of cake.'",
+          "options": [
+            "should have",
+            "shouldn't have",
+            "must have",
+            "can't have"
+          ],
+          "correct": "shouldn't have",
+          "explanation": "Arrepentimiento por algo que se hizo.",
+          "points": 10
+        },
+        {
+          "id": "should-have-q12",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'You ____ locked the door before leaving; now the computer is gone.'",
+          "options": [
+            "ought to have",
+            "shouldn't have",
+            "must have",
+            "might have"
+          ],
+          "correct": "ought to have",
+          "explanation": "Algo que había que hacer y no se hizo.",
+          "points": 10
+        },
+        {
+          "id": "should-have-q13",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'We ____ brought an umbrella; look how hard it is raining!'",
+          "options": [
+            "shouldn't have",
+            "should have",
+            "can't have",
+            "might have"
+          ],
+          "correct": "should have",
+          "explanation": "Arrepentimiento: no lo trajimos.",
+          "points": 10
+        },
+        {
+          "id": "should-have-q14",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'He ____ spoken to his boss in that tone if he wanted a promotion.'",
+          "options": [
+            "should have",
+            "shouldn't have",
+            "must have",
+            "ought to have"
+          ],
+          "correct": "shouldn't have",
+          "explanation": "Crítica por algo que hizo.",
+          "points": 10
+        },
+        {
+          "id": "should-have-q15",
+          "type": "multiple-choice",
+          "prompt": "¿Qué significa 'I should have called her'?",
+          "options": [
+            "I called her and it was a mistake.",
+            "I didn't call her, and I regret it.",
+            "I am calling her now.",
+            "I will call her tomorrow."
+          ],
+          "correct": "I didn't call her, and I regret it.",
+          "explanation": "should have + pp = no lo hice y me arrepiento.",
+          "points": 10
+        },
+        {
+          "id": "should-have-q16",
+          "type": "typing",
+          "prompt": "Traduce: 'No tendríamos que haber gastado tanta plata en ese hotel.'",
+          "options": [],
+          "correct": "We shouldn't have spent so much money on that hotel",
+          "explanation": "shouldn't have + spent.",
+          "variations": [
+            "We shouldn't have spent so much money on that hotel",
+            "We should not have spent so much money on that hotel",
+            "We shouldn't have spent so much money at that hotel"
+          ],
+          "points": 10
         }
       ]
     },
@@ -4849,6 +5998,142 @@ window.GAME_DATA = {
           "correct": "Prefiero que no publiques fotos mías.",
           "explanation": "would rather + otra persona + pasado expresa una preferencia presente o futura, no necesariamente pasada.",
           "points": 10
+        },
+        {
+          "id": "would-rather-q6",
+          "type": "gap-fill",
+          "prompt": "Completa: 'I would rather ____ at home than go to the party tonight.'",
+          "options": [
+            "stay",
+            "to stay",
+            "staying",
+            "stayed"
+          ],
+          "correct": "stay",
+          "explanation": "Mismo sujeto: would rather + verbo base.",
+          "points": 10
+        },
+        {
+          "id": "would-rather-q7",
+          "type": "typing",
+          "prompt": "Completa con speak en negativo: 'I'd rather you ____ to the journalists about it.'",
+          "options": [],
+          "correct": "didn't speak",
+          "explanation": "Otro sujeto: past simple (didn't + verbo).",
+          "variations": [
+            "didn't speak",
+            "did not speak"
+          ],
+          "points": 10
+        },
+        {
+          "id": "would-rather-q8",
+          "type": "gap-fill",
+          "prompt": "Completa: 'She'd rather ____ meat because she is vegan.'",
+          "options": [
+            "not eat",
+            "not to eat",
+            "don't eat",
+            "not eating"
+          ],
+          "correct": "not eat",
+          "explanation": "would rather not + verbo base.",
+          "points": 10
+        },
+        {
+          "id": "would-rather-q9",
+          "type": "typing",
+          "prompt": "Completa con la forma de fasten: 'The pilot would rather we ____ our seat belts now.'",
+          "options": [],
+          "correct": "fastened",
+          "explanation": "Otro sujeto (we): past simple.",
+          "variations": [
+            "fastened"
+          ],
+          "points": 10
+        },
+        {
+          "id": "would-rather-q10",
+          "type": "gap-fill",
+          "prompt": "Completa: 'Would you rather ____ in a big city or in a small village?'",
+          "options": [
+            "live",
+            "to live",
+            "living",
+            "lived"
+          ],
+          "correct": "live",
+          "explanation": "Pregunta con el mismo sujeto: verbo base.",
+          "points": 10
+        },
+        {
+          "id": "would-rather-q11",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'I'd rather you ____ my password to anyone.'",
+          "options": [
+            "don't tell",
+            "didn't tell",
+            "not tell",
+            "won't tell"
+          ],
+          "correct": "didn't tell",
+          "explanation": "Otro sujeto: past simple.",
+          "points": 10
+        },
+        {
+          "id": "would-rather-q12",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'She would rather ____ by train than drive.'",
+          "options": [
+            "to travel",
+            "travel",
+            "travelling",
+            "travelled"
+          ],
+          "correct": "travel",
+          "explanation": "Mismo sujeto: verbo base sin to.",
+          "points": 10
+        },
+        {
+          "id": "would-rather-q13",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'I'd rather not ____ about that experience.'",
+          "options": [
+            "talk",
+            "to talk",
+            "talking",
+            "talked"
+          ],
+          "correct": "talk",
+          "explanation": "would rather not + verbo base.",
+          "points": 10
+        },
+        {
+          "id": "would-rather-q14",
+          "type": "multiple-choice",
+          "prompt": "¿Qué oración expresa bien una preferencia sobre lo que hace otra persona?",
+          "options": [
+            "I'd rather you don't smoke in here.",
+            "I'd rather you didn't smoke in here.",
+            "I'd rather you to not smoke in here.",
+            "I'd rather you not smoking in here."
+          ],
+          "correct": "I'd rather you didn't smoke in here.",
+          "explanation": "Otro sujeto: past simple.",
+          "points": 10
+        },
+        {
+          "id": "would-rather-q15",
+          "type": "typing",
+          "prompt": "Traduce: 'Prefiero no contestar esa pregunta.'",
+          "options": [],
+          "correct": "I'd rather not answer that question",
+          "explanation": "would rather not + verbo base.",
+          "variations": [
+            "I'd rather not answer that question",
+            "I would rather not answer that question"
+          ],
+          "points": 10
         }
       ]
     },
@@ -4900,6 +6185,152 @@ window.GAME_DATA = {
           ],
           "correct": "fraud",
           "explanation": "fraud = fraude o estafa mediante engaño.",
+          "points": 10
+        },
+        {
+          "id": "crime-vocab-q6",
+          "type": "typing",
+          "prompt": "Escribe el delito: 'Pedirle plata a alguien amenazándolo con revelar sus secretos.'",
+          "options": [],
+          "correct": "blackmail",
+          "explanation": "blackmail = chantaje.",
+          "variations": [
+            "blackmail"
+          ],
+          "points": 10
+        },
+        {
+          "id": "crime-vocab-q7",
+          "type": "gap-fill",
+          "prompt": "Completa: 'Breaking into a private house at night to steal jewellery is ____.'",
+          "options": [
+            "burglary",
+            "robbery",
+            "mugging",
+            "hijacking"
+          ],
+          "correct": "burglary",
+          "explanation": "burglary = entrar a una casa o edificio para robar.",
+          "points": 10
+        },
+        {
+          "id": "crime-vocab-q8",
+          "type": "typing",
+          "prompt": "Escribe el delito: 'Ofrecerle plata a un policía para evitar una multa.'",
+          "options": [],
+          "correct": "bribery",
+          "explanation": "bribery = soborno, coima.",
+          "variations": [
+            "bribery"
+          ],
+          "points": 10
+        },
+        {
+          "id": "crime-vocab-q9",
+          "type": "gap-fill",
+          "prompt": "Completa: 'Destroying bus stops and painting graffiti on old walls is ____.'",
+          "options": [
+            "vandalism",
+            "hijacking",
+            "stalking",
+            "fraud"
+          ],
+          "correct": "vandalism",
+          "explanation": "vandalism = daño intencional a la propiedad.",
+          "points": 10
+        },
+        {
+          "id": "crime-vocab-q10",
+          "type": "typing",
+          "prompt": "Escribe el delito: 'Pasar mercadería ilegal de un país a otro a escondidas.'",
+          "options": [],
+          "correct": "smuggling",
+          "explanation": "smuggling = contrabando.",
+          "variations": [
+            "smuggling"
+          ],
+          "points": 10
+        },
+        {
+          "id": "crime-vocab-q11",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'Armed men carried out a daring ____ at the central bank.'",
+          "options": [
+            "burglary",
+            "robbery",
+            "blackmail",
+            "stalking"
+          ],
+          "correct": "robbery",
+          "explanation": "robbery = robo con violencia o amenaza (a un banco, una persona).",
+          "points": 10
+        },
+        {
+          "id": "crime-vocab-q12",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'She was threatened in the street and forced to hand over her bag in a violent ____.'",
+          "options": [
+            "mugging",
+            "smuggling",
+            "hijacking",
+            "bribery"
+          ],
+          "correct": "mugging",
+          "explanation": "mugging = robo violento en la calle.",
+          "points": 10
+        },
+        {
+          "id": "crime-vocab-q13",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'Criminals who break into computer networks commit ____.'",
+          "options": [
+            "fraud",
+            "hacking",
+            "vandalism",
+            "kidnapping"
+          ],
+          "correct": "hacking",
+          "explanation": "hacking = acceso ilegal a sistemas.",
+          "points": 10
+        },
+        {
+          "id": "crime-vocab-q14",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'Taking a person by force and demanding a ransom is ____.'",
+          "options": [
+            "hijacking",
+            "kidnapping",
+            "blackmail",
+            "theft"
+          ],
+          "correct": "kidnapping",
+          "explanation": "kidnapping = secuestro de una persona.",
+          "points": 10
+        },
+        {
+          "id": "crime-vocab-q15",
+          "type": "multiple-choice",
+          "prompt": "¿Qué delito es un engaño para obtener dinero?",
+          "options": [
+            "fraud",
+            "vandalism",
+            "stalking",
+            "mugging"
+          ],
+          "correct": "fraud",
+          "explanation": "fraud = fraude, estafa.",
+          "points": 10
+        },
+        {
+          "id": "crime-vocab-q16",
+          "type": "typing",
+          "prompt": "Escribe en inglés: 'acoso' (seguir a alguien de forma obsesiva).",
+          "options": [],
+          "correct": "stalking",
+          "explanation": "stalking = acoso; stalker = acosador.",
+          "variations": [
+            "stalking"
+          ],
           "points": 10
         }
       ]
@@ -4979,6 +6410,140 @@ window.GAME_DATA = {
           "correct": "robs",
           "explanation": "rob toma como objeto una persona o un lugar; steal toma lo sustraído.",
           "points": 10
+        },
+        {
+          "id": "criminals-verbs-q6",
+          "type": "typing",
+          "prompt": "Completa la tríada: 'Crime: burglary | Criminal: burglar | Verb: to ____'.",
+          "options": [],
+          "correct": "burgle",
+          "explanation": "burglary → burglar → burgle.",
+          "variations": [
+            "burgle"
+          ],
+          "points": 10
+        },
+        {
+          "id": "criminals-verbs-q7",
+          "type": "typing",
+          "prompt": "Completa la tríada: 'Crime: mugging | Criminal: ____ | Verb: to mug'.",
+          "options": [],
+          "correct": "mugger",
+          "explanation": "mugging → mugger → mug.",
+          "variations": [
+            "mugger"
+          ],
+          "points": 10
+        },
+        {
+          "id": "criminals-verbs-q8",
+          "type": "gap-fill",
+          "prompt": "Completa: 'After gathering proof, the police decided to ____ the main suspect.'",
+          "options": [
+            "arrest",
+            "acquit",
+            "sentence",
+            "burgle"
+          ],
+          "correct": "arrest",
+          "explanation": "arrest = detener al sospechoso.",
+          "points": 10
+        },
+        {
+          "id": "criminals-verbs-q9",
+          "type": "gap-fill",
+          "prompt": "Completa: 'The judge will ____ the criminal tomorrow morning.'",
+          "options": [
+            "sentence",
+            "arrest",
+            "investigate",
+            "burgle"
+          ],
+          "correct": "sentence",
+          "explanation": "El juez dicta la condena: sentence.",
+          "points": 10
+        },
+        {
+          "id": "criminals-verbs-q10",
+          "type": "typing",
+          "prompt": "Completa con el participio de acquit: 'If the jury decides you didn't commit the crime, you will be ____.'",
+          "options": [],
+          "correct": "acquitted",
+          "explanation": "acquit → acquitted = absuelto.",
+          "variations": [
+            "acquitted"
+          ],
+          "points": 10
+        },
+        {
+          "id": "criminals-verbs-q11",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'There wasn't enough evidence, so the judge had to ____ the accused.'",
+          "options": [
+            "sentence",
+            "acquit",
+            "arrest",
+            "charge"
+          ],
+          "correct": "acquit",
+          "explanation": "Sin pruebas, se absuelve.",
+          "points": 10
+        },
+        {
+          "id": "criminals-verbs-q12",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'A person who gets into private computer systems is a ____.'",
+          "options": [
+            "hacker",
+            "mugger",
+            "smuggler",
+            "kidnapper"
+          ],
+          "correct": "hacker",
+          "explanation": "hacker → hack.",
+          "points": 10
+        },
+        {
+          "id": "criminals-verbs-q13",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'He was formally ____ with identity theft.'",
+          "options": [
+            "sentenced",
+            "charged",
+            "acquitted",
+            "burgled"
+          ],
+          "correct": "charged",
+          "explanation": "be charged with a crime = ser acusado formalmente.",
+          "points": 10
+        },
+        {
+          "id": "criminals-verbs-q14",
+          "type": "multiple-choice",
+          "prompt": "¿Cómo se llama la decisión del jurado en un juicio?",
+          "options": [
+            "evidence",
+            "verdict",
+            "charge",
+            "investigation"
+          ],
+          "correct": "verdict",
+          "explanation": "verdict = veredicto.",
+          "points": 10
+        },
+        {
+          "id": "criminals-verbs-q15",
+          "type": "typing",
+          "prompt": "Traduce: 'El juez condenó al delincuente a cinco años de prisión.'",
+          "options": [],
+          "correct": "The judge sentenced the criminal to five years in prison",
+          "explanation": "sentence someone to… = condenar a alguien a…",
+          "variations": [
+            "The judge sentenced the criminal to five years in prison",
+            "The judge sentenced the criminal to 5 years in prison",
+            "The judge sentenced the criminal to five years in jail"
+          ],
+          "points": 10
         }
       ]
     },
@@ -5039,6 +6604,151 @@ window.GAME_DATA = {
           ],
           "correct": "the bank.",
           "explanation": "rob se usa con lugares o personas. 'They robbed the bank' es correcto. ✔️",
+          "points": 10
+        },
+        {
+          "id": "rob-vs-steal-q6",
+          "type": "typing",
+          "prompt": "Completa con el pasado de steal: 'Somebody ____ my bicycle from outside the library yesterday.'",
+          "options": [],
+          "correct": "stole",
+          "explanation": "steal + objeto (my bicycle). Pasado: stole.",
+          "variations": [
+            "stole"
+          ],
+          "points": 10
+        },
+        {
+          "id": "rob-vs-steal-q7",
+          "type": "typing",
+          "prompt": "Completa con rob: 'The old woman was ____ of all her jewellery.'",
+          "options": [],
+          "correct": "robbed",
+          "explanation": "be robbed of: la víctima es el sujeto.",
+          "variations": [
+            "robbed"
+          ],
+          "points": 10
+        },
+        {
+          "id": "rob-vs-steal-q8",
+          "type": "gap-fill",
+          "prompt": "Completa: 'The armed gang tried to ____ the local post office.'",
+          "options": [
+            "rob",
+            "steal",
+            "robbed",
+            "stolen"
+          ],
+          "correct": "rob",
+          "explanation": "rob + lugar.",
+          "points": 10
+        },
+        {
+          "id": "rob-vs-steal-q9",
+          "type": "typing",
+          "prompt": "Completa con steal: 'Millions of pounds were ____ from the account by hackers.'",
+          "options": [],
+          "correct": "stolen",
+          "explanation": "El dinero es el objeto: was / were stolen.",
+          "variations": [
+            "stolen"
+          ],
+          "points": 10
+        },
+        {
+          "id": "rob-vs-steal-q10",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'The tourist was ____ of his camera and phone.'",
+          "options": [
+            "stolen",
+            "robbed",
+            "burgled",
+            "mugging"
+          ],
+          "correct": "robbed",
+          "explanation": "be robbed of something.",
+          "points": 10
+        },
+        {
+          "id": "rob-vs-steal-q11",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'It is a crime to ____ customer data from a company server.'",
+          "options": [
+            "rob",
+            "steal",
+            "burgle",
+            "mug"
+          ],
+          "correct": "steal",
+          "explanation": "steal + objeto (data).",
+          "points": 10
+        },
+        {
+          "id": "rob-vs-steal-q12",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'Three masked men tried to ____ the train.'",
+          "options": [
+            "steal",
+            "rob",
+            "blackmail",
+            "burgle"
+          ],
+          "correct": "rob",
+          "explanation": "rob + lugar o vehículo.",
+          "points": 10
+        },
+        {
+          "id": "rob-vs-steal-q13",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'Her favourite jacket was ____ from the changing room.'",
+          "options": [
+            "robbed",
+            "stolen",
+            "burgled",
+            "mugged"
+          ],
+          "correct": "stolen",
+          "explanation": "El objeto robado: was stolen.",
+          "points": 10
+        },
+        {
+          "id": "rob-vs-steal-q14",
+          "type": "multiple-choice",
+          "prompt": "¿Qué oración usa bien rob?",
+          "options": [
+            "The thief robbed my credit card.",
+            "The thief robbed the bank of $10,000.",
+            "The thief stole the tourist.",
+            "The thief was stolen at the station."
+          ],
+          "correct": "The thief robbed the bank of $10,000.",
+          "explanation": "rob + lugar + of + lo robado.",
+          "points": 10
+        },
+        {
+          "id": "rob-vs-steal-q15",
+          "type": "typing",
+          "prompt": "Traduce: 'Alguien robó mi auto.'",
+          "options": [],
+          "correct": "Someone stole my car",
+          "explanation": "steal + objeto (my car).",
+          "variations": [
+            "Someone stole my car",
+            "Somebody stole my car"
+          ],
+          "points": 10
+        },
+        {
+          "id": "rob-vs-steal-q16",
+          "type": "typing",
+          "prompt": "Traduce: 'Robaron el banco ayer.' (en pasiva)",
+          "options": [],
+          "correct": "The bank was robbed yesterday",
+          "explanation": "rob + lugar; en pasiva: the bank was robbed.",
+          "variations": [
+            "The bank was robbed yesterday"
+          ],
           "points": 10
         }
       ]
@@ -5105,6 +6815,129 @@ window.GAME_DATA = {
           ],
           "correct": "Está distante, bebe más y se comporta de manera extraña.",
           "explanation": "El resumen del cuento describe a Patrick distante y bebiendo más de lo normal.",
+          "points": 10
+        },
+        {
+          "id": "story-lamb-to-the-slaughter-q6",
+          "type": "gap-fill",
+          "prompt": "Completa: 'Mary went to the grocer's to create an ____ for the time of the murder.'",
+          "options": [
+            "alibi",
+            "weapon",
+            "evidence",
+            "verdict"
+          ],
+          "correct": "alibi",
+          "explanation": "alibi = coartada.",
+          "points": 10
+        },
+        {
+          "id": "story-lamb-to-the-slaughter-q7",
+          "type": "typing",
+          "prompt": "Completa: 'The detectives searched the house for the murder ____.'",
+          "options": [],
+          "correct": "weapon",
+          "explanation": "murder weapon = arma del crimen.",
+          "variations": [
+            "weapon"
+          ],
+          "points": 10
+        },
+        {
+          "id": "story-lamb-to-the-slaughter-q8",
+          "type": "gap-fill",
+          "prompt": "Completa: 'The police couldn't find any ____ linking Mary to her husband's death.'",
+          "options": [
+            "evidence",
+            "alibi",
+            "weapon",
+            "jury"
+          ],
+          "correct": "evidence",
+          "explanation": "evidence = pruebas.",
+          "points": 10
+        },
+        {
+          "id": "story-lamb-to-the-slaughter-q9",
+          "type": "multiple-choice",
+          "prompt": "¿Por qué Mary va al almacén después de matar a su marido?",
+          "options": [
+            "To buy food for dinner with her husband",
+            "To create an alibi for the police",
+            "To confess her crime",
+            "To buy medicine"
+          ],
+          "correct": "To create an alibi for the police",
+          "explanation": "Actúa normal para tener una coartada.",
+          "points": 10
+        },
+        {
+          "id": "story-lamb-to-the-slaughter-q10",
+          "type": "multiple-choice",
+          "prompt": "¿Por qué el final de 'Lamb to the Slaughter' es ironía dramática?",
+          "options": [
+            "The police arrest Mary at the end.",
+            "The reader knows the police are eating the murder weapon.",
+            "Patrick survives the blow.",
+            "Mary forgets about the lamb."
+          ],
+          "correct": "The reader knows the police are eating the murder weapon.",
+          "explanation": "El lector sabe lo que los policías no saben.",
+          "points": 10
+        },
+        {
+          "id": "story-lamb-to-the-slaughter-q11",
+          "type": "multiple-choice",
+          "prompt": "Elige el modal correcto: 'The detectives concluded that the murderer ____ used a heavy metal object.'",
+          "options": [
+            "must have",
+            "can't have",
+            "should have",
+            "ought to"
+          ],
+          "correct": "must have",
+          "explanation": "Deducción (equivocada) de los policías: must have + pp.",
+          "points": 10
+        },
+        {
+          "id": "story-lamb-to-the-slaughter-q12",
+          "type": "multiple-choice",
+          "prompt": "El estado de Mary cambia de ____ a calmo y calculador.",
+          "options": [
+            "amused",
+            "shocked and heartbroken",
+            "indifferent",
+            "greedy"
+          ],
+          "correct": "shocked and heartbroken",
+          "explanation": "Primero queda en shock por la noticia de Patrick.",
+          "points": 10
+        },
+        {
+          "id": "story-lamb-to-the-slaughter-q13",
+          "type": "multiple-choice",
+          "prompt": "'The weapon is right under our noses' es irónico porque los policías…",
+          "options": [
+            "are standing outside",
+            "are eating the evidence at that moment",
+            "are looking at a knife",
+            "are in the wrong house"
+          ],
+          "correct": "are eating the evidence at that moment",
+          "explanation": "Se están comiendo el arma.",
+          "points": 10
+        },
+        {
+          "id": "story-lamb-to-the-slaughter-q14",
+          "type": "typing",
+          "prompt": "Escribe en inglés: 'coartada'.",
+          "options": [],
+          "correct": "alibi",
+          "explanation": "alibi = coartada.",
+          "variations": [
+            "alibi",
+            "an alibi"
+          ],
           "points": 10
         }
       ]
@@ -5184,6 +7017,281 @@ window.GAME_DATA = {
           ],
           "correct": "I would feel excited but nervous because everything is new.",
           "explanation": "would feel expresa una reacción hipotética; las otras opciones describen experiencias reales.",
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q6",
+          "type": "multiple-choice",
+          "prompt": "¿Qué significa 'get lost'?",
+          "options": [
+            "Encontrar el camino",
+            "Perderse",
+            "Llegar a tiempo",
+            "Tomar un tren"
+          ],
+          "correct": "Perderse",
+          "explanation": "get lost = perderse.",
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q7",
+          "type": "gap-fill",
+          "prompt": "Paper 1: 'If I got lost in the Atacama Desert, I ____ feel thirsty and worried.'",
+          "options": [
+            "would",
+            "will",
+            "am",
+            "was"
+          ],
+          "correct": "would",
+          "explanation": "Second conditional: If + past simple, would + verbo.",
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q8",
+          "type": "typing",
+          "prompt": "Paper 1, completa con el pasado de get: 'If I ____ lost near Everest, I would look for shelter.'",
+          "options": [],
+          "correct": "got",
+          "explanation": "If + past simple (got) en el second conditional.",
+          "variations": [
+            "got"
+          ],
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q9",
+          "type": "multiple-choice",
+          "prompt": "Paper 1: ¿cuál es la forma correcta?",
+          "options": [
+            "If I got lost, I would feel scared.",
+            "If I got lost, I will feel scared.",
+            "If I get lost, I would feel scared.",
+            "If I would get lost, I feel scared."
+          ],
+          "correct": "If I got lost, I would feel scared.",
+          "explanation": "Corrección clave: I will feel → I would feel.",
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q10",
+          "type": "typing",
+          "prompt": "Paper 2, completa con el adjetivo de thrill: 'I was absolutely ____ when I passed my driving test.'",
+          "options": [],
+          "correct": "thrilled",
+          "explanation": "-ed: cómo se siente la persona.",
+          "variations": [
+            "thrilled"
+          ],
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q11",
+          "type": "typing",
+          "prompt": "Paper 2, completa con el adjetivo de scare: 'It was terrifying, we were ____ stiff.'",
+          "options": [],
+          "correct": "scared",
+          "explanation": "scared stiff = muerto de miedo.",
+          "variations": [
+            "scared"
+          ],
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q12",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'The long flight to Australia was really ____; everyone was exhausted.'",
+          "options": [
+            "tiring",
+            "tired",
+            "tire",
+            "tiredness"
+          ],
+          "correct": "tiring",
+          "explanation": "-ing: describe lo que provoca el cansancio (el vuelo).",
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q13",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'She was ____ to hear that she had won the prize.'",
+          "options": [
+            "astonishing",
+            "astonished",
+            "astonish",
+            "astonishes"
+          ],
+          "correct": "astonished",
+          "explanation": "-ed: cómo se siente ella.",
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q14",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'The film's plot was so ____ that nobody understood the ending.'",
+          "options": [
+            "confused",
+            "confusing",
+            "confuse",
+            "confusion"
+          ],
+          "correct": "confusing",
+          "explanation": "-ing: la trama provoca la confusión.",
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q15",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'We were ____ when we saw the cost of the damage.'",
+          "options": [
+            "horrifying",
+            "horrified",
+            "horrify",
+            "horrific"
+          ],
+          "correct": "horrified",
+          "explanation": "-ed: cómo se sintieron.",
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q16",
+          "type": "typing",
+          "prompt": "Paper 3, completa con la forma de sleep: 'I can't get used to ____ on this hard mattress.'",
+          "options": [],
+          "correct": "sleeping",
+          "explanation": "get used to + -ing.",
+          "variations": [
+            "sleeping"
+          ],
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q17",
+          "type": "gap-fill",
+          "prompt": "Paper 3: 'When he was at university, he used to ____ up all night.'",
+          "options": [
+            "stay",
+            "staying",
+            "to stay",
+            "stayed"
+          ],
+          "correct": "stay",
+          "explanation": "used to + verbo base (hábito pasado).",
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q18",
+          "type": "gap-fill",
+          "prompt": "Paper 3: 'If you drink coffee late, it will keep you ____ at night.'",
+          "options": [
+            "awake",
+            "asleep",
+            "sleepy",
+            "tired"
+          ],
+          "correct": "awake",
+          "explanation": "keep someone awake = no dejar dormir.",
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q19",
+          "type": "gap-fill",
+          "prompt": "Paper 3: 'Make sure you ____ the alarm for 6 a.m. so you don't oversleep.'",
+          "options": [
+            "set",
+            "make",
+            "do",
+            "turn"
+          ],
+          "correct": "set",
+          "explanation": "set an alarm = poner la alarma.",
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q20",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'She is slowly getting used to ____ night shifts.'",
+          "options": [
+            "work",
+            "working",
+            "worked",
+            "to work"
+          ],
+          "correct": "working",
+          "explanation": "get used to + -ing.",
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q21",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'People who suffer from ____ find it very difficult to fall asleep.'",
+          "options": [
+            "jet lag",
+            "insomnia",
+            "nightmare",
+            "nap"
+          ],
+          "correct": "insomnia",
+          "explanation": "insomnia = no poder dormir.",
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q22",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'I used to ____ a heavy sleeper, but now every noise wakes me up.'",
+          "options": [
+            "being",
+            "be",
+            "am",
+            "been"
+          ],
+          "correct": "be",
+          "explanation": "used to + verbo base.",
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q23",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'He missed the train because he forgot to set his alarm and ____.'",
+          "options": [
+            "slept like a log",
+            "overslept",
+            "took a nap",
+            "snored"
+          ],
+          "correct": "overslept",
+          "explanation": "oversleep = quedarse dormido de más.",
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q24",
+          "type": "multiple-choice",
+          "prompt": "¿Qué significa 'sleep like a log'?",
+          "options": [
+            "Tener pesadillas",
+            "Dormir profundamente",
+            "Caminar dormido",
+            "Despertarse toda la noche"
+          ],
+          "correct": "Dormir profundamente",
+          "explanation": "sleep like a log = dormir como un tronco.",
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q25",
+          "type": "typing",
+          "prompt": "Traduce: 'Mi papá solía roncar muy fuerte.'",
+          "options": [],
+          "correct": "My father used to snore very loudly",
+          "explanation": "used to + verbo para un hábito pasado.",
+          "variations": [
+            "My father used to snore very loudly",
+            "My dad used to snore very loudly",
+            "My father used to snore really loudly",
+            "My dad used to snore really loudly",
+            "My father used to snore loudly",
+            "My dad used to snore loudly"
+          ],
           "points": 10
         }
       ]
