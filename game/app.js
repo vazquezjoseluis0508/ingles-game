@@ -19,6 +19,7 @@ const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) {
 const allDecks = () => DATA.units.flatMap((u) => u.decks);
 const allCards = () => allDecks().flatMap((d) => d.cards.map((c) => ({ ...c, deckId: d.id })));
 const deckById = (id) => allDecks().find((d) => d.id === id);
+const getUnitIdByDeckId = (deckId) => { const u = DATA.units.find(u => u.decks.some(d => d.id === deckId)); return u ? u.id : null; };
 const jsAttr = (v) => JSON.stringify(v).replace(/"/g, "&quot;"); // seguro dentro de onclick="..."
 const cardState = (id) => state.cards[id] || { box: 1, due: addDays(-1), seen: 0, correct: 0, wrong: 0 };
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -548,7 +549,8 @@ function startSession(deckId, mode) {
 
   // Corazones solo en practice. learn/arcade/boss no usan vidas.
   const hearts = (mode === "practice") ? START_HEARTS : Infinity;
-  session = { deckId, mode, queue, index: 0, correct: 0, pool, hearts, score: 0, combo: 0, timer: null, timeLeft: 0 };
+  const unitId = getUnitIdByDeckId(deckId);
+  session = { deckId, unitId, mode, queue, index: 0, correct: 0, pool, hearts, score: 0, combo: 0, timer: null, timeLeft: 0 };
   renderCard();
 }
 
@@ -861,7 +863,7 @@ async function renderSummary() {
       ${quizOffer}
       <div class="summary-actions">
         <button class="primary" onclick="startSession('${s.deckId}','${s.mode}')">🔁 Otra ronda</button>
-        <button class="ghost" onclick="renderUnitView('${s.deckId}')">← Atrás</button>
+        <button class="ghost" onclick="renderUnitView('${s.unitId || s.deckId}')">← Atrás</button>
         <button class="ghost" onclick="renderHome()">🏠 Inicio</button>
       </div>
     </div>`;
@@ -908,16 +910,21 @@ async function renderSpecialSummary(s, bonus) {
 function goBackDeck() {
   clearTimer();
   if (session && session.type === "quiz") {
-    persist().then(() => renderQuizzes());
+    // Si el quiz viene de una clase, volver a esa clase
+    if (session.unitId) {
+      persist().then(() => renderUnitView(session.unitId));
+    } else {
+      persist().then(() => renderQuizzes());
+    }
   } else if (session && session.deckId) {
-    persist().then(() => renderUnitView(session.deckId));
+    persist().then(() => renderUnitView(session.unitId || session.deckId));
   } else {
     renderHome();
   }
 }
 
 function confirmExit() {
-  if (confirm("¿Salir de la sesión? Tu progreso de cada carta ya se guardó.")) { clearTimer(); persist(); renderHome(); }
+  if (confirm("¿Salir de la sesión? Tu progreso de cada carta ya se guardó.")) { clearTimer(); persist(); if (session && session.unitId) renderUnitView(session.unitId); else renderHome(); }
 }
 
 // ---------- animación de acierto ----------
