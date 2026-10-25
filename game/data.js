@@ -809,6 +809,9 @@ window.GAME_DATA = {
       "name": "Clase 2 — 14/10",
       "date": "2025-10-14",
       "emoji": "✍️",
+      "theory": {
+        "summary": "**Reporting Verbs**\nDicen la actitud o intención de quien habló, más allá de say / tell.\nVerbo + to-infinitive: agree, offer, promise, refuse, threaten → He refused to answer.\nVerbo + persona + to-infinitive: advise, persuade, remind, convince, encourage, invite → The doctor advised me to rest. Negativo: advised me not to…\nVerbo + -ing: suggest, deny, admit, recommend, regret → She denied stealing the files.\nVerbo + preposición + -ing: apologize for, insist on, accuse someone of → They accused him of lying.\nAdmit / claim / explain / insist también van con that + oración: He admitted that he had made a mistake."
+      },
       "decks": [
         {
           "id": "reporting-verbs",
@@ -912,6 +915,86 @@ window.GAME_DATA = {
               "note": "Grupo 3: accuse someone of + -ing.",
               "emoji": "📝",
               "tag": "-ing"
+            },
+            {
+              "id": "rv13",
+              "en": "The suspect denied committing the robbery.",
+              "es": "El sospechoso negó haber cometido el robo.",
+              "note": "deny + -ing.",
+              "emoji": "🙅",
+              "tag": "-ing"
+            },
+            {
+              "id": "rv14",
+              "en": "She promised to send the contract before the end of the day.",
+              "es": "Prometió mandar el contrato antes de que termine el día.",
+              "note": "promise + to-infinitive.",
+              "emoji": "🤞",
+              "tag": "to-inf"
+            },
+            {
+              "id": "rv15",
+              "en": "The analyst suggested investing in renewable energy.",
+              "es": "El analista sugirió invertir en energías renovables.",
+              "note": "suggest + -ing (nunca suggest to).",
+              "emoji": "💡",
+              "tag": "-ing"
+            },
+            {
+              "id": "rv16",
+              "en": "They accused the former employee of leaking data to the press.",
+              "es": "Acusaron al ex empleado de filtrar datos a la prensa.",
+              "note": "accuse + persona + of + -ing.",
+              "emoji": "👉",
+              "tag": "-ing"
+            },
+            {
+              "id": "rv17",
+              "en": "The doctor advised him to take a few days off work.",
+              "es": "El médico le aconsejó que se tomara unos días en el trabajo.",
+              "note": "advise + persona + to-infinitive.",
+              "emoji": "🩺",
+              "tag": "persona + to-inf"
+            },
+            {
+              "id": "rv18",
+              "en": "He admitted that he had made a mistake on the form.",
+              "es": "Admitió que había cometido un error en el formulario.",
+              "note": "admit + that + oración.",
+              "emoji": "😳",
+              "tag": "that"
+            },
+            {
+              "id": "rv19",
+              "en": "The landlord threatened to evict the tenants.",
+              "es": "El dueño amenazó con desalojar a los inquilinos.",
+              "note": "threaten + to-infinitive.",
+              "emoji": "🏠",
+              "tag": "to-inf"
+            },
+            {
+              "id": "rv20",
+              "en": "She apologized for arriving late to the meeting.",
+              "es": "Pidió disculpas por llegar tarde a la reunión.",
+              "note": "apologize for + -ing.",
+              "emoji": "🙏",
+              "tag": "-ing"
+            },
+            {
+              "id": "rv21",
+              "en": "The manager encouraged the team to apply for the award.",
+              "es": "El gerente alentó al equipo a postularse al premio.",
+              "note": "encourage + persona + to-infinitive.",
+              "emoji": "🏆",
+              "tag": "persona + to-inf"
+            },
+            {
+              "id": "rv22",
+              "en": "Marcos insisted on paying for the coffee.",
+              "es": "Marcos insistió en pagar el café.",
+              "note": "insist on + -ing.",
+              "emoji": "☕",
+              "tag": "-ing"
             }
           ]
         }
@@ -922,6 +1005,9 @@ window.GAME_DATA = {
       "name": "Clase 3 — 19/10",
       "date": "2025-10-19",
       "emoji": "📰",
+      "theory": {
+        "summary": "**Headline Language**\nPalabras cortas de titulares: back (apoyar), axe (recortar), hit (afectar), bid (intento), clash (enfrentamiento), vow (prometer firmemente), quiz (interrogar), row (discusión).\nPresent simple para algo que ya pasó: PILOT SAVES FLIGHT = a pilot has saved / saved a flight.\nInfinitivo para el futuro: POLICE TO INVESTIGATE = the police are going to investigate.\nSe omiten artículos y auxiliares: THOUSANDS EVACUATED = thousands of people have been evacuated.\n\n**People in the Media**\ncritic, commentator, reporter, editor, presenter, freelance journalist, newsreader, paparazzi, agony aunt.\nEditor decide qué se publica; newsreader lee las noticias; commentator narra en vivo; freelance trabaja para varios medios.\n\n**Media Adjectives**\nbiased (parcial) ↔ objective (objetivo); accurate (preciso); sensational (sensacionalista); censored (censurado).\n\n**Writing Connectors**\nPara el for-and-against / opinion article: Nowadays · Firstly / Secondly · For instance / For example · In addition / Moreover · However · Whereas · Nevertheless · Actually · On the other hand · In conclusion.\nHowever / Nevertheless / Moreover van al principio de la oración y con coma: The flight was delayed. However, passengers remained calm.\nWhereas une dos ideas opuestas en la misma oración."
+      },
       "decks": [
         {
           "id": "headlines",
@@ -992,6 +1078,54 @@ window.GAME_DATA = {
               "es": "discusión / disputa",
               "note": "Actress rows with co-star.",
               "emoji": "💢",
+              "tag": "Headline"
+            },
+            {
+              "id": "hl09",
+              "en": "POLICE TO INVESTIGATE CYBERSECURITY BREACH",
+              "es": "La policía va a investigar una brecha de ciberseguridad.",
+              "note": "Infinitivo en titular = futuro.",
+              "emoji": "🚔",
+              "tag": "Headline"
+            },
+            {
+              "id": "hl10",
+              "en": "THREE LIGHTHOUSE KEEPERS VANISH WITHOUT TRACE",
+              "es": "Tres fareros desaparecieron sin dejar rastro.",
+              "note": "Present simple en titular = algo que ya pasó.",
+              "emoji": "🗼",
+              "tag": "Headline"
+            },
+            {
+              "id": "hl11",
+              "en": "GOVERNMENT TO BAN SINGLE-USE PLASTIC",
+              "es": "El gobierno va a prohibir el plástico de un solo uso.",
+              "note": "to + verbo = plan futuro.",
+              "emoji": "🚫",
+              "tag": "Headline"
+            },
+            {
+              "id": "hl12",
+              "en": "VOLCANO ERUPTS IN SOUTH AMERICA: THOUSANDS EVACUATED",
+              "es": "Un volcán entró en erupción en Sudamérica y evacuaron a miles.",
+              "note": "Sin artículos ni auxiliares: thousands (have been) evacuated.",
+              "emoji": "🌋",
+              "tag": "Headline"
+            },
+            {
+              "id": "hl13",
+              "en": "SCAMMER ARRESTED AFTER BANK FRAUD PROBE",
+              "es": "Arrestaron a un estafador tras una investigación por fraude bancario.",
+              "note": "Pasiva sin auxiliar: (was) arrested.",
+              "emoji": "🔒",
+              "tag": "Headline"
+            },
+            {
+              "id": "hl14",
+              "en": "ASTRONAUT RETURNS FROM SPACE YOUNGER THAN TWIN",
+              "es": "Un astronauta volvió del espacio más joven que su gemelo.",
+              "note": "Present simple = hecho reciente; sin artículo (an astronaut).",
+              "emoji": "🚀",
               "tag": "Headline"
             }
           ]
@@ -1074,6 +1208,62 @@ window.GAME_DATA = {
               "note": "Columna de consejos personales.",
               "emoji": "💌",
               "tag": "Media"
+            },
+            {
+              "id": "mp10",
+              "en": "The freelance journalist sent an investigative report on climate change.",
+              "es": "El periodista independiente mandó un informe de investigación sobre el cambio climático.",
+              "note": "freelance journalist: trabaja para varios medios.",
+              "emoji": "🧑‍💻",
+              "tag": "Media"
+            },
+            {
+              "id": "mp11",
+              "en": "The newsreader read the live bulletin calmly.",
+              "es": "La presentadora de noticias leyó el boletín en vivo con calma.",
+              "note": "newsreader: lee las noticias en TV o radio.",
+              "emoji": "📺",
+              "tag": "Media"
+            },
+            {
+              "id": "mp12",
+              "en": "Paparazzi were waiting outside the hotel to photograph the actress.",
+              "es": "Los paparazzi esperaban afuera del hotel para fotografiar a la actriz.",
+              "note": "paparazzi: fotógrafos que persiguen famosos.",
+              "emoji": "📸",
+              "tag": "Media"
+            },
+            {
+              "id": "mp13",
+              "en": "The editor revised the article before approving it.",
+              "es": "El editor revisó el artículo antes de aprobarlo.",
+              "note": "editor: decide qué se publica.",
+              "emoji": "✏️",
+              "tag": "Media"
+            },
+            {
+              "id": "mp14",
+              "en": "A sports commentator gave a detailed analysis during the final.",
+              "es": "Un comentarista deportivo hizo un análisis detallado durante la final.",
+              "note": "commentator: comenta un evento en vivo.",
+              "emoji": "🎙️",
+              "tag": "Media"
+            },
+            {
+              "id": "mp15",
+              "en": "The TV presenter interviewed the author about her new novel.",
+              "es": "La conductora de TV entrevistó a la autora sobre su nueva novela.",
+              "note": "presenter: conduce un programa.",
+              "emoji": "🎤",
+              "tag": "Media"
+            },
+            {
+              "id": "mp16",
+              "en": "Film critics praised the director in their reviews.",
+              "es": "Los críticos de cine elogiaron al director en sus reseñas.",
+              "note": "critic: escribe reseñas (reviews).",
+              "emoji": "🎬",
+              "tag": "Media"
             }
           ]
         },
@@ -1122,6 +1312,70 @@ window.GAME_DATA = {
               "es": "censurado",
               "note": "Se ocultó o eliminó parte del contenido.",
               "emoji": "🚫",
+              "tag": "Adjective"
+            },
+            {
+              "id": "ma06",
+              "en": "The report was criticized for being biased towards the government.",
+              "es": "Criticaron el informe por ser parcial a favor del gobierno.",
+              "note": "biased = parcial, tendencioso.",
+              "emoji": "⚖️",
+              "tag": "Adjective"
+            },
+            {
+              "id": "ma07",
+              "en": "Academic articles must remain objective.",
+              "es": "Los artículos académicos tienen que ser objetivos.",
+              "note": "objective = objetivo, imparcial.",
+              "emoji": "🎯",
+              "tag": "Adjective"
+            },
+            {
+              "id": "ma08",
+              "en": "Sensational headlines are designed to attract clicks.",
+              "es": "Los titulares sensacionalistas están pensados para conseguir clics.",
+              "note": "sensational = sensacionalista, exagerado.",
+              "emoji": "🔥",
+              "tag": "Adjective"
+            },
+            {
+              "id": "ma09",
+              "en": "Medical information online must be accurate.",
+              "es": "La información médica en internet tiene que ser precisa.",
+              "note": "accurate = preciso, correcto.",
+              "emoji": "✅",
+              "tag": "Adjective"
+            },
+            {
+              "id": "ma10",
+              "en": "During the war, many reports were censored.",
+              "es": "Durante la guerra censuraron muchos informes.",
+              "note": "censored = censurado.",
+              "emoji": "⬛",
+              "tag": "Adjective"
+            },
+            {
+              "id": "ma11",
+              "en": "The documentary gives an accurate account of the events.",
+              "es": "El documental da un relato preciso de los hechos.",
+              "note": "accurate account = relato preciso.",
+              "emoji": "🎞️",
+              "tag": "Adjective"
+            },
+            {
+              "id": "ma12",
+              "en": "Tabloids are often accused of publishing sensational stories.",
+              "es": "A los diarios sensacionalistas los acusan seguido de publicar historias exageradas.",
+              "note": "sensational story = historia sensacionalista.",
+              "emoji": "🗞️",
+              "tag": "Adjective"
+            },
+            {
+              "id": "ma13",
+              "en": "Journalists must present objective facts.",
+              "es": "Los periodistas tienen que presentar hechos objetivos.",
+              "note": "objective ↔ biased.",
+              "emoji": "📰",
               "tag": "Adjective"
             }
           ]
@@ -1211,6 +1465,30 @@ window.GAME_DATA = {
               "es": "En conclusión",
               "note": "Para cerrar con tu opinión en la P4.",
               "emoji": "🏁",
+              "tag": "Connector"
+            },
+            {
+              "id": "wc11",
+              "en": "The flight was delayed. However, the passengers remained calm.",
+              "es": "El vuelo se demoró. Sin embargo, los pasajeros mantuvieron la calma.",
+              "note": "However + coma, al principio de la oración.",
+              "emoji": "✈️",
+              "tag": "Connector"
+            },
+            {
+              "id": "wc12",
+              "en": "On the one hand, extreme sports are exciting; on the other hand, they are risky.",
+              "es": "Por un lado, los deportes extremos son emocionantes; por otro lado, son riesgosos.",
+              "note": "On the one hand… on the other hand: pros y contras.",
+              "emoji": "🪂",
+              "tag": "Connector"
+            },
+            {
+              "id": "wc13",
+              "en": "The study is accurate. Moreover, it offers new solutions.",
+              "es": "El estudio es preciso. Además, ofrece soluciones nuevas.",
+              "note": "Moreover = además (más formal que also).",
+              "emoji": "📊",
               "tag": "Connector"
             }
           ]
@@ -2340,6 +2618,166 @@ window.GAME_DATA = {
           ],
           "explanation": "claim → claimed; claim + that + oración.",
           "points": 10
+        },
+        {
+          "id": "rv-q6",
+          "type": "typing",
+          "prompt": "Reescribe con deny: '\"I didn't take your wallet,\" said James.' → 'James denied ____ my wallet.'",
+          "options": [],
+          "correct": "taking",
+          "explanation": "deny + -ing.",
+          "variations": [
+            "taking",
+            "having taken"
+          ],
+          "points": 10
+        },
+        {
+          "id": "rv-q7",
+          "type": "typing",
+          "prompt": "Reescribe con remind: 'Sarah's mother said: \"Don't forget: lock the door!\"' → 'Her mother reminded her ____ the door.'",
+          "options": [],
+          "correct": "to lock",
+          "explanation": "remind + persona + to-infinitive.",
+          "variations": [
+            "to lock"
+          ],
+          "points": 10
+        },
+        {
+          "id": "rv-q8",
+          "type": "typing",
+          "prompt": "Reescribe con insist on: '\"I'll pay for the coffee,\" said Marcos.' → 'Marcos insisted on ____ for the coffee.'",
+          "options": [],
+          "correct": "paying",
+          "explanation": "Después de una preposición (on) va -ing.",
+          "variations": [
+            "paying"
+          ],
+          "points": 10
+        },
+        {
+          "id": "rv-q9",
+          "type": "typing",
+          "prompt": "Reescribe con advise: '\"You should eat less processed food,\" the doctor told me.' → 'The doctor advised me ____ less processed food.'",
+          "options": [],
+          "correct": "to eat",
+          "explanation": "advise + persona + to-infinitive.",
+          "variations": [
+            "to eat"
+          ],
+          "points": 10
+        },
+        {
+          "id": "rv-q10",
+          "type": "typing",
+          "prompt": "Reescribe con refuse: '\"I will not reveal the password,\" said the candidate.' → 'The candidate refused ____ the password.'",
+          "options": [],
+          "correct": "to reveal",
+          "explanation": "refuse + to-infinitive.",
+          "variations": [
+            "to reveal"
+          ],
+          "points": 10
+        },
+        {
+          "id": "rv-q11",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'The police officer advised us ____ late at night in that area.'",
+          "options": [
+            "to not walk",
+            "not to walk",
+            "don't walk",
+            "not walking"
+          ],
+          "correct": "not to walk",
+          "explanation": "Negativo: advise + persona + not to + verbo.",
+          "points": 10
+        },
+        {
+          "id": "rv-q12",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'She apologized ____ ruining the surprise party.'",
+          "options": [
+            "of",
+            "for",
+            "to",
+            "on"
+          ],
+          "correct": "for",
+          "explanation": "apologize for + -ing.",
+          "points": 10
+        },
+        {
+          "id": "rv-q13",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'The investigator suggested ____ the CCTV footage.'",
+          "options": [
+            "to check",
+            "checking",
+            "check",
+            "to checking"
+          ],
+          "correct": "checking",
+          "explanation": "suggest + -ing.",
+          "points": 10
+        },
+        {
+          "id": "rv-q14",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'They accused the technician ____ damaging the server.'",
+          "options": [
+            "of",
+            "for",
+            "with",
+            "about"
+          ],
+          "correct": "of",
+          "explanation": "accuse someone of + -ing.",
+          "points": 10
+        },
+        {
+          "id": "rv-q15",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'He promised ____ the documents as soon as he arrived.'",
+          "options": [
+            "sending",
+            "to send",
+            "send",
+            "for sending"
+          ],
+          "correct": "to send",
+          "explanation": "promise + to-infinitive.",
+          "points": 10
+        },
+        {
+          "id": "rv-q16",
+          "type": "typing",
+          "prompt": "Traduce: 'La médica me aconsejó que descansara tres días.'",
+          "options": [],
+          "correct": "The doctor advised me to rest for three days",
+          "explanation": "advise + persona + to-infinitive.",
+          "variations": [
+            "The doctor advised me to rest for three days",
+            "The doctor advised me to rest for 3 days",
+            "The doctor advised me to rest three days",
+            "My doctor advised me to rest for three days"
+          ],
+          "points": 10
+        },
+        {
+          "id": "rv-q17",
+          "type": "typing",
+          "prompt": "Traduce: 'Mi colega me recordó que mandara el mail antes del mediodía.'",
+          "options": [],
+          "correct": "My colleague reminded me to send the email before noon",
+          "explanation": "remind + persona + to-infinitive.",
+          "variations": [
+            "My colleague reminded me to send the email before noon",
+            "My colleague reminded me to send the e-mail before noon",
+            "My colleague reminded me to send the email before midday"
+          ],
+          "points": 10
         }
       ]
     },
@@ -3305,6 +3743,210 @@ window.GAME_DATA = {
           "correct": "Se enfrentan por la propuesta.",
           "explanation": "clash expresa enfrentamiento o desacuerdo.",
           "points": 10
+        },
+        {
+          "id": "headlines-q6",
+          "type": "gap-fill",
+          "prompt": "Titular: 'MAYOR TO OPEN NEW HOSPITAL' → 'The mayor is going ____ a new hospital next week.'",
+          "options": [
+            "to open",
+            "opening",
+            "opened",
+            "open"
+          ],
+          "correct": "to open",
+          "explanation": "El infinitivo del titular indica futuro.",
+          "points": 10
+        },
+        {
+          "id": "headlines-q7",
+          "type": "typing",
+          "prompt": "Titular: 'BANK FRAUD DISCOVERED' → 'A bank fraud ____ by auditors.' (discover)",
+          "options": [],
+          "correct": "was discovered",
+          "explanation": "Al expandir el titular vuelve el auxiliar de la pasiva.",
+          "variations": [
+            "was discovered",
+            "has been discovered"
+          ],
+          "points": 10
+        },
+        {
+          "id": "headlines-q8",
+          "type": "typing",
+          "prompt": "Titular: 'PILOT SAVES FLIGHT AFTER ENGINE FAILURE' → 'A pilot ____ a flight yesterday.' (save)",
+          "options": [],
+          "correct": "saved",
+          "explanation": "El present simple del titular se expande a past simple (yesterday).",
+          "variations": [
+            "saved"
+          ],
+          "points": 10
+        },
+        {
+          "id": "headlines-q9",
+          "type": "typing",
+          "prompt": "Titular: 'SCIENTISTS FIND NEW PROOF OF GLOBAL WARMING' → 'Scientists ____ new proof recently.' (find)",
+          "options": [],
+          "correct": "have found",
+          "explanation": "Hallazgo reciente: present perfect.",
+          "variations": [
+            "have found",
+            "found"
+          ],
+          "points": 10
+        },
+        {
+          "id": "headlines-q10",
+          "type": "gap-fill",
+          "prompt": "Titular: 'TEACHERS TO STRIKE OVER SALARY CUTS' → 'Teachers are planning ____ because of salary cuts.'",
+          "options": [
+            "to strike",
+            "striking",
+            "struck",
+            "strike"
+          ],
+          "correct": "to strike",
+          "explanation": "to + verbo = plan futuro.",
+          "points": 10
+        },
+        {
+          "id": "headlines-q11",
+          "type": "multiple-choice",
+          "prompt": "¿Qué significa el titular 'PRESIDENT TO LAUNCH GREEN POLICY'?",
+          "options": [
+            "The President launched a policy yesterday.",
+            "The President is going to launch a green policy.",
+            "The President refuses to support green policies.",
+            "The President was criticized for his green policy."
+          ],
+          "correct": "The President is going to launch a green policy.",
+          "explanation": "to + verbo en titular = futuro.",
+          "points": 10
+        },
+        {
+          "id": "headlines-q12",
+          "type": "multiple-choice",
+          "prompt": "¿Qué significa el titular 'MILLIONS LOST IN CYBER ATTACK'?",
+          "options": [
+            "Cybercriminals have lost millions.",
+            "Millions were lost due to a cyber attack.",
+            "A cyber attack will happen soon.",
+            "Nobody was affected by the attack."
+          ],
+          "correct": "Millions were lost due to a cyber attack.",
+          "explanation": "Se omite el auxiliar de la pasiva: (were) lost.",
+          "points": 10
+        },
+        {
+          "id": "headlines-q13",
+          "type": "multiple-choice",
+          "prompt": "En un titular, el present simple 'DENIES' suele reemplazar a…",
+          "options": [
+            "has denied / is denying",
+            "would deny",
+            "had been denying",
+            "is denied to"
+          ],
+          "correct": "has denied / is denying",
+          "explanation": "Present simple para algo reciente.",
+          "points": 10
+        },
+        {
+          "id": "headlines-q14",
+          "type": "multiple-choice",
+          "prompt": "¿Cómo se expresa un plan futuro en un titular?",
+          "options": [
+            "With will have been",
+            "With an infinitive (to + verb)",
+            "With the past continuous",
+            "With a modal of obligation"
+          ],
+          "correct": "With an infinitive (to + verb)",
+          "explanation": "POLICE TO INVESTIGATE = van a investigar.",
+          "points": 10
+        },
+        {
+          "id": "headlines-q15",
+          "type": "multiple-choice",
+          "prompt": "¿Qué palabras se omiten normalmente en los titulares?",
+          "options": [
+            "Main verbs and nouns",
+            "Articles and auxiliary verbs",
+            "Adjectives and adverbs",
+            "Names and numbers"
+          ],
+          "correct": "Articles and auxiliary verbs",
+          "explanation": "Sin a / the ni is / have, para ahorrar espacio.",
+          "points": 10
+        },
+        {
+          "id": "headlines-q16",
+          "type": "multiple-choice",
+          "prompt": "En 'THOUSANDS OF JOBS AXED', ¿qué significa axe?",
+          "options": [
+            "eliminar / recortar",
+            "apoyar",
+            "interrogar",
+            "prometer"
+          ],
+          "correct": "eliminar / recortar",
+          "explanation": "axe = recortar, eliminar (empleos, servicios).",
+          "points": 10
+        },
+        {
+          "id": "headlines-q17",
+          "type": "multiple-choice",
+          "prompt": "En 'POLICE QUIZ WITNESS', ¿qué significa quiz?",
+          "options": [
+            "interrogar",
+            "aprobar",
+            "atacar",
+            "premiar"
+          ],
+          "correct": "interrogar",
+          "explanation": "quiz en titulares = interrogar.",
+          "points": 10
+        },
+        {
+          "id": "headlines-q18",
+          "type": "multiple-choice",
+          "prompt": "En 'ACTRESS ROWS WITH CO-STAR', ¿qué hace la actriz?",
+          "options": [
+            "Discute con su compañero de reparto.",
+            "Rema con su compañero.",
+            "Se casa con su compañero.",
+            "Trabaja con su compañero."
+          ],
+          "correct": "Discute con su compañero de reparto.",
+          "explanation": "row = discusión / discutir.",
+          "points": 10
+        },
+        {
+          "id": "headlines-q19",
+          "type": "typing",
+          "prompt": "Escribe la palabra de titular que significa 'prometer firmemente'.",
+          "options": [],
+          "correct": "vow",
+          "explanation": "BOSS VOWS TO AVENGE DEFEAT.",
+          "variations": [
+            "vow",
+            "vows"
+          ],
+          "points": 10
+        },
+        {
+          "id": "headlines-q20",
+          "type": "typing",
+          "prompt": "Escribe la palabra de titular que significa 'intento'.",
+          "options": [],
+          "correct": "bid",
+          "explanation": "ASTRONAUT BIDS TO BE FIRST MAN ON MARS.",
+          "variations": [
+            "bid",
+            "a bid"
+          ],
+          "points": 10
         }
       ]
     },
@@ -3357,6 +3999,170 @@ window.GAME_DATA = {
           "correct": "Conducir un programa.",
           "explanation": "presenter = presentador: conduce un programa.",
           "points": 10
+        },
+        {
+          "id": "media-people-q6",
+          "type": "typing",
+          "prompt": "Completa la definición: 'A ____ is a photographer who follows famous people to take photos of them.'",
+          "options": [],
+          "correct": "paparazzo",
+          "explanation": "paparazzo (singular) / paparazzi (plural).",
+          "variations": [
+            "paparazzo",
+            "paparazzi"
+          ],
+          "points": 10
+        },
+        {
+          "id": "media-people-q7",
+          "type": "gap-fill",
+          "prompt": "Completa: 'A ____ reads the main news stories on TV or radio.'",
+          "options": [
+            "newsreader",
+            "critic",
+            "editor",
+            "commentator"
+          ],
+          "correct": "newsreader",
+          "explanation": "newsreader = quien lee las noticias.",
+          "points": 10
+        },
+        {
+          "id": "media-people-q8",
+          "type": "gap-fill",
+          "prompt": "Completa: 'An ____ is in charge of a newspaper and decides what is published.'",
+          "options": [
+            "editor",
+            "critic",
+            "reporter",
+            "newsreader"
+          ],
+          "correct": "editor",
+          "explanation": "editor = responsable de lo que se publica.",
+          "points": 10
+        },
+        {
+          "id": "media-people-q9",
+          "type": "typing",
+          "prompt": "Completa: 'A ____ journalist works for different news organizations, not for one employer.'",
+          "options": [],
+          "correct": "freelance",
+          "explanation": "freelance = independiente.",
+          "variations": [
+            "freelance"
+          ],
+          "points": 10
+        },
+        {
+          "id": "media-people-q10",
+          "type": "gap-fill",
+          "prompt": "Completa: 'A sports ____ describes the game live as it happens.'",
+          "options": [
+            "commentator",
+            "critic",
+            "editor",
+            "paparazzi"
+          ],
+          "correct": "commentator",
+          "explanation": "commentator = comentarista en vivo.",
+          "points": 10
+        },
+        {
+          "id": "media-people-q11",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'The TV ____ welcomed the guests to the chat show.'",
+          "options": [
+            "presenter",
+            "burglar",
+            "passenger",
+            "witness"
+          ],
+          "correct": "presenter",
+          "explanation": "presenter = conductor de un programa.",
+          "points": 10
+        },
+        {
+          "id": "media-people-q12",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'She works as a freelance ____, writing articles for several magazines.'",
+          "options": [
+            "newsreader",
+            "journalist",
+            "editor",
+            "commentator"
+          ],
+          "correct": "journalist",
+          "explanation": "freelance journalist = periodista independiente.",
+          "points": 10
+        },
+        {
+          "id": "media-people-q13",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'The ____ invaded the celebrity's private life to get photos.'",
+          "options": [
+            "editors",
+            "paparazzi",
+            "critics",
+            "commentators"
+          ],
+          "correct": "paparazzi",
+          "explanation": "paparazzi = fotógrafos que persiguen famosos.",
+          "points": 10
+        },
+        {
+          "id": "media-people-q14",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'The newspaper ____ rejected the article because it had no reliable sources.'",
+          "options": [
+            "editor",
+            "pilot",
+            "patient",
+            "suspect"
+          ],
+          "correct": "editor",
+          "explanation": "El editor aprueba o rechaza lo que se publica.",
+          "points": 10
+        },
+        {
+          "id": "media-people-q15",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'The film ____ gave the new movie a terrible review.'",
+          "options": [
+            "commentator",
+            "critic",
+            "presenter",
+            "newsreader"
+          ],
+          "correct": "critic",
+          "explanation": "critic = crítico que escribe reseñas.",
+          "points": 10
+        },
+        {
+          "id": "media-people-q16",
+          "type": "multiple-choice",
+          "prompt": "¿Quién responde las cartas de los lectores dando consejos?",
+          "options": [
+            "agony aunt",
+            "newsreader",
+            "commentator",
+            "paparazzi"
+          ],
+          "correct": "agony aunt",
+          "explanation": "agony aunt = consejera sentimental de una revista.",
+          "points": 10
+        },
+        {
+          "id": "media-people-q17",
+          "type": "typing",
+          "prompt": "Escribe en inglés: 'crítico' (de cine o libros).",
+          "options": [],
+          "correct": "critic",
+          "explanation": "critic = crítico; review = reseña.",
+          "variations": [
+            "critic",
+            "a critic"
+          ],
+          "points": 10
         }
       ]
     },
@@ -3408,6 +4214,126 @@ window.GAME_DATA = {
           ],
           "correct": "Se ocultó o eliminó parte del contenido.",
           "explanation": "censored = censurado; no significa simplemente parcial o exagerado.",
+          "points": 10
+        },
+        {
+          "id": "media-adjectives-q6",
+          "type": "gap-fill",
+          "prompt": "Completa: 'A report that favours only one political side is ____.'",
+          "options": [
+            "biased",
+            "objective",
+            "accurate",
+            "censored"
+          ],
+          "correct": "biased",
+          "explanation": "biased = favorece a un lado.",
+          "points": 10
+        },
+        {
+          "id": "media-adjectives-q7",
+          "type": "gap-fill",
+          "prompt": "Completa: 'Good news sources check that all published information is ____.'",
+          "options": [
+            "accurate",
+            "biased",
+            "sensational",
+            "censored"
+          ],
+          "correct": "accurate",
+          "explanation": "accurate = preciso, verificado.",
+          "points": 10
+        },
+        {
+          "id": "media-adjectives-q8",
+          "type": "gap-fill",
+          "prompt": "Completa: 'Media that uses shocking stories to attract attention is ____.'",
+          "options": [
+            "sensational",
+            "objective",
+            "accurate",
+            "biased"
+          ],
+          "correct": "sensational",
+          "explanation": "sensational = exagera para llamar la atención.",
+          "points": 10
+        },
+        {
+          "id": "media-adjectives-q9",
+          "type": "typing",
+          "prompt": "Completa: 'Information that was removed by the authorities before publication has been ____.'",
+          "options": [],
+          "correct": "censored",
+          "explanation": "censored = censurado.",
+          "variations": [
+            "censored"
+          ],
+          "points": 10
+        },
+        {
+          "id": "media-adjectives-q10",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'Good journalism gives ____ accounts of events without taking sides.'",
+          "options": [
+            "biased",
+            "objective",
+            "sensational",
+            "censored"
+          ],
+          "correct": "objective",
+          "explanation": "objective = sin tomar partido.",
+          "points": 10
+        },
+        {
+          "id": "media-adjectives-q11",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'Many news websites use ____ headlines to make people click.'",
+          "options": [
+            "objective",
+            "accurate",
+            "sensational",
+            "censored"
+          ],
+          "correct": "sensational",
+          "explanation": "sensational headlines = titulares exagerados.",
+          "points": 10
+        },
+        {
+          "id": "media-adjectives-q12",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'The press coverage was ____ by the government during the crisis.'",
+          "options": [
+            "biased",
+            "censored",
+            "objective",
+            "accurate"
+          ],
+          "correct": "censored",
+          "explanation": "censored = el gobierno eliminó contenido.",
+          "points": 10
+        },
+        {
+          "id": "media-adjectives-q13",
+          "type": "typing",
+          "prompt": "Escribe en inglés: 'objetivo / imparcial'.",
+          "options": [],
+          "correct": "objective",
+          "explanation": "objective ↔ biased.",
+          "variations": [
+            "objective"
+          ],
+          "points": 10
+        },
+        {
+          "id": "media-adjectives-q14",
+          "type": "typing",
+          "prompt": "Escribe en inglés: 'preciso / correcto' (hablando de una noticia).",
+          "options": [],
+          "correct": "accurate",
+          "explanation": "accurate = preciso.",
+          "variations": [
+            "accurate"
+          ],
           "points": 10
         }
       ]
@@ -3472,6 +4398,142 @@ window.GAME_DATA = {
           ],
           "correct": "Para introducir un contraste.",
           "explanation": "However introduce contraste: sin embargo.",
+          "points": 10
+        },
+        {
+          "id": "writing-connectors-q6",
+          "type": "gap-fill",
+          "prompt": "Completa: 'The flight was delayed. ____, the passengers remained calm.'",
+          "options": [
+            "However",
+            "Moreover",
+            "For instance",
+            "In conclusion"
+          ],
+          "correct": "However",
+          "explanation": "However introduce un contraste.",
+          "points": 10
+        },
+        {
+          "id": "writing-connectors-q7",
+          "type": "gap-fill",
+          "prompt": "Completa: 'Modern phones have advanced security. ____, users must be careful with scams.'",
+          "options": [
+            "Nevertheless",
+            "In addition",
+            "For example",
+            "Firstly"
+          ],
+          "correct": "Nevertheless",
+          "explanation": "Nevertheless = sin embargo, a pesar de eso.",
+          "points": 10
+        },
+        {
+          "id": "writing-connectors-q8",
+          "type": "gap-fill",
+          "prompt": "Completa: 'The study is accurate. ____, it offers new solutions.'",
+          "options": [
+            "Moreover",
+            "However",
+            "Whereas",
+            "Actually"
+          ],
+          "correct": "Moreover",
+          "explanation": "Moreover suma un argumento.",
+          "points": 10
+        },
+        {
+          "id": "writing-connectors-q9",
+          "type": "gap-fill",
+          "prompt": "Completa: 'Some people love extreme sports, ____ others think they are too dangerous.'",
+          "options": [
+            "whereas",
+            "moreover",
+            "firstly",
+            "in conclusion"
+          ],
+          "correct": "whereas",
+          "explanation": "whereas une dos ideas opuestas en la misma oración.",
+          "points": 10
+        },
+        {
+          "id": "writing-connectors-q10",
+          "type": "gap-fill",
+          "prompt": "Completa: '____, more and more people work from home, but twenty years ago it was unusual.'",
+          "options": [
+            "Nowadays",
+            "In conclusion",
+            "Whereas",
+            "For instance"
+          ],
+          "correct": "Nowadays",
+          "explanation": "Nowadays = hoy en día.",
+          "points": 10
+        },
+        {
+          "id": "writing-connectors-q11",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'On the one hand, extreme sports are exciting; ____, they carry high risks.'",
+          "options": [
+            "on the other hand",
+            "for instance",
+            "in addition",
+            "nowadays"
+          ],
+          "correct": "on the other hand",
+          "explanation": "On the one hand… on the other hand para pros y contras.",
+          "points": 10
+        },
+        {
+          "id": "writing-connectors-q12",
+          "type": "multiple-choice",
+          "prompt": "¿Qué conector usás para dar un ejemplo?",
+          "options": [
+            "For instance",
+            "Nevertheless",
+            "Whereas",
+            "In conclusion"
+          ],
+          "correct": "For instance",
+          "explanation": "For instance / For example = por ejemplo.",
+          "points": 10
+        },
+        {
+          "id": "writing-connectors-q13",
+          "type": "multiple-choice",
+          "prompt": "'I thought the film would be boring. ____, it was really good.' ¿Qué conector significa 'en realidad'?",
+          "options": [
+            "Actually",
+            "Moreover",
+            "Firstly",
+            "Whereas"
+          ],
+          "correct": "Actually",
+          "explanation": "Actually = en realidad (no es actualmente).",
+          "points": 10
+        },
+        {
+          "id": "writing-connectors-q14",
+          "type": "typing",
+          "prompt": "Escribe el conector para cerrar tu writing: 'En conclusión'.",
+          "options": [],
+          "correct": "In conclusion",
+          "explanation": "In conclusion abre el último párrafo.",
+          "variations": [
+            "In conclusion"
+          ],
+          "points": 10
+        },
+        {
+          "id": "writing-connectors-q15",
+          "type": "typing",
+          "prompt": "Escribe el conector que significa 'sin embargo' y empieza con N.",
+          "options": [],
+          "correct": "Nevertheless",
+          "explanation": "Nevertheless = sin embargo.",
+          "variations": [
+            "Nevertheless"
+          ],
           "points": 10
         }
       ]

@@ -3,6 +3,9 @@
   "name": "Clase 2 — 14/10",
   "date": "2025-10-14",
   "emoji": "✍️",
+  "theory": {
+    "summary": "**Reporting Verbs**\nDicen la actitud o intención de quien habló, más allá de say / tell.\nVerbo + to-infinitive: agree, offer, promise, refuse, threaten → He refused to answer.\nVerbo + persona + to-infinitive: advise, persuade, remind, convince, encourage, invite → The doctor advised me to rest. Negativo: advised me not to…\nVerbo + -ing: suggest, deny, admit, recommend, regret → She denied stealing the files.\nVerbo + preposición + -ing: apologize for, insist on, accuse someone of → They accused him of lying.\nAdmit / claim / explain / insist también van con that + oración: He admitted that he had made a mistake."
+  },
   "decks": [
     {
       "id": "reporting-verbs",
@@ -106,6 +109,86 @@
           "note": "Grupo 3: accuse someone of + -ing.",
           "emoji": "📝",
           "tag": "-ing"
+        },
+        {
+          "id": "rv13",
+          "en": "The suspect denied committing the robbery.",
+          "es": "El sospechoso negó haber cometido el robo.",
+          "note": "deny + -ing.",
+          "emoji": "🙅",
+          "tag": "-ing"
+        },
+        {
+          "id": "rv14",
+          "en": "She promised to send the contract before the end of the day.",
+          "es": "Prometió mandar el contrato antes de que termine el día.",
+          "note": "promise + to-infinitive.",
+          "emoji": "🤞",
+          "tag": "to-inf"
+        },
+        {
+          "id": "rv15",
+          "en": "The analyst suggested investing in renewable energy.",
+          "es": "El analista sugirió invertir en energías renovables.",
+          "note": "suggest + -ing (nunca suggest to).",
+          "emoji": "💡",
+          "tag": "-ing"
+        },
+        {
+          "id": "rv16",
+          "en": "They accused the former employee of leaking data to the press.",
+          "es": "Acusaron al ex empleado de filtrar datos a la prensa.",
+          "note": "accuse + persona + of + -ing.",
+          "emoji": "👉",
+          "tag": "-ing"
+        },
+        {
+          "id": "rv17",
+          "en": "The doctor advised him to take a few days off work.",
+          "es": "El médico le aconsejó que se tomara unos días en el trabajo.",
+          "note": "advise + persona + to-infinitive.",
+          "emoji": "🩺",
+          "tag": "persona + to-inf"
+        },
+        {
+          "id": "rv18",
+          "en": "He admitted that he had made a mistake on the form.",
+          "es": "Admitió que había cometido un error en el formulario.",
+          "note": "admit + that + oración.",
+          "emoji": "😳",
+          "tag": "that"
+        },
+        {
+          "id": "rv19",
+          "en": "The landlord threatened to evict the tenants.",
+          "es": "El dueño amenazó con desalojar a los inquilinos.",
+          "note": "threaten + to-infinitive.",
+          "emoji": "🏠",
+          "tag": "to-inf"
+        },
+        {
+          "id": "rv20",
+          "en": "She apologized for arriving late to the meeting.",
+          "es": "Pidió disculpas por llegar tarde a la reunión.",
+          "note": "apologize for + -ing.",
+          "emoji": "🙏",
+          "tag": "-ing"
+        },
+        {
+          "id": "rv21",
+          "en": "The manager encouraged the team to apply for the award.",
+          "es": "El gerente alentó al equipo a postularse al premio.",
+          "note": "encourage + persona + to-infinitive.",
+          "emoji": "🏆",
+          "tag": "persona + to-inf"
+        },
+        {
+          "id": "rv22",
+          "en": "Marcos insisted on paying for the coffee.",
+          "es": "Marcos insistió en pagar el café.",
+          "note": "insist on + -ing.",
+          "emoji": "☕",
+          "tag": "-ing"
         }
       ]
     }
@@ -181,6 +264,166 @@
             "claimed"
           ],
           "explanation": "claim → claimed; claim + that + oración.",
+          "points": 10
+        },
+        {
+          "id": "rv-q6",
+          "type": "typing",
+          "prompt": "Reescribe con deny: '\"I didn't take your wallet,\" said James.' → 'James denied ____ my wallet.'",
+          "options": [],
+          "correct": "taking",
+          "explanation": "deny + -ing.",
+          "variations": [
+            "taking",
+            "having taken"
+          ],
+          "points": 10
+        },
+        {
+          "id": "rv-q7",
+          "type": "typing",
+          "prompt": "Reescribe con remind: 'Sarah's mother said: \"Don't forget: lock the door!\"' → 'Her mother reminded her ____ the door.'",
+          "options": [],
+          "correct": "to lock",
+          "explanation": "remind + persona + to-infinitive.",
+          "variations": [
+            "to lock"
+          ],
+          "points": 10
+        },
+        {
+          "id": "rv-q8",
+          "type": "typing",
+          "prompt": "Reescribe con insist on: '\"I'll pay for the coffee,\" said Marcos.' → 'Marcos insisted on ____ for the coffee.'",
+          "options": [],
+          "correct": "paying",
+          "explanation": "Después de una preposición (on) va -ing.",
+          "variations": [
+            "paying"
+          ],
+          "points": 10
+        },
+        {
+          "id": "rv-q9",
+          "type": "typing",
+          "prompt": "Reescribe con advise: '\"You should eat less processed food,\" the doctor told me.' → 'The doctor advised me ____ less processed food.'",
+          "options": [],
+          "correct": "to eat",
+          "explanation": "advise + persona + to-infinitive.",
+          "variations": [
+            "to eat"
+          ],
+          "points": 10
+        },
+        {
+          "id": "rv-q10",
+          "type": "typing",
+          "prompt": "Reescribe con refuse: '\"I will not reveal the password,\" said the candidate.' → 'The candidate refused ____ the password.'",
+          "options": [],
+          "correct": "to reveal",
+          "explanation": "refuse + to-infinitive.",
+          "variations": [
+            "to reveal"
+          ],
+          "points": 10
+        },
+        {
+          "id": "rv-q11",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'The police officer advised us ____ late at night in that area.'",
+          "options": [
+            "to not walk",
+            "not to walk",
+            "don't walk",
+            "not walking"
+          ],
+          "correct": "not to walk",
+          "explanation": "Negativo: advise + persona + not to + verbo.",
+          "points": 10
+        },
+        {
+          "id": "rv-q12",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'She apologized ____ ruining the surprise party.'",
+          "options": [
+            "of",
+            "for",
+            "to",
+            "on"
+          ],
+          "correct": "for",
+          "explanation": "apologize for + -ing.",
+          "points": 10
+        },
+        {
+          "id": "rv-q13",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'The investigator suggested ____ the CCTV footage.'",
+          "options": [
+            "to check",
+            "checking",
+            "check",
+            "to checking"
+          ],
+          "correct": "checking",
+          "explanation": "suggest + -ing.",
+          "points": 10
+        },
+        {
+          "id": "rv-q14",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'They accused the technician ____ damaging the server.'",
+          "options": [
+            "of",
+            "for",
+            "with",
+            "about"
+          ],
+          "correct": "of",
+          "explanation": "accuse someone of + -ing.",
+          "points": 10
+        },
+        {
+          "id": "rv-q15",
+          "type": "multiple-choice",
+          "prompt": "Elige la opción correcta: 'He promised ____ the documents as soon as he arrived.'",
+          "options": [
+            "sending",
+            "to send",
+            "send",
+            "for sending"
+          ],
+          "correct": "to send",
+          "explanation": "promise + to-infinitive.",
+          "points": 10
+        },
+        {
+          "id": "rv-q16",
+          "type": "typing",
+          "prompt": "Traduce: 'La médica me aconsejó que descansara tres días.'",
+          "options": [],
+          "correct": "The doctor advised me to rest for three days",
+          "explanation": "advise + persona + to-infinitive.",
+          "variations": [
+            "The doctor advised me to rest for three days",
+            "The doctor advised me to rest for 3 days",
+            "The doctor advised me to rest three days",
+            "My doctor advised me to rest for three days"
+          ],
+          "points": 10
+        },
+        {
+          "id": "rv-q17",
+          "type": "typing",
+          "prompt": "Traduce: 'Mi colega me recordó que mandara el mail antes del mediodía.'",
+          "options": [],
+          "correct": "My colleague reminded me to send the email before noon",
+          "explanation": "remind + persona + to-infinitive.",
+          "variations": [
+            "My colleague reminded me to send the email before noon",
+            "My colleague reminded me to send the e-mail before noon",
+            "My colleague reminded me to send the email before midday"
+          ],
           "points": 10
         }
       ]

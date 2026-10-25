@@ -23,7 +23,7 @@
 |----|-------------|-------|--------|--------|
 | T0 | Save dossier source + RED test: every thematic quiz ≥ 12 questions incl. typing, every deck ≥ 10 cards | delegated (fork writer) | done | d566e78 |
 | T1 | Clase 1 decks (passive, causative, impersonal passive, identity theft, Way Up to Heaven) + theory | delegated | done | (this commit) |
-| T2 | Clase 2 (reporting verbs) + Clase 3 (headlines, media people, media adjectives, connectors) + theory | delegated | pending | |
+| T2 | Clase 2 (reporting verbs) + Clase 3 (headlines, media people, media adjectives, connectors) + theory | delegated | done | (this commit) |
 | T3 | Clase 4 decks (speaking phrases, speaking papers, past modals, should have, would rather, crime vocab, criminals & verbs, rob vs steal, Lamb to the Slaughter) + theory; SW bump | delegated | pending | |
 
 ## Acceptance criteria
@@ -51,5 +51,12 @@ ask-on-risk. Mostly data (JSON); authored code is a small test + SW bump.
   - Test fix: the "no theory -> no button" test now deletes clase1 theory in its fixture (clase1 now has theory).
   - Checks: `build-content.cjs` valid + `--check` in sync; `node --test "game/tests/*.test.cjs"` -> 25 pass, 1 fail (coverage, expected until T3; remaining thin decks are in clase2-4).
 
+- T2 (clase2 + clase3): reporting-verbs +10 / +12 (22 cards, 17 Q), headlines +6 / +15 (14, 18), media-people +7 / +12 (16, 15), media-adjectives +8 / +9 (13, 12), writing-connectors +3 / +10 (13, 14). Theory blocks added to clase2 and clase3.
+  - Course notes checked (writings/structures.md, vocabulary/media-and-journalism.md, grammar/reporting-and-impersonal-passive.md). Out of the course lists, so dropped: connectors although / even though / despite / in spite of / furthermore / as well as / consequently / therefore / owing to / due to (all of dossier 3.3 exercises except the However/Nevertheless gap); media adjectives unreliable / outdated (gap 5, MC2, MC5, examples 6-7); media people correspondent, sub-editor, recruitment advisor (examples 8-10); reporting verb warn (example 2).
+  - Fixed: "sensationalist" changed to the course word "sensational"; reporting MC1 uses advise instead of warn; headline gap 2 accepts "has been discovered", gap 4 accepts "found"; media-people gap 1 accepts paparazzo / paparazzi.
+  - Written within course connectors (dossier sentences reused): 10 writing-connector questions and 3 cards. Added course headline words axe / quiz / row / vow / bid as questions.
+  - quality.test caught 3 typing prompts exposing the answer (rv-q7, headlines-q6, headlines-q10): rv-q7 prompt reworded, the two headline items turned into gap-fill.
+  - Checks: build valid + `--check` in sync; tests -> 25 pass, 1 fail (coverage, expected until T3).
+
 ## Next step
-T2.
+T3.
