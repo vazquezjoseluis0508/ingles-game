@@ -56,7 +56,8 @@ const Store = (() => {
       // --- NUEVO: Quizzes temáticos ---
       quizzes: {},                     // quizId -> { completed: 0|1, totalAttempts, bestScore, passed }
       themesReinforced: {},            // deckId -> true (tras aprobar su quiz)
-      attempts: {}                     // quizId -> [{ timestamp, score, pct, passed }]
+      attempts: {},                    // quizId -> [{ timestamp, score, pct, passed }]
+      finalExam: {}                     // { score, pct, bestScore, totalAttempts, attempts[] }
     };
   }
 

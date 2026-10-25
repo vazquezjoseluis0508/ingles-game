@@ -44,8 +44,7 @@ async function persist() { await Store.save(state); }
 // ============================================================
 //  QUIZ Mode (T3-T9)
 // ============================================================
-const allQuizzes = () => DATA.quizzes || [];  // Solo 19 quizzes tem
-aticos (excluye final-exam)
+const allQuizzes = () => DATA.quizzes || [];  // Solo 19 quizzes tematicos (excluye final-exam)
 const finalExam = () => DATA.finalExam || null;  // Quiz final integral, separado
 const quizById = (id) => allQuizzes().find((q) => q.id === id);
 const quizState = (id) => (state.quizzes && state.quizzes[id]) || { completed: 0, totalAttempts: 0, bestScore: 0, passed: false, attempts: [] };
@@ -75,7 +74,11 @@ function finalExamProgress() {
 }
 
 function startQuiz(quizId) {
-  const quiz = quizById(quizId);
+  let quiz = quizById(quizId);
+  // Manejar final-exam: usar finalExam() en lugar de quizById()
+  if (!quiz && quizId === "final-exam") {
+    quiz = finalExam();
+  }
   if (!quiz) { alert("Quiz no encontrado"); renderHome(); return; }
   session = { type: "quiz", quizId, questions: quiz.questions, index: 0, answers: [], score: 0, startTime: Date.now() };
   renderQuizStart();
@@ -112,10 +115,27 @@ async function renderQuizSummary() {
   
   // T5: Tracking detallado + aprobación 80%
   const passed = pct >= 80;  // S2: 80% para aprobar
+  const isFinalExam = session.quizId === "final-exam";
+  
+  if (isFinalExam) {
+    // Guardar resultado en state.finalExam separado
+    const exam = finalExam();
+    if (!state.finalExam) state.finalExam = {};
+    state.finalExam.score = session.score;
+    state.finalExam.pct = pct;
+    state.finalExam.bestScore = Math.max(state.finalExam.bestScore || 0, session.score);
+    state.finalExam.totalAttempts = (state.finalExam.totalAttempts || 0) + 1;
+    if (!state.finalExam.attempts) state.finalExam.attempts = [];
+    state.finalExam.attempts.push({ timestamp: new Date().toISOString(), score: session.score, pct, passed });
+  }
   state.quizzes[s.quizId].completed = passed ? 1 : 0;
   state.quizzes[s.quizId].totalAttempts++;
   state.quizzes[s.quizId].bestScore = Math.max(state.quizzes[s.quizId].bestScore, s.score);
-  state.quizzes[s.quizId].passed = passed;
+  if (!isFinalExam) {
+    const wasAlreadyPassed = state.quizzes[s.quizId].passed;
+    state.quizzes[s.quizId].passed = (passed || wasAlreadyPassed);
+    state.quizzes[s.quizId].completed = (passed || wasAlreadyPassed) ? 1 : 0;
+  }
   
   // Registrar intento
   if (!state.quizzes[s.quizId].attempts) state.quizzes[s.quizId].attempts = [];
@@ -134,8 +154,11 @@ async function renderQuizSummary() {
 }
 
 function renderQuizzes() {
-  const quizzes = allQuizzes(), { pct, completed, total } = quizzesProgress(), quizCards = quizzes.map((q) => { const qs = quizState(q.id), badge = qs.completed > 0 ? "✅" : "🔒", bestScore = qs.bestScore > 0 ? `<div class="muted">Mejor: ${qs.bestScore}/${q.questions.length * QUIZ_POINTS_PER_Q}</div>` : ""; return `<div class="deck-card" style="--c:#7f39fb"><div class="deck-emoji">${q.emoji}</div><div class="deck-name">${esc(q.name)} ${badge}</div><div class="deck-desc">${esc(q.description)}</div><div class="deck-meta">Dificultad: ${difficultyEmoji(q.difficulty)} · ${q.questions.length} preguntas</div>${bestScore}<div class="deck-actions"><button onclick="startQuiz('${q.id}')">📝 Hacer Quiz</button></div></div>`; }).join("");
-  app().innerHTML = `<header class="home-header"><button class="icon-btn" onclick="renderHome()">←</button><h1>📝 Quizzes</h1></header><section class="missions"><div class="missions-title">📊 Progreso</div><div class="mission"><div class="mission-check">${completed > 0 ? "✅" : "⏳"}</div><div class="mission-body"><div class="mission-text">Quizzes completados: ${completed}/${total}</div><div class="mission-bar"><div class="mission-bar-fill" style="width:${pct}%"></div></div></div><div class="mission-prog">${pct}%</div></div></section><div class="deck-grid">${quizCards}</div><footer class="home-footer"><button class="link-btn" onclick="renderHome()">← Volver al inicio</button></footer>`;
+  const quizzes = allQuizzes(), { pct, completed, total, passed } = quizzesProgress(), quizCards = quizzes.map((q) => { const qs = quizState(q.id), badge = qs.passed ? "✅ Aprobado" : qs.completed > 0 ? "✅ Intentado" : "🔒", bestScore = qs.bestScore > 0 ? `<div class="muted">Mejor: ${qs.bestScore}/${q.questions.length * QUIZ_POINTS_PER_Q} (${Math.round(qs.bestScore / (q.questions.length * QUIZ_POINTS_PER_Q) * 100)}%)</div>` : ""; return `<div class="deck-card" style="--c:#7f39fb"><div class="deck-emoji">${q.emoji}</div><div class="deck-name">${esc(q.name)}</div><div class="deck-desc">${esc(q.description)}</div><div class="deck-meta">Dificultad: ${difficultyEmoji(q.difficulty)} · ${q.questions.length} preguntas · ${badge}</div>${bestScore}<div class="deck-actions"><button onclick="startQuiz('${q.id}')">📝 ${qs.passed ? "Revisar" : "Hacer Quiz"}</button></div></div>`; }).join("");
+  const exam = finalExam();
+  const examProgress = finalExamProgress();
+  const examCard = exam ? `<div style="margin-top:2rem;padding:1rem;background:rgba(255,193,7,0.1);border-radius:8px;border-left:4px solid #ffc107"><h3>🏆 Examen Final Integral</h3><p class="muted">${esc(exam.description)}</p>${examProgress.pct > 0 ? `<div class="muted">Mejor: ${examProgress.bestScore}/${exam.questions.length * QUIZ_POINTS_PER_Q} (${examProgress.pct}%)</div>` : ""}<button class="primary" onclick="startQuiz('final-exam')" style="margin-top:0.5rem">${examProgress.pct >= 80 ? "📖 Revisar" : "🚀 Hacer Examen"}</button></div>` : "";
+  app().innerHTML = `<header class="home-header"><button class="icon-btn" onclick="renderHome()">←</button><h1>📝 Quizzes Temáticos</h1></header><section class="missions"><div class="missions-title">📊 Progreso</div><div class="mission"><div class="mission-check">${passed > 0 ? "✅" : "⏳"}</div><div class="mission-body"><div class="mission-text">Temas aprobados: ${passed}/${total} (≥80%)</div><div class="mission-bar"><div class="mission-bar-fill" style="width:${pct}%"></div></div></div><div class="mission-prog">${pct}%</div></div></section><div class="deck-grid">${quizCards}</div>${examCard}<footer class="home-footer"><button class="link-btn" onclick="renderHome()">← Volver al inicio</button></footer>`;
 }
 
 function homeQuizzesSection() {
