@@ -1,0 +1,522 @@
+{
+  "id": "clase3",
+  "name": "Clase 3 — 19/10",
+  "date": "2025-10-19",
+  "emoji": "📰",
+  "decks": [
+    {
+      "id": "headlines",
+      "name": "Headline Language",
+      "emoji": "🗞️",
+      "color": "#2d3436",
+      "description": "Palabras cortas de titulares: back, axe, hit, bid, clash, vow, quiz, row.",
+      "cards": [
+        {
+          "id": "hl01",
+          "en": "back",
+          "es": "apoyar",
+          "note": "Prime Minister backs proposal.",
+          "emoji": "👍",
+          "tag": "Headline"
+        },
+        {
+          "id": "hl02",
+          "en": "axe",
+          "es": "eliminar / recortar",
+          "note": "Thousands of jobs axed.",
+          "emoji": "🪓",
+          "tag": "Headline"
+        },
+        {
+          "id": "hl03",
+          "en": "hit",
+          "es": "afectar negativamente",
+          "note": "Stock market hit by oil fears.",
+          "emoji": "📉",
+          "tag": "Headline"
+        },
+        {
+          "id": "hl04",
+          "en": "bid",
+          "es": "intento",
+          "note": "Astronaut bids to be first man on Mars.",
+          "emoji": "🚀",
+          "tag": "Headline"
+        },
+        {
+          "id": "hl05",
+          "en": "clash",
+          "es": "conflicto / enfrentamiento",
+          "note": "Ministers clash over tax proposal.",
+          "emoji": "⚔️",
+          "tag": "Headline"
+        },
+        {
+          "id": "hl06",
+          "en": "vow",
+          "es": "prometer firmemente",
+          "note": "Bayern boss vows to avenge defeat.",
+          "emoji": "🤝",
+          "tag": "Headline"
+        },
+        {
+          "id": "hl07",
+          "en": "quiz",
+          "es": "interrogar",
+          "note": "Police quiz witness.",
+          "emoji": "❓",
+          "tag": "Headline"
+        },
+        {
+          "id": "hl08",
+          "en": "row",
+          "es": "discusión / disputa",
+          "note": "Actress rows with co-star.",
+          "emoji": "💢",
+          "tag": "Headline"
+        }
+      ]
+    },
+    {
+      "id": "media-people",
+      "name": "People in the Media",
+      "emoji": "🎙️",
+      "color": "#0984e3",
+      "description": "Periodistas y gente de los medios.",
+      "cards": [
+        {
+          "id": "mp01",
+          "en": "critic",
+          "es": "crítico",
+          "note": "Escribe reseñas de cine, música, etc.",
+          "emoji": "🎭",
+          "tag": "Media"
+        },
+        {
+          "id": "mp02",
+          "en": "commentator",
+          "es": "comentarista",
+          "note": "Comenta eventos en vivo (deportes, noticias).",
+          "emoji": "🏟️",
+          "tag": "Media"
+        },
+        {
+          "id": "mp03",
+          "en": "reporter",
+          "es": "reportero",
+          "note": "Sale a cubrir y contar las noticias.",
+          "emoji": "🎤",
+          "tag": "Media"
+        },
+        {
+          "id": "mp04",
+          "en": "editor",
+          "es": "editor",
+          "note": "Decide y corrige qué se publica.",
+          "emoji": "✏️",
+          "tag": "Media"
+        },
+        {
+          "id": "mp05",
+          "en": "presenter",
+          "es": "presentador",
+          "note": "Conduce un programa.",
+          "emoji": "📺",
+          "tag": "Media"
+        },
+        {
+          "id": "mp06",
+          "en": "freelance journalist",
+          "es": "periodista independiente",
+          "note": "No trabaja para un solo medio fijo.",
+          "emoji": "💼",
+          "tag": "Media"
+        },
+        {
+          "id": "mp07",
+          "en": "newsreader",
+          "es": "presentador de noticias",
+          "note": "Lee las noticias al aire.",
+          "emoji": "🗞️",
+          "tag": "Media"
+        },
+        {
+          "id": "mp08",
+          "en": "paparazzi",
+          "es": "fotógrafos que persiguen famosos",
+          "note": "Sacan fotos de celebridades sin permiso.",
+          "emoji": "📷",
+          "tag": "Media"
+        },
+        {
+          "id": "mp09",
+          "en": "agony aunt",
+          "es": "quien responde cartas dando consejos",
+          "note": "Columna de consejos personales.",
+          "emoji": "💌",
+          "tag": "Media"
+        }
+      ]
+    },
+    {
+      "id": "media-adjectives",
+      "name": "Media Adjectives",
+      "emoji": "🧭",
+      "color": "#00cec9",
+      "description": "Adjetivos para describir los medios.",
+      "cards": [
+        {
+          "id": "ma01",
+          "en": "biased",
+          "es": "parcial / tendencioso",
+          "note": "Muestra solo un lado. The article was very biased.",
+          "emoji": "⚖️",
+          "tag": "Adjective"
+        },
+        {
+          "id": "ma02",
+          "en": "objective",
+          "es": "objetivo",
+          "note": "Sin tomar partido. A good report should be objective.",
+          "emoji": "🎯",
+          "tag": "Adjective"
+        },
+        {
+          "id": "ma03",
+          "en": "sensational",
+          "es": "sensacionalista / exagerado",
+          "note": "Exagera para llamar la atención.",
+          "emoji": "🔥",
+          "tag": "Adjective"
+        },
+        {
+          "id": "ma04",
+          "en": "accurate",
+          "es": "preciso / correcto",
+          "note": "Los datos son exactos y verificados.",
+          "emoji": "✅",
+          "tag": "Adjective"
+        },
+        {
+          "id": "ma05",
+          "en": "censored",
+          "es": "censurado",
+          "note": "Se ocultó o eliminó parte del contenido.",
+          "emoji": "🚫",
+          "tag": "Adjective"
+        }
+      ]
+    },
+    {
+      "id": "writing-connectors",
+      "name": "Writing Connectors",
+      "emoji": "🔗",
+      "color": "#6c5ce7",
+      "description": "Conectores para el artículo de opinión / for-and-against.",
+      "cards": [
+        {
+          "id": "wc01",
+          "en": "Nowadays",
+          "es": "Hoy en día",
+          "note": "Para introducir el tema en la P1.",
+          "emoji": "🌍",
+          "tag": "Connector"
+        },
+        {
+          "id": "wc02",
+          "en": "Firstly / Secondly",
+          "es": "En primer lugar / En segundo lugar",
+          "note": "Para ordenar argumentos.",
+          "emoji": "🔢",
+          "tag": "Connector"
+        },
+        {
+          "id": "wc03",
+          "en": "For instance / For example",
+          "es": "Por ejemplo",
+          "note": "Para dar un ejemplo.",
+          "emoji": "🧪",
+          "tag": "Connector"
+        },
+        {
+          "id": "wc04",
+          "en": "In addition / Moreover",
+          "es": "Además / Es más",
+          "note": "Para sumar un argumento a favor.",
+          "emoji": "➕",
+          "tag": "Connector"
+        },
+        {
+          "id": "wc05",
+          "en": "However",
+          "es": "Sin embargo",
+          "note": "Para introducir un contraste.",
+          "emoji": "↔️",
+          "tag": "Connector"
+        },
+        {
+          "id": "wc06",
+          "en": "Whereas",
+          "es": "Mientras que",
+          "note": "Contrasta dos ideas en la misma oración.",
+          "emoji": "⚖️",
+          "tag": "Connector"
+        },
+        {
+          "id": "wc07",
+          "en": "Nevertheless",
+          "es": "No obstante",
+          "note": "Contraste formal, como 'however'.",
+          "emoji": "🪧",
+          "tag": "Connector"
+        },
+        {
+          "id": "wc08",
+          "en": "On the other hand",
+          "es": "Por otro lado",
+          "note": "Para presentar el otro lado del tema.",
+          "emoji": "🪙",
+          "tag": "Connector"
+        },
+        {
+          "id": "wc09",
+          "en": "Actually",
+          "es": "En realidad",
+          "note": "Para aclarar o corregir una idea.",
+          "emoji": "💬",
+          "tag": "Connector"
+        },
+        {
+          "id": "wc10",
+          "en": "In conclusion",
+          "es": "En conclusión",
+          "note": "Para cerrar con tu opinión en la P4.",
+          "emoji": "🏁",
+          "tag": "Connector"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "id": "quiz-headlines",
+      "name": "Quiz: Headline Language",
+      "emoji": "🗞️",
+      "description": "Practica headline language",
+      "difficulty": "medium",
+      "deckId": "headlines",
+      "questions": [
+        {
+          "id": "headlines-q1",
+          "type": "multiple-choice",
+          "prompt": "En el titular 'Prime Minister backs proposal', ¿qué significa back?",
+          "options": [
+            "apoyar",
+            "recortar",
+            "interrogar",
+            "enfrentarse"
+          ],
+          "correct": "apoyar",
+          "explanation": "back = apoyar. Contexto: Prime Minister backs proposal.",
+          "points": 10
+        },
+        {
+          "id": "headlines-q3",
+          "type": "multiple-choice",
+          "prompt": "En el titular 'Stock market hit by oil fears', ¿qué significa hit?",
+          "options": [
+            "afectar negativamente",
+            "apoyar una propuesta",
+            "prometer una medida",
+            "interrogar a alguien"
+          ],
+          "correct": "afectar negativamente",
+          "explanation": "Stock market hit by oil fears.",
+          "points": 10
+        },
+        {
+          "id": "headlines-q5",
+          "type": "multiple-choice",
+          "prompt": "En 'Ministers clash over tax proposal', ¿qué hacen los ministros?",
+          "options": [
+            "Apoyan la propuesta.",
+            "Se enfrentan por la propuesta.",
+            "Retiran la propuesta.",
+            "Prometen aprobar la propuesta."
+          ],
+          "correct": "Se enfrentan por la propuesta.",
+          "explanation": "clash expresa enfrentamiento o desacuerdo.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-media-people",
+      "name": "Quiz: People in the Media",
+      "emoji": "🎙️",
+      "description": "Practica people in the media",
+      "difficulty": "medium",
+      "deckId": "media-people",
+      "questions": [
+        {
+          "id": "media-people-q1",
+          "type": "multiple-choice",
+          "prompt": "¿Cuál es la traducción correcta de 'critic'?",
+          "options": [
+            "crítico",
+            "editor",
+            "comentarista deportivo",
+            "presentador"
+          ],
+          "correct": "crítico",
+          "explanation": "critic = crítico. Contexto: Escribe reseñas de cine, música, etc.",
+          "points": 10
+        },
+        {
+          "id": "media-people-q3",
+          "type": "multiple-choice",
+          "prompt": "¿Qué significa 'reporter'?",
+          "options": [
+            "reportero",
+            "crítico",
+            "editor",
+            "fotógrafo de celebridades"
+          ],
+          "correct": "reportero",
+          "explanation": "Sale a cubrir y contar las noticias.",
+          "points": 10
+        },
+        {
+          "id": "media-people-q5",
+          "type": "multiple-choice",
+          "prompt": "¿Qué tarea describe a un presenter?",
+          "options": [
+            "Escribir reseñas de películas.",
+            "Editar los artículos del periódico.",
+            "Conducir un programa.",
+            "Fotografiar celebridades."
+          ],
+          "correct": "Conducir un programa.",
+          "explanation": "presenter = presentador: conduce un programa.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-media-adjectives",
+      "name": "Quiz: Media Adjectives",
+      "emoji": "🧭",
+      "description": "Practica media adjectives",
+      "difficulty": "medium",
+      "deckId": "media-adjectives",
+      "questions": [
+        {
+          "id": "media-adjectives-q1",
+          "type": "multiple-choice",
+          "prompt": "¿Cuál es la traducción correcta de 'biased'?",
+          "options": [
+            "parcial / tendencioso",
+            "objetivo / imparcial",
+            "preciso / correcto",
+            "censurado"
+          ],
+          "correct": "parcial / tendencioso",
+          "explanation": "biased = parcial / tendencioso. Contexto: Muestra solo un lado. The article was very biased.",
+          "points": 10
+        },
+        {
+          "id": "media-adjectives-q3",
+          "type": "multiple-choice",
+          "prompt": "En un artículo que exagera para llamar la atención, ¿qué significa sensational?",
+          "options": [
+            "sensacionalista / exagerado",
+            "objetivo / imparcial",
+            "censurado",
+            "preciso / correcto"
+          ],
+          "correct": "sensacionalista / exagerado",
+          "explanation": "Exagera para llamar la atención.",
+          "points": 10
+        },
+        {
+          "id": "media-adjectives-q5",
+          "type": "multiple-choice",
+          "prompt": "¿Qué ocurrió si una noticia fue censored?",
+          "options": [
+            "Se verificaron todos los datos.",
+            "Se mostró solo una postura.",
+            "Se exageró para atraer lectores.",
+            "Se ocultó o eliminó parte del contenido."
+          ],
+          "correct": "Se ocultó o eliminó parte del contenido.",
+          "explanation": "censored = censurado; no significa simplemente parcial o exagerado.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-writing-connectors",
+      "name": "Quiz: Writing Connectors",
+      "emoji": "🔗",
+      "description": "Practica writing connectors",
+      "difficulty": "medium",
+      "deckId": "writing-connectors",
+      "questions": [
+        {
+          "id": "writing-connectors-q1",
+          "type": "multiple-choice",
+          "prompt": "¿Cuál es la traducción correcta de 'Nowadays'?",
+          "options": [
+            "Hoy en día",
+            "En aquel entonces",
+            "De ahora en adelante",
+            "Al día siguiente"
+          ],
+          "correct": "Hoy en día",
+          "explanation": "Nowadays = Hoy en día. Contexto: Para introducir el tema en la P1.",
+          "points": 10
+        },
+        {
+          "id": "writing-connectors-q3",
+          "type": "multiple-choice",
+          "prompt": "¿Qué significa 'For instance / For example'?",
+          "options": [
+            "Por ejemplo",
+            "Sin embargo",
+            "Por lo tanto",
+            "Además"
+          ],
+          "correct": "Por ejemplo",
+          "explanation": "Para dar un ejemplo.",
+          "points": 10
+        },
+        {
+          "id": "writing-connectors-q4",
+          "type": "typing",
+          "prompt": "Completa el conector que significa además: 'In ____'.",
+          "options": [],
+          "correct": "addition",
+          "explanation": "In addition y Moreover son alternativas; no forman una sola expresión.",
+          "variations": [
+            "addition"
+          ],
+          "points": 10
+        },
+        {
+          "id": "writing-connectors-q5",
+          "type": "multiple-choice",
+          "prompt": "¿Para qué se usa However al conectar ideas?",
+          "options": [
+            "Para introducir un contraste.",
+            "Para añadir otro argumento similar.",
+            "Para dar un ejemplo.",
+            "Para expresar una consecuencia."
+          ],
+          "correct": "Para introducir un contraste.",
+          "explanation": "However introduce contraste: sin embargo.",
+          "points": 10
+        }
+      ]
+    }
+  ]
+}

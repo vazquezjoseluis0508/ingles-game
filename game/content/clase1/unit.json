@@ -1,0 +1,720 @@
+{
+  "id": "clase1",
+  "name": "Clase 1 — 07/10",
+  "date": "2025-10-07",
+  "emoji": "📖",
+  "decks": [
+    {
+      "id": "passive-voice",
+      "name": "Passive Voice",
+      "emoji": "🔄",
+      "color": "#0984e3",
+      "description": "BE + past participle: el tiempo lo marca el verbo BE.",
+      "cards": [
+        {
+          "id": "pv01",
+          "en": "The door is locked.",
+          "es": "La puerta está cerrada con llave.",
+          "note": "Present simple passive: am/is/are + pp.",
+          "emoji": "🚪",
+          "tag": "Passive"
+        },
+        {
+          "id": "pv02",
+          "en": "The burglar was caught.",
+          "es": "Atraparon al ladrón.",
+          "note": "Past simple passive: was/were + pp.",
+          "emoji": "🚓",
+          "tag": "Passive"
+        },
+        {
+          "id": "pv03",
+          "en": "My house is being painted.",
+          "es": "Me están pintando la casa.",
+          "note": "Present continuous passive: am/is/are being + pp.",
+          "emoji": "🎨",
+          "tag": "Passive"
+        },
+        {
+          "id": "pv04",
+          "en": "My phone has been stolen.",
+          "es": "Me robaron el teléfono.",
+          "note": "Present perfect passive: has/have been + pp.",
+          "emoji": "📱",
+          "tag": "Passive"
+        },
+        {
+          "id": "pv05",
+          "en": "The police station is going to be closed.",
+          "es": "Van a cerrar la comisaría.",
+          "note": "Future passive: is going to be / will be + pp.",
+          "emoji": "🏢",
+          "tag": "Passive"
+        },
+        {
+          "id": "pv06",
+          "en": "A meeting will be held.",
+          "es": "Se va a realizar una reunión.",
+          "note": "'They'll hold a meeting' en pasiva. will be + pp.",
+          "emoji": "📅",
+          "tag": "Passive"
+        },
+        {
+          "id": "pv07",
+          "en": "She thinks she was being followed.",
+          "es": "Cree que la estaban siguiendo.",
+          "note": "Past continuous passive: was/were being + pp.",
+          "emoji": "👣",
+          "tag": "Passive"
+        },
+        {
+          "id": "pv08",
+          "en": "Use the passive when the action matters more than who did it.",
+          "es": "Usá la pasiva cuando importa más la acción que quién la hizo.",
+          "note": "Regla de uso de la voz pasiva.",
+          "emoji": "💡",
+          "tag": "Regla"
+        }
+      ]
+    },
+    {
+      "id": "causative-have",
+      "name": "Causative Have",
+      "emoji": "✂️",
+      "color": "#00b894",
+      "description": "have + object + past participle: otro lo hace por vos, o algo malo te pasa.",
+      "cards": [
+        {
+          "id": "ch01",
+          "en": "I had my hair cut.",
+          "es": "Me corté el pelo (me lo cortaron).",
+          "note": "Otro lo hace por vos. Compará: 'I cut my hair' = vos mismo.",
+          "emoji": "💇",
+          "tag": "Otro lo hace"
+        },
+        {
+          "id": "ch02",
+          "en": "We had our photo taken.",
+          "es": "Nos sacaron una foto.",
+          "note": "have + object + pp. Alguien nos la sacó.",
+          "emoji": "📸",
+          "tag": "Otro lo hace"
+        },
+        {
+          "id": "ch03",
+          "en": "You should have your eyes tested.",
+          "es": "Deberías hacerte revisar la vista.",
+          "note": "Un profesional lo hace por vos.",
+          "emoji": "👓",
+          "tag": "Otro lo hace"
+        },
+        {
+          "id": "ch04",
+          "en": "Our neighbours are having a swimming pool built.",
+          "es": "A los vecinos les están construyendo una pileta.",
+          "note": "Causative en continuo: are having + object + pp.",
+          "emoji": "🏊",
+          "tag": "Otro lo hace"
+        },
+        {
+          "id": "ch05",
+          "en": "She had her iPhone stolen.",
+          "es": "Le robaron el iPhone.",
+          "note": "Algo malo que te sucede. have + object + pp.",
+          "emoji": "📱",
+          "tag": "Algo malo"
+        },
+        {
+          "id": "ch06",
+          "en": "I had my bank account hacked.",
+          "es": "Me hackearon la cuenta bancaria.",
+          "note": "Algo malo que te pasa, sin aclarar quién.",
+          "emoji": "💻",
+          "tag": "Algo malo"
+        },
+        {
+          "id": "ch07",
+          "en": "We had our house burgled.",
+          "es": "Nos entraron a robar a la casa.",
+          "note": "Algo malo: have + object + pp.",
+          "emoji": "🏠",
+          "tag": "Algo malo"
+        },
+        {
+          "id": "ch08",
+          "en": "Have you ever had your bag snatched?",
+          "es": "¿Alguna vez te arrebataron la cartera?",
+          "note": "Pregunta con causative para algo malo.",
+          "emoji": "👜",
+          "tag": "Algo malo"
+        }
+      ]
+    },
+    {
+      "id": "impersonal-passive",
+      "name": "Impersonal Passive",
+      "emoji": "📰",
+      "color": "#6c5ce7",
+      "description": "It is said that… / He is believed to be… para noticias, sin asumir la afirmación.",
+      "cards": [
+        {
+          "id": "ip01",
+          "en": "It is said that he is dangerous.",
+          "es": "Se dice que es peligroso.",
+          "note": "It is + pp + that… No decís quién lo afirma.",
+          "emoji": "🗣️",
+          "tag": "It is...that"
+        },
+        {
+          "id": "ip02",
+          "en": "It is believed that he is a local man.",
+          "es": "Se cree que es un hombre de la zona.",
+          "note": "It is believed that + oración.",
+          "emoji": "🤔",
+          "tag": "It is...that"
+        },
+        {
+          "id": "ip03",
+          "en": "It is thought that the mayor will resign.",
+          "es": "Se piensa que el intendente va a renunciar.",
+          "note": "Verbos: say, believe, think, report, know, expect.",
+          "emoji": "🏛️",
+          "tag": "It is...that"
+        },
+        {
+          "id": "ip04",
+          "en": "The man is said to be in his forties.",
+          "es": "Se dice que el hombre tiene unos cuarenta y pico.",
+          "note": "Subject + passive verb + to-infinitive.",
+          "emoji": "👤",
+          "tag": "Subject + to-inf"
+        },
+        {
+          "id": "ip05",
+          "en": "The burglar is believed to be a local man.",
+          "es": "Se cree que el ladrón es de la zona.",
+          "note": "is believed to be: más impersonal.",
+          "emoji": "🕵️",
+          "tag": "Subject + to-inf"
+        },
+        {
+          "id": "ip06",
+          "en": "He is believed to have left the country.",
+          "es": "Se cree que se fue del país.",
+          "note": "Acción anterior: to have + pp.",
+          "emoji": "✈️",
+          "tag": "Acción previa"
+        },
+        {
+          "id": "ip07",
+          "en": "The robbers are thought to have entered through a window.",
+          "es": "Se piensa que los ladrones entraron por una ventana.",
+          "note": "are thought to have + pp.",
+          "emoji": "🪟",
+          "tag": "Acción previa"
+        },
+        {
+          "id": "ip08",
+          "en": "He is reported to be very polite.",
+          "es": "Se informa que es muy educado.",
+          "note": "Del listening 'Britain's most polite armed robber'.",
+          "emoji": "🎩",
+          "tag": "Subject + to-inf"
+        }
+      ]
+    },
+    {
+      "id": "identity-theft-vocab",
+      "name": "Identity Theft",
+      "emoji": "🪪",
+      "color": "#d63031",
+      "description": "Vocabulario clave de la lectura sobre robo de identidad.",
+      "cards": [
+        {
+          "id": "id01",
+          "en": "identity theft",
+          "es": "robo de identidad",
+          "note": "Usar los datos de otro para hacerse pasar por esa persona.",
+          "emoji": "🪪",
+          "tag": "Vocab"
+        },
+        {
+          "id": "id02",
+          "en": "dating site",
+          "es": "sitio de citas",
+          "note": "Donde Constance encontró fotos usadas sin permiso.",
+          "emoji": "❤️",
+          "tag": "Vocab"
+        },
+        {
+          "id": "id03",
+          "en": "personal information",
+          "es": "información personal",
+          "note": "Datos que no hay que compartir online.",
+          "emoji": "📋",
+          "tag": "Vocab"
+        },
+        {
+          "id": "id04",
+          "en": "to misuse someone's photos",
+          "es": "usar indebidamente las fotos de alguien",
+          "note": "misuse = uso indebido / mal uso.",
+          "emoji": "🖼️",
+          "tag": "Vocab"
+        },
+        {
+          "id": "id05",
+          "en": "to steal someone's identity",
+          "es": "robar la identidad de alguien",
+          "note": "steal + object. Lo que le pasó a Martin Peterson.",
+          "emoji": "🥷",
+          "tag": "Vocab"
+        },
+        {
+          "id": "id06",
+          "en": "fake profile",
+          "es": "perfil falso",
+          "note": "Perfil creado con datos robados.",
+          "emoji": "👻",
+          "tag": "Vocab"
+        },
+        {
+          "id": "id07",
+          "en": "privacy",
+          "es": "privacidad",
+          "note": "Lo que se pierde con el robo de identidad.",
+          "emoji": "🔒",
+          "tag": "Vocab"
+        }
+      ]
+    },
+    {
+      "id": "story-way-up-to-heaven",
+      "name": "The Way Up to Heaven",
+      "emoji": "🛫",
+      "color": "#e84393",
+      "description": "Vocabulario y expresiones clave del cuento de Roald Dahl.",
+      "cards": [
+        {
+          "id": "wh01",
+          "en": "delayed flight",
+          "es": "vuelo demorado",
+          "note": "El vuelo de Mrs Foster a París se demora.",
+          "emoji": "🛫",
+          "tag": "Story"
+        },
+        {
+          "id": "wh02",
+          "en": "fog",
+          "es": "niebla",
+          "note": "La niebla retrasa el vuelo y la hace volver a casa.",
+          "emoji": "🌫️",
+          "tag": "Story"
+        },
+        {
+          "id": "wh03",
+          "en": "to be afraid of being late",
+          "es": "tener miedo de llegar tarde",
+          "note": "El miedo extremo de Mrs Foster.",
+          "emoji": "⏰",
+          "tag": "Story"
+        },
+        {
+          "id": "wh04",
+          "en": "to delay someone on purpose",
+          "es": "demorar a alguien a propósito",
+          "note": "Lo que hace Mr Foster para manipularla.",
+          "emoji": "😈",
+          "tag": "Story"
+        },
+        {
+          "id": "wh05",
+          "en": "the little white box",
+          "es": "la cajita blanca",
+          "note": "La excusa de Mr Foster para volver a entrar a la casa.",
+          "emoji": "📦",
+          "tag": "Story"
+        },
+        {
+          "id": "wh06",
+          "en": "to hear sounds inside the house",
+          "es": "escuchar ruidos dentro de la casa",
+          "note": "Ella los oye y decide no entrar.",
+          "emoji": "👂",
+          "tag": "Story"
+        },
+        {
+          "id": "wh07",
+          "en": "to feel safe and free",
+          "es": "sentirse segura y libre",
+          "note": "Cómo se siente ella finalmente en París.",
+          "emoji": "🕊️",
+          "tag": "Story"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "id": "quiz-passive-voice",
+      "name": "Quiz: Passive Voice",
+      "emoji": "🔄",
+      "description": "Practica voz pasiva en diferentes tiempos",
+      "difficulty": "medium",
+      "deckId": "passive-voice",
+      "questions": [
+        {
+          "id": "pv-q1",
+          "type": "gap-fill",
+          "prompt": "Completa en presente simple pasivo: 'The door _______ locked.'",
+          "options": [
+            "is",
+            "was",
+            "be",
+            "are"
+          ],
+          "correct": "is",
+          "explanation": "Present simple passive con 'is' (singular). The door = sujeto singular.",
+          "points": 10
+        },
+        {
+          "id": "pv-q2",
+          "type": "multiple-choice",
+          "prompt": "Transforma a voz pasiva sin cambiar el tiempo: 'Somebody has stolen my phone.'",
+          "options": [
+            "My phone is stolen.",
+            "My phone has been stolen.",
+            "My phone is being stolen.",
+            "My phone was stolen."
+          ],
+          "correct": "My phone has been stolen.",
+          "explanation": "Present perfect passive (acción reciente sin especificar cuándo). 'has been stolen' = me lo robaron (recientemente).",
+          "points": 10
+        },
+        {
+          "id": "pv-q3",
+          "type": "typing",
+          "prompt": "Completa: 'La casa fue pintada el año pasado.' → 'The house _______ painted last year.'",
+          "correct": "was",
+          "variations": [
+            "was"
+          ],
+          "explanation": "Past simple passive con 'was' (singular). The house = sujeto singular.",
+          "points": 10
+        },
+        {
+          "id": "pv-q4",
+          "type": "multiple-choice",
+          "prompt": "¿Cuál es la forma correcta en futuro pasivo?",
+          "options": [
+            "The project will built.",
+            "The project will be built.",
+            "The project is going to built.",
+            "The project has been built."
+          ],
+          "correct": "The project will be built.",
+          "explanation": "Future simple passive: will be + past participle.",
+          "points": 10
+        },
+        {
+          "id": "pv-q5",
+          "type": "gap-fill",
+          "prompt": "Complete: 'Me están pintando la casa.' → 'My house _______ being painted.'",
+          "options": [
+            "is",
+            "are",
+            "was",
+            "be"
+          ],
+          "correct": "is",
+          "explanation": "Present continuous passive: is/are + being + pp. 'My house' = singular → 'is'.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-causative-have",
+      "name": "Quiz: Causative Have",
+      "emoji": "✂️",
+      "description": "Practica causative have",
+      "difficulty": "medium",
+      "deckId": "causative-have",
+      "questions": [
+        {
+          "id": "causative-have-q1",
+          "type": "multiple-choice",
+          "prompt": "¿Cuál es la traducción correcta de 'I had my hair cut.'?",
+          "options": [
+            "Me corté el pelo (me lo cortaron).",
+            "Yo mismo me corté el pelo.",
+            "Le corté el pelo a otra persona.",
+            "Dejé que me creciera el pelo."
+          ],
+          "correct": "Me corté el pelo (me lo cortaron).",
+          "explanation": "I had my hair cut. = Me corté el pelo (me lo cortaron).. Contexto: Otro lo hace por vos. Compará: 'I cut my hair' = vos mismo.",
+          "points": 10
+        },
+        {
+          "id": "causative-have-q2",
+          "type": "gap-fill",
+          "prompt": "Completa el causativo: 'We had our photo ____.'",
+          "options": [
+            "took",
+            "taking",
+            "taken",
+            "take"
+          ],
+          "correct": "taken",
+          "explanation": "have + objeto + participio: We had our photo taken.",
+          "points": 10
+        },
+        {
+          "id": "causative-have-q3",
+          "type": "multiple-choice",
+          "prompt": "¿Qué significa 'You should have your eyes tested.'?",
+          "options": [
+            "Deberías hacerte revisar la vista.",
+            "Deberías revisarle la vista a otra persona.",
+            "Ya te revisaron la vista.",
+            "No deberías hacerte revisar la vista."
+          ],
+          "correct": "Deberías hacerte revisar la vista.",
+          "explanation": "Un profesional lo hace por vos.",
+          "points": 10
+        },
+        {
+          "id": "causative-have-q4",
+          "type": "typing",
+          "prompt": "Completa el participio de build: 'Our neighbours are having a swimming pool ____.'",
+          "options": [],
+          "correct": "built",
+          "explanation": "have + objeto + participio; build → built.",
+          "variations": [
+            "built"
+          ],
+          "points": 10
+        },
+        {
+          "id": "causative-have-q5",
+          "type": "multiple-choice",
+          "prompt": "¿Qué significa 'She had her iPhone stolen.'?",
+          "options": [
+            "Ella robó un iPhone.",
+            "Le robaron el iPhone.",
+            "Ella encargó un iPhone.",
+            "Ella reparó su iPhone."
+          ],
+          "correct": "Le robaron el iPhone.",
+          "explanation": "have + objeto + participio también describe algo malo que le sucede a alguien.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-impersonal-passive",
+      "name": "Quiz: Impersonal Passive",
+      "emoji": "📰",
+      "description": "Practica impersonal passive",
+      "difficulty": "medium",
+      "deckId": "impersonal-passive",
+      "questions": [
+        {
+          "id": "impersonal-passive-q1",
+          "type": "multiple-choice",
+          "prompt": "¿Cuál es la traducción correcta de 'It is said that he is dangerous.'?",
+          "options": [
+            "Se dice que es peligroso.",
+            "Él dice que tiene miedo.",
+            "Él dijo que era peligroso.",
+            "Se sabe que está en peligro."
+          ],
+          "correct": "Se dice que es peligroso.",
+          "explanation": "It is said that he is dangerous. = Se dice que es peligroso.. Contexto: It is + pp + that… No decís quién lo afirma.",
+          "points": 10
+        },
+        {
+          "id": "impersonal-passive-q2",
+          "type": "gap-fill",
+          "prompt": "Completa la pasiva impersonal: 'It is ____ that he is a local man.'",
+          "options": [
+            "believe",
+            "believing",
+            "belief",
+            "believed"
+          ],
+          "correct": "believed",
+          "explanation": "It is believed that + oración: se cree que...",
+          "points": 10
+        },
+        {
+          "id": "impersonal-passive-q3",
+          "type": "multiple-choice",
+          "prompt": "¿Qué significa 'It is thought that the mayor will resign.'?",
+          "options": [
+            "Se piensa que el intendente va a renunciar.",
+            "El intendente piensa que otros van a renunciar.",
+            "Se sabe que el intendente ya renunció.",
+            "Se piensa que el intendente no va a renunciar."
+          ],
+          "correct": "Se piensa que el intendente va a renunciar.",
+          "explanation": "Verbos: say, believe, think, report, know, expect.",
+          "points": 10
+        },
+        {
+          "id": "impersonal-passive-q4",
+          "type": "typing",
+          "prompt": "Completa la pasiva impersonal con el participio de say: 'The man is ____ to be in his forties.'",
+          "options": [],
+          "correct": "said",
+          "explanation": "Subject + is said + to-infinitive.",
+          "variations": [
+            "said"
+          ],
+          "points": 10
+        },
+        {
+          "id": "impersonal-passive-q5",
+          "type": "multiple-choice",
+          "prompt": "¿Qué oración presenta una creencia general sin identificar quién la sostiene?",
+          "options": [
+            "The burglar believes the man.",
+            "The man believes the burglar.",
+            "The burglar is believed to be a local man.",
+            "The burglar told a local man."
+          ],
+          "correct": "The burglar is believed to be a local man.",
+          "explanation": "Subject + is believed + to-infinitive presenta una creencia sin nombrar su fuente.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-identity-theft-vocab",
+      "name": "Quiz: Identity Theft",
+      "emoji": "🪪",
+      "description": "Practica identity theft",
+      "difficulty": "medium",
+      "deckId": "identity-theft-vocab",
+      "questions": [
+        {
+          "id": "identity-theft-vocab-q1",
+          "type": "multiple-choice",
+          "prompt": "¿Cuál es la traducción correcta de 'identity theft'?",
+          "options": [
+            "robo de identidad",
+            "robo de una vivienda",
+            "chantaje",
+            "falsificación de dinero"
+          ],
+          "correct": "robo de identidad",
+          "explanation": "identity theft = robo de identidad. Contexto: Usar los datos de otro para hacerse pasar por esa persona.",
+          "points": 10
+        },
+        {
+          "id": "identity-theft-vocab-q3",
+          "type": "multiple-choice",
+          "prompt": "¿Qué significa 'personal information'?",
+          "options": [
+            "información personal",
+            "información pública",
+            "publicidad personalizada",
+            "información falsa"
+          ],
+          "correct": "información personal",
+          "explanation": "Datos que no hay que compartir online.",
+          "points": 10
+        },
+        {
+          "id": "identity-theft-vocab-q4",
+          "type": "typing",
+          "prompt": "Escribe en inglés el verbo (sin to) que significa usar indebidamente: 'to ____ someone's photos'.",
+          "options": [],
+          "correct": "misuse",
+          "explanation": "misuse = usar indebidamente; to misuse someone's photos.",
+          "variations": [
+            "misuse"
+          ],
+          "points": 10
+        },
+        {
+          "id": "identity-theft-vocab-q5",
+          "type": "multiple-choice",
+          "prompt": "¿Qué situación describe to steal someone's identity?",
+          "options": [
+            "Quitarle dinero de la cartera.",
+            "Entrar ilegalmente en su casa.",
+            "Publicar una reseña crítica.",
+            "Usar sus datos para hacerse pasar por esa persona."
+          ],
+          "correct": "Usar sus datos para hacerse pasar por esa persona.",
+          "explanation": "identity theft implica suplantar a alguien utilizando sus datos.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-story-way-up-to-heaven",
+      "name": "Quiz: The Way Up to Heaven",
+      "emoji": "🛫",
+      "description": "Practica the way up to heaven",
+      "difficulty": "medium",
+      "deckId": "story-way-up-to-heaven",
+      "questions": [
+        {
+          "id": "story-way-up-to-heaven-q1",
+          "type": "multiple-choice",
+          "prompt": "¿Cuál es la traducción correcta de 'delayed flight'?",
+          "options": [
+            "vuelo demorado",
+            "vuelo cancelado",
+            "vuelo de regreso",
+            "vuelo adelantado"
+          ],
+          "correct": "vuelo demorado",
+          "explanation": "delayed flight = vuelo demorado. Contexto: El vuelo de Mrs Foster a París se demora.",
+          "points": 10
+        },
+        {
+          "id": "story-way-up-to-heaven-q3",
+          "type": "multiple-choice",
+          "prompt": "¿Qué significa 'to be afraid of being late'?",
+          "options": [
+            "tener miedo de llegar tarde",
+            "estar acostumbrado a llegar tarde",
+            "hacer que alguien llegue tarde",
+            "lamentar haber llegado tarde"
+          ],
+          "correct": "tener miedo de llegar tarde",
+          "explanation": "El miedo extremo de Mrs Foster.",
+          "points": 10
+        },
+        {
+          "id": "story-way-up-to-heaven-q4",
+          "type": "typing",
+          "prompt": "Completa la expresión que significa a propósito: 'to delay someone on ____'.",
+          "options": [],
+          "correct": "purpose",
+          "explanation": "on purpose = a propósito.",
+          "variations": [
+            "purpose"
+          ],
+          "points": 10
+        },
+        {
+          "id": "story-way-up-to-heaven-q5",
+          "type": "multiple-choice",
+          "prompt": "En The Way Up to Heaven, ¿para qué usa Mr Foster la excusa de la cajita blanca?",
+          "options": [
+            "Para volver a entrar a la casa y retrasar la salida.",
+            "Para explicar la cancelación del vuelo.",
+            "Para pedirle a su hija que viaje.",
+            "Para justificar un cambio de aeropuerto."
+          ],
+          "correct": "Para volver a entrar a la casa y retrasar la salida.",
+          "explanation": "Mr Foster dice haber perdido la cajita; Mrs Foster la encuentra en el auto.",
+          "points": 10
+        }
+      ]
+    }
+  ]
+}

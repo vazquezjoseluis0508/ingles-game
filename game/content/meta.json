@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "exam": {
+    "name": "Examen de Speaking"
+  },
+  "quizOrder": [
+    "quiz-passive-voice",
+    "quiz-reporting-verbs",
+    "quiz-modal-deduction",
+    "quiz-causative-have",
+    "quiz-impersonal-passive",
+    "quiz-identity-theft-vocab",
+    "quiz-story-way-up-to-heaven",
+    "quiz-headlines",
+    "quiz-media-people",
+    "quiz-media-adjectives",
+    "quiz-writing-connectors",
+    "quiz-speaking-phrases",
+    "quiz-past-modals",
+    "quiz-should-have",
+    "quiz-would-rather",
+    "quiz-crime-vocab",
+    "quiz-criminals-verbs",
+    "quiz-rob-vs-steal",
+    "quiz-story-lamb-to-the-slaughter",
+    "quiz-speaking-papers"
+  ]
+}

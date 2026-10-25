@@ -1,0 +1,291 @@
+{
+  "id": "final-exam",
+  "name": "Examen Final Integral",
+  "emoji": "🏆",
+  "description": "19 preguntas: una por cada tema actual. Muestra de cobertura, no garantía de dominio.",
+  "difficulty": "hard",
+  "questions": [
+    {
+      "id": "final-q1",
+      "type": "multiple-choice",
+      "prompt": "Completa la pasiva en pasado: 'The letter _______ sent yesterday.'",
+      "options": [
+        "is",
+        "was",
+        "were",
+        "be"
+      ],
+      "correct": "was",
+      "explanation": "Past simple passive: was + pp.",
+      "points": 10,
+      "deckId": "passive-voice"
+    },
+    {
+      "id": "final-q2",
+      "type": "typing",
+      "prompt": "Traduce usando have + objeto + participio en pasado: 'Me hackearon la cuenta bancaria.'",
+      "correct": "I had my bank account hacked",
+      "variations": [
+        "I had my bank account hacked"
+      ],
+      "explanation": "have + object + pp para algo malo.",
+      "points": 10,
+      "deckId": "causative-have"
+    },
+    {
+      "id": "final-q3",
+      "type": "gap-fill",
+      "prompt": "Completa con say o tell en pasado: 'He _______ me that he was late.'",
+      "options": [
+        "said",
+        "told",
+        "say",
+        "tell"
+      ],
+      "correct": "told",
+      "explanation": "tell + persona: He told me that he was late. Con say sería: He said that he was late.",
+      "points": 10,
+      "deckId": "reporting-verbs"
+    },
+    {
+      "id": "final-q4",
+      "type": "multiple-choice",
+      "prompt": "Elige la deducción pasada que expresa casi certeza: 'She _______ sleeping.'",
+      "options": [
+        "must have been",
+        "might have been",
+        "can't have been",
+        "should have been"
+      ],
+      "correct": "must have been",
+      "explanation": "must have been expresa casi certeza; might have been solo posibilidad.",
+      "points": 10,
+      "deckId": "past-modals"
+    },
+    {
+      "id": "final-q5",
+      "type": "typing",
+      "prompt": "Traduce usando would rather: 'Preferiría esperar más.'",
+      "correct": "I would rather wait longer",
+      "variations": [
+        "I would rather wait longer",
+        "I'd rather wait longer",
+        "I would rather wait more",
+        "I'd rather wait more"
+      ],
+      "explanation": "would rather + verbo base; se acepta la contracción I'd rather.",
+      "points": 10,
+      "deckId": "would-rather"
+    },
+    {
+      "id": "final-q6",
+      "type": "multiple-choice",
+      "deckId": "impersonal-passive",
+      "prompt": "Completa: 'He is believed to ____ left the country.'",
+      "options": [
+        "be",
+        "have",
+        "has",
+        "having"
+      ],
+      "correct": "have",
+      "explanation": "Acción anterior: is believed to have + participio.",
+      "points": 10
+    },
+    {
+      "id": "final-q7",
+      "type": "multiple-choice",
+      "deckId": "identity-theft-vocab",
+      "prompt": "Alguien usa datos ajenos para hacerse pasar por su dueño. ¿Cómo se llama?",
+      "options": [
+        "burglary",
+        "blackmail",
+        "identity theft",
+        "smuggling"
+      ],
+      "correct": "identity theft",
+      "explanation": "identity theft = robo de identidad.",
+      "points": 10
+    },
+    {
+      "id": "final-q8",
+      "type": "multiple-choice",
+      "deckId": "story-way-up-to-heaven",
+      "prompt": "¿Cuál es el miedo principal de Mrs Foster en The Way Up to Heaven?",
+      "options": [
+        "Llegar tarde.",
+        "Visitar a su hija.",
+        "Estar en París.",
+        "Encontrar la cajita blanca."
+      ],
+      "correct": "Llegar tarde.",
+      "explanation": "El resumen local presenta su miedo extremo a llegar tarde.",
+      "points": 10
+    },
+    {
+      "id": "final-q9",
+      "type": "multiple-choice",
+      "deckId": "headlines",
+      "prompt": "En 'Thousands of jobs axed', ¿qué significa axed?",
+      "options": [
+        "apoyados",
+        "prometidos",
+        "investigados",
+        "eliminados"
+      ],
+      "correct": "eliminados",
+      "explanation": "axe en titulares = eliminar o recortar.",
+      "points": 10
+    },
+    {
+      "id": "final-q10",
+      "type": "multiple-choice",
+      "deckId": "media-people",
+      "prompt": "¿Qué profesional escribe reseñas de cine o música?",
+      "options": [
+        "editor",
+        "critic",
+        "presenter",
+        "newsreader"
+      ],
+      "correct": "critic",
+      "explanation": "critic = crítico; escribe reseñas.",
+      "points": 10
+    },
+    {
+      "id": "final-q11",
+      "type": "multiple-choice",
+      "deckId": "media-adjectives",
+      "prompt": "Un artículo favorece una postura y omite la otra. ¿Qué adjetivo corresponde?",
+      "options": [
+        "accurate",
+        "objective",
+        "biased",
+        "censored"
+      ],
+      "correct": "biased",
+      "explanation": "biased = parcial o tendencioso; censored implica ocultar o eliminar contenido por censura.",
+      "points": 10
+    },
+    {
+      "id": "final-q12",
+      "type": "multiple-choice",
+      "deckId": "writing-connectors",
+      "prompt": "Elige el conector de contraste: 'The plan is expensive. ____, it could save lives.'",
+      "options": [
+        "However",
+        "Moreover",
+        "For example",
+        "Therefore"
+      ],
+      "correct": "However",
+      "explanation": "However contrapone el costo con el beneficio posible.",
+      "points": 10
+    },
+    {
+      "id": "final-q13",
+      "type": "multiple-choice",
+      "deckId": "speaking-phrases",
+      "prompt": "¿Qué frase invita a tu compañero a expresar su opinión?",
+      "options": [
+        "In my opinion, it's important.",
+        "I'd like to talk about this topic.",
+        "For example, in my experience...",
+        "What do you think?"
+      ],
+      "correct": "What do you think?",
+      "explanation": "What do you think? invita a la otra persona a opinar.",
+      "points": 10
+    },
+    {
+      "id": "final-q14",
+      "type": "multiple-choice",
+      "deckId": "should-have",
+      "prompt": "Expresa arrepentimiento por haber gritado: 'I ____ have shouted at him.'",
+      "options": [
+        "must",
+        "should not",
+        "might",
+        "could"
+      ],
+      "correct": "should not",
+      "explanation": "should not have + participio expresa que algo hecho no estuvo bien en este contexto.",
+      "points": 10
+    },
+    {
+      "id": "final-q15",
+      "type": "multiple-choice",
+      "deckId": "crime-vocab",
+      "prompt": "¿Qué delito consiste en entrar ilegalmente a una vivienda para robar?",
+      "options": [
+        "blackmail",
+        "fraud",
+        "burglary",
+        "smuggling"
+      ],
+      "correct": "burglary",
+      "explanation": "burglary = robo con entrada ilegal a una casa o edificio.",
+      "points": 10
+    },
+    {
+      "id": "final-q16",
+      "type": "multiple-choice",
+      "deckId": "criminals-verbs",
+      "prompt": "Completa: 'A stalker ____ someone.'",
+      "options": [
+        "stalks",
+        "smuggles",
+        "burgles",
+        "hacks"
+      ],
+      "correct": "stalks",
+      "explanation": "stalker → to stalk: acosador → acosar.",
+      "points": 10
+    },
+    {
+      "id": "final-q17",
+      "type": "multiple-choice",
+      "deckId": "rob-vs-steal",
+      "prompt": "Completa: 'Someone ____ my wallet yesterday.'",
+      "options": [
+        "robbed",
+        "rob",
+        "steal",
+        "stole"
+      ],
+      "correct": "stole",
+      "explanation": "steal + objeto; pasado: stole. rob se usa con personas o lugares.",
+      "points": 10
+    },
+    {
+      "id": "final-q18",
+      "type": "multiple-choice",
+      "deckId": "story-lamb-to-the-slaughter",
+      "prompt": "En Lamb to the Slaughter, ¿qué usa Mary para golpear a Patrick?",
+      "options": [
+        "Una botella.",
+        "Una pata de cordero congelada.",
+        "Una sartén.",
+        "Un libro."
+      ],
+      "correct": "Una pata de cordero congelada.",
+      "explanation": "El resumen local identifica una frozen leg of lamb.",
+      "points": 10
+    },
+    {
+      "id": "final-q19",
+      "type": "multiple-choice",
+      "deckId": "speaking-papers",
+      "prompt": "Completa la situación hipotética: 'If I got lost, I ____ try to find a public place.'",
+      "options": [
+        "will",
+        "have",
+        "would",
+        "am"
+      ],
+      "correct": "would",
+      "explanation": "Second conditional: if + pasado simple, would + verbo base.",
+      "points": 10
+    }
+  ]
+}

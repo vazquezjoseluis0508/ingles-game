@@ -1,0 +1,1568 @@
+{
+  "id": "clase4",
+  "name": "Clase 4 — 21/10",
+  "date": "2025-10-21",
+  "emoji": "🎤",
+  "decks": [
+    {
+      "id": "speaking-phrases",
+      "name": "Frases de Speaking",
+      "emoji": "🗣️",
+      "color": "#6c5ce7",
+      "description": "Las 15 frases memorizadas + banco útil para no trabarte.",
+      "cards": [
+        {
+          "id": "sp01",
+          "en": "I'd like to talk about this topic.",
+          "es": "Me gustaría hablar de este tema.",
+          "note": "Para ELEGIR un tema al empezar. 'I'd like' = me gustaría (no 'I like' = me gusta).",
+          "emoji": "🎯",
+          "tag": "Elegir tema"
+        },
+        {
+          "id": "sp02",
+          "en": "I think it's very interesting.",
+          "es": "Creo que es muy interesante.",
+          "note": "Opinión simple y segura.",
+          "emoji": "💭",
+          "tag": "Opinar"
+        },
+        {
+          "id": "sp03",
+          "en": "In my opinion, it's important.",
+          "es": "En mi opinión, es importante.",
+          "note": "Otra forma de dar tu opinión.",
+          "emoji": "💬",
+          "tag": "Opinar"
+        },
+        {
+          "id": "sp04",
+          "en": "I would choose this one because it's easier.",
+          "es": "Elegiría este porque es más fácil.",
+          "note": "Elegir + razón. 'choose' = elegir (verbo), 'choice' = elección (sustantivo).",
+          "emoji": "✅",
+          "tag": "Elegir tema"
+        },
+        {
+          "id": "sp05",
+          "en": "For example, in my experience...",
+          "es": "Por ejemplo, en mi experiencia...",
+          "note": "Para introducir un ejemplo personal.",
+          "emoji": "🧪",
+          "tag": "Ejemplo"
+        },
+        {
+          "id": "sp06",
+          "en": "I would try to stay calm.",
+          "es": "Trataría de mantener la calma.",
+          "note": "Acción imaginaria (second conditional). 'stay calm', NO 'stay and calm'.",
+          "emoji": "😌",
+          "tag": "Acción"
+        },
+        {
+          "id": "sp07",
+          "en": "I think it depends on the situation.",
+          "es": "Creo que depende de la situación.",
+          "note": "Útil cuando no querés comprometerte con una sola respuesta.",
+          "emoji": "⚖️",
+          "tag": "Opinar"
+        },
+        {
+          "id": "sp08",
+          "en": "The main reason is that...",
+          "es": "La razón principal es que...",
+          "note": "Para explicar tu razón principal.",
+          "emoji": "🔑",
+          "tag": "Explicar"
+        },
+        {
+          "id": "sp09",
+          "en": "What do you think about that?",
+          "es": "¿Qué pensás de eso?",
+          "note": "Invitar al compañero a participar.",
+          "emoji": "🤔",
+          "tag": "Interactuar"
+        },
+        {
+          "id": "sp10",
+          "en": "Do you agree with me?",
+          "es": "¿Estás de acuerdo conmigo?",
+          "note": "Buscar la reacción del compañero.",
+          "emoji": "🙋",
+          "tag": "Interactuar"
+        },
+        {
+          "id": "sp11",
+          "en": "That's a good point, but I disagree.",
+          "es": "Es un buen punto, pero no estoy de acuerdo.",
+          "note": "Reconocer antes de mostrar desacuerdo. Lleva 'a': a good point.",
+          "emoji": "🙅",
+          "tag": "Desacuerdo"
+        },
+        {
+          "id": "sp12",
+          "en": "I agree with you because...",
+          "es": "Estoy de acuerdo con vos porque...",
+          "note": "Acuerdo + razón.",
+          "emoji": "👍",
+          "tag": "Acuerdo"
+        },
+        {
+          "id": "sp13",
+          "en": "Let me think for a second.",
+          "es": "Dejame pensar un segundo.",
+          "note": "Ganar tiempo sin quedarte en silencio. NO 'let me think, but for a second'.",
+          "emoji": "⏳",
+          "tag": "Ganar tiempo"
+        },
+        {
+          "id": "sp14",
+          "en": "That's a difficult question.",
+          "es": "Es una pregunta difícil.",
+          "note": "Ganar tiempo. Lleva 'a': a difficult question.",
+          "emoji": "😅",
+          "tag": "Ganar tiempo"
+        },
+        {
+          "id": "sp15",
+          "en": "I'm not sure, but I think...",
+          "es": "No estoy seguro, pero creo que...",
+          "note": "Arrancar una respuesta cuando dudás.",
+          "emoji": "🤷",
+          "tag": "Ganar tiempo"
+        },
+        {
+          "id": "sp16",
+          "en": "What about you?",
+          "es": "¿Y vos?",
+          "note": "Devolver la palabra al compañero. Variá, no la repitas siempre.",
+          "emoji": "🔁",
+          "tag": "Interactuar"
+        },
+        {
+          "id": "sp17",
+          "en": "How about you?",
+          "es": "¿Y vos? / ¿Qué tal vos?",
+          "note": "Variante de 'What about you?'.",
+          "emoji": "🔄",
+          "tag": "Interactuar"
+        },
+        {
+          "id": "sp18",
+          "en": "Would you do the same?",
+          "es": "¿Harías lo mismo?",
+          "note": "Pregunta sobre una situación imaginaria.",
+          "emoji": "❓",
+          "tag": "Interactuar"
+        },
+        {
+          "id": "sp19",
+          "en": "That's true.",
+          "es": "Es verdad.",
+          "note": "Reacción corta de acuerdo.",
+          "emoji": "✔️",
+          "tag": "Acuerdo"
+        },
+        {
+          "id": "sp20",
+          "en": "I see your point, but...",
+          "es": "Entiendo tu punto, pero...",
+          "note": "Desacuerdo educado.",
+          "emoji": "🤝",
+          "tag": "Desacuerdo"
+        },
+        {
+          "id": "sp21",
+          "en": "On the other hand...",
+          "es": "Por otro lado...",
+          "note": "Para introducir el otro lado / contraste.",
+          "emoji": "🪙",
+          "tag": "Comparar"
+        },
+        {
+          "id": "sp22",
+          "en": "Have you ever felt the same way?",
+          "es": "¿Alguna vez te sentiste igual?",
+          "note": "Pregunta de seguimiento sobre experiencias.",
+          "emoji": "💗",
+          "tag": "Interactuar"
+        },
+        {
+          "id": "sp23",
+          "en": "Because everything is new.",
+          "es": "Porque todo es nuevo.",
+          "note": "Razón típica para 'nervous/excited' en un trabajo o mudanza.",
+          "emoji": "🆕",
+          "tag": "Explicar"
+        },
+        {
+          "id": "sp24",
+          "en": "Let me see...",
+          "es": "A ver...",
+          "note": "Ganar tiempo brevemente.",
+          "emoji": "👀",
+          "tag": "Ganar tiempo"
+        },
+        {
+          "id": "sp25",
+          "en": "I'm not sure about that.",
+          "es": "No estoy muy seguro de eso.",
+          "note": "Desacuerdo suave / duda.",
+          "emoji": "🧐",
+          "tag": "Desacuerdo"
+        }
+      ]
+    },
+    {
+      "id": "past-modals",
+      "name": "Past Modals (Deduction)",
+      "emoji": "🔮",
+      "color": "#a29bfe",
+      "description": "modal + have + past participle para deducir sobre el pasado.",
+      "cards": [
+        {
+          "id": "pm01",
+          "en": "You must have been delighted.",
+          "es": "Debés haber estado encantado.",
+          "note": "must have + pp = casi seguro.",
+          "emoji": "😄",
+          "tag": "Casi seguro"
+        },
+        {
+          "id": "pm02",
+          "en": "She must have fallen off her bike.",
+          "es": "Se debe haber caído de la bici.",
+          "note": "must have + pp. Deducción con casi certeza.",
+          "emoji": "🚲",
+          "tag": "Casi seguro"
+        },
+        {
+          "id": "pm03",
+          "en": "He might have gone home.",
+          "es": "Puede que se haya ido a casa.",
+          "note": "might/may/could have + pp = posible.",
+          "emoji": "🏠",
+          "tag": "Posible"
+        },
+        {
+          "id": "pm04",
+          "en": "She could have sprained her ankle.",
+          "es": "Podría haberse torcido el tobillo.",
+          "note": "could have + pp = posibilidad.",
+          "emoji": "🦶",
+          "tag": "Posible"
+        },
+        {
+          "id": "pm05",
+          "en": "She might not have read the email.",
+          "es": "Quizá no leyó el mail.",
+          "note": "might not have + pp = quizá no pasó.",
+          "emoji": "📧",
+          "tag": "Quizá no"
+        },
+        {
+          "id": "pm06",
+          "en": "You can't have seen my parents. They're away.",
+          "es": "No podés haber visto a mis viejos. Están de viaje.",
+          "note": "can't have + pp = casi imposible.",
+          "emoji": "🚫",
+          "tag": "Casi imposible"
+        },
+        {
+          "id": "pm07",
+          "en": "He couldn't have done it alone.",
+          "es": "No puede haberlo hecho solo.",
+          "note": "couldn't have + pp = casi imposible.",
+          "emoji": "🙅",
+          "tag": "Casi imposible"
+        },
+        {
+          "id": "pm08",
+          "en": "She might have hit her head.",
+          "es": "Puede que se haya golpeado la cabeza.",
+          "note": "might have + pp. Deducción posible (foto del accidente).",
+          "emoji": "🤕",
+          "tag": "Posible"
+        }
+      ]
+    },
+    {
+      "id": "should-have",
+      "name": "Should Have / Ought to Have",
+      "emoji": "😬",
+      "color": "#e17055",
+      "description": "Críticas y arrepentimientos sobre algo correcto que no se hizo.",
+      "cards": [
+        {
+          "id": "sh01",
+          "en": "We should have filled up at the last garage.",
+          "es": "Deberíamos haber cargado nafta en la última estación.",
+          "note": "should have + pp = algo correcto que no hiciste.",
+          "emoji": "⛽",
+          "tag": "Should have"
+        },
+        {
+          "id": "sh02",
+          "en": "I shouldn't have shouted at him.",
+          "es": "No debería haberle gritado.",
+          "note": "shouldn't have + pp = arrepentimiento.",
+          "emoji": "😔",
+          "tag": "Shouldn't have"
+        },
+        {
+          "id": "sh03",
+          "en": "They ought to have dressed up for the wedding.",
+          "es": "Deberían haberse arreglado para el casamiento.",
+          "note": "ought to have + pp = igual que 'should have'.",
+          "emoji": "👔",
+          "tag": "Ought to have"
+        },
+        {
+          "id": "sh04",
+          "en": "He ought not to have left his phone on his desk.",
+          "es": "No debería haber dejado el teléfono en el escritorio.",
+          "note": "ought not to have + pp.",
+          "emoji": "📱",
+          "tag": "Ought not"
+        },
+        {
+          "id": "sh05",
+          "en": "She should have been more careful.",
+          "es": "Debería haber tenido más cuidado.",
+          "note": "Crítica sobre el accidente de la bici.",
+          "emoji": "⚠️",
+          "tag": "Should have"
+        },
+        {
+          "id": "sh06",
+          "en": "She ought not to have ridden so fast.",
+          "es": "No debería haber andado tan rápido.",
+          "note": "ought not to have + pp. Crítica.",
+          "emoji": "💨",
+          "tag": "Ought not"
+        },
+        {
+          "id": "sh07",
+          "en": "I should have studied more for the exam.",
+          "es": "Debería haber estudiado más para el examen.",
+          "note": "Arrepentimiento típico. should have + pp.",
+          "emoji": "📚",
+          "tag": "Should have"
+        }
+      ]
+    },
+    {
+      "id": "would-rather",
+      "name": "Would Rather",
+      "emoji": "🤷",
+      "color": "#fd79a8",
+      "description": "would rather + base verb (mismo sujeto) / + persona + past simple (otro).",
+      "cards": [
+        {
+          "id": "wr01",
+          "en": "I'd rather stay home.",
+          "es": "Prefiero quedarme en casa.",
+          "note": "Mismo sujeto: would rather + base verb.",
+          "emoji": "🏠",
+          "tag": "Mismo sujeto"
+        },
+        {
+          "id": "wr02",
+          "en": "I'd rather see that film at the cinema.",
+          "es": "Prefiero ver esa película en el cine.",
+          "note": "would rather + base verb (sin 'to').",
+          "emoji": "🎬",
+          "tag": "Mismo sujeto"
+        },
+        {
+          "id": "wr03",
+          "en": "I'd rather sit by the window.",
+          "es": "Prefiero sentarme al lado de la ventana.",
+          "note": "would rather + base verb.",
+          "emoji": "🪟",
+          "tag": "Mismo sujeto"
+        },
+        {
+          "id": "wr04",
+          "en": "I'd rather you cooked tonight.",
+          "es": "Preferiría que cocines vos esta noche.",
+          "note": "Otro sujeto: would rather + persona + past simple.",
+          "emoji": "🍳",
+          "tag": "Otro sujeto"
+        },
+        {
+          "id": "wr05",
+          "en": "I'd rather you didn't post photos of me.",
+          "es": "Preferiría que no subas fotos mías.",
+          "note": "would rather + persona + didn't + base verb.",
+          "emoji": "📸",
+          "tag": "Otro sujeto"
+        },
+        {
+          "id": "wr06",
+          "en": "What would you rather do: stay in or go out?",
+          "es": "¿Qué preferirías hacer: quedarte o salir?",
+          "note": "Pregunta con would rather + base verb.",
+          "emoji": "❓",
+          "tag": "Pregunta"
+        }
+      ]
+    },
+    {
+      "id": "crime-vocab",
+      "name": "Vocabulario: Crime",
+      "emoji": "🚔",
+      "color": "#e17055",
+      "description": "Los delitos del Senior 5 con ejemplo y ayuda visual.",
+      "cards": [
+        {
+          "id": "cr01",
+          "en": "blackmail",
+          "es": "chantaje",
+          "note": "He was arrested for blackmail.",
+          "emoji": "✉️",
+          "tag": "Crime"
+        },
+        {
+          "id": "cr02",
+          "en": "bribery",
+          "es": "soborno / coima",
+          "note": "The politician was accused of bribery.",
+          "emoji": "💵",
+          "tag": "Crime"
+        },
+        {
+          "id": "cr03",
+          "en": "burglary",
+          "es": "robo entrando a una casa/edificio",
+          "note": "There was a burglary in our neighbourhood.",
+          "emoji": "🏠",
+          "tag": "Crime"
+        },
+        {
+          "id": "cr04",
+          "en": "drug dealing",
+          "es": "venta de drogas",
+          "note": "He was arrested for drug dealing.",
+          "emoji": "💊",
+          "tag": "Crime"
+        },
+        {
+          "id": "cr05",
+          "en": "fraud",
+          "es": "fraude / estafa",
+          "note": "The company was investigated for fraud.",
+          "emoji": "🧾",
+          "tag": "Crime"
+        },
+        {
+          "id": "cr06",
+          "en": "hacking",
+          "es": "acceso ilegal a sistemas",
+          "note": "Hacking is a serious crime.",
+          "emoji": "💻",
+          "tag": "Crime"
+        },
+        {
+          "id": "cr07",
+          "en": "hijacking",
+          "es": "secuestro de avión/vehículo",
+          "note": "The police stopped an attempted hijacking.",
+          "emoji": "✈️",
+          "tag": "Crime"
+        },
+        {
+          "id": "cr08",
+          "en": "kidnapping",
+          "es": "secuestro de una persona",
+          "note": "The kidnapping was reported to the police.",
+          "emoji": "🧍",
+          "tag": "Crime"
+        },
+        {
+          "id": "cr09",
+          "en": "mugging",
+          "es": "robo violento en la calle",
+          "note": "She was the victim of a mugging.",
+          "emoji": "🌃",
+          "tag": "Crime"
+        },
+        {
+          "id": "cr10",
+          "en": "murder",
+          "es": "asesinato",
+          "note": "He was charged with murder.",
+          "emoji": "🔪",
+          "tag": "Crime"
+        },
+        {
+          "id": "cr11",
+          "en": "rape",
+          "es": "violación",
+          "note": "Rape is a serious crime.",
+          "emoji": "⚠️",
+          "tag": "Crime"
+        },
+        {
+          "id": "cr12",
+          "en": "robbery",
+          "es": "robo (con violencia/amenaza)",
+          "note": "The bank robbery happened yesterday.",
+          "emoji": "🏦",
+          "tag": "Crime"
+        },
+        {
+          "id": "cr13",
+          "en": "smuggling",
+          "es": "contrabando",
+          "note": "They were arrested for smuggling.",
+          "emoji": "📦",
+          "tag": "Crime"
+        },
+        {
+          "id": "cr14",
+          "en": "stalking",
+          "es": "acoso / seguir obsesivamente",
+          "note": "She reported him for stalking.",
+          "emoji": "👣",
+          "tag": "Crime"
+        },
+        {
+          "id": "cr15",
+          "en": "terrorism",
+          "es": "terrorismo",
+          "note": "The police are investigating the attack as terrorism.",
+          "emoji": "💥",
+          "tag": "Crime"
+        },
+        {
+          "id": "cr16",
+          "en": "theft",
+          "es": "robo / hurto",
+          "note": "Car theft is common in some areas.",
+          "emoji": "🚗",
+          "tag": "Crime"
+        },
+        {
+          "id": "cr17",
+          "en": "vandalism",
+          "es": "vandalismo / daño a propiedad",
+          "note": "The wall was damaged by vandalism.",
+          "emoji": "🎨",
+          "tag": "Crime"
+        }
+      ]
+    },
+    {
+      "id": "criminals-verbs",
+      "name": "Criminals & Verbs",
+      "emoji": "🦹",
+      "color": "#636e72",
+      "description": "El criminal y su verbo: burglar/burgle, murderer/murder, etc.",
+      "cards": [
+        {
+          "id": "cm01",
+          "en": "burglar → to burgle",
+          "es": "ladrón de casas → robar una casa",
+          "note": "A burglar burgles houses.",
+          "emoji": "🏚️",
+          "tag": "Criminal + verb"
+        },
+        {
+          "id": "cm02",
+          "en": "murderer → to murder",
+          "es": "asesino → asesinar",
+          "note": "A murderer murders someone.",
+          "emoji": "🔪",
+          "tag": "Criminal + verb"
+        },
+        {
+          "id": "cm03",
+          "en": "stalker → to stalk",
+          "es": "acosador → acosar",
+          "note": "A stalker stalks someone.",
+          "emoji": "👣",
+          "tag": "Criminal + verb"
+        },
+        {
+          "id": "cm04",
+          "en": "hacker → to hack",
+          "es": "hacker → hackear",
+          "note": "A hacker hacks computers.",
+          "emoji": "💻",
+          "tag": "Criminal + verb"
+        },
+        {
+          "id": "cm05",
+          "en": "robber → to rob",
+          "es": "ladrón → robar (persona/lugar)",
+          "note": "A robber robs a bank or a person.",
+          "emoji": "🏦",
+          "tag": "Criminal + verb"
+        },
+        {
+          "id": "cm06",
+          "en": "thief → to steal",
+          "es": "ladrón → robar (un objeto)",
+          "note": "A thief steals objects. Irregular: steal-stole-stolen.",
+          "emoji": "🥷",
+          "tag": "Criminal + verb"
+        },
+        {
+          "id": "cm07",
+          "en": "kidnapper → to kidnap",
+          "es": "secuestrador → secuestrar",
+          "note": "A kidnapper kidnaps a person.",
+          "emoji": "🧍",
+          "tag": "Criminal + verb"
+        },
+        {
+          "id": "cm08",
+          "en": "smuggler → to smuggle",
+          "es": "contrabandista → contrabandear",
+          "note": "A smuggler smuggles goods.",
+          "emoji": "📦",
+          "tag": "Criminal + verb"
+        }
+      ]
+    },
+    {
+      "id": "rob-vs-steal",
+      "name": "Rob vs Steal",
+      "emoji": "⚖️",
+      "color": "#d63031",
+      "description": "rob + persona/lugar vs steal + objeto.",
+      "cards": [
+        {
+          "id": "rs01",
+          "en": "They robbed the bank.",
+          "es": "Robaron el banco.",
+          "note": "rob + lugar. ✔️",
+          "emoji": "🏦",
+          "tag": "rob"
+        },
+        {
+          "id": "rs02",
+          "en": "Someone robbed him.",
+          "es": "Alguien lo robó (a él).",
+          "note": "rob + persona. ✔️",
+          "emoji": "🧍",
+          "tag": "rob"
+        },
+        {
+          "id": "rs03",
+          "en": "They stole my phone.",
+          "es": "Me robaron el teléfono.",
+          "note": "steal + objeto. ✔️",
+          "emoji": "📱",
+          "tag": "steal"
+        },
+        {
+          "id": "rs04",
+          "en": "Someone stole the money.",
+          "es": "Alguien robó la plata.",
+          "note": "steal + objeto. ✔️",
+          "emoji": "💰",
+          "tag": "steal"
+        }
+      ]
+    },
+    {
+      "id": "story-lamb-to-the-slaughter",
+      "name": "Lamb to the Slaughter",
+      "emoji": "🐑",
+      "color": "#b2bec3",
+      "description": "Vocabulario y expresiones clave del cuento de Roald Dahl.",
+      "cards": [
+        {
+          "id": "lamb01",
+          "en": "frozen leg of lamb",
+          "es": "pata de cordero congelada",
+          "note": "El arma con la que Mary golpea a Patrick.",
+          "emoji": "🍖",
+          "tag": "Story"
+        },
+        {
+          "id": "lamb02",
+          "en": "to hit someone on the head",
+          "es": "golpear a alguien en la cabeza",
+          "note": "Lo que Mary le hace a su marido.",
+          "emoji": "🔨",
+          "tag": "Story"
+        },
+        {
+          "id": "lamb03",
+          "en": "distant",
+          "es": "distante",
+          "note": "Mary nota a Patrick distant y raro.",
+          "emoji": "😐",
+          "tag": "Story"
+        },
+        {
+          "id": "lamb04",
+          "en": "in shock",
+          "es": "en shock / conmocionada",
+          "note": "Cómo queda Mary tras la noticia.",
+          "emoji": "😨",
+          "tag": "Story"
+        },
+        {
+          "id": "lamb05",
+          "en": "to act strangely",
+          "es": "actuar de forma extraña",
+          "note": "Patrick bebe y se comporta raro.",
+          "emoji": "🥃",
+          "tag": "Story"
+        },
+        {
+          "id": "lamb06",
+          "en": "to have a drink",
+          "es": "tomar un trago",
+          "note": "Patrick bebe más de lo normal.",
+          "emoji": "🍸",
+          "tag": "Story"
+        },
+        {
+          "id": "lamb07",
+          "en": "to collapse on the floor",
+          "es": "desplomarse en el piso",
+          "note": "Patrick cae al suelo tras el golpe.",
+          "emoji": "💥",
+          "tag": "Story"
+        }
+      ]
+    },
+    {
+      "id": "speaking-papers",
+      "name": "Speaking Papers (Frames)",
+      "emoji": "🧩",
+      "color": "#00b894",
+      "description": "Estructuras de los 3 papers: second conditional, feelings y sueño.",
+      "cards": [
+        {
+          "id": "pf01",
+          "en": "If I got lost in the Amazon rainforest, I would feel really scared.",
+          "es": "Si me perdiera en la selva amazónica, me sentiría muy asustado.",
+          "note": "Paper 1: second conditional. 'I would feel', NO 'I will feel'.",
+          "emoji": "🌴",
+          "tag": "Paper 1"
+        },
+        {
+          "id": "pf02",
+          "en": "First, I would try to stay calm because panic makes things worse.",
+          "es": "Primero, trataría de mantener la calma porque el pánico empeora todo.",
+          "note": "Paper 1: 'stay calm', NO 'stay and calm'.",
+          "emoji": "😌",
+          "tag": "Paper 1"
+        },
+        {
+          "id": "pf03",
+          "en": "If I got lost in a foreign city, I would try to find a public place with lots of people.",
+          "es": "Si me perdiera en una ciudad extranjera, buscaría un lugar público con mucha gente.",
+          "note": "Paper 1: versión natural del subtópico ciudad.",
+          "emoji": "🏙️",
+          "tag": "Paper 1"
+        },
+        {
+          "id": "pf04",
+          "en": "If my phone was dead, I would try to find someone to ask for help.",
+          "es": "Si me quedara sin batería, buscaría a alguien para pedir ayuda.",
+          "note": "Paper 1: 'my phone is dead' = sin batería.",
+          "emoji": "🔋",
+          "tag": "Paper 1"
+        },
+        {
+          "id": "pf05",
+          "en": "Starting a new job, I would feel excited but nervous because everything is new.",
+          "es": "Al empezar un trabajo nuevo, me sentiría entusiasmado pero nervioso porque todo es nuevo.",
+          "note": "Paper 2: feelings. 'I would feel', NO 'I will feel'.",
+          "emoji": "💼",
+          "tag": "Paper 2"
+        },
+        {
+          "id": "pf06",
+          "en": "On my first day, I would try to make a good impression.",
+          "es": "En mi primer día, trataría de causar una buena impresión.",
+          "note": "Paper 2: 'On my first day' (NO 'In'); 'a good impression'.",
+          "emoji": "🤝",
+          "tag": "Paper 2"
+        },
+        {
+          "id": "pf07",
+          "en": "Why would you feel sad?",
+          "es": "¿Por qué te sentirías triste?",
+          "note": "Paper 2: 'Why WOULD you' (imaginado) vs 'Why DO you' (real).",
+          "emoji": "❓",
+          "tag": "Paper 2"
+        },
+        {
+          "id": "pf08",
+          "en": "Having financial problems, I would feel stressed and worried.",
+          "es": "Con problemas de plata, me sentiría estresado y preocupado.",
+          "note": "Paper 2: feelings + razón.",
+          "emoji": "💸",
+          "tag": "Paper 2"
+        },
+        {
+          "id": "pf09",
+          "en": "Caffeine keeps you awake, so it's difficult to fall asleep.",
+          "es": "La cafeína te mantiene despierto, así que cuesta quedarse dormido.",
+          "note": "Paper 3: 'fall asleep', NO 'feel sleep'.",
+          "emoji": "☕",
+          "tag": "Paper 3"
+        },
+        {
+          "id": "pf10",
+          "en": "Smoking can affect your sleep because nicotine keeps you awake.",
+          "es": "Fumar puede afectar el sueño porque la nicotina te mantiene despierto.",
+          "note": "Paper 3: causa y consecuencia.",
+          "emoji": "🚬",
+          "tag": "Paper 3"
+        },
+        {
+          "id": "pf11",
+          "en": "Jet lag can make you feel tired during the day.",
+          "es": "El jet lag puede hacer que te sientas cansado durante el día.",
+          "note": "Paper 3: cuidado con can vs can't.",
+          "emoji": "🛬",
+          "tag": "Paper 3"
+        },
+        {
+          "id": "pf12",
+          "en": "If my neighbours make a lot of noise, I find it difficult to fall asleep.",
+          "es": "Si mis vecinos hacen mucho ruido, me cuesta quedarme dormido.",
+          "note": "Paper 3: 'neighbours' (vecinos) ≠ 'neighbourhood' (barrio).",
+          "emoji": "🔊",
+          "tag": "Paper 3"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "id": "quiz-modal-deduction",
+      "name": "Quiz: Past Modals (Deduction)",
+      "emoji": "🔮",
+      "description": "Must have, might have, can't have para deducción en el pasado",
+      "difficulty": "hard",
+      "deckId": "past-modals",
+      "questions": [
+        {
+          "id": "pm-q1",
+          "type": "multiple-choice",
+          "prompt": "Elige la deducción pasada que expresa casi certeza, no solo posibilidad: 'He ____ sleeping.'",
+          "options": [
+            "must have been",
+            "might have been",
+            "can't have been",
+            "should have been"
+          ],
+          "correct": "must have been",
+          "explanation": "'Must have been' = deduzco que estaba durmiendo (casi seguro). Lo más probable.",
+          "points": 10
+        },
+        {
+          "id": "pm-q2",
+          "type": "typing",
+          "prompt": "Traduce: 'No podría haber robado el banco, estaba en casa.' → 'He _______ robbed the bank; he was home.'",
+          "correct": "can't have",
+          "variations": [
+            "can't have",
+            "couldn't have"
+          ],
+          "explanation": "'Can't have' = imposible que haya pasado.",
+          "points": 10
+        },
+        {
+          "id": "pm-q3",
+          "type": "gap-fill",
+          "prompt": "Complete: 'Tal vez lo viera, no estoy seguro.' → 'He _______ seen it. I'm not sure.'",
+          "options": [
+            "might have",
+            "must have",
+            "must",
+            "should have"
+          ],
+          "correct": "might have",
+          "explanation": "'Might have' (podría haber) = no estoy seguro. Posibilidad débil.",
+          "points": 10
+        },
+        {
+          "id": "pm-q4",
+          "type": "multiple-choice",
+          "prompt": "¿Cuál expresa la deducción más fuerte (casi certeza)?",
+          "options": [
+            "She might have left.",
+            "She could have left.",
+            "She must have left.",
+            "She should have left."
+          ],
+          "correct": "She must have left.",
+          "explanation": "'Must have' = casi certeza. 'Might/could have' = posibilidad débil. 'Should have' = arrepentimiento.",
+          "points": 10
+        },
+        {
+          "id": "pm-q5",
+          "type": "typing",
+          "prompt": "Expresa una deducción de casi certeza sobre el pasado con must: 'Él debe de haber llegado tarde.' → 'He _______ late.'",
+          "correct": "must have been",
+          "variations": [
+            "must have been"
+          ],
+          "explanation": "must have been + adjetivo expresa una deducción de casi certeza sobre el pasado.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-speaking-phrases",
+      "name": "Quiz: Frases de Speaking",
+      "emoji": "🗣️",
+      "description": "Practica frases de speaking",
+      "difficulty": "medium",
+      "deckId": "speaking-phrases",
+      "questions": [
+        {
+          "id": "speaking-phrases-q1",
+          "type": "multiple-choice",
+          "prompt": "¿Cuál es la traducción correcta de 'I'd like to talk about this topic.'?",
+          "options": [
+            "Me gustaría hablar de este tema.",
+            "Me gusta hablar de este tema.",
+            "Ya hablé de este tema.",
+            "Solía hablar de este tema."
+          ],
+          "correct": "Me gustaría hablar de este tema.",
+          "explanation": "I'd like to talk about this topic. = Me gustaría hablar de este tema.. Contexto: Para ELEGIR un tema al empezar. 'I'd like' = me gustaría (no 'I like' = me gusta).",
+          "points": 10
+        },
+        {
+          "id": "speaking-phrases-q2",
+          "type": "gap-fill",
+          "prompt": "Completa: 'I think ____ very interesting.'",
+          "options": [
+            "its",
+            "it's",
+            "it",
+            "is"
+          ],
+          "correct": "it's",
+          "explanation": "it's = it is. Después de I think necesitamos sujeto y verbo.",
+          "points": 10
+        },
+        {
+          "id": "speaking-phrases-q3",
+          "type": "multiple-choice",
+          "prompt": "¿Qué significa 'In my opinion, it's important.'?",
+          "options": [
+            "En mi opinión, es importante.",
+            "En su opinión, no es importante.",
+            "A pesar de mi opinión, no importa.",
+            "Antes pensaba que era importante."
+          ],
+          "correct": "En mi opinión, es importante.",
+          "explanation": "Otra forma de dar tu opinión.",
+          "points": 10
+        },
+        {
+          "id": "speaking-phrases-q4",
+          "type": "typing",
+          "prompt": "Completa con un verbo que signifique elegir: 'I would ____ this one because it's easier.'",
+          "options": [],
+          "correct": "choose",
+          "explanation": "would + verbo base: choose, pick o select expresan elegir.",
+          "variations": [
+            "choose",
+            "pick",
+            "select"
+          ],
+          "points": 10
+        },
+        {
+          "id": "speaking-phrases-q5",
+          "type": "multiple-choice",
+          "prompt": "¿Para qué sirve 'For example, in my experience...'?",
+          "options": [
+            "Para cambiar de tema sin explicar.",
+            "Para introducir un ejemplo personal.",
+            "Para pedir que repitan una pregunta.",
+            "Para cerrar la conversación."
+          ],
+          "correct": "Para introducir un ejemplo personal.",
+          "explanation": "For example introduce un ejemplo; in my experience lo vincula con una experiencia propia.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-past-modals",
+      "name": "Quiz: Past Modals (Deduction)",
+      "emoji": "🔮",
+      "description": "Practica past modals (deduction)",
+      "difficulty": "medium",
+      "deckId": "past-modals",
+      "questions": [
+        {
+          "id": "past-modals-q1",
+          "type": "multiple-choice",
+          "prompt": "¿Cuál es la traducción correcta de 'You must have been delighted.'?",
+          "options": [
+            "Debés haber estado encantado.",
+            "Tal vez hayas estado encantado.",
+            "Deberías haber estado encantado.",
+            "No puedes haber estado encantado."
+          ],
+          "correct": "Debés haber estado encantado.",
+          "explanation": "You must have been delighted. = Debés haber estado encantado.. Contexto: must have + pp = casi seguro.",
+          "points": 10
+        },
+        {
+          "id": "past-modals-q2",
+          "type": "gap-fill",
+          "prompt": "Completa: 'She must have ____ off her bike.'",
+          "options": [
+            "fell",
+            "fallen",
+            "fall",
+            "falling"
+          ],
+          "correct": "fallen",
+          "explanation": "must have + participio; fall → fell → fallen.",
+          "points": 10
+        },
+        {
+          "id": "past-modals-q3",
+          "type": "multiple-choice",
+          "prompt": "¿Qué significa 'He might have gone home.'?",
+          "options": [
+            "Puede que se haya ido a casa.",
+            "Seguro que se fue a casa.",
+            "No puede haberse ido a casa.",
+            "Debería haberse ido a casa."
+          ],
+          "correct": "Puede que se haya ido a casa.",
+          "explanation": "might/may/could have + pp = posible.",
+          "points": 10
+        },
+        {
+          "id": "past-modals-q4",
+          "type": "typing",
+          "prompt": "Completa el participio de sprain: 'She could have ____ her ankle.'",
+          "options": [],
+          "correct": "sprained",
+          "explanation": "could have + participio expresa una posibilidad pasada.",
+          "variations": [
+            "sprained"
+          ],
+          "points": 10
+        },
+        {
+          "id": "past-modals-q5",
+          "type": "multiple-choice",
+          "prompt": "¿Qué expresa 'She might not have read the email.'?",
+          "options": [
+            "Es imposible que lo haya leído.",
+            "Seguro que no lo leyó.",
+            "Es posible que no lo haya leído.",
+            "No debería haberlo leído."
+          ],
+          "correct": "Es posible que no lo haya leído.",
+          "explanation": "might not have + participio expresa posibilidad negativa en el pasado, no certeza.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-should-have",
+      "name": "Quiz: Should Have / Ought to Have",
+      "emoji": "😬",
+      "description": "Practica should have / ought to have",
+      "difficulty": "medium",
+      "deckId": "should-have",
+      "questions": [
+        {
+          "id": "should-have-q1",
+          "type": "multiple-choice",
+          "prompt": "¿Cuál es la traducción correcta de 'We should have filled up at the last garage.'?",
+          "options": [
+            "Deberíamos haber cargado nafta en la última estación.",
+            "Debemos de haber cargado nafta en la última estación.",
+            "Quizá cargamos nafta en la última estación.",
+            "No pudimos cargar nafta en la última estación."
+          ],
+          "correct": "Deberíamos haber cargado nafta en la última estación.",
+          "explanation": "We should have filled up at the last garage. = Deberíamos haber cargado nafta en la última estación.. Contexto: should have + pp = algo correcto que no hiciste.",
+          "points": 10
+        },
+        {
+          "id": "should-have-q2",
+          "type": "gap-fill",
+          "prompt": "Completa: 'I shouldn't have ____ at him.'",
+          "options": [
+            "shout",
+            "shouting",
+            "shouts",
+            "shouted"
+          ],
+          "correct": "shouted",
+          "explanation": "should not have + participio: shouted.",
+          "points": 10
+        },
+        {
+          "id": "should-have-q3",
+          "type": "multiple-choice",
+          "prompt": "¿Qué significa 'They ought to have dressed up for the wedding.'?",
+          "options": [
+            "Deberían haberse arreglado para el casamiento.",
+            "Puede que se hayan arreglado para el casamiento.",
+            "No pueden haberse arreglado para el casamiento.",
+            "Seguro que se arreglaron para el casamiento."
+          ],
+          "correct": "Deberían haberse arreglado para el casamiento.",
+          "explanation": "ought to have + pp = igual que 'should have'.",
+          "points": 10
+        },
+        {
+          "id": "should-have-q4",
+          "type": "typing",
+          "prompt": "Completa el participio de leave: 'He ought not to have ____ his phone on his desk.'",
+          "options": [],
+          "correct": "left",
+          "explanation": "ought not to have + participio; leave → left.",
+          "variations": [
+            "left"
+          ],
+          "points": 10
+        },
+        {
+          "id": "should-have-q5",
+          "type": "multiple-choice",
+          "prompt": "Tras un accidente, ¿qué expresa 'She should have been more careful.'?",
+          "options": [
+            "Una posibilidad de que haya tenido cuidado.",
+            "Una deducción de que tuvo cuidado.",
+            "Una obligación futura.",
+            "Una crítica a su falta de cuidado en el pasado."
+          ],
+          "correct": "Una crítica a su falta de cuidado en el pasado.",
+          "explanation": "En este contexto, should have + participio critica algo que no se hizo.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-would-rather",
+      "name": "Quiz: Would Rather",
+      "emoji": "🤷",
+      "description": "Practica would rather",
+      "difficulty": "medium",
+      "deckId": "would-rather",
+      "questions": [
+        {
+          "id": "would-rather-q1",
+          "type": "multiple-choice",
+          "prompt": "¿Cuál es la traducción correcta de 'I'd rather stay home.'?",
+          "options": [
+            "Prefiero quedarme en casa.",
+            "Solía quedarme en casa.",
+            "Me arrepiento de haberme quedado en casa.",
+            "Estoy acostumbrado a quedarme en casa."
+          ],
+          "correct": "Prefiero quedarme en casa.",
+          "explanation": "I'd rather stay home. = Prefiero quedarme en casa.. Contexto: Mismo sujeto: would rather + base verb.",
+          "points": 10
+        },
+        {
+          "id": "would-rather-q2",
+          "type": "gap-fill",
+          "prompt": "Completa: 'I'd rather ____ that film at the cinema.'",
+          "options": [
+            "to see",
+            "seeing",
+            "see",
+            "saw"
+          ],
+          "correct": "see",
+          "explanation": "Con el mismo sujeto: would rather + verbo base, sin to.",
+          "points": 10
+        },
+        {
+          "id": "would-rather-q3",
+          "type": "multiple-choice",
+          "prompt": "¿Qué significa 'I'd rather sit by the window.'?",
+          "options": [
+            "Prefiero sentarme al lado de la ventana.",
+            "Solía sentarme al lado de la ventana.",
+            "Me arrepiento de haberme sentado al lado de la ventana.",
+            "Me obligaron a sentarme al lado de la ventana."
+          ],
+          "correct": "Prefiero sentarme al lado de la ventana.",
+          "explanation": "would rather + base verb.",
+          "points": 10
+        },
+        {
+          "id": "would-rather-q4",
+          "type": "typing",
+          "prompt": "Completa con la forma de cook para una preferencia sobre otra persona: 'I'd rather you ____ tonight.'",
+          "options": [],
+          "correct": "cooked",
+          "explanation": "Con otra persona: would rather + sujeto + pasado simple, aunque la preferencia sea presente o futura.",
+          "variations": [
+            "cooked"
+          ],
+          "points": 10
+        },
+        {
+          "id": "would-rather-q5",
+          "type": "multiple-choice",
+          "prompt": "¿Qué expresa 'I'd rather you didn't post photos of me.'?",
+          "options": [
+            "Prefiero que no publiques fotos mías.",
+            "Prefería que no publicaras fotos en aquel entonces.",
+            "Me arrepiento de haber publicado tus fotos.",
+            "Prefiero no publicar yo tus fotos."
+          ],
+          "correct": "Prefiero que no publiques fotos mías.",
+          "explanation": "would rather + otra persona + pasado expresa una preferencia presente o futura, no necesariamente pasada.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-crime-vocab",
+      "name": "Quiz: Vocabulario: Crime",
+      "emoji": "🚔",
+      "description": "Practica vocabulario: crime",
+      "difficulty": "medium",
+      "deckId": "crime-vocab",
+      "questions": [
+        {
+          "id": "crime-vocab-q1",
+          "type": "multiple-choice",
+          "prompt": "¿Cuál es la traducción correcta de 'blackmail'?",
+          "options": [
+            "chantaje",
+            "soborno",
+            "contrabando",
+            "fraude"
+          ],
+          "correct": "chantaje",
+          "explanation": "blackmail = chantaje. Contexto: He was arrested for blackmail.",
+          "points": 10
+        },
+        {
+          "id": "crime-vocab-q3",
+          "type": "multiple-choice",
+          "prompt": "¿Qué significa 'burglary'?",
+          "options": [
+            "robo entrando a una casa/edificio",
+            "robo violento en la calle",
+            "robo de identidad",
+            "contrabando"
+          ],
+          "correct": "robo entrando a una casa/edificio",
+          "explanation": "There was a burglary in our neighbourhood.",
+          "points": 10
+        },
+        {
+          "id": "crime-vocab-q5",
+          "type": "multiple-choice",
+          "prompt": "Una empresa engaña a clientes para obtener su dinero. ¿Qué delito describe esto?",
+          "options": [
+            "burglary",
+            "fraud",
+            "smuggling",
+            "mugging"
+          ],
+          "correct": "fraud",
+          "explanation": "fraud = fraude o estafa mediante engaño.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-criminals-verbs",
+      "name": "Quiz: Criminals & Verbs",
+      "emoji": "🦹",
+      "description": "Practica criminals & verbs",
+      "difficulty": "medium",
+      "deckId": "criminals-verbs",
+      "questions": [
+        {
+          "id": "criminals-verbs-q1",
+          "type": "multiple-choice",
+          "prompt": "¿Cuál es la traducción correcta de 'burglar → to burgle'?",
+          "options": [
+            "ladrón de casas → robar una casa",
+            "estafador → estafar",
+            "secuestrador → secuestrar",
+            "contrabandista → pasar de contrabando"
+          ],
+          "correct": "ladrón de casas → robar una casa",
+          "explanation": "burglar → to burgle = ladrón de casas → robar una casa. Contexto: A burglar burgles houses.",
+          "points": 10
+        },
+        {
+          "id": "criminals-verbs-q2",
+          "type": "gap-fill",
+          "prompt": "Completa la relación entre persona y acción: 'murderer → to ____'.",
+          "options": [
+            "burgle",
+            "murder",
+            "smuggle",
+            "stalk"
+          ],
+          "correct": "murder",
+          "explanation": "A murderer murders someone: asesino → asesinar.",
+          "points": 10
+        },
+        {
+          "id": "criminals-verbs-q3",
+          "type": "multiple-choice",
+          "prompt": "¿Qué significa 'stalker → to stalk'?",
+          "options": [
+            "acosador → acosar",
+            "secuestrador → secuestrar",
+            "estafador → estafar",
+            "chantajista → chantajear"
+          ],
+          "correct": "acosador → acosar",
+          "explanation": "A stalker stalks someone.",
+          "points": 10
+        },
+        {
+          "id": "criminals-verbs-q4",
+          "type": "typing",
+          "prompt": "Escribe el verbo en inglés, sin to: acceder ilegalmente a un sistema informático.",
+          "options": [],
+          "correct": "hack",
+          "explanation": "to hack = acceder ilegalmente a un sistema informático.",
+          "variations": [
+            "hack"
+          ],
+          "points": 10
+        },
+        {
+          "id": "criminals-verbs-q5",
+          "type": "multiple-choice",
+          "prompt": "Completa con el verbo adecuado: 'A robber ____ a bank or a person.'",
+          "options": [
+            "steals",
+            "burgles",
+            "robs",
+            "smuggles"
+          ],
+          "correct": "robs",
+          "explanation": "rob toma como objeto una persona o un lugar; steal toma lo sustraído.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-rob-vs-steal",
+      "name": "Quiz: Rob vs Steal",
+      "emoji": "⚖️",
+      "description": "Practica rob vs steal",
+      "difficulty": "medium",
+      "deckId": "rob-vs-steal",
+      "questions": [
+        {
+          "id": "rob-vs-steal-q1",
+          "type": "multiple-choice",
+          "prompt": "¿Cuál es la traducción correcta de 'They robbed the bank.'?",
+          "options": [
+            "Robaron el banco.",
+            "Robaron al empleado fuera del banco.",
+            "Robaron dinero de mi casa.",
+            "Entraron al banco sin robar."
+          ],
+          "correct": "Robaron el banco.",
+          "explanation": "They robbed the bank. = Robaron el banco.. Contexto: rob + lugar. ✔️",
+          "points": 10
+        },
+        {
+          "id": "rob-vs-steal-q3",
+          "type": "multiple-choice",
+          "prompt": "¿Qué significa 'They stole my phone.'?",
+          "options": [
+            "Me robaron el teléfono.",
+            "Les robé el teléfono.",
+            "Le robaron el teléfono a otra persona.",
+            "Me devolvieron el teléfono."
+          ],
+          "correct": "Me robaron el teléfono.",
+          "explanation": "steal + objeto. ✔️",
+          "points": 10
+        },
+        {
+          "id": "rob-vs-steal-q4",
+          "type": "typing",
+          "prompt": "Completa la oración: \"Someone ____.\" (Alguien robó el dinero.)",
+          "options": [],
+          "correct": "stole the money",
+          "explanation": "Respuesta: 'Someone stole the money.' Contexto: steal + objeto. ✔️",
+          "points": 10
+        },
+        {
+          "id": "rob-vs-steal-q5",
+          "type": "multiple-choice",
+          "prompt": "¿Cuál es el complemento correcto de 'They robbed ____'?",
+          "options": [
+            "the bank.",
+            "my phone.",
+            "the money.",
+            "his wallet."
+          ],
+          "correct": "the bank.",
+          "explanation": "rob se usa con lugares o personas. 'They robbed the bank' es correcto. ✔️",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-story-lamb-to-the-slaughter",
+      "name": "Quiz: Lamb to the Slaughter",
+      "emoji": "🐑",
+      "description": "Practica lamb to the slaughter",
+      "difficulty": "medium",
+      "deckId": "story-lamb-to-the-slaughter",
+      "questions": [
+        {
+          "id": "story-lamb-to-the-slaughter-q1",
+          "type": "multiple-choice",
+          "prompt": "¿Cuál es la traducción correcta de 'frozen leg of lamb'?",
+          "options": [
+            "pata de cordero congelada",
+            "pata de cordero asada",
+            "paleta de cordero fresca",
+            "pata de cerdo congelada"
+          ],
+          "correct": "pata de cordero congelada",
+          "explanation": "frozen leg of lamb = pata de cordero congelada. Contexto: El arma con la que Mary golpea a Patrick.",
+          "points": 10
+        },
+        {
+          "id": "story-lamb-to-the-slaughter-q2",
+          "type": "gap-fill",
+          "prompt": "En el cuento, Mary golpea a Patrick en la cabeza. Completa: 'She hit him ____ the head.'",
+          "options": [
+            "at",
+            "to",
+            "on",
+            "by"
+          ],
+          "correct": "on",
+          "explanation": "hit someone on the head: golpear a alguien en la cabeza.",
+          "points": 10
+        },
+        {
+          "id": "story-lamb-to-the-slaughter-q3",
+          "type": "multiple-choice",
+          "prompt": "Mary nota que Patrick se muestra distant con ella. ¿Qué significa distant en este contexto?",
+          "options": [
+            "distante",
+            "cariñoso",
+            "comunicativo",
+            "entusiasmado"
+          ],
+          "correct": "distante",
+          "explanation": "Mary nota a Patrick distant y raro.",
+          "points": 10
+        },
+        {
+          "id": "story-lamb-to-the-slaughter-q5",
+          "type": "multiple-choice",
+          "prompt": "En Lamb to the Slaughter, ¿qué conducta de Patrick nota Mary al comienzo?",
+          "options": [
+            "Se muestra más cariñoso de lo habitual.",
+            "Evita beber y habla animadamente.",
+            "Está tranquilo y se comporta como siempre.",
+            "Está distante, bebe más y se comporta de manera extraña."
+          ],
+          "correct": "Está distante, bebe más y se comporta de manera extraña.",
+          "explanation": "El resumen del cuento describe a Patrick distante y bebiendo más de lo normal.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-speaking-papers",
+      "name": "Quiz: Speaking Papers (Frames)",
+      "emoji": "🧩",
+      "description": "Practica speaking papers (frames)",
+      "difficulty": "medium",
+      "deckId": "speaking-papers",
+      "questions": [
+        {
+          "id": "speaking-papers-q1",
+          "type": "multiple-choice",
+          "prompt": "¿Cuál es la traducción correcta de 'If I got lost in the Amazon rainforest, I would feel really scared.'?",
+          "options": [
+            "Si me perdiera en la selva amazónica, me sentiría muy asustado.",
+            "Cuando me perdí en la selva amazónica, sentí mucho miedo.",
+            "Si me pierdo en la selva amazónica, no sentiré miedo.",
+            "Si me hubiera perdido en la selva amazónica, habría sentido mucho miedo."
+          ],
+          "correct": "Si me perdiera en la selva amazónica, me sentiría muy asustado.",
+          "explanation": "If I got lost in the Amazon rainforest, I would feel really scared. = Si me perdiera en la selva amazónica, me sentiría muy asustado.. Contexto: Paper 1: second conditional. 'I would feel', NO 'I will feel'.",
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q2",
+          "type": "gap-fill",
+          "prompt": "En una situación hipotética, completa: 'First, I ____ try to stay calm because panic makes things worse.'",
+          "options": [
+            "will",
+            "would",
+            "am",
+            "did"
+          ],
+          "correct": "would",
+          "explanation": "La respuesta hipotética usa would + verbo base.",
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q3",
+          "type": "multiple-choice",
+          "prompt": "¿Qué significa 'If I got lost in a foreign city, I would try to find a public place with lots of people.'?",
+          "options": [
+            "Si me perdiera en una ciudad extranjera, buscaría un lugar público con mucha gente.",
+            "Si me perdiera en una ciudad extranjera, evitaría los lugares con mucha gente.",
+            "Cuando me perdí en una ciudad extranjera, busqué un lugar con mucha gente.",
+            "Si me hubiera perdido en una ciudad extranjera, habría buscado un lugar con mucha gente."
+          ],
+          "correct": "Si me perdiera en una ciudad extranjera, buscaría un lugar público con mucha gente.",
+          "explanation": "Paper 1: versión natural del subtópico ciudad.",
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q4",
+          "type": "typing",
+          "prompt": "Completa la forma de be en esta situación hipotética: 'If my phone ____ dead, I would try to find someone to ask for help.'",
+          "options": [],
+          "correct": "was",
+          "explanation": "En esta hipótesis se aceptan was y were; were es la forma irrealis tradicional.",
+          "variations": [
+            "was",
+            "were"
+          ],
+          "points": 10
+        },
+        {
+          "id": "speaking-papers-q5",
+          "type": "multiple-choice",
+          "prompt": "¿Qué respuesta expresa cómo te sentirías hipotéticamente al empezar un trabajo nuevo?",
+          "options": [
+            "I would feel excited but nervous because everything is new.",
+            "I felt excited but nervous when I started last year.",
+            "I have felt excited since I started last month.",
+            "I feel excited every morning at my current job."
+          ],
+          "correct": "I would feel excited but nervous because everything is new.",
+          "explanation": "would feel expresa una reacción hipotética; las otras opciones describen experiencias reales.",
+          "points": 10
+        }
+      ]
+    }
+  ]
+}

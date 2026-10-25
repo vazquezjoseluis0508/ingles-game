@@ -1,0 +1,189 @@
+{
+  "id": "clase2",
+  "name": "Clase 2 — 14/10",
+  "date": "2025-10-14",
+  "emoji": "✍️",
+  "decks": [
+    {
+      "id": "reporting-verbs",
+      "name": "Reporting Verbs",
+      "emoji": "🗨️",
+      "color": "#fdcb6e",
+      "description": "Los 3 grupos: verb + to-inf, verb + persona + to-inf, verb + -ing.",
+      "cards": [
+        {
+          "id": "rv01",
+          "en": "Adrian offered to make dinner.",
+          "es": "Adrian ofreció hacer la cena.",
+          "note": "Grupo 1: verb + to-infinitive (offer).",
+          "emoji": "🍽️",
+          "tag": "to-inf"
+        },
+        {
+          "id": "rv02",
+          "en": "Pablo promised to tidy his room.",
+          "es": "Pablo prometió ordenar su cuarto.",
+          "note": "Grupo 1: promise + to-infinitive.",
+          "emoji": "🤞",
+          "tag": "to-inf"
+        },
+        {
+          "id": "rv03",
+          "en": "The children refused to go to bed.",
+          "es": "Los chicos se negaron a ir a dormir.",
+          "note": "Grupo 1: refuse + to-infinitive.",
+          "emoji": "🛏️",
+          "tag": "to-inf"
+        },
+        {
+          "id": "rv04",
+          "en": "Sam's neighbour threatened to call the police.",
+          "es": "El vecino de Sam amenazó con llamar a la policía.",
+          "note": "Grupo 1: threaten + to-infinitive.",
+          "emoji": "📞",
+          "tag": "to-inf"
+        },
+        {
+          "id": "rv05",
+          "en": "Bill advised me to keep my money in the bank.",
+          "es": "Bill me aconsejó guardar la plata en el banco.",
+          "note": "Grupo 2: verb + persona + to-infinitive (advise).",
+          "emoji": "🏦",
+          "tag": "persona + to-inf"
+        },
+        {
+          "id": "rv06",
+          "en": "Molly reminded Jack to phone the electrician.",
+          "es": "Molly le recordó a Jack que llamara al electricista.",
+          "note": "Grupo 2: remind + persona + to-infinitive.",
+          "emoji": "💡",
+          "tag": "persona + to-inf"
+        },
+        {
+          "id": "rv07",
+          "en": "Peter invited me to have dinner.",
+          "es": "Peter me invitó a cenar.",
+          "note": "Grupo 2: invite + persona + to-infinitive.",
+          "emoji": "🍴",
+          "tag": "persona + to-inf"
+        },
+        {
+          "id": "rv08",
+          "en": "The boss persuaded Megan not to leave.",
+          "es": "El jefe convenció a Megan de no irse.",
+          "note": "Grupo 2: persuade + persona + (not) to-infinitive.",
+          "emoji": "🧑‍💼",
+          "tag": "persona + to-inf"
+        },
+        {
+          "id": "rv09",
+          "en": "Ryan suggested going for a walk.",
+          "es": "Ryan sugirió ir a caminar.",
+          "note": "Grupo 3: verb + -ing (suggest).",
+          "emoji": "🚶",
+          "tag": "-ing"
+        },
+        {
+          "id": "rv10",
+          "en": "Ruby denied eating the chocolates.",
+          "es": "Ruby negó haber comido los chocolates.",
+          "note": "Grupo 3: deny + -ing.",
+          "emoji": "🍫",
+          "tag": "-ing"
+        },
+        {
+          "id": "rv11",
+          "en": "Roger apologized for forgetting my birthday.",
+          "es": "Roger se disculpó por olvidarse de mi cumpleaños.",
+          "note": "Grupo 3: apologize for + -ing.",
+          "emoji": "🎂",
+          "tag": "-ing"
+        },
+        {
+          "id": "rv12",
+          "en": "The teacher accused Simon of copying Anna's exam.",
+          "es": "El profe acusó a Simon de copiarse del examen de Anna.",
+          "note": "Grupo 3: accuse someone of + -ing.",
+          "emoji": "📝",
+          "tag": "-ing"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "id": "quiz-reporting-verbs",
+      "name": "Quiz: Reporting Verbs",
+      "emoji": "🗨️",
+      "description": "Say, tell, report, claim...",
+      "difficulty": "hard",
+      "deckId": "reporting-verbs",
+      "questions": [
+        {
+          "id": "rv-q1",
+          "type": "multiple-choice",
+          "prompt": "Completa: 'Bill advised me ____ my money in the bank.'",
+          "options": [
+            "keeping",
+            "to keep",
+            "keep",
+            "kept"
+          ],
+          "correct": "to keep",
+          "explanation": "advise + persona + to + verbo: Bill advised me to keep my money in the bank.",
+          "points": 10
+        },
+        {
+          "id": "rv-q2",
+          "type": "typing",
+          "prompt": "Completa: 'Ella insistió en que había un error.' → 'She _______ that there was a mistake.'",
+          "correct": "insisted",
+          "variations": [
+            "insisted"
+          ],
+          "explanation": "'Insist' (insistir) + that + oración. Verb of reporting.",
+          "points": 10
+        },
+        {
+          "id": "rv-q3",
+          "type": "gap-fill",
+          "prompt": "Completa: 'Él negó haber robado nada.' → 'He _______ stealing anything.'",
+          "options": [
+            "refused",
+            "denied",
+            "promised",
+            "offered"
+          ],
+          "correct": "denied",
+          "explanation": "deny + -ing expresa negación; refuse + to + verbo expresa rechazo.",
+          "points": 10
+        },
+        {
+          "id": "rv-q4",
+          "type": "multiple-choice",
+          "prompt": "¿Qué oración usa correctamente say o tell para comunicarle algo a una persona?",
+          "options": [
+            "She said me the news.",
+            "She told the news to I.",
+            "She told me the news.",
+            "She said to me about the news."
+          ],
+          "correct": "She told me the news.",
+          "explanation": "En esta construcción: tell someone something; say something to someone. Por ejemplo: She said hello to me.",
+          "points": 10
+        },
+        {
+          "id": "rv-q5",
+          "type": "typing",
+          "prompt": "Completa el pasado del verbo claim (afirmar): 'She _______ that she saw the accident.'",
+          "correct": "claimed",
+          "variations": [
+            "claimed"
+          ],
+          "explanation": "claim → claimed; claim + that + oración.",
+          "points": 10
+        }
+      ]
+    }
+  ]
+}
