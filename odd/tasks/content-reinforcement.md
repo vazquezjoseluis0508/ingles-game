@@ -21,8 +21,8 @@
 ## Tasks
 | ID | Description | Route | Status | Commit |
 |----|-------------|-------|--------|--------|
-| T0 | Save dossier source + RED test: every thematic quiz ≥ 12 questions incl. typing, every deck ≥ 10 cards | delegated (fork writer) | pending | |
-| T1 | Clase 1 decks (passive, causative, impersonal passive, identity theft, Way Up to Heaven) + theory | delegated | pending | |
+| T0 | Save dossier source + RED test: every thematic quiz ≥ 12 questions incl. typing, every deck ≥ 10 cards | delegated (fork writer) | done | d566e78 |
+| T1 | Clase 1 decks (passive, causative, impersonal passive, identity theft, Way Up to Heaven) + theory | delegated | done | (this commit) |
 | T2 | Clase 2 (reporting verbs) + Clase 3 (headlines, media people, media adjectives, connectors) + theory | delegated | pending | |
 | T3 | Clase 4 decks (speaking phrases, speaking papers, past modals, should have, would rather, crime vocab, criminals & verbs, rob vs steal, Lamb to the Slaughter) + theory; SW bump | delegated | pending | |
 
@@ -44,5 +44,12 @@ ask-on-risk. Mostly data (JSON); authored code is a small test + SW bump.
 - T0: dossier saved verbatim to `sources/notebooklm-dossier-senior5.md`; coverage test added to `game/tests/content.test.cjs`.
   - RED observed: `node --test "game/tests/*.test.cjs"` -> 25 pass, 1 fail (coverage: decks under 10 cards, quizzes under 12 questions). Expected red until T3.
 
+- T1 (clase1): cards / questions added — passive-voice +15 / +10 (23 cards, 15 Q), causative-have +10 / +11 (18, 16), impersonal-passive +11 / +11 (19, 16), identity-theft-vocab +9 / +10 (16, 14), story-way-up-to-heaven +9 / +9 (16, 13). Theory block added to clase1.
+  - Dropped: identity theft MC3 ("malicious fraud software", wrong) and everything about cyberchondria (not in course notes); Way Up gap 1 (flight/train ambiguous), gaps 4-5 and MC3/MC5 (adjective order, the + adjective), MC4 ("The Necklace"); Way Up examples 5 and 8 (story details not verifiable in course notes); causative MC3 ("had got ... compromised", unnatural); passive translation 2 (too many valid phrasings); all EN→ES translations.
+  - Fixed: passive gap 5 also accepts "will be informed"; Way Up gap 2 accepts "delay" or "torment"; Way Up example 6 translation ("metallic") and example 9 ("a elegant") rewritten; several ES→EN translations turned into cards.
+  - Added within the material (not in the dossier) to reach 12+ questions: Way Up "pleasure", "late", "faint noise" and two vocab typing items; identity theft "security breach"/"scammer" typing.
+  - Test fix: the "no theory -> no button" test now deletes clase1 theory in its fixture (clase1 now has theory).
+  - Checks: `build-content.cjs` valid + `--check` in sync; `node --test "game/tests/*.test.cjs"` -> 25 pass, 1 fail (coverage, expected until T3; remaining thin decks are in clase2-4).
+
 ## Next step
-T1.
+T2.

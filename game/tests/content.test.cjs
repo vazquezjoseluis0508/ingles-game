@@ -128,7 +128,7 @@ test('a unit with theory shows the Teoría button and an escaped theory screen',
 });
 
 test('a unit without theory shows no Teoría button', async () => {
-  const h = await appWith(() => {});
+  const h = await appWith((d) => { delete d.units[0].theory; });
   h.run("renderUnitView('clase1')");
   assert.doesNotMatch(h.html(), /Teoría/);
 });
