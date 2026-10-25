@@ -22,8 +22,8 @@
 | ID | Description | Route | Status | Commit |
 |----|-------------|-------|--------|--------|
 | T1 | Migration: split current `data.js` into `game/content/`; build script regenerates `data.js`; deep-equal check | delegated (writer: 2+ non-trivial files) | done | 42b3293 |
-| T2 | Validation: schema checks (required fields, unique ids, quiz types/answers, deck refs, image files exist) + `--check` sync mode + node tests | delegated | done | 3d4c87f | |
-| T3 | Theory: `theory` block in `unit.json`, theory screen in unit view, SW cache bump, `game/content/README.md` guide | delegated | done | |
+| T2 | Validation: schema checks (required fields, unique ids, quiz types/answers, deck refs, image files exist) + `--check` sync mode + node tests | delegated | done | 3d4c87f |
+| T3 | Theory: `theory` block in `unit.json`, theory screen in unit view, SW cache bump, `game/content/README.md` guide | delegated | done | 93432e7 |
 
 ## Acceptance criteria
 - `node game/tools/build-content.cjs` regenerates `game/data.js` from `game/content/`; output deep-equals the pre-migration data.
