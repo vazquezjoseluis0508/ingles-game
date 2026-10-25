@@ -132,3 +132,13 @@ test('a unit without theory shows no Teoría button', async () => {
   h.run("renderUnitView('clase1')");
   assert.doesNotMatch(h.html(), /Teoría/);
 });
+
+test('every deck has at least 10 cards and every thematic quiz at least 12 questions incl. typing', () => {
+  const data = build.buildData(build.loadContent());
+  const thinDecks = data.units.flatMap((u) => u.decks).filter((d) => d.cards.length < 10).map((d) => `${d.id} (${d.cards.length})`);
+  const thinQuizzes = data.quizzes
+    .filter((q) => q.questions.length < 12 || !q.questions.some((x) => x.type === 'typing'))
+    .map((q) => `${q.id} (${q.questions.length})`);
+  assert.deepEqual(thinDecks, [], 'Decks with fewer than 10 cards');
+  assert.deepEqual(thinQuizzes, [], 'Quizzes with fewer than 12 questions or no typing question');
+});
