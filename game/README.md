@@ -50,3 +50,27 @@ python3 -m http.server 8000
 Abrí **http://localhost:8000** y en el navegador vas a ver la opción de **Instalar app**.
 
 **En el celular:** lo más cómodo es **hostearlo gratis** (Netlify / Vercel / GitHub Pages) y abrir esa URL en el celu → "Agregar a pantalla de inicio".
+
+## Progreso y quizzes
+
+- **Aprender** no cambia la aprobación de práctica. Solo un acierto en **Practicar** aprueba una tarjeta; un error posterior no borra esa aprobación.
+- Un quiz temático requiere todas las tarjetas de su `deckId` aprobadas en práctica. Los registros antiguos sin `practiceApproved` se conservan, pero no se infiere que una caja Leitner equivalga a aprobación de práctica.
+- Hay 20 quizzes temáticos para 19 mazos: dos IDs históricos corresponden a Past Modals. Se conservan ambos y el contador sigue contando quizzes, no temas únicos.
+- El examen final contiene una pregunta por cada uno de los 19 mazos actuales. Es una muestra de cobertura, no una garantía de dominio. Es accesible por separado y no aprueba quizzes temáticos.
+- Los resultados históricos no se recalculan con el nuevo número de preguntas. El último intento muestra su porcentaje y, cuando se registró, su total de puntos original.
+- Atrás conserva la clase de origen del quiz; si se abrió desde la lista de quizzes, vuelve a esa lista.
+
+### Comprobación local
+
+Desde la raíz del repositorio:
+
+```bash
+node --test game/tests/*.test.cjs
+node --check game/app.js
+node --check game/data.js
+node --check game/store.js
+node --check game/sw.js
+git diff --check
+```
+
+Las pruebas usan un DOM mínimo y almacenamiento en memoria; no sustituyen una prueba real del navegador ni leen tu progreso.

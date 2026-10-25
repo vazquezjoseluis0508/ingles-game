@@ -24,8 +24,8 @@ http://localhost:8000
 
 - **Caché:** Si ves archivos viejos después de cambios:
   1. Recargá con **Shift+Reload** (hard refresh) o 
-  2. Abrí DevTools → Application → Storage → Clear site data
-  3. La versión del caches (`s5-game-v2` en `sw.js`) se incrementó para esta sesión.
+  2. Si persiste, cerrá las pestañas de la app y volvé a abrirla. No uses **Clear site data**: borra también tu progreso.
+  3. El service worker usa `s5-game-v3-quality`; al actualizar reemplaza la caché de recursos, no el progreso.
 
 - **Progreso:** Se guarda en `localStorage` (siempre actualizado), 
   no depende del caches del SW.

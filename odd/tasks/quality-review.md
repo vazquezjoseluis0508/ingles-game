@@ -1,0 +1,28 @@
+# Quality review — learning content and quiz flows
+Objective: correct demonstrated educational and progress/navigation defects in the current checkout; preserve existing local work and saved IDs.
+Baseline: dd0ed96 + existing app.js/data.js edits. Route: parent inline implementation; read-only content explorer. No commits, push, or PR. Runner: node --test game/tests/*.test.cjs; browser on an isolated origin.
+
+## Specs
+- **S1** — “No descartes, sobrescribas, reviertas ni ‘limpies’ cambios existentes.” Preserve the initial app.js and data.js changes, IDs, storage records and exact repository. Snapshot initial bytes outside repository before changes.
+- **S2** — “Aprender” enseña y refuerza; por sí solo no debe aumentar ni reducir el porcentaje de práctica aprobada. “Practicar” es lo que determina el porcentaje de aprobación del mazo. Una respuesta incorrecta no debe borrar aprobaciones previas. Test learning/practice/errors and existing quiz.deckId unlock behavior with isolated state; no migration inferred from old Leitner boxes.
+- **S3** — “La navegación ‘Atrás’ debe volver al contexto desde el que se inició el flujo”. Test quiz intro, questions, completion and retry from class versus quiz list; preserve existing unitId handling.
+- **S4** — “La respuesta correcta debe ser válida y estar respaldada por la fuente o el contexto.” “Los distractores deben ser plausibles para un estudiante, pero inequívocamente incorrectos bajo la pregunta dada.” “En preguntas de escritura, no muestres la respuesta completa en la consigna ni la delates con una pista involuntaria.” Correct demonstrated placeholders, duplicate options, ambiguous prompts and answer leaks only. Keep correct cards intact. Validate question IDs, mappings, correct options and content patterns.
+- **S5** — “Si el producto ya exige que el examen cubra todos los temas, implementá esa cobertura con preguntas válidas.” Existing haiku-quizzes.md S4 explicitly requires all topics. Cover the 19 existing decks, preserving final-q1..5 and final-exam; retain final/thematic separation and old attempts. Do not infer policy for the two Past Modals quizzes.
+- **S6** — “Escribí pruebas deterministas para las reglas que modifiques cuando sea viable.” “Probá el flujo de navegación y de progreso con estado aislado; no manipules ni borres mi progreso real de localStorage.” Reproduce quiz first-question skip, repeat scoring and ignored variations before fixing; run syntax, tests and diff checks. Browser evidence must be real, not a VM claim.
+- **S7** — “No hagas commit, push ni PR salvo que yo lo pida.” Report observed outcomes, preserved changes, commands/results, untested areas, decisions and localhost instructions.
+
+## Tasks
+- T1 [S1,S2,S3,S6] — inline: quiz flow/progress regressions, fixes and tests; implemented; no commit authorized. Risk: item 3 (shared quiz rendering/scoring helpers and existing results).
+- T2 [S4,S6] — inline: bounded content corrections and data validation; implemented; no commit authorized. Read-only explorer maps sources; no delegated programming.
+- T3 [S5,S6] — inline: final coverage and honest historical result display; implemented; no commit authorized. Risk: item 3 (exam result presentation across existing and new question sets).
+- T4 [S1,S7] — inline: verification, browser smoke, docs and closure; pending; no commit authorized. Independent verification only for named item 3, then native assessment/consent as applicable.
+
+## Log
+- L1 (2026-10-25): User requested a complete bounded quality review of /Users/jvazquez/Documents/Ingles. The full request remains in this task conversation; exact operative clauses are preserved above. No history report is trusted without current evidence. No commits/push/PR; preserve all local work and user progress.
+- L2: Confirmed baseline Git status only game/app.js and game/data.js modified (81 additions / 33 deletions). No AGENTS.md in repository. Registry read. CodeGraph sync succeeded after filesystem escalation; review mode on globally, unchanged. Engram project ingles resolved to exact root; no runtime session identity available.
+- L3: Existing local H work adds monotonic practiceApproved, gates thematic quizzes by explicit deckId, retains class unitId and changes rob-vs-steal-q3 options. All retained as baseline; only demonstrated remaining defects may change affected fields.
+- L4: Confirmed initial quiz button skips question zero, repeated answers can inflate score, intro Back ignores origin, variations unused. 19 decks/176 cards, 20 thematic quizzes/87 questions, final exam only 5 questions. Existing S4 authorizes all-topic final coverage. Historical docs completion status is inconsistent and not proof.
+
+- L5: RED: 12 tests, 9 failed/3 passed on initial bytes. GREEN: 12/12 pass after fixes. JS syntax passed for app/data. Corrected 84 existing questions (including unchanged-answer distractor repairs and five final topic mappings), added 14 final questions. Preserved all existing IDs; restored cr15's complete source sentence. Existing practice approval semantics passed unchanged.
+- L6: Final score display now uses recorded historical percentages/denominators; new final attempts add totalPoints without migrating old records. Global labels now accurately say quizzes rather than implying 19 distinct topics; denominator unchanged (20). Quiz options shuffled to avoid fixed-position answer clues. Resource cache version incremented; unsafe Clear site data advice removed because it deletes progress.
+- L7: User requested a fast closure with limited token use. No further scope expansion; only bounded verification remains. No commits/push/PR.

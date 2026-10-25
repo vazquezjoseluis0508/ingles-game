@@ -21,23 +21,32 @@ const allCards = () => allDecks().flatMap((d) => d.cards.map((c) => ({ ...c, dec
 const deckById = (id) => allDecks().find((d) => d.id === id);
 const getUnitIdByDeckId = (deckId) => { const u = DATA.units.find(u => u.decks.some(d => d.id === deckId)); return u ? u.id : null; };
 const jsAttr = (v) => JSON.stringify(v).replace(/"/g, "&quot;"); // seguro dentro de onclick="..."
-const cardState = (id) => state.cards[id] || { box: 1, due: addDays(-1), seen: 0, correct: 0, wrong: 0 };
+const cardState = (id) => state.cards[id] || { box: 1, due: addDays(-1), seen: 0, correct: 0, wrong: 0, practiceApproved: false };
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 // Intervalos Leitner por caja (días)
 const BOX_DAYS = { 1: 0, 2: 1, 3: 3, 4: 7, 5: 16 };
 const START_HEARTS = 5;
 
-// Progreso granular de un mazo: se mueve desde el primer acierto.
+// Progreso de practica: tarjetas aprobadas en modo Practicar (practiceApproved=true)
 function deckProgress(cards) {
-  let sum = 0, mastered = 0, started = 0;
+  let practiceApproved = 0;
   for (const c of cards) {
-    const cs = cardState(c.id);
-    sum += (cs.box - 1) / 4;
-    if (cs.box >= 4) mastered++;
-    if (cs.seen > 0 || cs.box > 1) started++;
+    if (cardState(c.id).practiceApproved) practiceApproved++;
   }
-  return { pct: Math.round((sum / cards.length) * 100), mastered, started };
+  return { pct: cards.length ? Math.round((practiceApproved / cards.length) * 100) : 0, mastered: practiceApproved, started: 0 };
+}
+
+// Verificar si un mazo esta al 100% aprobado en practica (apto para quiz)
+function isDeckFullyApproved(deckId) {
+  const deck = deckById(deckId);
+  if (!deck) return false;
+  const cards = deck.cards;
+  if (!cards.length) return false;
+  for (const c of cards) {
+    if (!cardState(c.id).practiceApproved) return false;
+  }
+  return true;
 }
 
 async function persist() { await Store.save(state); }
@@ -45,12 +54,13 @@ async function persist() { await Store.save(state); }
 // ============================================================
 //  QUIZ Mode (T3-T9)
 // ============================================================
-const allQuizzes = () => DATA.quizzes || [];  // Solo 19 quizzes tematicos (excluye final-exam)
+const allQuizzes = () => DATA.quizzes || [];  // Excludes the separate final exam.
 const finalExam = () => DATA.finalExam || null;  // Quiz final integral, separado
 const quizById = (id) => allQuizzes().find((q) => q.id === id);
 const getQuiz = (quizId) => quizId === "final-exam" ? finalExam() : quizById(quizId);
 const quizState = (id) => (state.quizzes && state.quizzes[id]) || { completed: 0, totalAttempts: 0, bestScore: 0, passed: false, attempts: [] };
 const QUIZ_POINTS_PER_Q = 10;
+const quizTotalPoints = questions => questions.reduce((sum, q) => sum + (q.points || QUIZ_POINTS_PER_Q), 0);
 
 function difficultyEmoji(d) {
   if (d === "easy") return "🟢"; if (d === "medium") return "🟡"; if (d === "hard") return "🔴"; return "❓";
@@ -65,7 +75,7 @@ function quizzesProgress() {
     if (qs.completed > 0) completed++;
     if (qs.passed) passed++;  // Solo 80%+ cuenta
   }
-  // Progreso global: SOLO los 19 quizzes tematicos, NO final-exam
+  // Global progress counts thematic quizzes only, never the final exam.
   return { pct: Math.round((passed / quizzes.length) * 100), completed, total: quizzes.length, passed };
 }
 function finalExamProgress() {
@@ -75,71 +85,97 @@ function finalExamProgress() {
   return { score: fe.score || 0, pct: fe.pct || 0, passed: fe.pct >= 80, bestScore: fe.bestScore || 0 };
 }
 
-function startQuiz(quizId) {
+function startQuiz(quizId, unitId) {
   let quiz = quizById(quizId);
   // Manejar final-exam: usar finalExam() en lugar de quizById()
   if (!quiz && quizId === "final-exam") {
     quiz = finalExam();
   }
   if (!quiz) { alert("Quiz no encontrado"); renderHome(); return; }
-  session = { type: "quiz", quizId, questions: quiz.questions, index: 0, answers: [], score: 0, startTime: Date.now() };
+
+  // T5: Bloquear quiz temático si no está al 100% en practica
+  // Usar quiz.deckId para mapeo explícito, no derivado del quizId
+  if (quizId !== "final-exam" && quiz.deckId) {
+    const deck = deckById(quiz.deckId);
+    if (!deck) {
+      alert("Mazo no configurado para este quiz"); renderHome(); return;
+    }
+    if (!isDeckFullyApproved(quiz.deckId)) {
+      const { pct } = deckProgress(deck.cards);
+      alert(`Quiz bloqueado: necesitas ${100 - pct}% mas en practica para desbloquearlo.`);
+      return;
+    }
+  }
+
+  session = { type: "quiz", quizId, unitId, questions: quiz.questions, index: 0, answers: [], score: 0, startTime: Date.now() };
   renderQuizStart();
 }
 
 function renderQuizStart() {
   const quiz = getQuiz(session.quizId);
   if (!quiz) { alert("Quiz no encontrado"); renderHome(); return; }
-  const totalPoints = session.questions.length * QUIZ_POINTS_PER_Q;
-  app().innerHTML = `<div class="center-screen"><div class="big-emoji">${quiz.emoji}</div><h2>${esc(quiz.name)}</h2><p class="muted">${esc(quiz.description)}</p><div class="deck-meta" style="margin:1rem 0">Dificultad: ${difficultyEmoji(quiz.difficulty)}</div><div class="deck-meta">Preguntas: ${session.questions.length} × ${QUIZ_POINTS_PER_Q} pts = ${totalPoints} pts</div><div style="margin-top:2rem"><button class="primary" onclick="nextQuizQuestion()">🚀 Empezar</button><button class="ghost" onclick="renderQuizzes()">← Volver</button></div></div>`;
+  const totalPoints = quizTotalPoints(session.questions);
+  app().innerHTML = `<div class="center-screen"><div class="big-emoji">${quiz.emoji}</div><h2>${esc(quiz.name)}</h2><p class="muted">${esc(quiz.description)}</p><div class="deck-meta" style="margin:1rem 0">Dificultad: ${difficultyEmoji(quiz.difficulty)}</div><div class="deck-meta">Preguntas: ${session.questions.length} preguntas · ${totalPoints} pts</div><div style="margin-top:2rem"><button class="primary" onclick="renderQuizQuestion()">🚀 Empezar</button><button class="ghost" onclick="goBackDeck()">← Volver</button></div></div>`;
 }
 
 function renderQuizQuestion() {
   const s = session, q = s.questions[s.index], n = s.index + 1, total = s.questions.length, pct = Math.round((s.index / total) * 100);
   if (s.index >= s.questions.length) return renderQuizSummary();
-  let content = (q.type === "gap-fill" || q.type === "multiple-choice") ? `<div class="quiz-card"><div class="quiz-prompt">${esc(q.prompt)}</div><div class="quiz-options">${q.options.map((opt) => `<button class="quiz-option" onclick="verifyQuizAnswer(${jsAttr(opt)})">${esc(opt)}</button>`).join("")}</div></div>` : `<div class="quiz-card"><div class="quiz-prompt">${esc(q.prompt)}</div><div class="quiz-typing"><input id="quizInput" type="text" class="typing-input" placeholder="Escribe aquí..." /><button class="primary" onclick="verifyQuizAnswer(document.getElementById('quizInput').value)">Verificar</button></div></div>`;
+  let content = (q.type === "gap-fill" || q.type === "multiple-choice") ? `<div class="quiz-card"><div class="quiz-prompt">${esc(q.prompt)}</div><div class="quiz-options">${shuffle(q.options).map((opt) => `<button class="quiz-option" onclick="verifyQuizAnswer(${jsAttr(opt)})">${esc(opt)}</button>`).join("")}</div></div>` : `<div class="quiz-card"><div class="quiz-prompt">${esc(q.prompt)}</div><div class="quiz-typing"><input id="quizInput" type="text" class="typing-input" placeholder="Escribe aquí..." /><button class="primary" onclick="verifyQuizAnswer(document.getElementById('quizInput').value)">Verificar</button></div></div>`;
   app().innerHTML = `<div class="play-top"><button class="icon-btn" onclick="goBackDeck()" title="Atrás">←</button><div class="play-bar"><div class="play-bar-fill" style="width:${pct}%"></div></div><div class="play-count">${n}/${total}</div></div><div class="play-screen quiz-screen">${content}</div>`;
   if (q.type === "typing") setTimeout(() => { const el = document.getElementById("quizInput"); if (el) el.focus(); }, 100);
 }
 
 function verifyQuizAnswer(answer) {
+  if (!session || session.type !== "quiz" || session.answered || session.index >= session.questions.length) return;
   const q = session.questions[session.index];
   // Normalizar: minúsculas, trim, y remover puntuación final
-  const normalize = (str) => String(str).trim().toLowerCase().replace(/[.!?,;:]*$/, '');
+  const normalize = (str) => String(str).trim().toLowerCase().replace(/’/g, "'").replace(/\s+/g, ' ').replace(/[.!?,;:]*$/, '');
   const userAnswer = normalize(answer);
-  const correct = normalize(q.correct);
-  const isCorrect = userAnswer === correct;
+  const accepted = q.type === "typing" ? [q.correct, ...(q.variations || [])] : [q.correct];
+  const isCorrect = accepted.some(answer => userAnswer === normalize(answer));
+  session.answered = true;
+  document.querySelectorAll(".quiz-option, .quiz-typing button, #quizInput").forEach(el => { el.disabled = true; });
   session.answers.push({ questionId: q.id, answer, isCorrect });
   if (isCorrect) session.score += (q.points || QUIZ_POINTS_PER_Q);
   const feedbackClass = isCorrect ? "quiz-feedback-correct" : "quiz-feedback-wrong", feedbackEmoji = isCorrect ? "✅" : "❌";
   app().innerHTML += `<div class="${feedbackClass}"><div class="feedback-emoji">${feedbackEmoji}</div><div class="feedback-text">${isCorrect ? "¡Correcto!" : "Incorrecto"}</div><div class="feedback-explanation">${esc(q.explanation)}</div>${!isCorrect ? `<div class="feedback-correct">Respuesta correcta: <strong>${esc(q.correct)}</strong></div>` : ""}<button class="primary" onclick="nextQuizQuestion()">Siguiente →</button></div>`;
 }
 
-function nextQuizQuestion() { session.index++; renderQuizQuestion(); }
+function nextQuizQuestion() {
+  if (!session || session.type !== "quiz" || !session.answered) return;
+  session.answered = false;
+  session.index++;
+  return renderQuizQuestion();
+}
 
 async function renderQuizSummary() {
-  const s = session, totalPoints = s.questions.length * QUIZ_POINTS_PER_Q, pct = Math.round((s.score / totalPoints) * 100), correct = s.answers.filter(a => a.isCorrect).length, duration = Math.round((Date.now() - s.startTime) / 1000);
+  if (!session || session.summarySaved || session.index < session.questions.length) return;
+  session.summarySaved = true;
+  const s = session, totalPoints = quizTotalPoints(s.questions), pct = Math.round((s.score / totalPoints) * 100), correct = s.answers.filter(a => a.isCorrect).length, duration = Math.round((Date.now() - s.startTime) / 1000);
   const quiz = getQuiz(s.quizId);
   const isFinalExam = s.quizId === "final-exam";
   const passed = pct >= 80;
-  
+
   if (isFinalExam) {
     // Guardar SOLO en state.finalExam, nunca en state.quizzes
     if (!state.finalExam) state.finalExam = {};
     state.finalExam.score = s.score;
     state.finalExam.pct = pct;
+    state.finalExam.totalPoints = totalPoints;
     state.finalExam.bestScore = Math.max(state.finalExam.bestScore || 0, s.score);
     state.finalExam.totalAttempts = (state.finalExam.totalAttempts || 0) + 1;
     if (!state.finalExam.attempts) state.finalExam.attempts = [];
-    state.finalExam.attempts.push({ timestamp: new Date().toISOString(), score: s.score, pct, passed });
+    state.finalExam.attempts.push({ timestamp: new Date().toISOString(), score: s.score, totalPoints, pct, passed });
   } else {
     // Quiz tematico: guardar en state.quizzes
     if (!state.quizzes) state.quizzes = {};
     if (!state.quizzes[s.quizId]) state.quizzes[s.quizId] = { completed: 0, totalAttempts: 0, bestScore: 0, passed: false, attempts: [] };
-    
+
     const wasAlreadyPassed = state.quizzes[s.quizId].passed;
     state.quizzes[s.quizId].totalAttempts++;
     state.quizzes[s.quizId].bestScore = Math.max(state.quizzes[s.quizId].bestScore, s.score);
-    
+
     // NO sobrescribir aprobacion anterior
     if (passed || wasAlreadyPassed) {
       state.quizzes[s.quizId].completed = 1;
@@ -148,32 +184,32 @@ async function renderQuizSummary() {
       state.quizzes[s.quizId].completed = 0;
       state.quizzes[s.quizId].passed = false;
     }
-    
+
     if (!state.quizzes[s.quizId].attempts) state.quizzes[s.quizId].attempts = [];
     state.quizzes[s.quizId].attempts.push({ timestamp: new Date().toISOString(), score: s.score, pct, passed });
-    
+
     // T3: Marcar como reforzado si aprueba con 80%+
     if (passed && quiz.deckId) {
       if (!state.themesReinforced) state.themesReinforced = {};
       state.themesReinforced[quiz.deckId] = true;
     }
   }
-  
+
   const xpBonus = Math.round((s.score / totalPoints) * 50);
   addXp(xpBonus);
   await persist();
-  
+
   const showStatus = passed ? "¡Aprobado! 🎉" : isFinalExam ? "Intenta de nuevo" : `${80 - pct} pts para aprobar 💪`;
-  app().innerHTML = `<div class="center-screen"><div class="big-emoji">${passed ? "🏆" : "📚"}</div><h2>${esc(quiz.name)}</h2><div class="score">${s.score}/${totalPoints} pts (${pct}%)</div><div class="${passed ? "pill pill-ok" : "muted"}">${showStatus}</div><div class="summary-stats"><div>✅ ${correct}/${s.questions.length}</div><div>⏱️ ${duration}s</div><div>⭐ +${xpBonus} XP</div>${!isFinalExam ? `<div>Intento: ${state.quizzes[s.quizId].totalAttempts}</div>` : ""}</div><div class="summary-actions"><button class="primary" onclick="startQuiz('${s.quizId}')">🔁 Reintentar</button><button class="ghost" onclick="renderQuizzes()">📝 ${isFinalExam ? "Volver" : "Otros quizzes"}</button></div></div>`;
+  app().innerHTML = `<div class="center-screen"><div class="big-emoji">${passed ? "🏆" : "📚"}</div><h2>${esc(quiz.name)}</h2><div class="score">${s.score}/${totalPoints} pts (${pct}%)</div><div class="${passed ? "pill pill-ok" : "muted"}">${showStatus}</div><div class="summary-stats"><div>✅ ${correct}/${s.questions.length}</div><div>⏱️ ${duration}s</div><div>⭐ +${xpBonus} XP</div>${!isFinalExam ? `<div>Intento: ${state.quizzes[s.quizId].totalAttempts}</div>` : ""}</div><div class="summary-actions"><button class="primary" onclick="startQuiz('${s.quizId}'${s.unitId ? `, '${s.unitId}'` : ''})">🔁 Reintentar</button><button class="ghost" onclick="goBackDeck()">← ${s.unitId ? "Volver a la clase" : "Volver a quizzes"}</button></div></div>`;
 }
 
 
 function renderQuizzes() {
-  const quizzes = allQuizzes(), { pct, completed, total, passed } = quizzesProgress(), quizCards = quizzes.map((q) => { const qs = quizState(q.id), badge = qs.passed ? "✅ Aprobado" : qs.completed > 0 ? "✅ Intentado" : "🔒", bestScore = qs.bestScore > 0 ? `<div class="muted">Mejor: ${qs.bestScore}/${q.questions.length * QUIZ_POINTS_PER_Q} (${Math.round(qs.bestScore / (q.questions.length * QUIZ_POINTS_PER_Q) * 100)}%)</div>` : ""; return `<div class="deck-card" style="--c:#7f39fb"><div class="deck-emoji">${q.emoji}</div><div class="deck-name">${esc(q.name)}</div><div class="deck-desc">${esc(q.description)}</div><div class="deck-meta">Dificultad: ${difficultyEmoji(q.difficulty)} · ${q.questions.length} preguntas · ${badge}</div>${bestScore}<div class="deck-actions"><button onclick="startQuiz('${q.id}')">📝 ${qs.passed ? "Revisar" : "Hacer Quiz"}</button></div></div>`; }).join("");
+  const quizzes = allQuizzes(), { pct, completed, total, passed } = quizzesProgress(), quizCards = quizzes.map((q) => { const qs = quizState(q.id), badge = qs.passed ? "✅ Aprobado" : qs.completed > 0 ? "✅ Intentado" : "🔒", bestScore = qs.bestScore > 0 ? `<div class="muted">Mejor: ${qs.bestScore}/${quizTotalPoints(q.questions)} (${Math.round(qs.bestScore / (quizTotalPoints(q.questions)) * 100)}%)</div>` : ""; return `<div class="deck-card" style="--c:#7f39fb"><div class="deck-emoji">${q.emoji}</div><div class="deck-name">${esc(q.name)}</div><div class="deck-desc">${esc(q.description)}</div><div class="deck-meta">Dificultad: ${difficultyEmoji(q.difficulty)} · ${q.questions.length} preguntas · ${badge}</div>${bestScore}<div class="deck-actions"><button onclick="startQuiz('${q.id}')">📝 ${qs.passed ? "Revisar" : "Hacer Quiz"}</button></div></div>`; }).join("");
   const exam = finalExam();
   const examProgress = finalExamProgress();
-  const examCard = exam ? `<div style="margin-top:2rem;padding:1rem;background:rgba(255,193,7,0.1);border-radius:8px;border-left:4px solid #ffc107"><h3>🏆 Examen Final Integral</h3><p class="muted">${esc(exam.description)}</p>${examProgress.pct > 0 ? `<div class="muted">Mejor: ${examProgress.bestScore}/${exam.questions.length * QUIZ_POINTS_PER_Q} (${examProgress.pct}%)</div>` : ""}<button class="primary" onclick="startQuiz('final-exam')" style="margin-top:0.5rem">${examProgress.pct >= 80 ? "📖 Revisar" : "🚀 Hacer Examen"}</button></div>` : "";
-  app().innerHTML = `<header class="home-header"><button class="icon-btn" onclick="renderHome()">←</button><h1>📝 Quizzes Temáticos</h1></header><section class="missions"><div class="missions-title">📊 Progreso</div><div class="mission"><div class="mission-check">${passed > 0 ? "✅" : "⏳"}</div><div class="mission-body"><div class="mission-text">Temas aprobados: ${passed}/${total} (≥80%)</div><div class="mission-bar"><div class="mission-bar-fill" style="width:${pct}%"></div></div></div><div class="mission-prog">${pct}%</div></div></section><div class="deck-grid">${quizCards}</div>${examCard}<footer class="home-footer"><button class="link-btn" onclick="renderHome()">← Volver al inicio</button></footer>`;
+  const examCard = exam ? `<div style="margin-top:2rem;padding:1rem;background:rgba(255,193,7,0.1);border-radius:8px;border-left:4px solid #ffc107"><h3>🏆 Examen Final Integral</h3><p class="muted">${esc(exam.description)}</p>${state.finalExam && state.finalExam.totalAttempts ? `<div class="muted">Último intento: ${examProgress.pct}%${state.finalExam.totalPoints ? ` (${examProgress.score}/${state.finalExam.totalPoints} pts)` : " · registro anterior; cobertura no registrada"}</div>` : ""}<button class="primary" onclick="startQuiz('final-exam')" style="margin-top:0.5rem">${examProgress.pct >= 80 ? "📖 Revisar" : "🚀 Hacer Examen"}</button></div>` : "";
+  app().innerHTML = `<header class="home-header"><button class="icon-btn" onclick="renderHome()">←</button><h1>📝 Quizzes Temáticos</h1></header><section class="missions"><div class="missions-title">📊 Progreso</div><div class="mission"><div class="mission-check">${passed > 0 ? "✅" : "⏳"}</div><div class="mission-body"><div class="mission-text">Quizzes temáticos aprobados: ${passed}/${total} (≥80%)</div><div class="mission-bar"><div class="mission-bar-fill" style="width:${pct}%"></div></div></div><div class="mission-prog">${pct}%</div></div></section><div class="deck-grid">${quizCards}</div>${examCard}<footer class="home-footer"><button class="link-btn" onclick="renderHome()">← Volver al inicio</button></footer>`;
 }
 
 function homeQuizzesSection() {
@@ -258,8 +294,21 @@ function grade(cardId, correct) {
   ensureToday();
   const cs = cardState(cardId);
   cs.seen++;
-  if (correct) { cs.correct++; cs.box = Math.min(5, cs.box + 1); addXp(10); state.dailyStats.correct++; }
-  else { cs.wrong++; cs.box = 1; addXp(2); }
+  if (correct) {
+    cs.correct++;
+    cs.box = Math.min(5, cs.box + 1);
+    // T5: Aprobar tarjeta en practica solo en modo Practicar
+    if (session && session.mode === "practice") {
+      cs.practiceApproved = true;
+    }
+    addXp(10);
+    state.dailyStats.correct++;
+  }
+  else {
+    cs.wrong++;
+    cs.box = 1;
+    addXp(2);
+  }
   cs.due = addDays(BOX_DAYS[cs.box]);
   state.cards[cardId] = cs;
 }
@@ -362,9 +411,9 @@ function renderHome() {
     </section>
 
     <section class="progress-summary">
-      <div class="pill">📚 ${prog.mastered}/${total} dominadas · ${prog.pct}%</div>
+      <div class="pill">📚 ${prog.mastered}/${total} aprobadas en práctica · ${prog.pct}%</div>
       <div class="pill ${due ? "pill-alert" : ""}">⏰ ${due} para repasar</div>
-      <div class="pill" style="background:#7f39fb20;color:#7f39fb">📝 ${quizProg.passed}/${quizProg.total} temas aprobados</div>
+      <div class="pill" style="background:#7f39fb20;color:#7f39fb">📝 ${quizProg.passed}/${quizProg.total} quizzes temáticos aprobados</div>
       ${storageBadge()}
     </section>
 
@@ -500,14 +549,14 @@ function storageBadge() {
 
 function renderDeckCard(d) {
   const cards = d.cards;
-  const { pct, mastered, started } = deckProgress(cards);
+  const { pct, mastered } = deckProgress(cards);
   return `
     <div class="deck-card deck-card-expand" style="--c:${d.color}">
       <div class="deck-emoji">${d.emoji}</div>
       <div class="deck-name">${d.name} ${deckMedal(cards)}</div>
       <div class="deck-desc">${d.description}</div>
       <div class="deck-bar"><div class="deck-bar-fill" style="width:${pct}%"></div></div>
-      <div class="deck-meta">${pct}% avance · ${started}/${cards.length} empezadas · ${mastered} dominadas</div>
+      <div class="deck-meta">${pct}% practica · ${mastered}/${cards.length} aprobadas</div>
       <div class="deck-actions">
         <button onclick="startSession('${d.id}','learn')">📖 Aprender</button>
         <button onclick="startSession('${d.id}','practice')">🎮 Practicar</button>
@@ -667,6 +716,7 @@ function nextLearn() {
   cs.seen++;
   cs.box = Math.min(3, cs.box + 1); // familiarización, no "dominada"
   cs.due = addDays(BOX_DAYS[cs.box]);
+  // T5: nextLearn NO afecta practiceApproved (progreso de practica)
   state.cards[card.id] = cs;
   session.index++;
   renderCard();
@@ -834,21 +884,31 @@ async function renderSummary() {
   await persist();
   const scored = s.mode === "learn" ? null : `${s.correct}/${s.queue.length}`;
   const goalDone = todayXp() >= state.goal;
-  
-  // T4: Ofrecimiento de quiz post-Aprender (no bloqueante)
+
+  // T4: Ofrecimiento de quiz post-Aprender (bloqueado hasta 100% aprobado en practica)
   let quizOffer = "";
   if (s.mode === "learn" && s.deckId && !s.deckId.startsWith("__")) {
-    const quizId = `quiz-${s.deckId}`;
-    const quiz = allQuizzes().find(q => q.id === quizId);
+    // T5: Buscar quiz por deckId, no por nombre construido
+    const quiz = allQuizzes().find(q => q.deckId === s.deckId && q.id !== "final-exam");
     if (quiz) {
-      quizOffer = `<div style="margin-top:1rem; padding:1rem; background:rgba(127,57,251,0.1); border-radius:8px; border-left:4px solid #7f39fb">
-        <div style="font-weight:bold; margin-bottom:0.5rem">📝 Ahora probá el quiz</div>
-        <div class="muted" style="margin-bottom:1rem">Refuerza lo que aprendiste sin presión</div>
-        <button class="primary" onclick="startQuiz('${quizId}')" style="width:100%">Hacer Quiz de ${quiz.name.replace('Quiz: ', '')}</button>
-      </div>`;
+      const fullyApproved = isDeckFullyApproved(s.deckId);
+      const { pct } = deckProgress(deckById(s.deckId).cards);
+      if (fullyApproved) {
+        quizOffer = `<div style="margin-top:1rem; padding:1rem; background:rgba(127,57,251,0.1); border-radius:8px; border-left:4px solid #7f39fb">
+          <div style="font-weight:bold; margin-bottom:0.5rem">📝 ¡Ahora probá el quiz!</div>
+          <div class="muted" style="margin-bottom:1rem">✅ Completaste todo en practica. Refuerza sin presion.</div>
+          <button class="primary" onclick="startQuiz('${quiz.id}', '${s.unitId}')" style="width:100%">Hacer Quiz de ${quiz.name.replace('Quiz: ', '')}</button>
+        </div>`;
+      } else {
+        quizOffer = `<div style="margin-top:1rem; padding:1rem; background:rgba(255,193,7,0.1); border-radius:8px; border-left:4px solid #ffc107">
+          <div style="font-weight:bold; margin-bottom:0.5rem">🔒 Quiz bloqueado</div>
+          <div class="muted" style="margin-bottom:1rem">Necesitas ${100 - pct}% mas en practica para desbloquearlo.</div>
+          <div style="font-size:0.9em">Practica: ${pct}% completado</div>
+        </div>`;
+      }
     }
   }
-  
+
   app().innerHTML = `
     <div class="center-screen">
       <div class="big-emoji">${s.mode === "learn" ? "📚" : s.correct === s.queue.length ? "🏆" : "💪"}</div>
