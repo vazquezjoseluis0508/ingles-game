@@ -74,3 +74,61 @@ test('CLI prints errors and exits 1 on invalid content', () => {
   assert.equal(r.status, 1);
   assert.match(r.stderr, /content\/clase1\/unit\.json: name is required/);
 });
+
+// ------------------------------------------------------------
+//  Theory (optional per unit)
+// ------------------------------------------------------------
+const vm = require('node:vm');
+const THEORY = { summary: 'Passive = **be** + pp.\n<script>x</script>', images: [{ file: 'images/board.jpg', caption: 'Pizarrón <b>1</b>' }] };
+
+test('theory image paths are emitted relative to game/ and missing files are rejected', () => {
+  const c = content();
+  unit(c, 'clase1').data.theory = JSON.parse(JSON.stringify(THEORY));
+  assertError(build.validate(c), 'content/clase1/unit.json: theory.images[0].file "images/board.jpg" does not exist');
+  assert.deepEqual(build.validate(c, { fileExists: () => true }), []);
+  const out = build.buildData(c).units.find((u) => u.id === 'clase1').theory;
+  assert.equal(out.images[0].file, 'content/clase1/images/board.jpg');
+  assert.equal(out.summary, THEORY.summary);
+});
+
+test('theory image file must be a relative path inside the unit folder', () => {
+  const c = content();
+  unit(c, 'clase1').data.theory = { images: [{ file: '../clase2/x.jpg' }] };
+  assertError(build.validate(c, { fileExists: () => true }), 'content/clase1/unit.json: theory.images[0].file "../clase2/x.jpg" must be a relative path inside the unit folder');
+});
+
+// Minimal DOM harness that lets a test inject units before app.js reads GAME_DATA.
+async function appWith(mutate) {
+  const root = path.resolve(__dirname, '..');
+  const els = new Map();
+  const el = (id) => { if (!els.has(id)) els.set(id, { innerHTML: '', value: '', focus() {}, classList: { add() {}, remove() {} } }); return els.get(id); };
+  const store = new Map();
+  const c = vm.createContext({ window: {}, console, Date, Math, setTimeout: () => 0, clearTimeout() {}, setInterval: () => 0, clearInterval() {},
+    document: { querySelector: el, getElementById: (id) => el('#' + id), querySelectorAll: () => [], createElement: () => ({ style: {}, remove() {} }), body: { appendChild() {} } },
+    localStorage: { getItem: (k) => store.get(k) || null, setItem: (k, v) => store.set(k, v) }, alert() {}, confirm: () => false });
+  vm.runInContext(fs.readFileSync(path.join(root, 'data.js'), 'utf8'), c);
+  mutate(c.window.GAME_DATA);
+  for (const f of ['store.js', 'app.js']) vm.runInContext(fs.readFileSync(path.join(root, f), 'utf8'), c, { filename: f });
+  await new Promise((resolve) => setImmediate(resolve)); // let app.js load state
+  return { run: (s) => vm.runInContext(s, c), html: () => el('#app').innerHTML };
+}
+
+test('a unit with theory shows the Teoría button and an escaped theory screen', async () => {
+  const h = await appWith((d) => { d.units[0].theory = { ...THEORY, images: [{ file: 'content/clase1/images/board.jpg', caption: 'Pizarrón <b>1</b>' }] }; });
+  h.run("renderUnitView('clase1')");
+  assert.match(h.html(), /<button[^>]*onclick="renderTheory\('clase1'\)"[^>]*>📖 Teoría<\/button>/);
+  h.run("renderTheory('clase1')");
+  const html = h.html();
+  assert.match(html, /<strong>be<\/strong>/);
+  assert.match(html, /&lt;script&gt;x&lt;\/script&gt;/);
+  assert.doesNotMatch(html, /<script>|<b>1<\/b>/);
+  assert.match(html, /<img[^>]*src="content\/clase1\/images\/board\.jpg"[^>]*loading="lazy"/);
+  assert.match(html, /Pizarrón &lt;b&gt;1&lt;\/b&gt;/);
+  assert.match(html, /onclick="renderUnitView\('clase1'\)"[^>]*>← Volver/);
+});
+
+test('a unit without theory shows no Teoría button', async () => {
+  const h = await appWith(() => {});
+  h.run("renderUnitView('clase1')");
+  assert.doesNotMatch(h.html(), /Teoría/);
+});

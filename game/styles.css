@@ -198,6 +198,16 @@ body {
 .unit-prog { flex: 1; height: 8px; background: var(--card); border-radius: 999px; overflow: hidden; }
 .unit-prog-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--ok)); transition: width .4s ease; }
 
+/* Theory screen (per class) */
+.theory-entry { margin-bottom: 18px; }
+.theory { display: flex; flex-direction: column; gap: 18px; }
+.theory-summary { background: var(--card); border-radius: 18px; padding: 20px 22px; line-height: 1.55; box-shadow: var(--shadow); }
+.theory-summary p { margin: 0 0 10px; }
+.theory-summary p:last-child { margin-bottom: 0; }
+.theory-figure { margin: 0; background: var(--card); border-radius: 18px; padding: 12px; box-shadow: var(--shadow); }
+.theory-figure img { display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 12px; }
+.theory-figure figcaption { color: var(--muted); font-size: .9rem; text-align: center; margin-top: 8px; }
+
 /* ============================================================
    Responsive — mobile-first ergonómico
    ============================================================ */

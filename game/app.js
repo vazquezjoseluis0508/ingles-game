@@ -537,8 +537,35 @@ function renderUnitView(id) {
       <div class="stats"><div class="stat">\u2b50 <b>${state.xp}</b></div></div>
     </header>
     <div class="unit-prog" style="margin-bottom:18px"><div class="unit-prog-fill" style="width:${pct}%"></div></div>
+    ${u.theory ? `<div class="theory-entry"><button class="primary" onclick="renderTheory('${u.id}')">\ud83d\udcd6 Teor\u00eda</button></div>` : ""}
     <div class="deck-grid">${u.decks.map(renderDeckCard).join("")}</div>
     <footer class="home-footer"><button class="link-btn" onclick="renderHome()">\u2190 Volver al inicio</button></footer>`;
+}
+
+// Theory text: escaped first, then blank lines -> paragraphs, line breaks -> <br>, **bold** -> <strong>.
+const theoryHtml = (text) => esc(text).split(/\n{2,}/)
+  .map((p) => `<p>${p.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/\n/g, "<br>")}</p>`).join("");
+
+function renderTheory(id) {
+  const u = DATA.units.find((x) => x.id === id);
+  if (!u || !u.theory) return renderUnitView(id);
+  const t = u.theory;
+  const images = (t.images || []).map((img) => `
+    <figure class="theory-figure">
+      <img src="${esc(img.file)}" alt="${esc(img.caption || "")}" loading="lazy" />
+      ${img.caption ? `<figcaption>${esc(img.caption)}</figcaption>` : ""}
+    </figure>`).join("");
+  app().innerHTML = `
+    <header class="topbar">
+      <button class="icon-btn" onclick="renderUnitView('${u.id}')" title="Volver">\u2190</button>
+      <div class="brand">\ud83d\udcd6 Teor\u00eda \u00b7 ${esc(u.name)}</div>
+      <div class="stats"><div class="stat">\u2b50 <b>${state.xp}</b></div></div>
+    </header>
+    <section class="theory">
+      ${t.summary ? `<div class="theory-summary">${theoryHtml(t.summary)}</div>` : ""}
+      ${images}
+    </section>
+    <footer class="home-footer"><button class="link-btn" onclick="renderUnitView('${u.id}')">\u2190 Volver</button></footer>`;
 }
 
 function storageBadge() {

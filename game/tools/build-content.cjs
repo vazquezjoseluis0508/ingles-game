@@ -67,8 +67,17 @@ function buildData(content) {
   };
 }
 
+// Strips unit-local quizzes (they go to GAME_DATA.quizzes) and rewrites theory
+// image paths from unit-relative ("images/x.jpg") to game/-relative
+// ("content/clase1/images/x.jpg") so index.html can load them.
 function unitOutput(u) {
   const { quizzes, ...rest } = u.data;
+  if (isObject(rest.theory) && Array.isArray(rest.theory.images)) {
+    rest.theory = {
+      ...rest.theory,
+      images: rest.theory.images.map((img) => ({ ...img, file: `content/${u.dir}/${img.file}` })),
+    };
+  }
   return rest;
 }
 
@@ -89,7 +98,7 @@ const join = (base, key) => (typeof key === 'number' ? `${base}[${key}]` : base 
 
 // Returns an array of error strings: "<file>: <field path> <problem>".
 // Collects every error instead of stopping at the first one.
-function validate(content) {
+function validate(content, { fileExists = fs.existsSync } = {}) {
   const errors = [];
   const ids = new Map(); // id -> "file: path" where first seen (ids are unique across all kinds)
   const decks = new Set();
@@ -181,6 +190,7 @@ function validate(content) {
         c.claimId(card, cb);
       });
     });
+    if (data.theory !== undefined) checkTheory(c, data.theory, path.join(content.contentDir, u.dir), fileExists);
     if (data.quizzes !== undefined) {
       if (!Array.isArray(data.quizzes)) c.err('quizzes', 'must be an array');
       else data.quizzes.forEach((quiz, qi) => c.checkQuiz(quiz, join('quizzes', qi), { isFinal: false }));
@@ -196,6 +206,28 @@ function validate(content) {
   order.forEach((id, i) => { if (!quizIds.has(id)) errors.push(`${content.meta.file}: quizOrder[${i}] references unknown quiz "${id}"`); });
 
   return errors;
+}
+
+// Optional unit theory: { summary?: string, images?: [{ file, caption? }] }.
+function checkTheory(c, theory, unitDir, fileExists) {
+  if (!isObject(theory)) return c.err('theory', 'must be an object');
+  if (theory.summary !== undefined && !isText(theory.summary)) c.err('theory.summary', 'must be a non-empty string');
+  if (theory.images === undefined) {
+    if (theory.summary === undefined) c.err('theory', 'needs a summary or images');
+    return;
+  }
+  if (!Array.isArray(theory.images)) return c.err('theory.images', 'must be an array');
+  theory.images.forEach((img, i) => {
+    const base = `theory.images[${i}]`;
+    if (!isObject(img)) return c.err(base, 'must be an object');
+    if (img.caption !== undefined && typeof img.caption !== 'string') c.err(`${base}.caption`, 'must be a string');
+    if (!isText(img.file)) return c.err(`${base}.file`, 'is required');
+    const parts = img.file.split(/[\\/]/);
+    if (path.isAbsolute(img.file) || img.file.includes('\\') || parts.includes('..') || parts.includes('.')) {
+      return c.err(`${base}.file`, `"${img.file}" must be a relative path inside the unit folder`);
+    }
+    if (!fileExists(path.join(unitDir, img.file))) c.err(`${base}.file`, `"${img.file}" does not exist`);
+  });
 }
 
 // ------------------------------------------------------------

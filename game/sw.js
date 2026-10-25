@@ -1,11 +1,12 @@
 // Service worker — cachea la app para que funcione offline.
 // Nota: los service workers SOLO funcionan sobre http(s) o localhost, no con file://.
 // Versión: incrementá este número cuando hagas cambios en archivos para forzar recarga del caché.
-const CACHE = "s5-game-v3-quality";
+const CACHE = "s5-game-v4-content";
 const ASSETS = [
   "./", "./index.html", "./styles.css",
   "./data.js", "./conversations.js", "./store.js", "./app.js",
   "./manifest.webmanifest", "./icon.svg",
+  // Las imágenes de teoría (content/<clase>/images/) NO van acá: se cachean al verlas (cache-first abajo).
   // Nota: localStorage siempre lee fresh, no es cacheado por SW.
   // Cambios en estos archivos invalidan el caché anterior automáticamente.
 ];
