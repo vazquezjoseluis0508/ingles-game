@@ -51,5 +51,7 @@ ask-on-risk. Forecast: migration moves ~1.4k lines of data (mostly generated/mov
   - RED observed: 3 new theory tests failed before implementation (the "no theory -> no button" test passed, as a regression guard).
   - GREEN: `node --test "game/tests/*.test.cjs"` -> 25 pass, 0 fail. `node game/tools/build-content.cjs --check` -> exit 0. Deep-equal vs pre-migration data still OK.
 
+- Review (RDD on): `.codegraph/` ignored (358a785) to clear the untracked-selection step. Full branch vs `main` (medium, 8.3k lines) refused with `lens_context_budget_exceeded` (mostly moved JSON). Reduced candidate `42b3293..358a785` (T2, T3, gitignore; medium, 468 lines): consent granted, reliability lens approved with no findings, acknowledged (authority burned, lineage review-bf6a0ba7b61a5d8d). T1 migration was not natively reviewed; its correctness is covered by the deterministic deep-equal and sync tests.
+
 ## Next step
 User review; push / PR are user decisions.
