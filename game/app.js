@@ -46,7 +46,7 @@ async function persist() { await Store.save(state); }
 // ============================================================
 const allQuizzes = () => DATA.quizzes || [];
 const quizById = (id) => allQuizzes().find((q) => q.id === id);
-const quizState = (id) => (state.quizzes && state.quizzes[id]) || { completed: 0, totalAttempts: 0, bestScore: 0 };
+const quizState = (id) => (state.quizzes && state.quizzes[id]) || { completed: 0, totalAttempts: 0, bestScore: 0, passed: false, attempts: [] };
 const QUIZ_POINTS_PER_Q = 10;
 
 function difficultyEmoji(d) {
@@ -55,10 +55,14 @@ function difficultyEmoji(d) {
 
 function quizzesProgress() {
   const quizzes = allQuizzes();
-  if (!quizzes.length) return { pct: 0, completed: 0, total: 0 };
-  let completed = 0;
-  for (const q of quizzes) { if (quizState(q.id).completed > 0) completed++; }
-  return { pct: Math.round((completed / quizzes.length) * 100), completed, total: quizzes.length };
+  if (!quizzes.length) return { pct: 0, completed: 0, total: 0, passed: 0 };
+  let completed = 0, passed = 0;
+  for (const q of quizzes) {
+    const qs = quizState(q.id);
+    if (qs.completed > 0) completed++;
+    if (qs.passed) passed++;  // T5: solo cuenta si pasó 80%
+  }
+  return { pct: Math.round((passed / quizzes.length) * 100), completed, total: quizzes.length, passed };
 }
 
 function startQuiz(quizId) {
@@ -95,15 +99,29 @@ function nextQuizQuestion() { session.index++; renderQuizQuestion(); }
 async function renderQuizSummary() {
   const s = session, quiz = quizById(s.quizId), totalPoints = s.questions.length * QUIZ_POINTS_PER_Q, pct = Math.round((s.score / totalPoints) * 100), correct = s.answers.filter(a => a.isCorrect).length, duration = Math.round((Date.now() - s.startTime) / 1000);
   if (!state.quizzes) state.quizzes = {};
-  if (!state.quizzes[s.quizId]) state.quizzes[s.quizId] = { completed: 0, totalAttempts: 0, bestScore: 0 };
-  state.quizzes[s.quizId].completed = 1;
+  if (!state.quizzes[s.quizId]) state.quizzes[s.quizId] = { completed: 0, totalAttempts: 0, bestScore: 0, passed: false, attempts: [] };
+  
+  // T5: Tracking detallado + aprobación 80%
+  const passed = pct >= 80;  // S2: 80% para aprobar
+  state.quizzes[s.quizId].completed = passed ? 1 : 0;
   state.quizzes[s.quizId].totalAttempts++;
   state.quizzes[s.quizId].bestScore = Math.max(state.quizzes[s.quizId].bestScore, s.score);
+  state.quizzes[s.quizId].passed = passed;
+  
+  // Registrar intento
+  if (!state.quizzes[s.quizId].attempts) state.quizzes[s.quizId].attempts = [];
+  state.quizzes[s.quizId].attempts.push({ timestamp: new Date().toISOString(), score: s.score, pct, passed });
+  
+  // T3: Si aprobó, marcar tema como reforzado
+  if (passed && quiz.deckId) {
+    if (!state.themesReinforced) state.themesReinforced = {};
+    state.themesReinforced[quiz.deckId] = true;
+  }
+  
   const xpBonus = Math.round((s.score / totalPoints) * 50);
   addXp(xpBonus);
   await persist();
-  const pass = pct >= 70;
-  app().innerHTML = `<div class="center-screen"><div class="big-emoji">${pass ? "🏆" : "📚"}</div><h2>${esc(quiz.name)}</h2><div class="score">${s.score}/${totalPoints} pts (${pct}%)</div><div class="${pass ? "pill pill-ok" : "muted"}">${pass ? "¡Excelente! 🎉" : "Seguí practicando 💪"}</div><div class="summary-stats"><div>✅ ${correct}/${s.questions.length}</div><div>⏱️ ${duration}s</div><div>⭐ +${xpBonus} XP</div></div><div class="summary-actions"><button class="primary" onclick="startQuiz('${s.quizId}')">🔁 Reintentar</button><button class="ghost" onclick="renderQuizzes()">📝 Otros quizzes</button></div></div>`;
+  app().innerHTML = `<div class="center-screen"><div class="big-emoji">${passed ? "🏆" : "📚"}</div><h2>${esc(quiz.name)}</h2><div class="score">${s.score}/${totalPoints} pts (${pct}%)</div><div class="${passed ? "pill pill-ok" : "muted"}">${passed ? "¡Aprobado! 🎉" : `${80 - pct} pts para aprobar 💪`}</div><div class="summary-stats"><div>✅ ${correct}/${s.questions.length}</div><div>⏱️ ${duration}s</div><div>⭐ +${xpBonus} XP</div><div>Intento: ${state.quizzes[s.quizId].totalAttempts}</div></div><div class="summary-actions"><button class="primary" onclick="startQuiz('${s.quizId}')">🔁 Reintentar</button><button class="ghost" onclick="renderQuizzes()">📝 Otros quizzes</button></div></div>`;
 }
 
 function renderQuizzes() {
@@ -298,10 +316,13 @@ function renderHome() {
     <section class="progress-summary">
       <div class="pill">📚 ${prog.mastered}/${total} dominadas · ${prog.pct}%</div>
       <div class="pill ${due ? "pill-alert" : ""}">⏰ ${due} para repasar</div>
+      <div class="pill" style="background:#7f39fb20;color:#7f39fb">📝 ${quizProg.passed}/${quizProg.total} temas</div>
       ${storageBadge()}
     </section>
 
     ${renderMissions()}
+
+    ${homeQuizzesSection()}
 
     ${renderExamCard()}
 
@@ -764,6 +785,21 @@ async function renderSummary() {
   await persist();
   const scored = s.mode === "learn" ? null : `${s.correct}/${s.queue.length}`;
   const goalDone = todayXp() >= state.goal;
+  
+  // T4: Ofrecimiento de quiz post-Aprender (no bloqueante)
+  let quizOffer = "";
+  if (s.mode === "learn" && s.deckId && !s.deckId.startsWith("__")) {
+    const quizId = `quiz-${s.deckId}`;
+    const quiz = allQuizzes().find(q => q.id === quizId);
+    if (quiz) {
+      quizOffer = `<div style="margin-top:1rem; padding:1rem; background:rgba(127,57,251,0.1); border-radius:8px; border-left:4px solid #7f39fb">
+        <div style="font-weight:bold; margin-bottom:0.5rem">📝 Ahora probá el quiz</div>
+        <div class="muted" style="margin-bottom:1rem">Refuerza lo que aprendiste sin presión</div>
+        <button class="primary" onclick="startQuiz('${quizId}')" style="width:100%">Hacer Quiz de ${quiz.name.replace('Quiz: ', '')}</button>
+      </div>`;
+    }
+  }
+  
   app().innerHTML = `
     <div class="center-screen">
       <div class="big-emoji">${s.mode === "learn" ? "📚" : s.correct === s.queue.length ? "🏆" : "💪"}</div>
@@ -775,6 +811,7 @@ async function renderSummary() {
         <div>🔥 Racha: <b>${state.streak}</b></div>
         <div>⭐ XP: <b>${state.xp}</b></div>
       </div>
+      ${quizOffer}
       <div class="summary-actions">
         <button class="primary" onclick="startSession('${s.deckId}','${s.mode}')">🔁 Otra ronda</button>
         <button class="ghost" onclick="renderUnitView('${s.deckId}')">← Atrás</button>
@@ -871,9 +908,14 @@ async function importProgress() {
 function pickQuestionType(card, mode) {
   if (mode === "arcade") return "mc";
   const words = card.en.trim().split(/\s+/).length;
-  const cand = ["mc", "typing"];
+  let cand = ["mc", "typing"];
   if (words >= 2) cand.push("gap");
   if (words >= 2 && words <= 9) cand.push("bank");
+  // T7: Si tema reforzado, aumentar peso de typing/gap (escritura)
+  if (session && session.deckId && state.themesReinforced && state.themesReinforced[session.deckId]) {
+    if (cand.includes("typing")) cand.push("typing");
+    if (cand.includes("gap")) cand.push("gap");
+  }
   if (mode === "boss") {
     const hard = cand.filter((t) => t !== "mc");
     return hard[Math.floor(Math.random() * hard.length)] || "mc";

@@ -570,5 +570,824 @@ window.GAME_DATA = {
         }
       ]
     }
-  ]
+,
+    {
+      id: "quiz-causative-have",
+      name: "Quiz: Causative Have",
+      emoji: "✂️",
+      description: "Practica causative have",
+      difficulty: "medium",
+      deckId: "causative-have",
+      questions: [
+        {
+          id: "causative-have-q1",
+          type: "multiple-choice",
+          prompt: "¿Cuál es la traducción correcta de 'I had my hair cut.'?",
+          options: ["Me corté el pelo (me lo cortaron).", "Mal: Me corté el pelo (me...", "Opción incorrecta 1", "Opción incorrecta 2"],
+          correct: "Me corté el pelo (me lo cortaron).",
+          explanation: "I had my hair cut. = Me corté el pelo (me lo cortaron).. Contexto: Otro lo hace por vos. Compará: 'I cut my hair' = vos mismo.",
+          points: 10
+        },
+        {
+          id: "causative-have-q2",
+          type: "gap-fill",
+          prompt: "Completa: 'We had _____ photo taken.'",
+          options: ["our", "NO our", "OUR", "our"],
+          correct: "our",
+          explanation: "La palabra faltante es 'our' en 'We had our photo taken.'.",
+          points: 10
+        },
+        {
+          id: "causative-have-q3",
+          type: "multiple-choice",
+          prompt: "¿Qué significa 'You should have your eyes tested.'?",
+          options: ["Deberías hacerte revisar la vista.", "Significado falso 1", "Significado falso 2", "Significado falso 3"],
+          correct: "Deberías hacerte revisar la vista.",
+          explanation: "Un profesional lo hace por vos.",
+          points: 10
+        },
+        {
+          id: "causative-have-q4",
+          type: "typing",
+          prompt: "Completa la oración: 'Our ____' (el resto de: 'Our neighbours are having a swimming pool built.')",
+          options: [],
+          correct: "neighbours are having a swimming pool built.",
+          explanation: "Respuesta completa: 'Our neighbours are having a swimming pool built.'",
+          points: 10
+        },
+        {
+          id: "causative-have-q5",
+          type: "multiple-choice",
+          prompt: "¿Cuándo se usa 'She had her iPhone stolen.'?",
+          options: ["Algo malo que te sucede. have + object + pp.", "Nunca se usa", "Solo en pasado", "Solo en futuro"],
+          correct: "Algo malo que te sucede. have + object + pp.",
+          explanation: "Algo malo que te sucede. have + object + pp.",
+          points: 10
+        }
+      ]
+    },
+    {
+      id: "quiz-impersonal-passive",
+      name: "Quiz: Impersonal Passive",
+      emoji: "📰",
+      description: "Practica impersonal passive",
+      difficulty: "medium",
+      deckId: "impersonal-passive",
+      questions: [
+        {
+          id: "impersonal-passive-q1",
+          type: "multiple-choice",
+          prompt: "¿Cuál es la traducción correcta de 'It is said that he is dangerous.'?",
+          options: ["Se dice que es peligroso.", "Mal: Se dice que es pelig...", "Opción incorrecta 1", "Opción incorrecta 2"],
+          correct: "Se dice que es peligroso.",
+          explanation: "It is said that he is dangerous. = Se dice que es peligroso.. Contexto: It is + pp + that… No decís quién lo afirma.",
+          points: 10
+        },
+        {
+          id: "impersonal-passive-q2",
+          type: "gap-fill",
+          prompt: "Completa: 'It is believed that _____ is a local man.'",
+          options: ["he", "NO he", "HE", "he"],
+          correct: "he",
+          explanation: "La palabra faltante es 'he' en 'It is believed that he is a local man.'.",
+          points: 10
+        },
+        {
+          id: "impersonal-passive-q3",
+          type: "multiple-choice",
+          prompt: "¿Qué significa 'It is thought that the mayor will resign.'?",
+          options: ["Se piensa que el intendente va a renunciar.", "Significado falso 1", "Significado falso 2", "Significado falso 3"],
+          correct: "Se piensa que el intendente va a renunciar.",
+          explanation: "Verbos: say, believe, think, report, know, expect.",
+          points: 10
+        },
+        {
+          id: "impersonal-passive-q4",
+          type: "typing",
+          prompt: "Completa la oración: 'The ____' (el resto de: 'The man is said to be in his forties.')",
+          options: [],
+          correct: "man is said to be in his forties.",
+          explanation: "Respuesta completa: 'The man is said to be in his forties.'",
+          points: 10
+        },
+        {
+          id: "impersonal-passive-q5",
+          type: "multiple-choice",
+          prompt: "¿Cuándo se usa 'The burglar is believed to be a local man.'?",
+          options: ["is believed to be: más impersonal.", "Nunca se usa", "Solo en pasado", "Solo en futuro"],
+          correct: "is believed to be: más impersonal.",
+          explanation: "is believed to be: más impersonal.",
+          points: 10
+        }
+      ]
+    },
+    {
+      id: "quiz-identity-theft-vocab",
+      name: "Quiz: Identity Theft",
+      emoji: "🪪",
+      description: "Practica identity theft",
+      difficulty: "medium",
+      deckId: "identity-theft-vocab",
+      questions: [
+        {
+          id: "identity-theft-vocab-q1",
+          type: "multiple-choice",
+          prompt: "¿Cuál es la traducción correcta de 'identity theft'?",
+          options: ["robo de identidad", "Mal: robo de identidad...", "Opción incorrecta 1", "Opción incorrecta 2"],
+          correct: "robo de identidad",
+          explanation: "identity theft = robo de identidad. Contexto: Usar los datos de otro para hacerse pasar por esa persona.",
+          points: 10
+        },
+        {
+          id: "identity-theft-vocab-q3",
+          type: "multiple-choice",
+          prompt: "¿Qué significa 'personal information'?",
+          options: ["información personal", "Significado falso 1", "Significado falso 2", "Significado falso 3"],
+          correct: "información personal",
+          explanation: "Datos que no hay que compartir online.",
+          points: 10
+        },
+        {
+          id: "identity-theft-vocab-q4",
+          type: "typing",
+          prompt: "Completa la oración: 'to ____' (el resto de: 'to misuse someone's photos')",
+          options: [],
+          correct: "misuse someone's photos",
+          explanation: "Respuesta completa: 'to misuse someone's photos'",
+          points: 10
+        },
+        {
+          id: "identity-theft-vocab-q5",
+          type: "multiple-choice",
+          prompt: "¿Cuándo se usa 'to steal someone's identity'?",
+          options: ["steal + object. Lo que le pasó a Martin Peterson.", "Nunca se usa", "Solo en pasado", "Solo en futuro"],
+          correct: "steal + object. Lo que le pasó a Martin Peterson.",
+          explanation: "steal + object. Lo que le pasó a Martin Peterson.",
+          points: 10
+        }
+      ]
+    },
+    {
+      id: "quiz-story-way-up-to-heaven",
+      name: "Quiz: The Way Up to Heaven",
+      emoji: "🛫",
+      description: "Practica the way up to heaven",
+      difficulty: "medium",
+      deckId: "story-way-up-to-heaven",
+      questions: [
+        {
+          id: "story-way-up-to-heaven-q1",
+          type: "multiple-choice",
+          prompt: "¿Cuál es la traducción correcta de 'delayed flight'?",
+          options: ["vuelo demorado", "Mal: vuelo demorado...", "Opción incorrecta 1", "Opción incorrecta 2"],
+          correct: "vuelo demorado",
+          explanation: "delayed flight = vuelo demorado. Contexto: El vuelo de Mrs Foster a París se demora.",
+          points: 10
+        },
+        {
+          id: "story-way-up-to-heaven-q3",
+          type: "multiple-choice",
+          prompt: "¿Qué significa 'to be afraid of being late'?",
+          options: ["tener miedo de llegar tarde", "Significado falso 1", "Significado falso 2", "Significado falso 3"],
+          correct: "tener miedo de llegar tarde",
+          explanation: "El miedo extremo de Mrs Foster.",
+          points: 10
+        },
+        {
+          id: "story-way-up-to-heaven-q4",
+          type: "typing",
+          prompt: "Completa la oración: 'to ____' (el resto de: 'to delay someone on purpose')",
+          options: [],
+          correct: "delay someone on purpose",
+          explanation: "Respuesta completa: 'to delay someone on purpose'",
+          points: 10
+        },
+        {
+          id: "story-way-up-to-heaven-q5",
+          type: "multiple-choice",
+          prompt: "¿Cuándo se usa 'the little white box'?",
+          options: ["La excusa de Mr Foster para volver a entrar a la casa.", "Nunca se usa", "Solo en pasado", "Solo en futuro"],
+          correct: "La excusa de Mr Foster para volver a entrar a la casa.",
+          explanation: "La excusa de Mr Foster para volver a entrar a la casa.",
+          points: 10
+        }
+      ]
+    },
+    {
+      id: "quiz-headlines",
+      name: "Quiz: Headline Language",
+      emoji: "🗞️",
+      description: "Practica headline language",
+      difficulty: "medium",
+      deckId: "headlines",
+      questions: [
+        {
+          id: "headlines-q1",
+          type: "multiple-choice",
+          prompt: "¿Cuál es la traducción correcta de 'back'?",
+          options: ["apoyar", "Mal: apoyar...", "Opción incorrecta 1", "Opción incorrecta 2"],
+          correct: "apoyar",
+          explanation: "back = apoyar. Contexto: Prime Minister backs proposal.",
+          points: 10
+        },
+        {
+          id: "headlines-q3",
+          type: "multiple-choice",
+          prompt: "¿Qué significa 'hit'?",
+          options: ["afectar negativamente", "Significado falso 1", "Significado falso 2", "Significado falso 3"],
+          correct: "afectar negativamente",
+          explanation: "Stock market hit by oil fears.",
+          points: 10
+        },
+        {
+          id: "headlines-q5",
+          type: "multiple-choice",
+          prompt: "¿Cuándo se usa 'clash'?",
+          options: ["Ministers clash over tax proposal.", "Nunca se usa", "Solo en pasado", "Solo en futuro"],
+          correct: "Ministers clash over tax proposal.",
+          explanation: "Ministers clash over tax proposal.",
+          points: 10
+        }
+      ]
+    },
+    {
+      id: "quiz-media-people",
+      name: "Quiz: People in the Media",
+      emoji: "🎙️",
+      description: "Practica people in the media",
+      difficulty: "medium",
+      deckId: "media-people",
+      questions: [
+        {
+          id: "media-people-q1",
+          type: "multiple-choice",
+          prompt: "¿Cuál es la traducción correcta de 'critic'?",
+          options: ["crítico", "Mal: crítico...", "Opción incorrecta 1", "Opción incorrecta 2"],
+          correct: "crítico",
+          explanation: "critic = crítico. Contexto: Escribe reseñas de cine, música, etc.",
+          points: 10
+        },
+        {
+          id: "media-people-q3",
+          type: "multiple-choice",
+          prompt: "¿Qué significa 'reporter'?",
+          options: ["reportero", "Significado falso 1", "Significado falso 2", "Significado falso 3"],
+          correct: "reportero",
+          explanation: "Sale a cubrir y contar las noticias.",
+          points: 10
+        },
+        {
+          id: "media-people-q5",
+          type: "multiple-choice",
+          prompt: "¿Cuándo se usa 'presenter'?",
+          options: ["Conduce un programa.", "Nunca se usa", "Solo en pasado", "Solo en futuro"],
+          correct: "Conduce un programa.",
+          explanation: "Conduce un programa.",
+          points: 10
+        }
+      ]
+    },
+    {
+      id: "quiz-media-adjectives",
+      name: "Quiz: Media Adjectives",
+      emoji: "🧭",
+      description: "Practica media adjectives",
+      difficulty: "medium",
+      deckId: "media-adjectives",
+      questions: [
+        {
+          id: "media-adjectives-q1",
+          type: "multiple-choice",
+          prompt: "¿Cuál es la traducción correcta de 'biased'?",
+          options: ["parcial / tendencioso", "Mal: parcial / tendencios...", "Opción incorrecta 1", "Opción incorrecta 2"],
+          correct: "parcial / tendencioso",
+          explanation: "biased = parcial / tendencioso. Contexto: Muestra solo un lado. The article was very biased.",
+          points: 10
+        },
+        {
+          id: "media-adjectives-q3",
+          type: "multiple-choice",
+          prompt: "¿Qué significa 'sensational'?",
+          options: ["sensacionalista / exagerado", "Significado falso 1", "Significado falso 2", "Significado falso 3"],
+          correct: "sensacionalista / exagerado",
+          explanation: "Exagera para llamar la atención.",
+          points: 10
+        },
+        {
+          id: "media-adjectives-q5",
+          type: "multiple-choice",
+          prompt: "¿Cuándo se usa 'censored'?",
+          options: ["Se ocultó o eliminó parte del contenido.", "Nunca se usa", "Solo en pasado", "Solo en futuro"],
+          correct: "Se ocultó o eliminó parte del contenido.",
+          explanation: "Se ocultó o eliminó parte del contenido.",
+          points: 10
+        }
+      ]
+    },
+    {
+      id: "quiz-writing-connectors",
+      name: "Quiz: Writing Connectors",
+      emoji: "🔗",
+      description: "Practica writing connectors",
+      difficulty: "medium",
+      deckId: "writing-connectors",
+      questions: [
+        {
+          id: "writing-connectors-q1",
+          type: "multiple-choice",
+          prompt: "¿Cuál es la traducción correcta de 'Nowadays'?",
+          options: ["Hoy en día", "Mal: Hoy en día...", "Opción incorrecta 1", "Opción incorrecta 2"],
+          correct: "Hoy en día",
+          explanation: "Nowadays = Hoy en día. Contexto: Para introducir el tema en la P1.",
+          points: 10
+        },
+        {
+          id: "writing-connectors-q3",
+          type: "multiple-choice",
+          prompt: "¿Qué significa 'For instance / For example'?",
+          options: ["Por ejemplo", "Significado falso 1", "Significado falso 2", "Significado falso 3"],
+          correct: "Por ejemplo",
+          explanation: "Para dar un ejemplo.",
+          points: 10
+        },
+        {
+          id: "writing-connectors-q4",
+          type: "typing",
+          prompt: "Completa la oración: 'In ____' (el resto de: 'In addition / Moreover')",
+          options: [],
+          correct: "addition / Moreover",
+          explanation: "Respuesta completa: 'In addition / Moreover'",
+          points: 10
+        },
+        {
+          id: "writing-connectors-q5",
+          type: "multiple-choice",
+          prompt: "¿Cuándo se usa 'However'?",
+          options: ["Para introducir un contraste.", "Nunca se usa", "Solo en pasado", "Solo en futuro"],
+          correct: "Para introducir un contraste.",
+          explanation: "Para introducir un contraste.",
+          points: 10
+        }
+      ]
+    },
+    {
+      id: "quiz-speaking-phrases",
+      name: "Quiz: Frases de Speaking",
+      emoji: "🗣️",
+      description: "Practica frases de speaking",
+      difficulty: "medium",
+      deckId: "speaking-phrases",
+      questions: [
+        {
+          id: "speaking-phrases-q1",
+          type: "multiple-choice",
+          prompt: "¿Cuál es la traducción correcta de 'I'd like to talk about this topic.'?",
+          options: ["Me gustaría hablar de este tema.", "Mal: Me gustaría hablar d...", "Opción incorrecta 1", "Opción incorrecta 2"],
+          correct: "Me gustaría hablar de este tema.",
+          explanation: "I'd like to talk about this topic. = Me gustaría hablar de este tema.. Contexto: Para ELEGIR un tema al empezar. 'I'd like' = me gustaría (no 'I like' = me gusta).",
+          points: 10
+        },
+        {
+          id: "speaking-phrases-q2",
+          type: "gap-fill",
+          prompt: "Completa: 'I think _____ very interesting.'",
+          options: ["it's", "NO it's", "IT'S", "it's"],
+          correct: "it's",
+          explanation: "La palabra faltante es 'it's' en 'I think it's very interesting.'.",
+          points: 10
+        },
+        {
+          id: "speaking-phrases-q3",
+          type: "multiple-choice",
+          prompt: "¿Qué significa 'In my opinion, it's important.'?",
+          options: ["En mi opinión, es importante.", "Significado falso 1", "Significado falso 2", "Significado falso 3"],
+          correct: "En mi opinión, es importante.",
+          explanation: "Otra forma de dar tu opinión.",
+          points: 10
+        },
+        {
+          id: "speaking-phrases-q4",
+          type: "typing",
+          prompt: "Completa la oración: 'I ____' (el resto de: 'I would choose this one because it's easier.')",
+          options: [],
+          correct: "would choose this one because it's easier.",
+          explanation: "Respuesta completa: 'I would choose this one because it's easier.'",
+          points: 10
+        },
+        {
+          id: "speaking-phrases-q5",
+          type: "multiple-choice",
+          prompt: "¿Cuándo se usa 'For example, in my experience...'?",
+          options: ["Para introducir un ejemplo personal.", "Nunca se usa", "Solo en pasado", "Solo en futuro"],
+          correct: "Para introducir un ejemplo personal.",
+          explanation: "Para introducir un ejemplo personal.",
+          points: 10
+        }
+      ]
+    },
+    {
+      id: "quiz-past-modals",
+      name: "Quiz: Past Modals (Deduction)",
+      emoji: "🔮",
+      description: "Practica past modals (deduction)",
+      difficulty: "medium",
+      deckId: "past-modals",
+      questions: [
+        {
+          id: "past-modals-q1",
+          type: "multiple-choice",
+          prompt: "¿Cuál es la traducción correcta de 'You must have been delighted.'?",
+          options: ["Debés haber estado encantado.", "Mal: Debés haber estado e...", "Opción incorrecta 1", "Opción incorrecta 2"],
+          correct: "Debés haber estado encantado.",
+          explanation: "You must have been delighted. = Debés haber estado encantado.. Contexto: must have + pp = casi seguro.",
+          points: 10
+        },
+        {
+          id: "past-modals-q2",
+          type: "gap-fill",
+          prompt: "Completa: 'She must have _____ off her bike.'",
+          options: ["fallen", "NO fallen", "FALLEN", "fallen"],
+          correct: "fallen",
+          explanation: "La palabra faltante es 'fallen' en 'She must have fallen off her bike.'.",
+          points: 10
+        },
+        {
+          id: "past-modals-q3",
+          type: "multiple-choice",
+          prompt: "¿Qué significa 'He might have gone home.'?",
+          options: ["Puede que se haya ido a casa.", "Significado falso 1", "Significado falso 2", "Significado falso 3"],
+          correct: "Puede que se haya ido a casa.",
+          explanation: "might/may/could have + pp = posible.",
+          points: 10
+        },
+        {
+          id: "past-modals-q4",
+          type: "typing",
+          prompt: "Completa la oración: 'She ____' (el resto de: 'She could have sprained her ankle.')",
+          options: [],
+          correct: "could have sprained her ankle.",
+          explanation: "Respuesta completa: 'She could have sprained her ankle.'",
+          points: 10
+        },
+        {
+          id: "past-modals-q5",
+          type: "multiple-choice",
+          prompt: "¿Cuándo se usa 'She might not have read the email.'?",
+          options: ["might not have + pp = quizá no pasó.", "Nunca se usa", "Solo en pasado", "Solo en futuro"],
+          correct: "might not have + pp = quizá no pasó.",
+          explanation: "might not have + pp = quizá no pasó.",
+          points: 10
+        }
+      ]
+    },
+    {
+      id: "quiz-should-have",
+      name: "Quiz: Should Have / Ought to Have",
+      emoji: "😬",
+      description: "Practica should have / ought to have",
+      difficulty: "medium",
+      deckId: "should-have",
+      questions: [
+        {
+          id: "should-have-q1",
+          type: "multiple-choice",
+          prompt: "¿Cuál es la traducción correcta de 'We should have filled up at the last garage.'?",
+          options: ["Deberíamos haber cargado nafta en la última estación.", "Mal: Deberíamos haber car...", "Opción incorrecta 1", "Opción incorrecta 2"],
+          correct: "Deberíamos haber cargado nafta en la última estación.",
+          explanation: "We should have filled up at the last garage. = Deberíamos haber cargado nafta en la última estación.. Contexto: should have + pp = algo correcto que no hiciste.",
+          points: 10
+        },
+        {
+          id: "should-have-q2",
+          type: "gap-fill",
+          prompt: "Completa: 'I shouldn't have _____ at him.'",
+          options: ["shouted", "NO shouted", "SHOUTED", "shouted"],
+          correct: "shouted",
+          explanation: "La palabra faltante es 'shouted' en 'I shouldn't have shouted at him.'.",
+          points: 10
+        },
+        {
+          id: "should-have-q3",
+          type: "multiple-choice",
+          prompt: "¿Qué significa 'They ought to have dressed up for the wedding.'?",
+          options: ["Deberían haberse arreglado para el casamiento.", "Significado falso 1", "Significado falso 2", "Significado falso 3"],
+          correct: "Deberían haberse arreglado para el casamiento.",
+          explanation: "ought to have + pp = igual que 'should have'.",
+          points: 10
+        },
+        {
+          id: "should-have-q4",
+          type: "typing",
+          prompt: "Completa la oración: 'He ____' (el resto de: 'He ought not to have left his phone on his desk.')",
+          options: [],
+          correct: "ought not to have left his phone on his desk.",
+          explanation: "Respuesta completa: 'He ought not to have left his phone on his desk.'",
+          points: 10
+        },
+        {
+          id: "should-have-q5",
+          type: "multiple-choice",
+          prompt: "¿Cuándo se usa 'She should have been more careful.'?",
+          options: ["Crítica sobre el accidente de la bici.", "Nunca se usa", "Solo en pasado", "Solo en futuro"],
+          correct: "Crítica sobre el accidente de la bici.",
+          explanation: "Crítica sobre el accidente de la bici.",
+          points: 10
+        }
+      ]
+    },
+    {
+      id: "quiz-would-rather",
+      name: "Quiz: Would Rather",
+      emoji: "🤷",
+      description: "Practica would rather",
+      difficulty: "medium",
+      deckId: "would-rather",
+      questions: [
+        {
+          id: "would-rather-q1",
+          type: "multiple-choice",
+          prompt: "¿Cuál es la traducción correcta de 'I'd rather stay home.'?",
+          options: ["Prefiero quedarme en casa.", "Mal: Prefiero quedarme en...", "Opción incorrecta 1", "Opción incorrecta 2"],
+          correct: "Prefiero quedarme en casa.",
+          explanation: "I'd rather stay home. = Prefiero quedarme en casa.. Contexto: Mismo sujeto: would rather + base verb.",
+          points: 10
+        },
+        {
+          id: "would-rather-q2",
+          type: "gap-fill",
+          prompt: "Completa: 'I'd rather see that _____ at the cinema.'",
+          options: ["film", "NO film", "FILM", "film"],
+          correct: "film",
+          explanation: "La palabra faltante es 'film' en 'I'd rather see that film at the cinema.'.",
+          points: 10
+        },
+        {
+          id: "would-rather-q3",
+          type: "multiple-choice",
+          prompt: "¿Qué significa 'I'd rather sit by the window.'?",
+          options: ["Prefiero sentarme al lado de la ventana.", "Significado falso 1", "Significado falso 2", "Significado falso 3"],
+          correct: "Prefiero sentarme al lado de la ventana.",
+          explanation: "would rather + base verb.",
+          points: 10
+        },
+        {
+          id: "would-rather-q4",
+          type: "typing",
+          prompt: "Completa la oración: 'I'd ____' (el resto de: 'I'd rather you cooked tonight.')",
+          options: [],
+          correct: "rather you cooked tonight.",
+          explanation: "Respuesta completa: 'I'd rather you cooked tonight.'",
+          points: 10
+        },
+        {
+          id: "would-rather-q5",
+          type: "multiple-choice",
+          prompt: "¿Cuándo se usa 'I'd rather you didn't post photos of me.'?",
+          options: ["would rather + persona + didn't + base verb.", "Nunca se usa", "Solo en pasado", "Solo en futuro"],
+          correct: "would rather + persona + didn't + base verb.",
+          explanation: "would rather + persona + didn't + base verb.",
+          points: 10
+        }
+      ]
+    },
+    {
+      id: "quiz-crime-vocab",
+      name: "Quiz: Vocabulario: Crime",
+      emoji: "🚔",
+      description: "Practica vocabulario: crime",
+      difficulty: "medium",
+      deckId: "crime-vocab",
+      questions: [
+        {
+          id: "crime-vocab-q1",
+          type: "multiple-choice",
+          prompt: "¿Cuál es la traducción correcta de 'blackmail'?",
+          options: ["chantaje", "Mal: chantaje...", "Opción incorrecta 1", "Opción incorrecta 2"],
+          correct: "chantaje",
+          explanation: "blackmail = chantaje. Contexto: He was arrested for blackmail.",
+          points: 10
+        },
+        {
+          id: "crime-vocab-q3",
+          type: "multiple-choice",
+          prompt: "¿Qué significa 'burglary'?",
+          options: ["robo entrando a una casa/edificio", "Significado falso 1", "Significado falso 2", "Significado falso 3"],
+          correct: "robo entrando a una casa/edificio",
+          explanation: "There was a burglary in our neighbourhood.",
+          points: 10
+        },
+        {
+          id: "crime-vocab-q5",
+          type: "multiple-choice",
+          prompt: "¿Cuándo se usa 'fraud'?",
+          options: ["The company was investigated for fraud.", "Nunca se usa", "Solo en pasado", "Solo en futuro"],
+          correct: "The company was investigated for fraud.",
+          explanation: "The company was investigated for fraud.",
+          points: 10
+        }
+      ]
+    },
+    {
+      id: "quiz-criminals-verbs",
+      name: "Quiz: Criminals & Verbs",
+      emoji: "🦹",
+      description: "Practica criminals & verbs",
+      difficulty: "medium",
+      deckId: "criminals-verbs",
+      questions: [
+        {
+          id: "criminals-verbs-q1",
+          type: "multiple-choice",
+          prompt: "¿Cuál es la traducción correcta de 'burglar → to burgle'?",
+          options: ["ladrón de casas → robar una casa", "Mal: ladrón de casas → ro...", "Opción incorrecta 1", "Opción incorrecta 2"],
+          correct: "ladrón de casas → robar una casa",
+          explanation: "burglar → to burgle = ladrón de casas → robar una casa. Contexto: A burglar burgles houses.",
+          points: 10
+        },
+        {
+          id: "criminals-verbs-q2",
+          type: "gap-fill",
+          prompt: "Completa: 'murderer → _____ murder'",
+          options: ["to", "NO to", "TO", "to"],
+          correct: "to",
+          explanation: "La palabra faltante es 'to' en 'murderer → to murder'.",
+          points: 10
+        },
+        {
+          id: "criminals-verbs-q3",
+          type: "multiple-choice",
+          prompt: "¿Qué significa 'stalker → to stalk'?",
+          options: ["acosador → acosar", "Significado falso 1", "Significado falso 2", "Significado falso 3"],
+          correct: "acosador → acosar",
+          explanation: "A stalker stalks someone.",
+          points: 10
+        },
+        {
+          id: "criminals-verbs-q4",
+          type: "typing",
+          prompt: "Completa la oración: 'hacker ____' (el resto de: 'hacker → to hack')",
+          options: [],
+          correct: "→ to hack",
+          explanation: "Respuesta completa: 'hacker → to hack'",
+          points: 10
+        },
+        {
+          id: "criminals-verbs-q5",
+          type: "multiple-choice",
+          prompt: "¿Cuándo se usa 'robber → to rob'?",
+          options: ["A robber robs a bank or a person.", "Nunca se usa", "Solo en pasado", "Solo en futuro"],
+          correct: "A robber robs a bank or a person.",
+          explanation: "A robber robs a bank or a person.",
+          points: 10
+        }
+      ]
+    },
+    {
+      id: "quiz-rob-vs-steal",
+      name: "Quiz: Rob vs Steal",
+      emoji: "⚖️",
+      description: "Practica rob vs steal",
+      difficulty: "medium",
+      deckId: "rob-vs-steal",
+      questions: [
+        {
+          id: "rob-vs-steal-q1",
+          type: "multiple-choice",
+          prompt: "¿Cuál es la traducción correcta de 'They robbed the bank.'?",
+          options: ["Robaron el banco.", "Mal: Robaron el banco....", "Opción incorrecta 1", "Opción incorrecta 2"],
+          correct: "Robaron el banco.",
+          explanation: "They robbed the bank. = Robaron el banco.. Contexto: rob + lugar. ✔️",
+          points: 10
+        },
+        {
+          id: "rob-vs-steal-q3",
+          type: "multiple-choice",
+          prompt: "¿Qué significa 'They stole my phone.'?",
+          options: ["Me robaron el teléfono.", "Significado falso 1", "Significado falso 2", "Significado falso 3"],
+          correct: "Me robaron el teléfono.",
+          explanation: "steal + objeto. ✔️",
+          points: 10
+        },
+        {
+          id: "rob-vs-steal-q4",
+          type: "typing",
+          prompt: "Completa la oración: 'Someone ____' (el resto de: 'Someone stole the money.')",
+          options: [],
+          correct: "stole the money.",
+          explanation: "Respuesta completa: 'Someone stole the money.'",
+          points: 10
+        },
+        {
+          id: "rob-vs-steal-q5",
+          type: "multiple-choice",
+          prompt: "¿Cuándo se usa '❌ They stole the bank.'?",
+          options: ["Con un lugar se usa rob, no steal.", "Nunca se usa", "Solo en pasado", "Solo en futuro"],
+          correct: "Con un lugar se usa rob, no steal.",
+          explanation: "Con un lugar se usa rob, no steal.",
+          points: 10
+        }
+      ]
+    },
+    {
+      id: "quiz-story-lamb-to-the-slaughter",
+      name: "Quiz: Lamb to the Slaughter",
+      emoji: "🐑",
+      description: "Practica lamb to the slaughter",
+      difficulty: "medium",
+      deckId: "story-lamb-to-the-slaughter",
+      questions: [
+        {
+          id: "story-lamb-to-the-slaughter-q1",
+          type: "multiple-choice",
+          prompt: "¿Cuál es la traducción correcta de 'frozen leg of lamb'?",
+          options: ["pata de cordero congelada", "Mal: pata de cordero cong...", "Opción incorrecta 1", "Opción incorrecta 2"],
+          correct: "pata de cordero congelada",
+          explanation: "frozen leg of lamb = pata de cordero congelada. Contexto: El arma con la que Mary golpea a Patrick.",
+          points: 10
+        },
+        {
+          id: "story-lamb-to-the-slaughter-q2",
+          type: "gap-fill",
+          prompt: "Completa: 'to hit someone _____ the head'",
+          options: ["on", "NO on", "ON", "on"],
+          correct: "on",
+          explanation: "La palabra faltante es 'on' en 'to hit someone on the head'.",
+          points: 10
+        },
+        {
+          id: "story-lamb-to-the-slaughter-q3",
+          type: "multiple-choice",
+          prompt: "¿Qué significa 'distant'?",
+          options: ["distante", "Significado falso 1", "Significado falso 2", "Significado falso 3"],
+          correct: "distante",
+          explanation: "Mary nota a Patrick distant y raro.",
+          points: 10
+        },
+        {
+          id: "story-lamb-to-the-slaughter-q5",
+          type: "multiple-choice",
+          prompt: "¿Cuándo se usa 'to act strangely'?",
+          options: ["Patrick bebe y se comporta raro.", "Nunca se usa", "Solo en pasado", "Solo en futuro"],
+          correct: "Patrick bebe y se comporta raro.",
+          explanation: "Patrick bebe y se comporta raro.",
+          points: 10
+        }
+      ]
+    },
+    {
+      id: "quiz-speaking-papers",
+      name: "Quiz: Speaking Papers (Frames)",
+      emoji: "🧩",
+      description: "Practica speaking papers (frames)",
+      difficulty: "medium",
+      deckId: "speaking-papers",
+      questions: [
+        {
+          id: "speaking-papers-q1",
+          type: "multiple-choice",
+          prompt: "¿Cuál es la traducción correcta de 'If I got lost in the Amazon rainforest, I would feel really scared.'?",
+          options: ["Si me perdiera en la selva amazónica, me sentiría muy asustado.", "Mal: Si me perdiera en la...", "Opción incorrecta 1", "Opción incorrecta 2"],
+          correct: "Si me perdiera en la selva amazónica, me sentiría muy asustado.",
+          explanation: "If I got lost in the Amazon rainforest, I would feel really scared. = Si me perdiera en la selva amazónica, me sentiría muy asustado.. Contexto: Paper 1: second conditional. 'I would feel', NO 'I will feel'.",
+          points: 10
+        },
+        {
+          id: "speaking-papers-q2",
+          type: "gap-fill",
+          prompt: "Completa: 'First, I would try to stay _____ because panic makes things worse.'",
+          options: ["calm", "NO calm", "CALM", "calm"],
+          correct: "calm",
+          explanation: "La palabra faltante es 'calm' en 'First, I would try to stay calm because panic makes things worse.'.",
+          points: 10
+        },
+        {
+          id: "speaking-papers-q3",
+          type: "multiple-choice",
+          prompt: "¿Qué significa 'If I got lost in a foreign city, I would try to find a public place with lots of people.'?",
+          options: ["Si me perdiera en una ciudad extranjera, buscaría un lugar público con mucha gente.", "Significado falso 1", "Significado falso 2", "Significado falso 3"],
+          correct: "Si me perdiera en una ciudad extranjera, buscaría un lugar público con mucha gente.",
+          explanation: "Paper 1: versión natural del subtópico ciudad.",
+          points: 10
+        },
+        {
+          id: "speaking-papers-q4",
+          type: "typing",
+          prompt: "Completa la oración: 'If ____' (el resto de: 'If my phone was dead, I would try to find someone to ask for help.')",
+          options: [],
+          correct: "my phone was dead, I would try to find someone to ask for help.",
+          explanation: "Respuesta completa: 'If my phone was dead, I would try to find someone to ask for help.'",
+          points: 10
+        },
+        {
+          id: "speaking-papers-q5",
+          type: "multiple-choice",
+          prompt: "¿Cuándo se usa 'Starting a new job, I would feel excited but nervous because everything is new.'?",
+          options: ["Paper 2: feelings. 'I would feel', NO 'I will feel'.", "Nunca se usa", "Solo en pasado", "Solo en futuro"],
+          correct: "Paper 2: feelings. 'I would feel', NO 'I will feel'.",
+          explanation: "Paper 2: feelings. 'I would feel', NO 'I will feel'.",
+          points: 10
+        }
+      ]
+    }
+    ]
 };

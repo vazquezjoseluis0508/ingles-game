@@ -52,7 +52,11 @@ const Store = (() => {
       strictMode: false,               // comparación al pie de la letra
       saved: [],                       // tarjetero: ids de palabras/frases guardadas
       dailyStats: { date: null, correct: 0, sessions: 0, claimed: [] }, // misiones diarias
-      cards: {}                        // id -> { box:1..5, due:ISO, seen, correct, wrong }
+      cards: {},                       // id -> { box:1..5, due:ISO, seen, correct, wrong }
+      // --- NUEVO: Quizzes temáticos ---
+      quizzes: {},                     // quizId -> { completed: 0|1, totalAttempts, bestScore, passed }
+      themesReinforced: {},            // deckId -> true (tras aprobar su quiz)
+      attempts: {}                     // quizId -> [{ timestamp, score, pct, passed }]
     };
   }
 
