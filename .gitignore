@@ -7,3 +7,6 @@ progress.json
 
 # OS
 .DS_Store
+
+# CodeGraph index (local, per machine)
+.codegraph/
