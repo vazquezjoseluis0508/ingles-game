@@ -360,6 +360,7 @@ window.GAME_DATA = {
       emoji: "🔄",
       description: "Practica voz pasiva en diferentes tiempos",
       difficulty: "medium",
+      deckId: "passive-voice",
       questions: [
         {
           id: "pv-q1",
@@ -408,66 +409,14 @@ window.GAME_DATA = {
         }
       ]
     },
-    {
-      id: "quiz-causative",
-      name: "Quiz: Causative Have",
-      emoji: "✂️",
-      description: "Have + objeto + past participle",
-      difficulty: "medium",
-      questions: [
-        {
-          id: "ch-q1",
-          type: "multiple-choice",
-          prompt: "Traduce: 'Me corté el pelo.'",
-          options: ["I cut my hair.", "I had my hair cut.", "I have cut my hair.", "I'm cutting my hair."],
-          correct: "I had my hair cut.",
-          explanation: "Causative: alguien más lo hace. 'have + object + pp' = otro lo hace por vos.",
-          points: 10
-        },
-        {
-          id: "ch-q2",
-          type: "typing",
-          prompt: "Completa: 'Nos sacaron una foto.' → 'We _______ our photo taken.'",
-          correct: "had",
-          variations: ["had"],
-          explanation: "Causative have (pasado): had + object + pp.",
-          points: 10
-        },
-        {
-          id: "ch-q3",
-          type: "gap-fill",
-          prompt: "Complete: 'Le robaron el iPhone.' → 'She _______ her iPhone stolen.'",
-          options: ["has had", "had", "have", "is having"],
-          correct: "had",
-          explanation: "Causative (pasado simple): had + object + pp.",
-          points: 10
-        },
-        {
-          id: "ch-q4",
-          type: "multiple-choice",
-          prompt: "¿Qué expresa 'I had my house burgled'?",
-          options: ["Yo mismo entré a robar.", "Algo malo que me sucedió (no especifico quién).", "Yo robé la casa.", "La casa está siendo robada."],
-          correct: "Algo malo que me sucedió (no especifico quién).",
-          explanation: "Causative con significado de 'algo malo': algo te pasó sin asumir responsabilidad de quién.",
-          points: 10
-        },
-        {
-          id: "ch-q5",
-          type: "typing",
-          prompt: "Completa: 'Deberías hacerte revisar la vista.' → 'You should _______ your eyes tested.'",
-          correct: "have",
-          variations: ["have"],
-          explanation: "Causative con should: should + have + object + pp.",
-          points: 10
-        }
-      ]
-    },
+
     {
       id: "quiz-reporting-verbs",
       name: "Quiz: Reporting Verbs",
       emoji: "🗨️",
       description: "Say, tell, report, claim...",
       difficulty: "hard",
+      deckId: "reporting-verbs",
       questions: [
         {
           id: "rv-q1",
@@ -522,6 +471,7 @@ window.GAME_DATA = {
       emoji: "🔮",
       description: "Must have, might have, can't have para deducción en el pasado",
       difficulty: "hard",
+      deckId: "past-modals",
       questions: [
         {
           id: "pm-q1",
@@ -1390,4 +1340,20 @@ window.GAME_DATA = {
       ]
     }
     ]
+  ,
+  finalExam: {
+    id: "final-exam",
+    name: "Examen Final Integral",
+    emoji: "🏆",
+    description: "Prueba integral: preguntas de todos los temas",
+    difficulty: "hard",
+    questions: [
+      { id: "final-q1", type: "multiple-choice", prompt: "Passive voice: 'The letter _______ sent yesterday.'", options: ["is", "was", "were", "be"], correct: "was", explanation: "Past simple passive: was + pp.", points: 10 },
+      { id: "final-q2", type: "typing", prompt: "Causative: Traduce 'Me hackearon la cuenta bancaria.'", correct: "I had my bank account hacked", variations: ["I had my bank account hacked"], explanation: "have + object + pp para algo malo.", points: 10 },
+      { id: "final-q3", type: "gap-fill", prompt: "Reporting verbs: 'He _______ that he was late.'", options: ["told me", "said me", "told", "said"], correct: "told me", explanation: "Tell+OI, Say no.", points: 10 },
+      { id: "final-q4", type: "multiple-choice", prompt: "Modal: 'She didn't answer. She _______ sleeping.'", options: ["must have been", "might have been", "can't have been", "should have been"], correct: "must have been", explanation: "Must have=certeza.", points: 10 },
+      { id: "final-q5", type: "typing", prompt: "Would rather: 'Preferiria esperar mas.'", correct: "I would rather wait longer", variations: ["I would rather wait longer"], explanation: "Would rather+infinitivo.", points: 10 }
+    ]
+  }
+
 };

@@ -44,7 +44,9 @@ async function persist() { await Store.save(state); }
 // ============================================================
 //  QUIZ Mode (T3-T9)
 // ============================================================
-const allQuizzes = () => DATA.quizzes || [];
+const allQuizzes = () => DATA.quizzes || [];  // Solo 19 quizzes tem
+aticos (excluye final-exam)
+const finalExam = () => DATA.finalExam || null;  // Quiz final integral, separado
 const quizById = (id) => allQuizzes().find((q) => q.id === id);
 const quizState = (id) => (state.quizzes && state.quizzes[id]) || { completed: 0, totalAttempts: 0, bestScore: 0, passed: false, attempts: [] };
 const QUIZ_POINTS_PER_Q = 10;
@@ -60,9 +62,16 @@ function quizzesProgress() {
   for (const q of quizzes) {
     const qs = quizState(q.id);
     if (qs.completed > 0) completed++;
-    if (qs.passed) passed++;  // T5: solo cuenta si pasó 80%
+    if (qs.passed) passed++;  // Solo 80%+ cuenta
   }
+  // Progreso global: SOLO los 19 quizzes tematicos, NO final-exam
   return { pct: Math.round((passed / quizzes.length) * 100), completed, total: quizzes.length, passed };
+}
+function finalExamProgress() {
+  const exam = finalExam();
+  if (!exam || !state.finalExam) return { score: 0, pct: 0, passed: false, bestScore: 0 };
+  const fe = state.finalExam;
+  return { score: fe.score || 0, pct: fe.pct || 0, passed: fe.pct >= 80, bestScore: fe.bestScore || 0 };
 }
 
 function startQuiz(quizId) {
