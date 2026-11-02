@@ -67,7 +67,7 @@ exercises:
       - prompt: "My injured uncle is currently recovering __________ hospital, whereas his attorney went to __________ hospital to request official medical records."
         options: ["in / the", "in the / -", "at a / -", "to / a"]
         answer: 0
-        explanation: "Aplicación de reglas de artículos (fuente SOURCE_IMAGE_1): in hospital expresa el uso institucional del paciente; to the hospital especifica el edificio físico al que acude el abogado."
+        explanation: "Reglas de artículos: in hospital expresa el uso institucional del paciente; to the hospital especifica el edificio físico al que acude el abogado."
   - title: "C. Traducción Directa e Inversa"
     type: translate
     items:
@@ -88,32 +88,47 @@ exercises:
         explanation: "Pasiva del presente perfecto."
 ---
 
-El dominio de la voz pasiva y sus variaciones sintácticas complejas constituye un pilar estratégico fundamental en la competencia lingüística del estudiante de nivel Senior 5 (Upper-Intermediate). En el discurso formal, académico y periodístico en inglés, estas estructuras permiten desviar el foco de atención del sujeto agente hacia la acción, el proceso o el objeto afectado. Esta destreza no solo dota al alumno de herramientas para redactar reportes científicos, artículos de prensa e informes ejecutivos con la objetividad e impersonalidad requeridas, sino que también refina su capacidad de procesamiento sintáctico crítico, permitiéndole matizar el grado de responsabilidad, el nivel de evidencia y la prominencia de la información transmitida.
+## Qué es
 
-## Marco Teórico y Funcional
+La voz pasiva pone el foco en la **acción** y no en quién la hace. Lo importante es lo que pasó.
 
-La transformación de una oración activa a voz pasiva en inglés exige la reestructuración del foco informativo (*information packaging*). El objeto directo de la oración activa se convierte en el sujeto paciente de la oración pasiva, mientras que el verbo principal adopta la forma del auxiliar *to be* en el tiempo verbal correspondiente, seguido del participio pasado (*Past Participle*) del verbo léxico.
+## Cuándo se usa
 
-| Tiempo verbal | Estructura |
-| --- | --- |
-| Present Simple | am / is / are + past participle |
-| Present Continuous | am / is / are being + past participle |
-| Present Perfect | have / has been + past participle |
-| Past Simple | was / were + past participle |
-| Past Continuous | was / were being + past participle |
-| Past Perfect | had been + past participle |
-| Future Simple (Will) | will be + past participle |
-| Future Perfect | will have been + past participle |
-| Modals | modal + be + past participle / modal + have been + past participle |
+- Cuando importa más la acción que quién la hizo.
+- Cuando no sabemos quién la hizo, o no hace falta decirlo.
+- En noticias y reportes formales, para sonar impersonal.
 
-Pragmáticamente, el agente introducido por la preposición *by* se incluye únicamente si aporta información relevante, indispensable o novedosa. Se omite cuando el agente es desconocido, irrelevante, obvio por el contexto, o cuando se desea mantener la neutralidad o la seguridad informativa.
+## Estructura
 
-## Seccion Especial de Reglas Gramaticales: Artículos (Definite, Indefinite & Zero Article)
+**be** (en el tiempo que corresponda) + **past participle** del verbo.
 
-Derivado del corpus normativo del nivel (ref. SOURCE_IMAGE_1), el uso del artículo determinado *the*, indeterminado *a/an* y el artículo cero (*zero article*) obedece a distinciones institucionales y geográficas estrictas:
+| Tiempo | Estructura | Ejemplo |
+| --- | --- | --- |
+| Present Simple | am / is / are + past participle | The trial is held every year. |
+| Present Continuous | am / is / are being + past participle | The trial is being held at the moment. |
+| Present Perfect | have / has been + past participle | My bank account has been hacked. |
+| Past Simple | was / were + past participle | Jim was arrested last month. |
+| Past Continuous | was / were being + past participle | The house was being painted. |
+| Past Perfect | had been + past participle | The window had been broken. |
+| Future (Will) | will be + past participle | The prisoner will be released next month. |
+| Future Perfect | will have been + past participle | The work will have been finished by Friday. |
+| Modals | modal + be / have been + past participle | The contract should have been checked. |
+| Infinitive / Gerund | to be / being + past participle | He paid a fine to avoid being sent to jail. |
 
-- **Uso institucional / cero:** In hospital, in prison, at school, at university, go to bed, at home. *(Foco en la función primordial de la institución)*
-- **Edificio físico / determinado:** In a/the hospital, at the school building. *(Foco en la estructura física específica)*
+## Reglas
+
+- Para decir quién hizo la acción, usá **by**: *The body was discovered by a dog-walker.*
+- En la mayoría de las pasivas **no** se dice quién la hizo.
+
+## Errores comunes
+
+- ❌ *Jim was arrest last month.* → ✅ *Jim was arrested last month.* (falta el past participle)
+- ❌ *The house was painted from a worker.* → ✅ *The house was painted by a worker.* (es **by**, no *from*)
+
+## Reglas de artículos (a / an / the / sin artículo)
+
+- **Sin artículo (uso de la institución):** in hospital, in prison, at school, at university, go to bed, at home. *(el paciente está internado, el alumno estudia)*
+- **Con artículo (el edificio):** in a/the hospital, at the school building. *(hablamos del lugar físico)*
 - **Nombres geográficos:**
   - **Zero Article:** Most countries, continents, single mountains/lakes (e.g. Spain, North America, Lake Geneva).
   - **With "THE":** Plural/Republics/Unions (e.g. The USA, The UK, The Netherlands, The Czech Republic), mountain ranges, oceans, seas, rivers, canals (e.g. The Alps, The Atlantic, The Black Sea, The Panama Canal).
