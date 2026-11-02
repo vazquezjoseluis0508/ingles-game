@@ -1,0 +1,17 @@
+---
+interface Props {
+  examples: { en: string; es: string }[];
+}
+const { examples } = Astro.props;
+---
+
+<ol class="examples">
+  {
+    examples.map((ex) => (
+      <li>
+        <p class="en" lang="en">{ex.en}</p>
+        <p class="es" lang="es">{ex.es}</p>
+      </li>
+    ))
+  }
+</ol>

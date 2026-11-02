@@ -1,0 +1,58 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import { lessonUrl } from "../lib/paths";
+
+const lessons = (await getCollection("lessons")).sort(
+  (a, b) => a.data.module.number - b.data.module.number || a.data.order - b.data.order,
+);
+const modules = new Map<number, { title: string; lessons: typeof lessons }>();
+for (const lesson of lessons) {
+  const { number, title } = lesson.data.module;
+  if (!modules.has(number)) modules.set(number, { title, lessons: [] });
+  modules.get(number)!.lessons.push(lesson);
+}
+const countItems = (l: (typeof lessons)[number]) => l.data.exercises.reduce((n, s) => n + s.items.length, 0);
+---
+
+<Base title="Dossier Senior 5 · Libro de práctica">
+  <h1>Dossier Senior 5</h1>
+  <p class="lead">Libro interactivo de estudio y práctica. Teoría, ejemplos y ejercicios con autocorrección; tu progreso se guarda en este navegador.</p>
+
+  {
+    [...modules].map(([number, mod]) => (
+      <section class="module">
+        <h2>
+          <span class="module-no">Módulo {number}</span> {mod.title}
+        </h2>
+        <ul class="lesson-list">
+          {mod.lessons.map((lesson) => (
+            <li>
+              <a class="lesson-card" href={lessonUrl(number, lesson.data.id)} data-lesson-card data-lesson-id={lesson.data.id} data-total={countItems(lesson)}>
+                <span class="lesson-id">{lesson.data.id}</span>
+                <span class="lesson-title">{lesson.data.title}</span>
+                <span class="lesson-progress" data-progress-label>Sin empezar</span>
+                <span class="bar" aria-hidden="true"><span class="bar-fill" data-progress-bar></span></span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</Base>
+
+<script>
+  import { getLesson, scoreLesson } from "../lib/progress";
+
+  document.querySelectorAll<HTMLElement>("[data-lesson-card]").forEach((card) => {
+    const total = Number(card.dataset.total);
+    const score = scoreLesson(getLesson(card.dataset.lessonId ?? ""), total);
+    const label = card.querySelector("[data-progress-label]");
+    const bar = card.querySelector<HTMLElement>("[data-progress-bar]");
+    if (label && score.answered > 0) {
+      label.textContent = `${score.answered}/${total} respondidas · ${score.correct} correctas`;
+    }
+    if (bar) bar.style.width = `${Math.round((score.answered / total) * 100)}%`;
+  });
+</script>

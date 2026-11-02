@@ -1,0 +1,13 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+
+interface Props {
+  lesson: CollectionEntry<"lessons">;
+}
+const { Content } = await render(Astro.props.lesson);
+---
+
+<div class="theory prose">
+  <Content />
+</div>

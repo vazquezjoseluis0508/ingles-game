@@ -1,0 +1,24 @@
+---
+import Feedback from "./Feedback.astro";
+
+interface Props {
+  index: number;
+  itemKey: string;
+  prompt: string;
+  answers: string[];
+  explanation: string;
+}
+const { index, itemKey, prompt, answers, explanation } = Astro.props;
+const parts = prompt.split(/_{3,}/);
+---
+
+<li class="item" data-item data-type="gap" data-key={itemKey} data-answers={JSON.stringify(answers)}>
+  <span class="num">{index + 1}</span>
+  <div class="body">
+    <p class="prompt" lang="en">
+      {parts[0]}<input class="gap" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label={`Respuesta ${index + 1}`} data-input />{parts.slice(1).join("")}
+    </p>
+    <button class="btn primary" type="button" data-check>Comprobar</button>
+    <Feedback lead={`Respuesta: ${answers[0]}`} explanation={explanation} />
+  </div>
+</li>

@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Theory from "./Theory.astro";
+
+interface Props {
+  lesson: CollectionEntry<"lessons">;
+}
+---
+
+<button class="theory-fab btn primary" type="button" data-open-theory aria-haspopup="dialog">
+  Ver teoría
+</button>
+
+<dialog class="drawer" data-drawer aria-label="Teoría de la lección">
+  <div class="drawer-head">
+    <strong>Teoría · {Astro.props.lesson.data.id}</strong>
+    <button class="btn" type="button" data-close-theory>Cerrar</button>
+  </div>
+  <div class="drawer-body">
+    <Theory lesson={Astro.props.lesson} />
+  </div>
+</dialog>

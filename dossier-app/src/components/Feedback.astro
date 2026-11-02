@@ -1,0 +1,15 @@
+---
+interface Props {
+  /** Short line shown before the explanation, e.g. the correct answer. */
+  lead?: string;
+  explanation: string;
+}
+const { lead, explanation } = Astro.props;
+---
+
+<div class="feedback" data-feedback hidden>
+  <p class="verdict" data-verdict></p>
+  {lead && <p class="lead">{lead}</p>}
+  <p class="why">{explanation}</p>
+  <slot />
+</div>

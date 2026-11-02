@@ -1,0 +1,59 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Theory from "../../components/Theory.astro";
+import Examples from "../../components/Examples.astro";
+import ExerciseSection from "../../components/ExerciseSection.astro";
+import TheoryDrawer from "../../components/TheoryDrawer.astro";
+import LessonScript from "../../components/LessonScript.astro";
+import { lessonSlug, moduleSlug, url } from "../../lib/paths";
+
+export async function getStaticPaths() {
+  const lessons = await getCollection("lessons");
+  return lessons.map((lesson) => ({
+    params: { module: moduleSlug(lesson.data.module.number), lesson: lessonSlug(lesson.data.id) },
+    props: { lesson },
+  }));
+}
+
+interface Props {
+  lesson: CollectionEntry<"lessons">;
+}
+const { lesson } = Astro.props;
+const { id, title, module: mod, exercises } = lesson.data;
+const total = exercises.reduce((n, s) => n + s.items.length, 0);
+---
+
+<Base title={`${id} ${title} · Dossier Senior 5`}>
+  <nav slot="header" class="crumbs" aria-label="Ruta">
+    <a href={url()}>Inicio</a>
+  </nav>
+
+  <article class="lesson" data-lesson data-lesson-id={id} data-total={total}>
+    <header class="lesson-head">
+      <p class="eyebrow">Módulo {mod.number} · {mod.title}</p>
+      <h1>{id}. {title}</h1>
+    </header>
+
+    <section id="teoria" class="block">
+      <h2>1. Teoría</h2>
+      <Theory lesson={lesson} />
+    </section>
+
+    <section id="ejemplos" class="block">
+      <h2>2. Ejemplos de Aplicación</h2>
+      <Examples examples={lesson.data.examples} />
+    </section>
+
+    <section id="ejercicios" class="block" data-exercises>
+      <h2>3. Ejercitación Práctica</h2>
+      <p class="score" aria-live="polite" data-score></p>
+      {exercises.map((section, i) => <ExerciseSection section={section} sectionIndex={i} />)}
+      <button class="btn danger" type="button" data-reset>Reiniciar lección</button>
+    </section>
+  </article>
+
+  <TheoryDrawer lesson={lesson} />
+  <LessonScript />
+</Base>

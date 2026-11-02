@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from "astro:content";
+import GapItem from "./GapItem.astro";
+import ChoiceItem from "./ChoiceItem.astro";
+import TranslateItem from "./TranslateItem.astro";
+
+type Section = CollectionEntry<"lessons">["data"]["exercises"][number];
+
+interface Props {
+  section: Section;
+  sectionIndex: number;
+}
+const { section, sectionIndex } = Astro.props;
+const key = (i: number) => `s${sectionIndex}-i${i}`;
+---
+
+<section class="exercise-section">
+  <h3>{section.title}</h3>
+  <ol class="items">
+    {section.type === "gap" && section.items.map((item, i) => <GapItem index={i} itemKey={key(i)} {...item} />)}
+    {section.type === "choice" && section.items.map((item, i) => <ChoiceItem index={i} itemKey={key(i)} {...item} />)}
+    {section.type === "translate" && section.items.map((item, i) => <TranslateItem index={i} itemKey={key(i)} {...item} />)}
+  </ol>
+</section>

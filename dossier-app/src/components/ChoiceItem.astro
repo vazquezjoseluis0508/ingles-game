@@ -1,0 +1,32 @@
+---
+import Feedback from "./Feedback.astro";
+
+interface Props {
+  index: number;
+  itemKey: string;
+  prompt: string;
+  options: string[];
+  answer: number;
+  explanation: string;
+}
+const { index, itemKey, prompt, options, answer, explanation } = Astro.props;
+const letters = "abcdefgh";
+---
+
+<li class="item" data-item data-type="choice" data-key={itemKey} data-answer={answer}>
+  <span class="num">{index + 1}</span>
+  <div class="body">
+    <p class="prompt" lang="en">{prompt}</p>
+    <div class="options" role="group" aria-label={`Opciones de la pregunta ${index + 1}`}>
+      {
+        options.map((opt, i) => (
+          <button class="option" type="button" data-option={i}>
+            <span class="letter">{letters[i]})</span>
+            <span lang="en">{opt}</span>
+          </button>
+        ))
+      }
+    </div>
+    <Feedback lead={`Respuesta: ${letters[answer]}) ${options[answer]}`} explanation={explanation} />
+  </div>
+</li>

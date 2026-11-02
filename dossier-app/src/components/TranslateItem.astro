@@ -1,0 +1,28 @@
+---
+import Feedback from "./Feedback.astro";
+
+interface Props {
+  index: number;
+  itemKey: string;
+  prompt: string;
+  model: string;
+  explanation: string;
+}
+const { index, itemKey, prompt, model, explanation } = Astro.props;
+---
+
+<li class="item" data-item data-type="translate" data-key={itemKey}>
+  <span class="num">{index + 1}</span>
+  <div class="body">
+    <p class="prompt">{prompt}</p>
+    <textarea class="answer-area" rows="3" aria-label={`Traducción ${index + 1}`} data-input></textarea>
+    <button class="btn primary" type="button" data-reveal>Ver respuesta modelo</button>
+    <Feedback lead={`Modelo: ${model}`} explanation={explanation}>
+      <div class="self-assess" data-assess>
+        <span>¿Cómo te fue?</span>
+        <button class="btn good" type="button" data-self="ok">La tuve bien</button>
+        <button class="btn bad" type="button" data-self="bad">Me equivoqué</button>
+      </div>
+    </Feedback>
+  </div>
+</li>
