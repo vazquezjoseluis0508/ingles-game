@@ -20,7 +20,7 @@ Branch: `main` (new repo) · Delivery: ask-on-risk · Test runner: Vitest (unit)
 |---|---|---|---|---|
 | T1 | S1-S7 | delegated (Sonnet, user request) | done — verifier: no blockers; RDD review unavailable | 8f99dba, 2f2ca70 |
 | T2 | S1 | delegated (Sonnet) — convert remaining lessons, module by module | pending | — |
-| T3 | S8 | inline — publish in ingles-game repo under /dossier/ | in progress | — |
+| T3 | S8 | inline — publish in ingles-game repo under /dossier/ | done — live 200, gap item graded on live page | 49b6d09, f646c5a |
 | T4 | S6 | delegated (Haiku, user request) — README + content authoring guide | done | docs commit |
 | T5 | S5 | later — PWA/offline | pending | — |
 
